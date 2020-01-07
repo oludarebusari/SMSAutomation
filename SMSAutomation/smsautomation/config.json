@@ -1,0 +1,25 @@
+{
+	"GeneralSettings": {
+		"engBaseURL": "https://staging.smsmmadmin.com/",
+		"licBaseURL": "https://www.smsmmtest.com/admin/",
+		"thrBaseURL": "https://staging.mmdigital.us/login"
+	},
+	"engage": {
+		"username": "superadmin",
+		"password": "2nC01BdPs"
+	},
+	"license": {
+		"username": "superadmin",
+		"password": "d4kc77ww"
+	},
+	"thrive": {
+		"username": "admin@mmd.com",
+		"password": "12345678"
+	},
+	"DriverConfig": {
+	   "_comment":	"//To run the test locally, set environment to localHub and to run on Docker, set environment to remoteHub",
+	   "browser": "chrome",
+	   "environment": "remoteHub",
+	   "platform": null
+	}
+}

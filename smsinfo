@@ -1,0 +1,22 @@
+engage: https://www.smsmmadmin.com/
+password: Wq3v%i4687N$#6#2
+username:superadmin
+
+
+"GeneralSettings": {
+		"engBaseURL": "https://staging.smsmmadmin.com/",
+		"licBaseURL": "https://www.smsmmtest.com/admin/",
+		"thrBaseURL": "https://staging.mmdigital.us/login"
+	},
+	"engage": {
+		"username": "superadmin",
+		"password": "2nC01BdPs"
+	},
+	"license": {
+		"username": "superadmin",
+		"password": "d4kc77ww"
+	},
+	"thrive": {
+		"username": "admin@mmd.com",
+		"password": "12345678"
+	},

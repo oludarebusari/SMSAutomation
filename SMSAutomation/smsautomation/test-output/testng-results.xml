@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2019-12-31T10:44:16 MST" name="Default suite" finished-at="2019-12-31T10:45:48 MST" duration-ms="91839">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.RunSMSTest@46271dd6]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2019-12-31T10:44:16 MST" name="Default test" finished-at="2019-12-31T10:45:48 MST" duration-ms="91839">
+      <class name="runner.RunSMSTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:runner.RunSMSTest@46271dd6]" started-at="2019-12-31T10:44:16 MST" name="setUpClass" finished-at="2019-12-31T10:44:16 MST" duration-ms="297" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.RunSMSTest@46271dd6]" started-at="2019-12-31T10:44:16 MST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2019-12-31T10:44:41 MST" duration-ms="25200" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Login into Engage with correct credential"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Login into Engage App"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.RunSMSTest@46271dd6]" started-at="2019-12-31T10:44:42 MST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2019-12-31T10:45:25 MST" duration-ms="42919" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Log in, Access the License Portal and create a new campaign"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To verify that the user is able to create a new campaign"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [11] but found [12]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [11] but found [12]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:839)
+at org.testng.Assert.assertEquals(Assert.java:849)
+at stepDefinitions.license.CEDCampaignGroup.user_exports_the_campaign_groups(CEDCampaignGroup.java:94)
+at ✽.User exports the campaign groups(src/test/resources/features/license/CEDCampaignGroup.feature:16)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.RunSMSTest@46271dd6]" started-at="2019-12-31T10:45:25 MST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2019-12-31T10:45:47 MST" duration-ms="22224" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Log in, Access the License Portal and Log out of SMS Mastermind Portal"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To verify that the user is able to log into the licensee portal, access the homepage and then log out"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.RunSMSTest@46271dd6]" started-at="2019-12-31T10:45:47 MST" name="tearDownClass" finished-at="2019-12-31T10:45:48 MST" duration-ms="714" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- runner.RunSMSTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
