@@ -94,4 +94,17 @@ public class ManageAddOnServices extends DriverFactory {
 	public void the_giftbar_page_is_opened() throws Exception {
 		Assert.assertEquals("Giftbar", addOnGiftbarPage.getPageHeading());		
 	}
+	
+	@Then("User clicks the Interested button")
+	public void user_clicks_the_Interested_button() throws Exception {
+		addOnGiftbarPage.clickGiftbarInterestedBtn();
+		Thread.sleep(2000);
+	}
+
+	@Then("an interest notification is sent message is displayed")
+	public void an_interest_notification_is_sent_message_is_displayed() {
+	 
+	}
+
+
 }

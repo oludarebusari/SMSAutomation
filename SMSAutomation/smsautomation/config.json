@@ -19,7 +19,7 @@
 	"DriverConfig": {
 	   "_comment":	"//To run the test locally, set environment to localHub and to run on Docker, set environment to remoteHub",
 	   "browser": "chrome",
-	   "environment": "remoteHub",
+	   "environment": "localHub",
 	   "platform": null
 	}
 }
