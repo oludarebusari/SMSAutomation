@@ -70,19 +70,18 @@ public class ManageAddOnServices extends DriverFactory {
 	}
 
 	@Then("User verifies that Add-On Services menu is available")
-	public void user_verifies_that_Add_On_Services_menu_is_available() {
-		Assert.assertEquals(advertisercpanelPage.menu_Add_On_Services.getText(), "Add-On Services");
+	public void user_verifies_that_Add_On_Services_menu_is_available() throws Exception {
+		Assert.assertEquals("Add-On Services", advertisercpanelPage.getAddOnServicesMenuTxt());
 	}
 
 	@Then("User clicks the Add-On Services menu option")
 	public void user_clicks_the_Add_On_Services_menu_option() throws Exception {
 		advertisercpanelPage.clickAddOnServices();
-		Thread.sleep(500);
 	}
 
 	@Then("the Giftbar menu option is displayed")
 	public void the_Giftbar_menu_option_is_displayed() throws Exception {
-		Assert.assertEquals("Giftbar", addOnServicesSubMenu.menu_Giftbar.getText());
+		Assert.assertEquals("Giftbar", addOnServicesSubMenu.getGiftbarTxt());
 	}
 
 	@When("User clicks the Giftbar menu option")
@@ -92,18 +91,17 @@ public class ManageAddOnServices extends DriverFactory {
 
 	@Then("the giftbar page is opened")
 	public void the_giftbar_page_is_opened() throws Exception {
-		Assert.assertEquals("Giftbar", addOnGiftbarPage.getPageHeading());		
+		Assert.assertEquals("Giftbar", addOnGiftbarPage.getPageHeadingTxt());		
 	}
 	
 	@Then("User clicks the Interested button")
 	public void user_clicks_the_Interested_button() throws Exception {
 		addOnGiftbarPage.clickGiftbarInterestedBtn();
-		Thread.sleep(2000);
 	}
 
 	@Then("an interest notification is sent message is displayed")
-	public void an_interest_notification_is_sent_message_is_displayed() {
-	 
+	public void an_interest_notification_is_sent_message_is_displayed() throws Exception {
+		Assert.assertEquals("Thanks — a notification was sent about your interest!", addOnGiftbarPage.getGiftbarNotificationTxt());
 	}
 
 

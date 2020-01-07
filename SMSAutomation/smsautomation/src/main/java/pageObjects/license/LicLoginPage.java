@@ -5,9 +5,12 @@ import java.io.IOException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.BasePage;
+import utils.JsonConfigReader;
 
 
 public class LicLoginPage extends BasePage{
+	
+	JsonConfigReader reader = new JsonConfigReader();
 	
 	public @FindBy(xpath = "//input[@id=\"id_username\"]") WebElement textfield_UserName;
 	public @FindBy(xpath = "//input[@id=\"id_password\"]") WebElement textfield_PassWord;
@@ -18,7 +21,7 @@ public class LicLoginPage extends BasePage{
 	}
 
 	public LicLoginPage getLoginPage() throws IOException {
-		driver.get("https://www.smsmmtest.com/admin/");
+		driver.get(reader.getConfigValue("GeneralSettings", "licBaseURL"));
 		return new LicLoginPage();
 	}
 

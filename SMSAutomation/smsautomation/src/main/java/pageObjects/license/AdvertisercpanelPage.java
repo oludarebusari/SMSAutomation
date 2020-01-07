@@ -78,4 +78,9 @@ public class AdvertisercpanelPage extends BasePage {
 		submenu.clickGiftbar();
 		return new AdvertisercpanelPage();
 	}
+	
+	public String getAddOnServicesMenuTxt() throws Exception {
+		 return getElementText(menu_Add_On_Services);		 
+	}
+
 }

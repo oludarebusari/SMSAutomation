@@ -22,9 +22,9 @@ public class AddOnServicesSubMenu extends BasePage {
 		return new AddOnServicesSubMenu();
 	}
 
-	public AddOnServicesSubMenu getGiftbarTxt() throws Exception {
-		menu_Giftbar.getText();
-		return new AddOnServicesSubMenu();
+	public String getGiftbarTxt() throws Exception {
+        WaitUntilWebElementIsVisible(menu_Giftbar);
+		return getElementText(menu_Giftbar);
 	}
 
 }

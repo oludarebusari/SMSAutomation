@@ -32,7 +32,7 @@ public class ManageSitesPage extends BasePage {
 	}
 
 	// Page Methods
-	
+
 	public ManageSitesPage clickManageResellers() throws Exception {
 		waitAndClickElement(menu_Manage_Resellers);
 		return new ManageSitesPage();

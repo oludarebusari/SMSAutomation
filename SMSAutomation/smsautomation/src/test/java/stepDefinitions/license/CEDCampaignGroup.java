@@ -1,6 +1,9 @@
 package stepDefinitions.license;
 
 import java.util.Arrays;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import io.cucumber.java.en.And;
@@ -33,12 +36,12 @@ public class CEDCampaignGroup extends DriverFactory {
 
 	@When("User clicks on Businesses menu item")
 	public void user_clicks_on_Businesses_menu_item() throws Exception {
-		/*
-		 * if (reader.getConfigValue("DriverConfig", "environment").equals("localHub"))
-		 * { licPortalPage.clickCloseUpdateStatusOfBusinesses();
-		 * licPortalPage.waitForBusinessesDialogToDisappear(); }
-		 */
-		licPortalPage.clickBusinesses();
+		if (reader.getConfigValue("DriverConfig", "environment").equals("localHub")) {
+			licPortalPage.clickCloseUpdateStatusOfBusinesses();
+			licPortalPage.waitForBusinessesDialogToDisappear();
+		}
+//		licPortalPage.clickBusinesses();
+		licPortalPage.clickOnElementUsingCustomTimeout(licPortalPage.menu_Businesses, driver, 20);
 	}
 
 	@And("User clicks on Login tab for a merchant")
@@ -80,14 +83,16 @@ public class CEDCampaignGroup extends DriverFactory {
 	@Then("User copies the campaign groups")
 	public void user_copies_the_campaign_groups() throws Exception {
 		campaignGroupsPage.copyCampaignGroups();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 	}
 
 	@Then("User exports the campaign groups")
 	public void user_exports_the_campaign_groups() throws Exception {
 		campaignGroupsPage.exportCampaignGroups();
-		Thread.sleep(500);
-		Assert.assertEquals((campaignGroupsPage.getNumberOfCampaignGroups("C:\\Users\\Oyebode\\Downloads\\Engage Admin Dashboard.csv")) - 1, 11);
+		Assert.assertEquals(
+				(campaignGroupsPage
+						.getNumberOfCampaignGroups("C:\\Users\\Oyebode\\Downloads\\Engage Admin Dashboard.csv")) - 1,
+				11);
 	}
 
 	@And("User clicks the New button on the campaign groups page")
@@ -158,14 +163,12 @@ public class CEDCampaignGroup extends DriverFactory {
 	@And("User clicks the Save button")
 	public void user_clicks_the_Save_button() throws Exception {
 		createCampaignGroupPage.clickSaveCampaignGroup();
-//		Thread.sleep(200);
 		campaignGroupsPage.deleteDownloadedFile("C:\\Users\\Oyebode\\Downloads\\Engage Admin Dashboard.csv");
-		Thread.sleep(200);
 	}
 
 	@And("User clicks the edit dropdown button on the campaign")
 	public void user_clicks_the_edit_dropdown_button_on_the_campaign() throws Exception {
-		Thread.sleep(500);
+		Thread.sleep(800);
 		campaignGroupsPage.clickCampaignGroupsCampaignEditDDownBtn("QA Campaign Group_Edited");
 	}
 

@@ -23,6 +23,7 @@ public class CampaignGroupsPage extends BasePage {
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\") and ./span[(.)=\"CSV\"]]") WebElement btn_CSV;
 	public @FindBy(xpath = "//a[@aria-controls=\"groups\" and ./i[contains(@class, \"fa-angle-left\")]]") WebElement btn_Page_Left_Arrow;
 	public @FindBy(xpath = "//a[@aria-controls=\"groups\" and ./i[contains(@class, \"fa-angle-right\")]]") WebElement btn_Page_Right_Arrow;
+	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]") WebElement btn_Copy_Info;
 	public @FindBy(xpath = "//select[@name=\"groups_length\"]") WebElement drp_Group_Length;
 
 	public WebElement getOption(String value) {
@@ -108,16 +109,13 @@ public class CampaignGroupsPage extends BasePage {
 		return pageLength;
 	}
 
-	public int getNumberOfCampaignGroups(String path) throws IOException, CsvException {
+	public int getNumberOfCampaignGroups(String path) throws Exception {
+		Thread.sleep(500);
 		return getNumberOfRowsInASpreadsheet(path);
 	}
 
 	public void deleteDownloadedFile(String filename) throws Exception {
 		// Delete a file
-		// get current project path
-//		String filePath = "\"C:\\Users\\Oyebode\\Downloads";
-		// create a new file
-//	    File file = new File(filePath + "\\" + filename);
 		File file = new File(filename);
 		file.delete();
 	}
