@@ -1,4 +1,4 @@
-package stepDefinitions.license;
+package stepDefinitions.testSuite.regression;
 
 import java.util.Arrays;
 
@@ -19,7 +19,7 @@ import utils.Constant;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
 
-public class CEDCampaignGroup extends DriverFactory {
+public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFactory {
 
 	JsonConfigReader reader = new JsonConfigReader();
 
@@ -40,7 +40,6 @@ public class CEDCampaignGroup extends DriverFactory {
 			licPortalPage.clickCloseUpdateStatusOfBusinesses();
 			licPortalPage.waitForBusinessesDialogToDisappear();
 		}
-//		licPortalPage.clickBusinesses();
 		licPortalPage.clickOnElementUsingCustomTimeout(licPortalPage.menu_Businesses, driver, 20);
 	}
 

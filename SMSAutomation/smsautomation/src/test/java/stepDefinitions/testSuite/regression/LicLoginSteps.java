@@ -1,4 +1,4 @@
-package stepDefinitions.license;
+package stepDefinitions.testSuite.regression;
 
 import java.io.IOException;
 

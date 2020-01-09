@@ -41,7 +41,7 @@ public class DriverFactory {
 				if (null == driver) {
 					System.setProperty("webdriver.chrome.driver", Constant.CHROME_DRIVER_DIRECTORY);
 					ChromeOptions options = new ChromeOptions();
-					options.addArguments("window-size=1920x1080");
+					options.addArguments("window-size=1280x1024");
 					driver = new ChromeDriver(options);
 				}
 				break;

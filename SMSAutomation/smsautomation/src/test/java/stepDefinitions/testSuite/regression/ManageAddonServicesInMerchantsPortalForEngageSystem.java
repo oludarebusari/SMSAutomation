@@ -1,4 +1,4 @@
-package stepDefinitions.engage;
+package stepDefinitions.testSuite.regression;
 
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,7 +15,8 @@ import pageObjects.license.menu.AddOnServicesSubMenu;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
 
-public class ManageAddOnServices extends DriverFactory {
+
+public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverFactory {
 
 	JsonConfigReader reader = new JsonConfigReader();
 	
@@ -103,6 +104,5 @@ public class ManageAddOnServices extends DriverFactory {
 	public void an_interest_notification_is_sent_message_is_displayed() throws Exception {
 		Assert.assertEquals("Thanks — a notification was sent about your interest!", addOnGiftbarPage.getGiftbarNotificationTxt());
 	}
-
 
 }
