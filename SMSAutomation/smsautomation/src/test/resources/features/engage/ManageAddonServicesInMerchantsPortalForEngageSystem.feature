@@ -4,7 +4,7 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     Given User navigate to Engage url
     And User enters a valid username
     And User enters a valid password
-    When User clicks on the login button
+    And User clicks on the login button
     Then User should be taken to Engage SMS home page
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
