@@ -8,12 +8,9 @@ import pageObjects.BasePage;
 import pageObjects.license.menu.AddOnServicesSubMenu;
 
 public class AdvertisercpanelPage extends BasePage {
-	
-	private AddOnServicesSubMenu submenu;
 
 	public AdvertisercpanelPage() throws IOException {
 		super();
-		this.submenu = new AddOnServicesSubMenu();
 	}
 
 	// Menu Elements
@@ -22,10 +19,10 @@ public class AdvertisercpanelPage extends BasePage {
 	public @FindBy(xpath = "//div[contains(@class, \"side-menu-item\") and text()= \" Campaigns\"]") WebElement menu_Campaigns;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and ./a[contains(text(), \"Subscribers\")]]") WebElement menu_Broadcasts;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and ./a[contains(text(), \"Purchase Plans\")]]") WebElement menu_Analytics;
-	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and text()=\" Content\"]") WebElement menu_Subscribers;
-	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and text()=\" Add-On Services\"]") WebElement menu_Add_On_Services;
-	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and text()=\" Super Admin\"]") WebElement menu_My_Account;
-	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and text()=\" Super Admin\"]") WebElement menu_Settings;
+	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and contains((.),\"Subscribers\")]") WebElement menu_Subscribers;
+	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and contains((.),\"Add-On Services\")]") WebElement menu_Add_On_Services;
+	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and contains((.),\"My Account\")]") WebElement menu_My_Account;
+	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and contains((.), \"Settings\")]") WebElement menu_Settings;
 	public @FindBy(xpath = "//div[contains(@class, \"toggle-menu\")]") WebElement menu_Collapse_Menu;
 //		public @FindBy(xpath = "//button[@id=\"utility-menu\"]") WebElement btn_superadmin;
 
@@ -64,7 +61,7 @@ public class AdvertisercpanelPage extends BasePage {
 		return new AdvertisercpanelPage();
 	}
 
-	public AdvertisercpanelPage clickMySettings() throws Exception {
+	public AdvertisercpanelPage clickSettings() throws Exception {
 		waitAndClickElement(menu_Settings);
 		return new AdvertisercpanelPage();
 	}
@@ -74,13 +71,8 @@ public class AdvertisercpanelPage extends BasePage {
 		return new AdvertisercpanelPage();
 	}
 
-	public AdvertisercpanelPage clickGiftbar() throws Exception {
-		submenu.clickGiftbar();
-		return new AdvertisercpanelPage();
-	}
-	
 	public String getAddOnServicesMenuTxt() throws Exception {
-		 return getElementText(menu_Add_On_Services);		 
+		return getElementText(menu_Add_On_Services);
 	}
 
 }

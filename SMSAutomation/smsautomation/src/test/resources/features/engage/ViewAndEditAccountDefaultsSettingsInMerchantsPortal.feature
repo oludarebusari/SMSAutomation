@@ -34,6 +34,13 @@ Feature: View and Edit Account Default settings
     Then the merchants detailed information is listed
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
+    And User clicks the Settings menu
+    And User clicks the Accounts Defaults menu
+    Then AccountDefaults page is displayed
+    And User clicks Social Media from the LHS
+    Then user is redirected to the Social Settings and fields like FacebookIntegration,configuremanually and social properties are displayed
+    And User clicks on Web Widget link from the LHS menu
+    Then User is redirected to the Web Widget page, Configure your widget and preview fields are displayed
 
   @tag2
   Scenario: View Settings page

@@ -14,8 +14,8 @@ public class SettingsSubMenu extends BasePage{
 	}
 	
 	public @FindBy(xpath = "//a[text()=\"Account Defaults\"]") WebElement menu_Account_Defaults;
-	public @FindBy(xpath = "//a[text()=\"Manage Broadcasts\"]") WebElement menu_Social_Media;
-	public @FindBy(xpath = "//a[text()=\"Single Campaigns\"]") WebElement menu_Web_Widget;
+	public @FindBy(xpath = "//a[text()=\"Social Media\"]") WebElement menu_Social_Media;
+	public @FindBy(xpath = "//a[text()=\"Web Widget\"]") WebElement menu_Web_Widget;
 	
 	public SettingsSubMenu clickAccountDefaults() throws Exception {
 		waitAndClickElement(menu_Account_Defaults);

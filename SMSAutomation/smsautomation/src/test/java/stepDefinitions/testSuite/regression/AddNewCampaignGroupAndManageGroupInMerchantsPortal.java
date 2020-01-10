@@ -82,7 +82,7 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 	@Then("User copies the campaign groups")
 	public void user_copies_the_campaign_groups() throws Exception {
 		campaignGroupsPage.copyCampaignGroups();
-//		Thread.sleep(1000);
+
 	}
 
 	@Then("User exports the campaign groups")
