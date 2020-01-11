@@ -24,6 +24,7 @@ public class AccountDefaultsPage extends BasePage {
 	public @FindBy(xpath = "//form[@id=\"first_name_form\"]//button[(.)=\"Save\"]") WebElement btn_Default_Value_Save;
 	public @FindBy(xpath = "//button[contains((.), \"Save Engagement Settings\")]") WebElement btn_Save_Engagements_Settings;
 	public @FindBy(xpath = "//div[@data-toggle=\"toggle\"]") WebElement toggle_Default_Custom;
+	public @FindBy(xpath = "//div[@id=\"messages_limit_days_saved\"]") WebElement alert_Saved;
 	
 	
 	//Page Methods
@@ -32,9 +33,8 @@ public class AccountDefaultsPage extends BasePage {
 		return getElementText(page_Title);
 	}
 	
-	public AccountDefaultsPage getInboxMessageLimitTxt() throws Exception {
-		getElementText(page_Inbox_Messages_Limit);
-		return new AccountDefaultsPage();
+	public String getInboxMessageLimitTxt() throws Exception {
+		return getElementText(page_Inbox_Messages_Limit);
 	}
 	public AccountDefaultsPage setLimitDays(String LimitDays) throws Exception {
 		sendKeysToWebElement(txtF_Limit_Days, LimitDays);
@@ -44,6 +44,10 @@ public class AccountDefaultsPage extends BasePage {
 	public AccountDefaultsPage clickLimitDaysSaveDtn() throws Exception {
 		waitAndClickElement(btn_Limit_Days_Save);
 		return new AccountDefaultsPage();
+	}
+	
+	public String getAlertSavedTxt() throws Exception {
+		return getElementText(alert_Saved);
 	}
 	
 	public AccountDefaultsPage getEngagementSettingsTxt() throws Exception {
@@ -65,7 +69,7 @@ public class AccountDefaultsPage extends BasePage {
 		waitAndClickElement(btn_Default_Value_Save);
 		return new AccountDefaultsPage();
 	}
-	
+		
 	public AccountDefaultsPage clickSaveEngagementSettingsBtn() throws Exception {
 		waitAndClickElement(btn_Save_Engagements_Settings);
 		return new AccountDefaultsPage();

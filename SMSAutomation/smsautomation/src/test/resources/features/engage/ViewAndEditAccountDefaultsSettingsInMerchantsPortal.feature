@@ -20,9 +20,8 @@
 Feature: View and Edit Account Default settings
   I want to be able to View & edit Account Defaults settings in Merchant's portal
 
-  @tag1
-  Scenario: View Settings page
-    Given User navigate to Engage url
+Background: User is logged in and navigates to the Merchant's Dashboard
+		Given User navigate to Engage url
     And User enters a valid username
     And User enters a valid password
     And User clicks on the login button
@@ -35,6 +34,9 @@ Feature: View and Edit Account Default settings
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
     And User clicks the Settings menu
+
+  @tag1
+  Scenario: View Settings page
     And User clicks the Accounts Defaults menu
     Then AccountDefaults page is displayed
     And User clicks Social Media from the LHS
@@ -43,4 +45,11 @@ Feature: View and Edit Account Default settings
     Then User is redirected to the Web Widget page, Configure your widget and preview fields are displayed
 
   @tag2
-  Scenario: View Settings page
+  Scenario: View Settings-Account Defaults
+    And User clicks the Account Defaults
+    Then the Accounts Defaults page is displayed
+    And User verifies that the Inbox message limit page section exists
+    And User enters the number of limit days and click save button
+    Then Saved validation message is displayed within the Inbox section
+    And User enters the default first name variable value and click save button
+    Then Saved validation message is displayed within the Default value section

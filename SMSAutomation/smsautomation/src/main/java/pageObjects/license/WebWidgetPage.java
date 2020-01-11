@@ -46,8 +46,7 @@ public class WebWidgetPage extends BasePage {
 		return getElementText(page_Title);
 	}
 
-	public WebWidgetPage getInboxMessageLimitTxt() throws Exception {
-		getElementText(page_Configure_Your_Widget);
-		return new WebWidgetPage();
+	public String getConfigureYourWidgetTxt() throws Exception {
+		return getElementText(page_Configure_Your_Widget);
 	}
 }
