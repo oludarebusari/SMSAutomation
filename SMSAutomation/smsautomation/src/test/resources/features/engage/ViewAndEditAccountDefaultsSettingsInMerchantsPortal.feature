@@ -35,7 +35,7 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     Then the user is redirected to a new window of Merchant's Dashboard
     And User clicks the Settings menu
 
-  @tag1
+  @tag-View-Settings-page
   Scenario: View Settings page
     And User clicks the Accounts Defaults menu
     Then AccountDefaults page is displayed
@@ -44,7 +44,7 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     And User clicks on Web Widget link from the LHS menu
     Then User is redirected to the Web Widget page, Configure your widget and preview fields are displayed
 
-  @tag2
+  @tag-View-Settings-Account-Defaults
   Scenario: View Settings-Account Defaults
     And User clicks the Account Defaults
     Then the Accounts Defaults page is displayed
@@ -53,3 +53,5 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     Then Saved validation message is displayed within the Inbox section
     And User enters the default first name variable value and click save button
     Then Saved validation message is displayed within the Default value section
+    
+    
