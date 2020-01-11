@@ -1,3 +1,4 @@
+@RegressionTest
 Feature: Login into Engage App
 	Existing user should be able to log into Engage SMS using correct credentials
 Scenario: Login into Engage with correct credential

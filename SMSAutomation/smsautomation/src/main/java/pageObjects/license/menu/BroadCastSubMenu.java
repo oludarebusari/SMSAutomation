@@ -13,10 +13,15 @@ public class BroadCastSubMenu extends BasePage {
 		super();
 	}
 
+	// Menu Elements 
+	
 	public @FindBy(xpath = "//a[text()=\"Create Broadcast\"]") WebElement menu_CreateBroadcast;
 	public @FindBy(xpath = "//a[text()=\"Manage Broadcasts\"]") WebElement menu_ManageBroadcasts;
 	public @FindBy(xpath = "//a[text()=\"Single Campaigns\"]") WebElement menu_BroadcastHistory;
 
+	
+	// Menu Methods
+	
 	public CampaignsSubMenu clickCreateBroadcast() throws Exception {
 		waitAndClickElement(menu_CreateBroadcast);
 		return new CampaignsSubMenu();

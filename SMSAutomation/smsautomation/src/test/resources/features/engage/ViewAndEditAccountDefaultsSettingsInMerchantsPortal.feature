@@ -16,7 +16,7 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag-SMSM-139
+@tag-SMSM-139 @RegressionTest
 Feature: View and Edit Account Default settings
   I want to be able to View & edit Account Defaults settings in Merchant's portal
 

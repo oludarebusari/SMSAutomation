@@ -8,9 +8,9 @@ import io.cucumber.testng.CucumberOptions;
  		 features = {"src/test/resources/features/"},
  		 glue = {"stepDefinitions"},
  		 monochrome = true,
- 		 tags = {},
+ 		 tags = {"@RegressionTest"},
  		 plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json", "html:target/selenium-reports"}
-		
+ 		
 )
 
 public class RunSMSTest extends AbstractTestNGCucumberTests {

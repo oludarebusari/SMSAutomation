@@ -14,6 +14,7 @@ public class CreateCampaignGroupPage extends BasePage {
 	}
 
 	// Page Elements
+	
 	public @FindBy(xpath = "//input[@name=\"name\"]") WebElement txt_Group_Name;
 	public @FindBy(xpath = "//input[@name=\"keyword\"]") WebElement txt_Keyword;
 	public @FindBy(xpath = "//input[@name=\"description\"]") WebElement txt_Description;
@@ -39,6 +40,7 @@ public class CreateCampaignGroupPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"form-group\" and .//div[contains(@class, \"quarter-right\")]]//i[contains(@class, \"fa-question-circle text-info\")]") WebElement icon_Allow_group_reward_redemptions_Help;
 	
 	// Page Methods
+	
 	public CreateCampaignGroupPage sendTextToGroupNameTxtF(String groupName) throws Exception {
 		sendKeysToWebElement(txt_Group_Name, groupName);
 		return new CreateCampaignGroupPage();

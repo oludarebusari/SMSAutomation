@@ -52,7 +52,8 @@ public class LicAdminPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"panel-heading\" and .//a[text()=\" Broadcast Manager\"]]") WebElement toggle_Broadcast_Managers;
 	public @FindBy(xpath = "//div[@class=\"modal-header\" and .//h4[@id=\"terminate_modal_label\"]]//button[@aria-label=\"Close\"]") WebElement win_Update_Status_Of_Business;
 
-	// Methods to click Menu Items
+	
+	// Methods
 
 	public LicAdminPage clickBusinesses() throws Exception {
 		waitAndClickElement(menu_Businesses);

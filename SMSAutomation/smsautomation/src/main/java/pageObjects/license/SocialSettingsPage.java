@@ -17,7 +17,7 @@ public class SocialSettingsPage extends BasePage {
 
 	public @FindBy(xpath = "//div[contains(@class, \"page-heading\")]") WebElement page_Title;
 	public @FindBy(xpath = "//h4[contains((.), \"Facebook Integration\")]") WebElement page_Facebook_Integration;
-	public @FindBy(xpath = "//div[contains(@class, \"form-group\")]//div[contains(@class, \"selectize-input\")]") WebElement page_Select_A_Campaign_LOV;
+	public @FindBy(xpath = "//div[contains(@class, \"form-group\")]//div[contains(@class, \"selectize-input\")]") WebElement lov_Select_A_Campaign;
 	public @FindBy(xpath = "//button[@type=\"button\" and contains((.), \"Connect to Facebook\")]") WebElement btn_Connect_To_Facebook;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"FB Name\")]]//input[@id=\"fb-name\"]") WebElement txtF_FB_Name;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"FB User ID\")]]//input[@id=\"fb-user-id\"]") WebElement txtF_FB_User_ID;
@@ -27,6 +27,7 @@ public class SocialSettingsPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"Facebook URL\")]]//input[@id=\"facebook_url\"]") WebElement txtF_Facebook_URL;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"Yelp URL\")]]//input[@id=\"yelp_url\"]") WebElement txtF_Yelp_URL;
 	public @FindBy(xpath = "//button[@type=\"button\" and contains((.), \"Connect to Facebook\")]") WebElement btn_Save_Social_URLs;
+	
 	
 	// Page Methods
 

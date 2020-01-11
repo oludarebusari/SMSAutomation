@@ -1,3 +1,4 @@
+@RegressionTest
 Feature: Manage Add On Services in Merchant's portal for Engage System
 
   Scenario: User should be redirected to new window of Merchant's Dashboard

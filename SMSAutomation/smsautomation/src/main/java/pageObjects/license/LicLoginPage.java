@@ -12,6 +12,8 @@ public class LicLoginPage extends BasePage{
 	
 	JsonConfigReader reader = new JsonConfigReader();
 	
+	// Page Elements 
+	
 	public @FindBy(xpath = "//input[@id=\"id_username\"]") WebElement textfield_UserName;
 	public @FindBy(xpath = "//input[@id=\"id_password\"]") WebElement textfield_PassWord;
 	public @FindBy(xpath = "//button[@id=\"_submit\"]") WebElement button_signIn;
@@ -20,6 +22,8 @@ public class LicLoginPage extends BasePage{
 		super();
 	}
 
+	// Page Methods
+	
 	public LicLoginPage getLoginPage() throws IOException {
 		driver.get(reader.getConfigValue("GeneralSettings", "licBaseURL"));
 		return new LicLoginPage();

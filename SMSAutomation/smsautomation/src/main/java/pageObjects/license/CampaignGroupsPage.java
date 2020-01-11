@@ -18,6 +18,7 @@ public class CampaignGroupsPage extends BasePage {
 	}
 
 	// Page Elements
+	
 	public @FindBy(xpath = "//a[contains(@class, \"btn-primary\")]") WebElement btn_CampaignGroupsNewBtn;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\") and ./span[(.)=\"Copy\"]]") WebElement btn_Copy;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\") and ./span[(.)=\"CSV\"]]") WebElement btn_CSV;
@@ -54,6 +55,7 @@ public class CampaignGroupsPage extends BasePage {
 	}
 
 	// Page Functions
+	
 	public CampaignGroupsPage clickCampaignGroupsNewBtn() throws Exception {
 		waitAndClickElement(btn_CampaignGroupsNewBtn);
 		return new CampaignGroupsPage();

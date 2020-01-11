@@ -26,6 +26,8 @@ public class AdvertisercpanelPage extends BasePage {
 	public @FindBy(xpath = "//div[contains(@class, \"toggle-menu\")]") WebElement menu_Collapse_Menu;
 //		public @FindBy(xpath = "//button[@id=\"utility-menu\"]") WebElement btn_superadmin;
 
+	// Page Functions
+	
 	public AdvertisercpanelPage clickInbox() throws Exception {
 		waitAndClickElement(menu_Inbox);
 		return new AdvertisercpanelPage();

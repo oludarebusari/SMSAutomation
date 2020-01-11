@@ -92,7 +92,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("the giftbar page is opened")
 	public void the_giftbar_page_is_opened() throws Exception {
-		Assert.assertEquals("Giftbar", addOnGiftbarPage.getPageHeadingTxt());		
+		Assert.assertEquals("Giftbar", addOnGiftbarPage.getPageTitleTxt());		
 	}
 	
 	@Then("User clicks the Interested button")

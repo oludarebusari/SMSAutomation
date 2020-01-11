@@ -1,3 +1,4 @@
+@RegressionTest
 Feature: To verify that the user is able to log into the licensee portal, access the homepage and then log out 
 	Existing user should be able to log into License SMS using correct credentials
 Scenario: Log in, Access the License Portal and Log out of SMS Mastermind Portal 

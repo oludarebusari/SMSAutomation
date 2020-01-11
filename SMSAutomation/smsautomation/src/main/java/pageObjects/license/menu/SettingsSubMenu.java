@@ -13,9 +13,14 @@ public class SettingsSubMenu extends BasePage{
 		super();
 	}
 	
+	//Menu Elements
+	
 	public @FindBy(xpath = "//a[text()=\"Account Defaults\"]") WebElement menu_Account_Defaults;
 	public @FindBy(xpath = "//a[text()=\"Social Media\"]") WebElement menu_Social_Media;
 	public @FindBy(xpath = "//a[text()=\"Web Widget\"]") WebElement menu_Web_Widget;
+	
+	
+	// Menu Methods
 	
 	public SettingsSubMenu clickAccountDefaults() throws Exception {
 		waitAndClickElement(menu_Account_Defaults);
