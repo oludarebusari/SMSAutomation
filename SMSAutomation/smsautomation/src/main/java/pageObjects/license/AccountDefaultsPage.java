@@ -36,6 +36,7 @@ public class AccountDefaultsPage extends BasePage {
 	public String getInboxMessageLimitTxt() throws Exception {
 		return getElementText(page_Inbox_Messages_Limit);
 	}
+	
 	public AccountDefaultsPage setLimitDays(String LimitDays) throws Exception {
 		sendKeysToWebElement(txtF_Limit_Days, LimitDays);
 		return new AccountDefaultsPage();
