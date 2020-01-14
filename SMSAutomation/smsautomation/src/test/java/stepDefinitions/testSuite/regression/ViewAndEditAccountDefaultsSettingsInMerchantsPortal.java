@@ -7,15 +7,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import junit.framework.Assert;
 import pageObjects.license.AccountDefaultsPage;
-import pageObjects.license.AdvertisercpanelPage;
 import pageObjects.license.SocialSettingsPage;
 import pageObjects.license.WebWidgetPage;
+import pageObjects.license.menu.MerchantMenu;
 import pageObjects.license.menu.SettingsSubMenu;
 import utils.DriverFactory;
 
 public class ViewAndEditAccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
 
-	AdvertisercpanelPage advertisercpanelPage = PageFactory.initElements(driver, AdvertisercpanelPage.class);
+	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	AccountDefaultsPage accountDefaultsPage = PageFactory.initElements(driver, AccountDefaultsPage.class);
 	SettingsSubMenu settingSubMenu = PageFactory.initElements(driver, SettingsSubMenu.class);
 	SocialSettingsPage socialSettingsPage = PageFactory.initElements(driver, SocialSettingsPage.class);
@@ -23,7 +23,7 @@ public class ViewAndEditAccountDefaultsSettingsInMerchantsPortal extends DriverF
 
 	@And("User clicks the Settings menu")
 	public void user_clicks_the_Settings_menu() throws Exception {
-		advertisercpanelPage.clickSettings();
+		merchantMenu.clickSettings();
 	}
 
 	@And("User clicks the Accounts Defaults menu")

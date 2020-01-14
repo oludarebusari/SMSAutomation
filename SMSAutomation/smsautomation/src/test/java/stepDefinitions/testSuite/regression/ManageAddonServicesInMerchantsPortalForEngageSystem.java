@@ -8,10 +8,10 @@ import io.cucumber.java.en.When;
 import junit.framework.Assert;
 import pageObjects.engage.ManageSitesPage;
 import pageObjects.license.AddOnGiftbarPage;
-import pageObjects.license.AdvertisercpanelPage;
 import pageObjects.license.AdvertisersPage;
 import pageObjects.license.LicAdminPage;
 import pageObjects.license.menu.AddOnServicesSubMenu;
+import pageObjects.license.menu.MerchantMenu;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
 
@@ -20,7 +20,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	JsonConfigReader reader = new JsonConfigReader();
 	
-	AdvertisercpanelPage advertisercpanelPage = PageFactory.initElements(driver, AdvertisercpanelPage.class);
+	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	AdvertisersPage advertisersPage = PageFactory.initElements(driver, AdvertisersPage.class);
 	LicAdminPage licAdminPage = PageFactory.initElements(driver, LicAdminPage.class);
 	ManageSitesPage manageSitesPage = PageFactory.initElements(driver, ManageSitesPage.class);
@@ -66,18 +66,18 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("the user is redirected to a new window of Merchant's Dashboard")
 	public void the_user_is_redirected_to_a_new_window_of_Merchant_s_Dashboard() {
-		advertisercpanelPage.switchWindow();
+		merchantMenu.switchWindow();
 		Assert.assertEquals(manageSitesPage.getCurrentURL(), "https://www.smsmmtest.com/advertisercpanel/");
 	}
 
 	@Then("User verifies that Add-On Services menu is available")
 	public void user_verifies_that_Add_On_Services_menu_is_available() throws Exception {
-		Assert.assertEquals("Add-On Services", advertisercpanelPage.getAddOnServicesMenuTxt());
+		Assert.assertEquals("Add-On Services", merchantMenu.getAddOnServicesMenuTxt());
 	}
 
 	@Then("User clicks the Add-On Services menu option")
 	public void user_clicks_the_Add_On_Services_menu_option() throws Exception {
-		advertisercpanelPage.clickAddOnServices();
+		merchantMenu.clickAddOnServices();
 	}
 
 	@Then("the Giftbar menu option is displayed")

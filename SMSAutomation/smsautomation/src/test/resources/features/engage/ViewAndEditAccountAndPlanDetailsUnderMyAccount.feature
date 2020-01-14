@@ -16,26 +16,39 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
+@tag-SMSM-137 @RegressionTest
 Feature: View and Edit account and plan details under my account
 
-  @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
+  Background: User is logged in and navigates to the Merchant's Dashboard
+    Given User navigate to Engage url
+    And User enters a valid username
+    And User enters a valid password
+    And User clicks on the login button
+    Then User should be taken to Engage SMS home page
+    When User clicks the Manage Resellers menubar option
+    And User logs in to a reseller
+    Then User is redirected to the Engaged Admin Dashboard page
+    And User clicks Business tabs at the left side
+    Then the merchants detailed information is listed
+    And Users click Login tab for a merchant
+    Then the user is redirected to a new window of Merchant's Dashboard
+    And User clicks on My Accounts from the left hand side menu
+    Then User is redirected to my account page
 
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
+  @tag-Verify-Plan-Details-Section-On-My-Accounts-Page
+  Scenario: My Plan details section is present on "My Accounts" screen in Merchant portal
+    And User verifies the sections on my account page
+    And User verifies My Plan section on my account page
+    And User clicks on the Plan Details link
+    Then details of the plan is displayed within the Plan Details popup window
 
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
+  @tag-Change-Plan-by-clicking-Change-Plan-button
+  Scenario: Verify the plan can be changed by clicking "Change Plan" button under "My Plan"
+  And User clicks on the Change Plan button
+  Then Select a New Plan window is displayed
+  And User click on a new plan and click Change Plan button
+  Then Success message is displayed and the plan is changed to the new plan
+  
+  
+  
+  

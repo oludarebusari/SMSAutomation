@@ -9,12 +9,12 @@ import org.testng.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.license.AdvertisercpanelPage;
 import pageObjects.license.AdvertisersPage;
 import pageObjects.license.CreateCampaignGroupPage;
 import pageObjects.license.CampaignGroupsPage;
 import pageObjects.license.LicAdminPage;
 import pageObjects.license.menu.CampaignsSubMenu;
+import pageObjects.license.menu.MerchantMenu;
 import utils.Constant;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
@@ -26,7 +26,7 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 	// Support Files
 	LicAdminPage licPortalPage = PageFactory.initElements(driver, LicAdminPage.class);
 	AdvertisersPage advertisersPage = PageFactory.initElements(driver, AdvertisersPage.class);
-	AdvertisercpanelPage advertisercpanelPage = PageFactory.initElements(driver, AdvertisercpanelPage.class);
+	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	CampaignsSubMenu campaignsSubMenu = PageFactory.initElements(driver, CampaignsSubMenu.class);
 	CampaignGroupsPage campaignGroupsPage = PageFactory.initElements(driver, CampaignGroupsPage.class);
 	CreateCampaignGroupPage createCampaignGroupPage = PageFactory.initElements(driver, CreateCampaignGroupPage.class);
@@ -50,8 +50,8 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 
 	@And("User clicks on the campaigns menu item")
 	public void user_clicks_on_the_campaigns_menu_item() throws Exception {
-		advertisercpanelPage.switchWindow();
-		advertisercpanelPage.clickCampaigns();
+		merchantMenu.switchWindow();
+		merchantMenu.clickCampaigns();
 	}
 
 	@And("User clicks campaign groups under campaigns")
