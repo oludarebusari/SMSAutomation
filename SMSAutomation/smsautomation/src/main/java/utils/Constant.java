@@ -18,8 +18,9 @@ public class Constant {
 	public final static String DESCRIPTION_HELP_ICON = "Example: the Subways in the Sacramento area";
 	public final static String CAMPAIGNS_HELP_ICON = "Select all of the campaigns you wish to include in this group. Each campaign will be an option that new subscribers will see upon checking in to any tablet linked to this group for the first time.";
 	public final static String ALLOW_GROUP_REWARD_REDEMPTIONS = "If enabled, rewards earned in any of these campaigns may be redeemed when checking into any of the other campaigns in the group.";
-	public final static String CURRENT_PLAN_DETAILS = "Basic Plan Group";
-	public final static String NEW_PLAN_DETAILS = "test plan for new queue mms";
+	public final static String PLAN_DETAILS = "Basic Plan Group";
+	public final static String CURRENT_PLAN_NAMME = "LoneStarLoyalty - Trial";
+	public final static String NEW_PLAN_DETAILS = "k test plan";
 	
 }
 

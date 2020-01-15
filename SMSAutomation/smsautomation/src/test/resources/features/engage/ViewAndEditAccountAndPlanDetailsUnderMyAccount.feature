@@ -45,8 +45,10 @@ Feature: View and Edit account and plan details under my account
   @tag-Change-Plan-by-clicking-Change-Plan-button
   Scenario: Verify the plan can be changed by clicking "Change Plan" button under "My Plan"
   And User clicks on the Change Plan button
-  Then Select a New Plan window is displayed
-  And User click on a new plan and click Change Plan button
+  Then User confirms a new window popup to select a plan
+  And User selects another plan
+  Then User verifies that the plan is selected
+  And User clicks Change Plan button
   Then Success message is displayed and the plan is changed to the new plan
   
   

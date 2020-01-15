@@ -2,6 +2,7 @@ package pageObjects.license;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -27,12 +28,14 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[(.)=\"Plan Details\"]]//div[@class=\"modal-body\"]") WebElement win_Plan_Details_Body;
 	public @FindBy(xpath = "//div[@id=\"plan-update-message\"]") WebElement txt_Plan_Update_Message;
 	public @FindBy(xpath = "//h3[@class=\"remove-top\"]") WebElement txt_Plan_Name;
-	
+		
 	//New Plan Window elements
-	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h3[(.)=\"Select a New Plan\"]]") WebElement win_New_Plan;
 	public @FindBy(xpath = "//div[@class=\"modal-content\"]//h3[(.)=\"Select a New Plan\"]") WebElement mod_New_Plan_Title;
-	
-	
+	public @FindBy(xpath = "//div[contains(@class, \"list-group remove-bottom\")]") WebElement parentBtn;
+	public WebElement rBtn_Plan_Name_Opt(String name) {
+		return parentBtn.findElement(By.xpath("//a[@data-name='"+ name + "']"));
+	};
+	public @FindBy(xpath = "//button[@id=\"change-plan\"]") WebElement btn_Change_Plan_New_Plan;
 	
 	//Page Methods
 	
@@ -57,6 +60,11 @@ public class MyAccountPage extends BasePage {
 		return new MyAccountPage();
 	}
 	
+	public MyAccountPage clickNewPlanChangePlanBtn() throws Exception {
+		waitAndClickElement(btn_Change_Plan_New_Plan);
+		return new MyAccountPage();
+	}
+	
 	public MyAccountPage clickChangePlanBtn() throws Exception {
 		waitAndClickElement(btn_Change_Plan);
 		return new MyAccountPage();
@@ -74,4 +82,13 @@ public class MyAccountPage extends BasePage {
 		return getElementText(txt_Plan_Name);
 	}
 	
+	public String getNewPlanWindowTitle() throws Exception {
+		return getElementText(mod_New_Plan_Title);
+	}
+	
+	public MyAccountPage selectPlan(String planName) throws Exception {
+		waitAndClickElement(rBtn_Plan_Name_Opt(planName));
+		return new MyAccountPage();
+	}
+
 }
