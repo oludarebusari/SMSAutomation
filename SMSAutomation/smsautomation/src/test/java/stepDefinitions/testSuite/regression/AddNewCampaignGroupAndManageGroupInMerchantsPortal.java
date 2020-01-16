@@ -45,6 +45,7 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 
 	@And("User clicks on Login tab for a merchant")
 	public void user_clicks_on_Login_tab_for_a_merchant() throws Exception {
+		Thread.sleep(500);
 		advertisersPage.clickLoginBtnByBusinessContact();
 	}
 

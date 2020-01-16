@@ -16,13 +16,14 @@ public class MyAccountPage extends BasePage {
 	}
 
 	// Page Elements
-	
 	public @FindBy(xpath = ElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
 	public @FindBy(xpath = "//h4[(.)=\"My Plan\"]") WebElement page_My_Plan_Section;
 	public @FindBy(xpath = "//h4[(.)=\"Account Details\"]") WebElement page_Account_Details_Section;
 	public @FindBy(xpath = "//h4[(.)=\"Account Resources\"]") WebElement page_Account_Resources_Section;
 	public @FindBy(xpath = "//button[@data-target=\"#plan-modal\"]") WebElement btn_Change_Plan;
 	public @FindBy(xpath = "//a[@data-target=\"#account-details-modal\"]") WebElement btn_Account_Contact_Edit;
+	public @FindBy(xpath = "//a[@data-target=\"#change-password-modal\"]") WebElement btn_Account_Contact_Change_Password;
+	public @FindBy(xpath = "//a[@data-target=\"#billing-details-modal\"]") WebElement btn_Billing_Contact_Edit;
 	public @FindBy(xpath = "//a[@data-target=\"#credit-card-modal\"]") WebElement btn_Payment_Edit;
 	public @FindBy(xpath = "//a[@data-target=\"#plan_details_modal\"]") WebElement lnk_Plan_Details;
 	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[(.)=\"Plan Details\"]]//div[@class=\"modal-body\"]") WebElement win_Plan_Details_Body;
@@ -36,6 +37,51 @@ public class MyAccountPage extends BasePage {
 		return parentBtn.findElement(By.xpath("//a[@data-name='"+ name + "']"));
 	};
 	public @FindBy(xpath = "//button[@id=\"change-plan\"]") WebElement btn_Change_Plan_New_Plan;
+	
+	//Account Contacts Edit elements
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Account Contact\"]") WebElement mod_Account_Contact_Edit_Title;
+	public @FindBy(xpath = "//input[@id=\"first-name\"]") WebElement txtF_Account_Contact_First;
+	public @FindBy(xpath = "//input[@id=\"last-name\"]") WebElement txtF_Account_Contact_LastName;
+	public @FindBy(xpath = "//input[@id=\"email\"]") WebElement txtF_Account_Contact_Email;
+	public @FindBy(xpath = "//input[@id=\"phone\"]") WebElement txtF_Account_Contact_Phone;
+	public @FindBy(xpath = "//input[@id=\"address-1\"]") WebElement txtF_Account_Contact_StreetAddr;
+	public @FindBy(xpath = "//input[@id=\"address-2\"]") WebElement txtF_Account_Contact_Suite;
+	public @FindBy(xpath = "//input[@id=\"city\"]") WebElement txtF_Account_Contact_City;
+	public @FindBy(xpath = "(//div[contains(@class, \"form-group\") and ./label[(.)=\"State\"]]//div[contains(@class, \"selectize-input\")])[1]") WebElement lov_Account_Contact_State;
+	public @FindBy(xpath = "//input[@id=\"postal-code\"]") WebElement txtF_Account_Contact_PostalCode;
+	public @FindBy(xpath = "//div[contains(@class, \"form-group\") and ./label[(.)=\"Email Notifications\"]]//div[contains(@class, \"selectize-input\")]") WebElement lov_Account_Contact_Email_Notification;
+	public @FindBy(xpath = "//button[@id=\"save-account-details\"]") WebElement btn_Account_Contact_Edit_SaveChanges;
+	public @FindBy(xpath = "//div[@id=\"account-details-saved-alert\"]") WebElement txtF_Account_Details_Save_Alert;
+	
+	//Account Contacts Change Password elements	
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Change Password\"]") WebElement mod_Account_Contact_ChangePassword_Title;
+	public @FindBy(xpath = "//input[@id=\"old-password\"]") WebElement txtF_Account_Contact_ChangePassword_CurrPass;
+	public @FindBy(xpath = "//input[@id=\"new-password\"]") WebElement txtF_Account_Contact_ChangePassword_NewPass;
+	public @FindBy(xpath = "//button[@id=\"change-password\"]") WebElement btn_Account_Contact_ChangePassword_ChangePass;
+	
+	//Billing Contact Edit elements
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Change Password\"]") WebElement mod_Billing_Contact_Title;
+	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Billing_Contact_First;
+	public @FindBy(xpath = "//input[@id=\"billing-last-name\"]") WebElement txtF_Billing_Contact_LastName;
+	public @FindBy(xpath = "//input[@id=\"billing-email\"]") WebElement txtF_Billing_Contact_Email;
+	public @FindBy(xpath = "//input[@id=\"billing-address-1\"]") WebElement txtF_Billing_Contact_StreetAddr;
+	public @FindBy(xpath = "//input[@id=\"billing-address-2\"]") WebElement txtF_Billing_Contact_Suite;
+	public @FindBy(xpath = "//input[@id=\"billing-city\"]") WebElement txtF_Billing_Contact_City;
+	public @FindBy(xpath = "(//div[contains(@class, \"form-group\") and ./label[(.)=\"State\"]]//div[contains(@class, \"selectize-input\")])[1]") WebElement lov_Billing_Contact_State;
+	public @FindBy(xpath = "//input[@id=\"billing-postal-code\"]") WebElement txtF_Billing_Contact_PostalCode;
+	public @FindBy(xpath = "//button[@id=\"save-billing-details\"]") WebElement btn_Billing_Contact_SaveChanges;
+	
+	//Credit Card Edit elements
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Change Password\"]") WebElement mod_Credit_Card_Title;
+	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Name_On_Card;
+	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Card_Number;
+	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Zip_Code;
+	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\") and ./input[@id=\"exp-month-selectized\"]]") WebElement txtF_Exp_Month;
+	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\") and ./input[@id=\"exp-year-selectized\"]]") WebElement txtF_Exp_Year;
+	public @FindBy(xpath = "//input[@id=\"cvv\"]") WebElement txtF_CVV;
+	public @FindBy(xpath = "//button[@id=\"save-card-details\"]") WebElement btn_Update_Credit_Card;
+	
+		
 	
 	//Page Methods
 	
@@ -70,6 +116,27 @@ public class MyAccountPage extends BasePage {
 		return new MyAccountPage();
 	}
 	
+	public MyAccountPage clickAccountContactEditBtn() throws Exception {
+		waitAndClickElement(btn_Account_Contact_Edit);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickAccountContactChangePasswordBtn() throws Exception {
+		waitAndClickElement(btn_Account_Contact_ChangePassword_ChangePass);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickBillingContactEditBtn() throws Exception {
+		waitAndClickElement(btn_Billing_Contact_Edit);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickCreditCardEditBtn() throws Exception {
+		waitAndClickElement(btn_Payment_Edit);
+		return new MyAccountPage();
+	}
+	
+	
 	public String getPlanDetailsTxt() throws Exception {
 		return getElementText(win_Plan_Details_Body);
 	}
@@ -82,6 +149,8 @@ public class MyAccountPage extends BasePage {
 		return getElementText(txt_Plan_Name);
 	}
 	
+	
+	//New Plan Window methods
 	public String getNewPlanWindowTitle() throws Exception {
 		return getElementText(mod_New_Plan_Title);
 	}
@@ -90,5 +159,42 @@ public class MyAccountPage extends BasePage {
 		waitAndClickElement(rBtn_Plan_Name_Opt(planName));
 		return new MyAccountPage();
 	}
-
+	
+	//Account Contact methods
+	
+	public String getAccountContactEditTitle() throws Exception {
+		return getElementText(mod_Account_Contact_Edit_Title);
+	}
+	
+	public MyAccountPage setFirstName(String FirstName) throws Exception {
+		sendKeysToWebElement(txtF_Account_Contact_First, FirstName);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setLastName(String LastName) throws Exception {
+		sendKeysToWebElement(txtF_Account_Contact_LastName, LastName);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setStreetAddress(String Address) throws Exception {
+		sendKeysToWebElement(txtF_Account_Contact_StreetAddr, Address);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickAccountContactEditSaveChanges() throws Exception {
+		waitAndClickElement(btn_Account_Contact_Edit_SaveChanges);
+		return new MyAccountPage();
+	}
+	
+	public String getAccountDetailsSavedMessageTxt() throws Exception {
+		return getElementText(txtF_Account_Details_Save_Alert);
+	}
+	
+	
+	//Billing Contact methods
+	
+	public String getBillingContactEditTitle() throws Exception {
+		return getElementText(mod_Billing_Contact_Title);
+	}
+	
 }

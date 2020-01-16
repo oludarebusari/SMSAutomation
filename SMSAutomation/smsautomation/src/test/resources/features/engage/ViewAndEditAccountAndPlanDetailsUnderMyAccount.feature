@@ -35,14 +35,14 @@ Feature: View and Edit account and plan details under my account
     And User clicks on My Accounts from the left hand side menu
     Then User is redirected to my account page
 
-  @tag-Verify-Plan-Details-Section-On-My-Accounts-Page
+  @tag-Verify-Plan-Details
   Scenario: My Plan details section is present on "My Accounts" screen in Merchant portal
     And User verifies the sections on my account page
     And User verifies My Plan section on my account page
     And User clicks on the Plan Details link
     Then details of the plan is displayed within the Plan Details popup window
 
-  @tag-Change-Plan-by-clicking-Change-Plan-button
+  @tag-Change-Plan
   Scenario: Verify the plan can be changed by clicking "Change Plan" button under "My Plan"
   And User clicks on the Change Plan button
   Then User confirms a new window popup to select a plan
@@ -51,6 +51,17 @@ Feature: View and Edit account and plan details under my account
   And User clicks Change Plan button
   Then Success message is displayed and the plan is changed to the new plan
   
+   @tag-Edit-Contact
+  Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account 
+  And User clicks the edit button under Contact Details
+  Then the Account Contact details screen appears
+  And User made some changes and click Save Changes
+  Then A successful message indicating that the changes were saved is displayed 
+  And User clicks edit button again and revert the changes made to Account Details
+  And User clicks edit button under Billing contact
+  Then the Billing Contact details screen appears
+  And User made some changes and click save button
+  Then A successful message indicating that the details were saved is displayed 
   
   
   

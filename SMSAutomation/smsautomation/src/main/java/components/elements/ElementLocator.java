@@ -6,4 +6,5 @@ public class ElementLocator {
 	
 	public final static String ELEM_PAGE_TITLE =  "//div[contains(@class, \"page-heading\")]";
 	
+	
 }
