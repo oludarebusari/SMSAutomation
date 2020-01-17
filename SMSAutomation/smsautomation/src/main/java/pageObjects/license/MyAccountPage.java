@@ -61,6 +61,8 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"old-password\"]") WebElement txtF_Account_Contact_ChangePassword_CurrPass;
 	public @FindBy(xpath = "//input[@id=\"new-password\"]") WebElement txtF_Account_Contact_ChangePassword_NewPass;
 	public @FindBy(xpath = "//button[@id=\"change-password\"]") WebElement btn_Account_Contact_ChangePassword_ChangePass;
+	public @FindBy(xpath = "//label[@id=\"old-password-error\" and contains(text(), \"field\")]") WebElement err_Current_Password;
+	public @FindBy(xpath = "//label[@id=\"new-password-error\" and contains(text(), \"field\")]") WebElement err_New_Password;
 
 	// Billing Contact Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Billing Contact\"]") WebElement mod_Billing_Contact_Title;
@@ -239,6 +241,14 @@ public class MyAccountPage extends BasePage {
 	public MyAccountPage clickChangePasswordBtn() throws Exception {
 		waitAndClickElement(btn_Account_Contact_ChangePassword_ChangePass);
 		return new MyAccountPage();
+	}
+	
+	public String getCurrentPasswordErrorMsg() throws Exception {
+		return getElementText(err_Current_Password);
+	}
+	
+	public String getNewPasswordErrorMsg() throws Exception {
+		return getElementText(err_New_Password);
 	}
 
 }

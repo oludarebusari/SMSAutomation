@@ -23,5 +23,10 @@ public class Constant {
 	public final static String NEW_PLAN_DETAILS = "k test plan";
 	public final static String PLAN_PASSWORD = "QA@vnet1";
 	
+	
+	//Password fields messages
+	public final static String PASSWORD_ERROR_MSG ="This field is required.";
+	
+	
 }
 

@@ -153,6 +153,17 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	  Assert.assertTrue(myAccountPage.txtF_Account_Contact_ChangePassword_NewPass.isDisplayed());
 	  Assert.assertTrue(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass.isDisplayed());
 	}
+	
+	@Then("User leaves current and new password fields blank and clicks on the Change password button")
+	public void user_leaves_current_and_new_password_fields_blank_and_clicks_on_the_Change_password_button() throws Exception {
+		 myAccountPage.clickChangePasswordBtn();
+	}
+
+	@Then("validation message is displayed")
+	public void validation_message_is_displayed() throws Exception {
+		Assert.assertEquals(Constant.PASSWORD_ERROR_MSG, myAccountPage.getCurrentPasswordErrorMsg());
+		Assert.assertEquals(Constant.PASSWORD_ERROR_MSG, myAccountPage.getNewPasswordErrorMsg());
+	}
 
 	@Then("User enters the correct password for current password and new password and clicks on Change Password button")
 	public void user_enters_the_correct_password_for_current_password_and_new_password_and_clicks_on_Change_Password_button() throws Exception {
