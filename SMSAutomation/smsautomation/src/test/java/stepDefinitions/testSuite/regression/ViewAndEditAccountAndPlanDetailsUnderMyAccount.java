@@ -105,32 +105,65 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	@Then("User clicks edit button again and revert the changes made to Account Details")
 	public void user_clicks_edit_button_again_and_revert_the_changes_made_to_Account_Details() throws Exception {
 		Thread.sleep(500);
-		myAccountPage.getAccountContactEditTitle();
+		myAccountPage.clickAccountContactEditBtn();
 		myAccountPage.setFirstName("Aclate"); 
 		myAccountPage.setLastName("QA");
 		myAccountPage.setStreetAddress("123 Testing Street");
+		myAccountPage.setAccountContactCity("Grove");
+		myAccountPage.setAccountContactPostalCode("123456");
 		myAccountPage.clickAccountContactEditSaveChanges();
 	}
 	
 	@And("User clicks edit button under Billing contact")
 	public void user_clicks_edit_button_under_Billing_contact() throws Exception {
+		Thread.sleep(500);
 		myAccountPage.clickBillingContactEditBtn();
 	}
 
 	@Then("the Billing Contact details screen appears")
 	public void the_Billing_Contact_details_screen_appears() throws Exception {
-		myAccountPage.getBillingContactEditTitle();
+		Assert.assertEquals("Billing Contact", myAccountPage.getBillingContactEditTitle());
 	}
 
 	@Then("User made some changes and click save button")
-	public void user_made_some_changes_and_click_save_button() {
-	   
+	public void user_made_some_changes_and_click_save_button() throws Exception {
+	   myAccountPage.setBillingCity("Kansas");
+	   myAccountPage.setBillingPostalCode("654321");
+	   myAccountPage.clickBillingContactEditSaveChanges();
 	}
 
 	@Then("A successful message indicating that the details were saved is displayed")
-	public void a_suucessful_message_indicating_that_the_details_were_saved_is_displayed() {
-	    
+	public void a_suucessful_message_indicating_that_the_details_were_saved_is_displayed() throws Exception {
+		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
 	}
 
+	@And("User clicks the change password button")
+	public void user_clicks_the_change_password_button() throws Exception {
+		myAccountPage.clickAccountContactChangePasswordBtn();
+	}
+
+	@Then("the change password window is opened")
+	public void the_change_password_window_is_opened() throws Exception {
+		Assert.assertEquals("Change Password", myAccountPage.getChangePasswordWindowTitle());
+	}
+
+	@Then("User verifies the fields and button on the Change password window")
+	public void user_verifies_the_fields_and_button_on_the_Change_password_window() {
+	  Assert.assertTrue(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass.isDisplayed());
+	  Assert.assertTrue(myAccountPage.txtF_Account_Contact_ChangePassword_NewPass.isDisplayed());
+	  Assert.assertTrue(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass.isDisplayed());
+	}
+
+	@Then("User enters the correct password for current password and new password and clicks on Change Password button")
+	public void user_enters_the_correct_password_for_current_password_and_new_password_and_clicks_on_Change_Password_button() throws Exception {
+	   myAccountPage.setCurrentPassword(Constant.PLAN_PASSWORD);
+	   myAccountPage.setNewPassword(Constant.PLAN_PASSWORD);
+	   myAccountPage.clickChangePasswordBtn();
+	}
+
+	@Then("Success message is displayed")
+	public void success_message_is_displayed() throws Exception {
+		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
+	}
 	
 }

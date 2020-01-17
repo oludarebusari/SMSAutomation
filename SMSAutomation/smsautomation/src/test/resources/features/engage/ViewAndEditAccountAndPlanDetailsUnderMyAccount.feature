@@ -44,24 +44,29 @@ Feature: View and Edit account and plan details under my account
 
   @tag-Change-Plan
   Scenario: Verify the plan can be changed by clicking "Change Plan" button under "My Plan"
-  And User clicks on the Change Plan button
-  Then User confirms a new window popup to select a plan
-  And User selects another plan
-  Then User verifies that the plan is selected
-  And User clicks Change Plan button
-  Then Success message is displayed and the plan is changed to the new plan
-  
-   @tag-Edit-Contact
-  Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account 
-  And User clicks the edit button under Contact Details
-  Then the Account Contact details screen appears
-  And User made some changes and click Save Changes
-  Then A successful message indicating that the changes were saved is displayed 
-  And User clicks edit button again and revert the changes made to Account Details
-  And User clicks edit button under Billing contact
-  Then the Billing Contact details screen appears
-  And User made some changes and click save button
-  Then A successful message indicating that the details were saved is displayed 
-  
-  
-  
+    And User clicks on the Change Plan button
+    Then User confirms a new window popup to select a plan
+    And User selects another plan
+    Then User verifies that the plan is selected
+    And User clicks Change Plan button
+    Then Success message is displayed and the plan is changed to the new plan
+
+  @tag-Edit-Contact
+  Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account Details"
+    And User clicks the edit button under Contact Details
+    Then the Account Contact details screen appears
+    And User made some changes and click Save Changes
+    Then A successful message indicating that the changes were saved is displayed
+    And User clicks edit button again and revert the changes made to Account Details
+    And User clicks edit button under Billing contact
+    Then the Billing Contact details screen appears
+    And User made some changes and click save button
+    Then A successful message indicating that the details were saved is displayed
+
+  @tag-Change-Password
+  Scenario: Verify the user can Change the Password by clicking "Change Password" button under Contacts section
+    And User clicks the change password button
+    Then the change password window is opened
+    Then User verifies the fields and button on the Change password window
+    And User enters the correct password for current password and new password and clicks on Change Password button
+    Then Success message is displayed

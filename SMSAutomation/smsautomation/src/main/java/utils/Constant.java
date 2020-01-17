@@ -21,6 +21,7 @@ public class Constant {
 	public final static String PLAN_DETAILS = "Basic Plan Group";
 	public final static String CURRENT_PLAN_NAMME = "LoneStarLoyalty - Trial";
 	public final static String NEW_PLAN_DETAILS = "k test plan";
+	public final static String PLAN_PASSWORD = "QA@vnet1";
 	
 }
 
