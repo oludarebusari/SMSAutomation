@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -58,6 +59,12 @@ public class DriverFactory {
 				if (null == driver) {
 					System.setProperty("webdriver.ie.driver", Constant.IE_DRIVER_DIRECTORY);
 					driver = new InternetExplorerDriver();
+				}
+				break;
+			case "edge":
+				if (null == driver) {
+					System.setProperty("webdriver.edge.driver", Constant.EDGE_DRIVER_DIRECTORY);
+					driver = new EdgeDriver();
 				}
 				break;
 			}

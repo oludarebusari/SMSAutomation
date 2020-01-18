@@ -63,6 +63,10 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//button[@id=\"change-password\"]") WebElement btn_Account_Contact_ChangePassword_ChangePass;
 	public @FindBy(xpath = "//label[@id=\"old-password-error\" and contains(text(), \"field\")]") WebElement err_Current_Password;
 	public @FindBy(xpath = "//label[@id=\"new-password-error\" and contains(text(), \"field\")]") WebElement err_New_Password;
+	public @FindBy(xpath = "//div[@class=\"alert alert-danger\" and ./div[(.)=\"Invalid Current Password\"]]") WebElement err_Invalid_Current_Password;
+	public @FindBy(xpath = "//label[@id=\"new-password-error\"]") WebElement wrn_TooWeak_New_Password;
+	public @FindBy(xpath = "//div[@class=\"tooltip-inner\"]") WebElement txt_Weak_New_PasswordTooltip;
+	public @FindBy(xpath = "//i[@data-toggle=\"tooltip\"]") WebElement icon_New_PasswordTooltip;
 
 	// Billing Contact Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Billing Contact\"]") WebElement mod_Billing_Contact_Title;
@@ -250,5 +254,16 @@ public class MyAccountPage extends BasePage {
 	public String getNewPasswordErrorMsg() throws Exception {
 		return getElementText(err_New_Password);
 	}
+	
+	public String getInvalidCurrentPasswordErrorMsg() throws Exception {
+		return getElementText(err_Invalid_Current_Password);
+	}
 
+	public String getWeakNewPasswordWarningMsg() throws Exception {
+		return getElementText(wrn_TooWeak_New_Password);
+	}
+	
+	public String getWeakNewPasswordTooltip() throws Exception {
+		return getElementText(txt_Weak_New_PasswordTooltip);
+	}
 }

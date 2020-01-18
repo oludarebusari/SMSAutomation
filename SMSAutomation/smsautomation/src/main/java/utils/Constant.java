@@ -11,6 +11,8 @@ public class Constant {
 		
 	public final static String IE_DRIVER_DIRECTORY =  "src/main/resources/IEDriverServer.exe";
 	
+	public final static String EDGE_DRIVER_DIRECTORY =  "src/main/resources/MSEdgedriver.exe";
+	
 	
 	// Strings 
 	public final static String GROUP_NAME_HELP_ICON = "Example: Sacramento Subways";

@@ -70,5 +70,9 @@ Feature: View and Edit account and plan details under my account
     Then User verifies the fields and button on the Change password window
     And User leaves current and new password fields blank and clicks on the Change password button
     Then validation message is displayed
+    And User enters invalid current password and valid new password and clicks Change Password
+    Then Invalid Current password error message is displayed
+    And User enters a weak new password
+    Then Weak password warning message is displayed
     And User enters the correct password for current password and new password and clicks on Change Password button
     Then Success message is displayed
