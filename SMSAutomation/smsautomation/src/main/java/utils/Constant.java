@@ -21,13 +21,14 @@ public class Constant {
 	public final static String CAMPAIGNS_HELP_ICON = "Select all of the campaigns you wish to include in this group. Each campaign will be an option that new subscribers will see upon checking in to any tablet linked to this group for the first time.";
 	public final static String ALLOW_GROUP_REWARD_REDEMPTIONS = "If enabled, rewards earned in any of these campaigns may be redeemed when checking into any of the other campaigns in the group.";
 	public final static String PLAN_DETAILS = "Basic Plan Group";
-	public final static String CURRENT_PLAN_NAMME = "LoneStarLoyalty - Trial";
+	public final static String CURRENT_PLAN_NAME = "LoneStarLoyalty - Trial";
 	public final static String NEW_PLAN_DETAILS = "k test plan";
 	public final static String PLAN_PASSWORD = "QA@vnet1";
 	
 	
 	//Password fields messages
 	public final static String PASSWORD_ERROR_MSG ="This field is required.";
+	public final static String PASSWORD_REQUIREMENTS = "Requirements\n8 characters minimum\n1 lowercase letter\n1 uppercase letter\n1 number\n1 special character (like @)";
 	
 	
 }

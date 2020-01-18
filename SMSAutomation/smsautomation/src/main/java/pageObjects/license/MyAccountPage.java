@@ -266,4 +266,13 @@ public class MyAccountPage extends BasePage {
 	public String getWeakNewPasswordTooltip() throws Exception {
 		return getElementText(txt_Weak_New_PasswordTooltip);
 	}
+	
+	public MyAccountPage clickNewPasswordTooltipIcon() throws Exception {
+		waitAndClickElement(icon_New_PasswordTooltip);
+		return new MyAccountPage();
+	}
+	
+	public String getPasswordRequirementsTxt() throws Exception {
+		return getElementText(txt_Weak_New_PasswordTooltip);
+	}
 }

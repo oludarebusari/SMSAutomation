@@ -145,11 +145,22 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 		Assert.assertEquals("Change Password", myAccountPage.getChangePasswordWindowTitle());
 	}
 
-	@Then("User verifies the fields and button on the Change password window")
+	@Then("User verifies the fields, icon and button on the Change password window")
 	public void user_verifies_the_fields_and_button_on_the_Change_password_window() {
 		Assert.assertTrue(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass.isDisplayed());
 		Assert.assertTrue(myAccountPage.txtF_Account_Contact_ChangePassword_NewPass.isDisplayed());
+		Assert.assertTrue(myAccountPage.icon_New_PasswordTooltip.isDisplayed());
 		Assert.assertTrue(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass.isDisplayed());
+	}
+	
+	@And("User clicks on the new password tooltip icon")
+	public void user_clicks_on_the_new_password_tooltip_icon() throws Exception {
+		myAccountPage.clickNewPasswordTooltipIcon();
+	}
+
+	@Then("the minimum password requirement window is displayed")
+	public void the_minimum_password_requirement_window_is_displayed() throws Exception {
+		Assert.assertEquals(Constant.PASSWORD_REQUIREMENTS, myAccountPage.getPasswordRequirementsTxt());
 	}
 
 	@Then("User leaves current and new password fields blank and clicks on the Change password button")
@@ -177,13 +188,15 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	}
 
 	@And("User enters a weak new password")
-	public void user_enters_a_weak_new_password() {
-		
+	public void user_enters_a_weak_new_password() throws Exception {
+		myAccountPage.setCurrentPassword(Constant.PLAN_PASSWORD);
+		myAccountPage.setNewPassword("1234");
+		myAccountPage.clickChangePasswordBtn();
 	}
 
 	@Then("Weak password warning message is displayed")
-	public void weak_password_warning_message_is_displayed() {
-	 
+	public void weak_password_warning_message_is_displayed() throws Exception {
+		Assert.assertEquals("Too weak. Refer to help icon.", myAccountPage.getWeakNewPasswordWarningMsg());
 	}
 
 	@Then("User enters the correct password for current password and new password and clicks on Change Password button")

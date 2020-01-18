@@ -67,7 +67,9 @@ Feature: View and Edit account and plan details under my account
   Scenario: Verify the user can Change the Password by clicking "Change Password" button under Contacts section
     And User clicks the change password button
     Then the change password window is opened
-    Then User verifies the fields and button on the Change password window
+    Then User verifies the fields, icon and button on the Change password window
+    And User clicks on the new password tooltip icon
+    Then the minimum password requirement window is displayed
     And User leaves current and new password fields blank and clicks on the Change password button
     Then validation message is displayed
     And User enters invalid current password and valid new password and clicks Change Password
