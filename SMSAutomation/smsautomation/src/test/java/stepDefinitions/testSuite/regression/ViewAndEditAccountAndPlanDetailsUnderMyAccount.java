@@ -1,5 +1,9 @@
 package stepDefinitions.testSuite.regression;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -11,6 +15,9 @@ import utils.Constant;
 import utils.DriverFactory;
 
 public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactory {
+	
+	Actions action = new Actions(driver);
+	
 
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
@@ -76,6 +83,18 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	public void success_message_is_displayed_and_the_plan_is_changed_to_the_new_plan() throws Exception {
 		Assert.assertEquals("Success! Your plan is updated!", myAccountPage.getPlanUpdateMessageTxt());
 	}
+	
+	@Then("User clicks on the Change Plan button agaian")
+	public void user_clicks_on_the_Change_Plan_button_agaian() throws Exception {
+		myAccountPage.clickChangePlanBtn();
+	}
+
+	@Then("User selects a different plan and clicks and clicks the Change plan button")
+	public void user_selects_a_different_plan_and_clicks_and_clicks_the_Change_plan_button() throws Exception {
+		myAccountPage.selectPlan(Constant.CURRENT_PLAN_NAME);
+		myAccountPage.clickNewPlanChangePlanBtn();;
+	}
+
 
 	@And("User clicks the edit button under Contact Details")
 	public void user_clicks_the_edit_button_under_Contact_Details() throws Exception {
@@ -92,6 +111,8 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 		myAccountPage.setFirstName("Aclate2");
 		myAccountPage.setLastName("QA2");
 		myAccountPage.setStreetAddress("ABC Testing RD");
+		myAccountPage.setAccountContactCity("Grove");
+		myAccountPage.setAccountContactPostalCode("123456");
 		myAccountPage.clickAccountContactEditSaveChanges();
 	}
 
@@ -102,13 +123,13 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("User clicks edit button again and revert the changes made to Account Details")
 	public void user_clicks_edit_button_again_and_revert_the_changes_made_to_Account_Details() throws Exception {
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		myAccountPage.clickAccountContactEditBtn();
 		myAccountPage.setFirstName("Aclate");
 		myAccountPage.setLastName("QA");
 		myAccountPage.setStreetAddress("123 Testing Street");
-		myAccountPage.setAccountContactCity("Grove");
-		myAccountPage.setAccountContactPostalCode("123456");
+		myAccountPage.setAccountContactCity("Denver");
+		myAccountPage.setAccountContactPostalCode("1234567");
 		myAccountPage.clickAccountContactEditSaveChanges();
 	}
 
@@ -125,7 +146,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("User made some changes and click save button")
 	public void user_made_some_changes_and_click_save_button() throws Exception {
-		myAccountPage.setBillingCity("Kansas");
+		myAccountPage.setBillingCity("Grove");
 		myAccountPage.setBillingPostalCode("654321");
 		myAccountPage.clickBillingContactEditSaveChanges();
 	}
@@ -134,7 +155,12 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	public void a_suucessful_message_indicating_that_the_details_were_saved_is_displayed() throws Exception {
 		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
 	}
-
+	
+	@Then("User verifies the changes made to billing contacts")
+	public void user_verifies_the_changes_made_to_billing_contacts() throws Exception {
+		Assert.assertEquals("654321", myAccountPage.getBillingContactPostalCode());
+	}
+	
 	@And("User clicks the change password button")
 	public void user_clicks_the_change_password_button() throws Exception {
 		myAccountPage.clickAccountContactChangePasswordBtn();
@@ -202,7 +228,14 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	@Then("User enters the correct password for current password and new password and clicks on Change Password button")
 	public void user_enters_the_correct_password_for_current_password_and_new_password_and_clicks_on_Change_Password_button()
 			throws Exception {
+		Robot robot = new Robot();
 		myAccountPage.setCurrentPassword(Constant.PLAN_PASSWORD);
+		action.contextClick(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass).perform();
+		Thread.sleep(2000);
+		robot.keyPress(KeyEvent.VK_CONTROL); 
+		robot.keyPress(KeyEvent.VK_C);
+		robot.keyRelease(KeyEvent.VK_C);
+		robot.keyRelease(KeyEvent.VK_CONTROL); 
 		myAccountPage.setNewPassword(Constant.PLAN_PASSWORD);
 		myAccountPage.clickChangePasswordBtn();
 	}

@@ -69,16 +69,20 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//i[@data-toggle=\"tooltip\"]") WebElement icon_New_PasswordTooltip;
 
 	// Billing Contact Edit elements
-	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Billing Contact\"]") WebElement mod_Billing_Contact_Title;
-	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Billing_Contact_First;
-	public @FindBy(xpath = "//input[@id=\"billing-last-name\"]") WebElement txtF_Billing_Contact_LastName;
-	public @FindBy(xpath = "//input[@id=\"billing-email\"]") WebElement txtF_Billing_Contact_Email;
-	public @FindBy(xpath = "//input[@id=\"billing-address-1\"]") WebElement txtF_Billing_Contact_StreetAddr;
-	public @FindBy(xpath = "//input[@id=\"billing-address-2\"]") WebElement txtF_Billing_Contact_Suite;
-	public @FindBy(xpath = "//input[@id=\"billing-city\"]") WebElement txtF_Billing_Contact_City;
-	public @FindBy(xpath = "(//div[contains(@class, \"form-group\") and ./label[(.)=\"State\"]]//div[contains(@class, \"selectize-input\")])[1]") WebElement lov_Billing_Contact_State;
-	public @FindBy(xpath = "//input[@id=\"billing-postal-code\"]") WebElement txtF_Billing_Contact_PostalCode;
-	public @FindBy(xpath = "//button[@id=\"save-billing-details\"]") WebElement btn_Billing_Contact_Edit_SaveChanges;
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Billing Contact\"]") WebElement mod_Bill_Contact_Title;
+	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Bill_Contact_First;
+	public @FindBy(xpath = "//input[@id=\"billing-last-name\"]") WebElement txtF_Bill_Contact_LastName;
+	public @FindBy(xpath = "//input[@id=\"billing-email\"]") WebElement txtF_Bill_Contact_Email;
+	public @FindBy(xpath = "//input[@id=\"billing-address-1\"]") WebElement txtF_Bill_Contact_StreetAddr;
+	public @FindBy(xpath = "//input[@id=\"billing-address-2\"]") WebElement txtF_Bill_Contact_Suite;
+	public @FindBy(xpath = "//input[@id=\"billing-city\"]") WebElement txtF_Bill_Contact_City;
+	public @FindBy(xpath = "(//div[contains(@class, \"form-group\") and ./label[(.)=\"State\"]]//div[contains(@class, \"selectize-input\")])[1]") WebElement lov_Bill_Contact_State;
+	public @FindBy(xpath = "//input[@id=\"billing-postal-code\"]") WebElement txtF_Bill_Contact_PostalCode;
+	public @FindBy(xpath = "//button[@id=\"save-billing-details\"]") WebElement btn_Bill_Contact_Edit_SaveChanges;
+	public @FindBy(xpath = "//span[@data-update-on=\"bill_city\"]") WebElement txt_Bill_Contact_City;
+	public @FindBy(xpath = "//span[@data-update-on=\"bill_eni_state_id\"]") WebElement txt_Bill_Contact_State;
+	public @FindBy(xpath = "//span[@data-update-on=\"bill_postal\"]") WebElement txt_Bill_Contact_PostalCode;
+	
 
 	// Credit Card Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Change Password\"]") WebElement mod_Credit_Card_Title;
@@ -208,21 +212,29 @@ public class MyAccountPage extends BasePage {
 	// Billing Contact methods
 
 	public String getBillingContactEditTitle() throws Exception {
-		return getElementText(mod_Billing_Contact_Title);
+		return getElementText(mod_Bill_Contact_Title);
+	}
+	
+	public String getBillingContactCity() throws Exception {
+		return getElementText(txt_Bill_Contact_City);
+	}
+	
+	public String getBillingContactPostalCode() throws Exception {
+		return getElementText(txt_Bill_Contact_PostalCode);
 	}
 
 	public MyAccountPage setBillingCity(String city) throws Exception {
-		sendKeysToWebElement(txtF_Billing_Contact_City, city);
+		sendKeysToWebElement(txtF_Bill_Contact_City, city);
 		return new MyAccountPage();
 	}
 
 	public MyAccountPage setBillingPostalCode(String postalCode) throws Exception {
-		sendKeysToWebElement(txtF_Billing_Contact_PostalCode, postalCode);
+		sendKeysToWebElement(txtF_Bill_Contact_PostalCode, postalCode);
 		return new MyAccountPage();
 	}
 
 	public MyAccountPage clickBillingContactEditSaveChanges() throws Exception {
-		waitAndClickElement(btn_Billing_Contact_Edit_SaveChanges);
+		waitAndClickElement(btn_Bill_Contact_Edit_SaveChanges);
 		return new MyAccountPage();
 	}
 

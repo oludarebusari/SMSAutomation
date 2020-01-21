@@ -50,8 +50,12 @@ Feature: View and Edit account and plan details under my account
     Then User verifies that the plan is selected
     And User clicks Change Plan button
     Then Success message is displayed and the plan is changed to the new plan
+    #Revert Plan
+    And User clicks on the Change Plan button agaian
+    And User selects a different plan and clicks and clicks the Change plan button
+  
 
-  @tag-Edit-Contact
+  @tag-Edit-Account-Contact-And-Billing
   Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account Details"
     And User clicks the edit button under Contact Details
     Then the Account Contact details screen appears
@@ -62,8 +66,9 @@ Feature: View and Edit account and plan details under my account
     Then the Billing Contact details screen appears
     And User made some changes and click save button
     Then A successful message indicating that the details were saved is displayed
+    Then User verifies the changes made to billing contacts
 
-  @tag-Change-Password
+  @tag-Change-Password-Account-Contact
   Scenario: Verify the user can Change the Password by clicking "Change Password" button under Contacts section
     And User clicks the change password button
     Then the change password window is opened
