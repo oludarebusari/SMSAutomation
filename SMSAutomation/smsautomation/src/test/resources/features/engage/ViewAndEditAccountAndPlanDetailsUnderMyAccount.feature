@@ -67,6 +67,11 @@ Feature: View and Edit account and plan details under my account
     And User made some changes and click save button
     Then A successful message indicating that the details were saved is displayed
     Then User verifies the changes made to billing contacts
+    #Payment Section
+    And User clicks the Edit button under Credit Card
+    Then Credit card details windows is opened
+    And User enter valid details on credit card window and click on Update Credit Card button
+    Then the details is saved successfully and a successful message is displayed
 
   @tag-Change-Password-Account-Contact
   Scenario: Verify the user can Change the Password by clicking "Change Password" button under Contacts section

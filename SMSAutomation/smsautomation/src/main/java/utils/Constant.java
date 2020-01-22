@@ -30,6 +30,13 @@ public class Constant {
 	public final static String PASSWORD_ERROR_MSG ="This field is required.";
 	public final static String PASSWORD_REQUIREMENTS = "Requirements\n8 characters minimum\n1 lowercase letter\n1 uppercase letter\n1 number\n1 special character (like @)";
 	
+    //Credit Card Info
+	public final static String CREDIT_CARD_NUMBER = "4543445677893354";
+	public final static String CREDIT_CARD_NAME = "Aahsima";
+	public final static String CREDIT_CARD_EXP_MONTH = "05";
+	public final static String CREDIT_CARD_EXP_YEAR = "22";
+	public final static String CREDIT_CARD_CCV = "123";
+	public final static String CREDIT_CARD_ZIPCODE = "11111";
 	
 }
 

@@ -244,5 +244,31 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	public void success_message_is_displayed() throws Exception {
 		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
 	}
+	
+	@And("User clicks the Edit button under Credit Card")
+	public void user_clicks_the_Edit_button_under_Credit_Card() throws Exception {
+	  myAccountPage.clickCreditCardEditBtn(); 
+	}
+
+	@Then("Credit card details windows is opened")
+	public void credit_card_details_windows_is_opened() throws Exception {
+		Assert.assertEquals("Credit Card Details", myAccountPage.getCreditCardEditTitle());
+	}
+
+	@And("User enter valid details on credit card window and click on Update Credit Card button")
+	public void user_enter_valid_details_on_credit_card_window_and_click_on_button() throws Exception  {
+		myAccountPage.setNameOnCard(Constant.CREDIT_CARD_NAME);
+		myAccountPage.setCreditCardNumber(Constant.CREDIT_CARD_NUMBER);
+		myAccountPage.setCreditCardZipCode(Constant.CREDIT_CARD_ZIPCODE);
+		myAccountPage.setCreditCardExpMonth(Constant.CREDIT_CARD_EXP_MONTH);
+		myAccountPage.setCreditCardExpYear(Constant.CREDIT_CARD_EXP_YEAR);
+		myAccountPage.setCreditCardCVV(Constant.CREDIT_CARD_CCV);
+		myAccountPage.clickUpdateCreditCardBtn();
+	}
+
+	@Then("the details is saved successfully and a successful message is displayed")
+	public void the_details_is_saved_successfully_and_a_successful_message_is_displayed() throws Exception {
+		Assert.assertEquals("CC processing is not configured in the site table!", myAccountPage.getCreditCardEditTitle());
+	}
 
 }

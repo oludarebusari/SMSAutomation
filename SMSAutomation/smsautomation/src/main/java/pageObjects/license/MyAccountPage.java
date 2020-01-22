@@ -25,7 +25,7 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//a[@data-target=\"#account-details-modal\"]") WebElement btn_Account_Contact_Edit;
 	public @FindBy(xpath = "//a[@data-target=\"#change-password-modal\"]") WebElement btn_Account_Contact_Change_Password;
 	public @FindBy(xpath = "//a[@data-target=\"#billing-details-modal\"]") WebElement btn_Billing_Contact_Edit;
-	public @FindBy(xpath = "//a[@data-target=\"#credit-card-modal\"]") WebElement btn_Payment_Edit;
+	public @FindBy(xpath = "//a[@data-target=\"#credit-card-modal\"]") WebElement btn_Credit_Card_Edit;
 	public @FindBy(xpath = "//a[@data-target=\"#plan_details_modal\"]") WebElement lnk_Plan_Details;
 	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[(.)=\"Plan Details\"]]//div[@class=\"modal-body\"]") WebElement win_Plan_Details_Body;
 	public @FindBy(xpath = "//div[@id=\"plan-update-message\"]") WebElement txt_Plan_Update_Message;
@@ -85,14 +85,20 @@ public class MyAccountPage extends BasePage {
 	
 
 	// Credit Card Edit elements
-	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Change Password\"]") WebElement mod_Credit_Card_Title;
-	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Name_On_Card;
-	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Card_Number;
-	public @FindBy(xpath = "//input[@id=\"billing-first-name\"]") WebElement txtF_Zip_Code;
-	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\") and ./input[@id=\"exp-month-selectized\"]]") WebElement txtF_Exp_Month;
-	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\") and ./input[@id=\"exp-year-selectized\"]]") WebElement txtF_Exp_Year;
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Credit Card Details\"]") WebElement mod_Credit_Card_Title;
+	public @FindBy(xpath = "//input[@id=\"card-name\"]") WebElement txtF_Name_On_Card;
+	public @FindBy(xpath = "//input[@id=\"card-number\"]") WebElement txtF_Card_Number;
+	public @FindBy(xpath = "//input[@id=\"card-zip\"]") WebElement txtF_Zip_Code;
+	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\") and ./input[@id=\"exp-month-selectized\"]]") WebElement lov_Exp_Month;
+	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\") and ./input[@id=\"exp-year-selectized\"]]") WebElement lov_Exp_Year;
 	public @FindBy(xpath = "//input[@id=\"cvv\"]") WebElement txtF_CVV;
 	public @FindBy(xpath = "//button[@id=\"save-card-details\"]") WebElement btn_Update_Credit_Card;
+	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement parentLOVVal;
+
+	public WebElement num_CreditCardMonth(String num) {
+		return parentBtn.findElement(By.xpath("//div[text()='" + num + "']"));
+	};
+	
 
 	// Page Methods
 
@@ -142,11 +148,6 @@ public class MyAccountPage extends BasePage {
 		return new MyAccountPage();
 	}
 
-	public MyAccountPage clickCreditCardEditBtn() throws Exception {
-		waitAndClickElement(btn_Payment_Edit);
-		return new MyAccountPage();
-	}
-
 	public String getPlanDetailsTxt() throws Exception {
 		return getElementText(win_Plan_Details_Body);
 	}
@@ -158,7 +159,55 @@ public class MyAccountPage extends BasePage {
 	public String getPlanNameTxt() throws Exception {
 		return getElementText(txt_Plan_Name);
 	}
-
+	
+	//Payment methods
+	public MyAccountPage clickCreditCardEditBtn() throws Exception {
+		waitAndClickElement(btn_Credit_Card_Edit);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setNameOnCard(String cardName) throws Exception {
+		sendKeysToWebElement(txtF_Name_On_Card, cardName);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setCreditCardNumber(String cardNumber) throws Exception {
+		sendKeysToWebElement(txtF_Card_Number, cardNumber);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setCreditCardZipCode(String cardZipCode) throws Exception {
+		sendKeysToWebElement(txtF_Zip_Code, cardZipCode);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setCreditCardExpMonth(String month) throws Exception {
+		waitAndClickElement(lov_Exp_Month);
+        waitAndClickElement(num_CreditCardMonth(month));
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setCreditCardExpYear(String year) throws Exception {
+		waitAndClickElement(lov_Exp_Year);
+        waitAndClickElement(num_CreditCardMonth(year));
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage setCreditCardCVV(String cvv) throws Exception {
+		sendKeysToWebElement(txtF_CVV, cvv);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickUpdateCreditCardBtn() throws Exception {
+		waitAndClickElement(btn_Update_Credit_Card);
+		return new MyAccountPage();
+	}
+	
+	public String getCreditCardEditTitle() throws Exception {
+		return getElementText(mod_Credit_Card_Title);
+	}
+	
+	
 	// New Plan Window methods
 	public String getNewPlanWindowTitle() throws Exception {
 		return getElementText(mod_New_Plan_Title);
@@ -237,7 +286,7 @@ public class MyAccountPage extends BasePage {
 		waitAndClickElement(btn_Bill_Contact_Edit_SaveChanges);
 		return new MyAccountPage();
 	}
-
+	
 	// Change Password methods
 
 	public String getChangePasswordWindowTitle() throws Exception {
