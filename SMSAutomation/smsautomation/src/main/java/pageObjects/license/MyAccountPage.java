@@ -40,6 +40,13 @@ public class MyAccountPage extends BasePage {
 	};
 
 	public @FindBy(xpath = "//button[@id=\"change-plan\"]") WebElement btn_Change_Plan_New_Plan;
+	
+	// Account Resources elements
+	public @FindBy(xpath = "//a[@data-target=\"#prepaid-blocks-modal\"]") WebElement lnk_Prepaid_Blocks;
+	public @FindBy(xpath = "//a[contains(text(), \"Blacklist/Whitelist\")]") WebElement lnk_Blacklist_Whitelist;
+	public @FindBy(xpath = "//a[@data-target=\"#autopurchase-modal\"]") WebElement lnk_Auto_Purchase;
+	public @FindBy(xpath = "//a[@data-target=\"#purchase-history-modal\"]") WebElement lnk_Purchase_History;
+	
 
 	// Account Contacts Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Account Contact\"]") WebElement mod_Account_Contact_Edit_Title;
@@ -83,7 +90,6 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//span[@data-update-on=\"bill_eni_state_id\"]") WebElement txt_Bill_Contact_State;
 	public @FindBy(xpath = "//span[@data-update-on=\"bill_postal\"]") WebElement txt_Bill_Contact_PostalCode;
 	
-
 	// Credit Card Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Credit Card Details\"]") WebElement mod_Credit_Card_Title;
 	public @FindBy(xpath = "//input[@id=\"card-name\"]") WebElement txtF_Name_On_Card;
@@ -98,8 +104,10 @@ public class MyAccountPage extends BasePage {
 	public WebElement num_CreditCardMonth(String num) {
 		return parentBtn.findElement(By.xpath("//div[text()='" + num + "']"));
 	};
+	public @FindBy(xpath = "//div[contains(@class, \"alert-danger\") and ./div[contains(text(), \"CC processing\")]]") WebElement txt_Credit_Card_Update_Msg;
+	public @FindBy(xpath = "//div[contains(@class, \"col-sm-6\")]//b[(.)=\"Billing Period\"]") WebElement txt_Billing_Period;
 	
-
+	
 	// Page Methods
 
 	public String getPageTitle() throws Exception {
@@ -205,6 +213,14 @@ public class MyAccountPage extends BasePage {
 	
 	public String getCreditCardEditTitle() throws Exception {
 		return getElementText(mod_Credit_Card_Title);
+	}
+	
+	public String getCreditCardUpdateMsg() throws Exception {
+		return getElementText(txt_Credit_Card_Update_Msg);
+	}
+	
+	public String getBillingPeriodText() throws Exception {
+		return getElementText(txt_Billing_Period);
 	}
 	
 	
@@ -335,5 +351,27 @@ public class MyAccountPage extends BasePage {
 	
 	public String getPasswordRequirementsTxt() throws Exception {
 		return getElementText(txt_Weak_New_PasswordTooltip);
+	}
+	
+	// Account Resources
+	public String getPrepaidBlocksTxt() throws Exception {
+		return getElementText(lnk_Prepaid_Blocks);
+	}
+	
+	public String getBlackListWhiteListTxt() throws Exception {
+		return getElementText(lnk_Blacklist_Whitelist);
+	}
+	
+	public String getAutoPurchaseTxt() throws Exception {
+		return getElementText(lnk_Auto_Purchase);
+	}
+	
+	public String getPurchaseHistoryTxt() throws Exception {
+		return getElementText(lnk_Purchase_History);
+	}
+	
+	public MyAccountPage clickPurchaseHistorylnk() throws Exception {
+		waitAndClickElement(lnk_Purchase_History);
+		return new MyAccountPage();
 	}
 }

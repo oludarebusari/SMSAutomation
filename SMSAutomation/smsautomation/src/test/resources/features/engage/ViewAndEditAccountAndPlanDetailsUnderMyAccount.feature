@@ -16,6 +16,7 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
 @tag-SMSM-137 @RegressionTest
 Feature: View and Edit account and plan details under my account
 
@@ -53,7 +54,6 @@ Feature: View and Edit account and plan details under my account
     #Revert Plan
     And User clicks on the Change Plan button agaian
     And User selects a different plan and clicks and clicks the Change plan button
-  
 
   @tag-Edit-Account-Contact-And-Billing
   Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account Details"
@@ -68,6 +68,7 @@ Feature: View and Edit account and plan details under my account
     Then A successful message indicating that the details were saved is displayed
     Then User verifies the changes made to billing contacts
     #Payment Section
+    Then User verifies the  Billing section of the Payment section
     And User clicks the Edit button under Credit Card
     Then Credit card details windows is opened
     And User enter valid details on credit card window and click on Update Credit Card button

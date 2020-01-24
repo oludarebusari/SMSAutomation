@@ -123,7 +123,6 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("User clicks edit button again and revert the changes made to Account Details")
 	public void user_clicks_edit_button_again_and_revert_the_changes_made_to_Account_Details() throws Exception {
-//		Thread.sleep(500);
 		myAccountPage.clickAccountContactEditBtn();
 		myAccountPage.setFirstName("Aclate");
 		myAccountPage.setLastName("QA");
@@ -231,7 +230,6 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 		Robot robot = new Robot();
 		myAccountPage.setCurrentPassword(Constant.PLAN_PASSWORD);
 		action.contextClick(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass).perform();
-		Thread.sleep(2000);
 		robot.keyPress(KeyEvent.VK_CONTROL); 
 		robot.keyPress(KeyEvent.VK_C);
 		robot.keyRelease(KeyEvent.VK_C);
@@ -243,6 +241,11 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	@Then("Success message is displayed")
 	public void success_message_is_displayed() throws Exception {
 		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
+	}
+	
+	@Then("User verifies the  Billing section of the Payment section")
+	public void user_verifies_the_Billing_section_of_the_Payment_section() throws Exception {
+		Assert.assertEquals("Billing Period", myAccountPage.getBillingPeriodText());
 	}
 	
 	@And("User clicks the Edit button under Credit Card")
@@ -268,7 +271,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("the details is saved successfully and a successful message is displayed")
 	public void the_details_is_saved_successfully_and_a_successful_message_is_displayed() throws Exception {
-		Assert.assertEquals("CC processing is not configured in the site table!", myAccountPage.getCreditCardEditTitle());
+		Assert.assertEquals("CC processing is not configured in the site table!", myAccountPage.getCreditCardUpdateMsg());
 	}
 
 }
