@@ -47,6 +47,11 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//a[@data-target=\"#autopurchase-modal\"]") WebElement lnk_Auto_Purchase;
 	public @FindBy(xpath = "//a[@data-target=\"#purchase-history-modal\"]") WebElement lnk_Purchase_History;
 	
+	// Purchase History
+	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Purchase History\"]") WebElement mod_Purchase_History;
+	public @FindBy(xpath = "//select[@name=\"purchase-history_length\"]") WebElement dropdown_Page_Size;
+	
+	
 
 	// Account Contacts Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Account Contact\"]") WebElement mod_Account_Contact_Edit_Title;
@@ -100,13 +105,16 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"cvv\"]") WebElement txtF_CVV;
 	public @FindBy(xpath = "//button[@id=\"save-card-details\"]") WebElement btn_Update_Credit_Card;
 	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement parentLOVVal;
-
 	public WebElement num_CreditCardMonth(String num) {
 		return parentBtn.findElement(By.xpath("//div[text()='" + num + "']"));
 	};
 	public @FindBy(xpath = "//div[contains(@class, \"alert-danger\") and ./div[contains(text(), \"CC processing\")]]") WebElement txt_Credit_Card_Update_Msg;
 	public @FindBy(xpath = "//div[contains(@class, \"col-sm-6\")]//b[(.)=\"Billing Period\"]") WebElement txt_Billing_Period;
-	
+	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//option[text()=\"25\"]") WebElement pag_Purchase_Page_Size;
+	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]") WebElement parentSize;
+	public WebElement num_PageSize(String num) { 
+		 return parentBtn.findElement(By.xpath("//option[text()='" + num + "']")); 
+	};
 	
 	// Page Methods
 
@@ -370,8 +378,22 @@ public class MyAccountPage extends BasePage {
 		return getElementText(lnk_Purchase_History);
 	}
 	
+	public String getPurchaseHistoryTitle() throws Exception {
+		return getElementText(mod_Purchase_History);
+	}
+	
 	public MyAccountPage clickPurchaseHistorylnk() throws Exception {
 		waitAndClickElement(lnk_Purchase_History);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickPurchaseHistoryPageSizedropDown() throws Exception {
+		waitAndClickElement(dropdown_Page_Size);
+		return new MyAccountPage();
+	}
+	
+	public MyAccountPage clickPurchaseHistoryPageSize(String size) throws Exception {
+		waitAndClickElement(num_PageSize(size));
 		return new MyAccountPage();
 	}
 }
