@@ -40,18 +40,12 @@ public class MyAccountPage extends BasePage {
 	};
 
 	public @FindBy(xpath = "//button[@id=\"change-plan\"]") WebElement btn_Change_Plan_New_Plan;
-	
+
 	// Account Resources elements
 	public @FindBy(xpath = "//a[@data-target=\"#prepaid-blocks-modal\"]") WebElement lnk_Prepaid_Blocks;
 	public @FindBy(xpath = "//a[contains(text(), \"Blacklist/Whitelist\")]") WebElement lnk_Blacklist_Whitelist;
 	public @FindBy(xpath = "//a[@data-target=\"#autopurchase-modal\"]") WebElement lnk_Auto_Purchase;
 	public @FindBy(xpath = "//a[@data-target=\"#purchase-history-modal\"]") WebElement lnk_Purchase_History;
-	
-	// Purchase History
-	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Purchase History\"]") WebElement mod_Purchase_History;
-	public @FindBy(xpath = "//select[@name=\"purchase-history_length\"]") WebElement dropdown_Page_Size;
-	
-	
 
 	// Account Contacts Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Account Contact\"]") WebElement mod_Account_Contact_Edit_Title;
@@ -94,7 +88,7 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//span[@data-update-on=\"bill_city\"]") WebElement txt_Bill_Contact_City;
 	public @FindBy(xpath = "//span[@data-update-on=\"bill_eni_state_id\"]") WebElement txt_Bill_Contact_State;
 	public @FindBy(xpath = "//span[@data-update-on=\"bill_postal\"]") WebElement txt_Bill_Contact_PostalCode;
-	
+
 	// Credit Card Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Credit Card Details\"]") WebElement mod_Credit_Card_Title;
 	public @FindBy(xpath = "//input[@id=\"card-name\"]") WebElement txtF_Name_On_Card;
@@ -105,17 +99,21 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"cvv\"]") WebElement txtF_CVV;
 	public @FindBy(xpath = "//button[@id=\"save-card-details\"]") WebElement btn_Update_Credit_Card;
 	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement parentLOVVal;
+
 	public WebElement num_CreditCardMonth(String num) {
 		return parentBtn.findElement(By.xpath("//div[text()='" + num + "']"));
 	};
+
 	public @FindBy(xpath = "//div[contains(@class, \"alert-danger\") and ./div[contains(text(), \"CC processing\")]]") WebElement txt_Credit_Card_Update_Msg;
 	public @FindBy(xpath = "//div[contains(@class, \"col-sm-6\")]//b[(.)=\"Billing Period\"]") WebElement txt_Billing_Period;
 	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//option[text()=\"25\"]") WebElement pag_Purchase_Page_Size;
+
 	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]") WebElement parentSize;
-	public WebElement num_PageSize(String num) { 
-		 return parentBtn.findElement(By.xpath("//option[text()='" + num + "']")); 
+
+	public WebElement num_PageSize(String num) {
+		return parentSize.findElement(By.xpath("//option[text()='" + num + "']"));
 	};
-	
+
 	// Page Methods
 
 	public String getPageTitle() throws Exception {
@@ -175,63 +173,62 @@ public class MyAccountPage extends BasePage {
 	public String getPlanNameTxt() throws Exception {
 		return getElementText(txt_Plan_Name);
 	}
-	
-	//Payment methods
+
+	// Payment methods
 	public MyAccountPage clickCreditCardEditBtn() throws Exception {
 		waitAndClickElement(btn_Credit_Card_Edit);
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage setNameOnCard(String cardName) throws Exception {
 		sendKeysToWebElement(txtF_Name_On_Card, cardName);
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage setCreditCardNumber(String cardNumber) throws Exception {
 		sendKeysToWebElement(txtF_Card_Number, cardNumber);
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage setCreditCardZipCode(String cardZipCode) throws Exception {
 		sendKeysToWebElement(txtF_Zip_Code, cardZipCode);
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage setCreditCardExpMonth(String month) throws Exception {
 		waitAndClickElement(lov_Exp_Month);
-        waitAndClickElement(num_CreditCardMonth(month));
+		waitAndClickElement(num_CreditCardMonth(month));
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage setCreditCardExpYear(String year) throws Exception {
 		waitAndClickElement(lov_Exp_Year);
-        waitAndClickElement(num_CreditCardMonth(year));
+		waitAndClickElement(num_CreditCardMonth(year));
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage setCreditCardCVV(String cvv) throws Exception {
 		sendKeysToWebElement(txtF_CVV, cvv);
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage clickUpdateCreditCardBtn() throws Exception {
 		waitAndClickElement(btn_Update_Credit_Card);
 		return new MyAccountPage();
 	}
-	
+
 	public String getCreditCardEditTitle() throws Exception {
 		return getElementText(mod_Credit_Card_Title);
 	}
-	
+
 	public String getCreditCardUpdateMsg() throws Exception {
 		return getElementText(txt_Credit_Card_Update_Msg);
 	}
-	
+
 	public String getBillingPeriodText() throws Exception {
 		return getElementText(txt_Billing_Period);
 	}
-	
-	
+
 	// New Plan Window methods
 	public String getNewPlanWindowTitle() throws Exception {
 		return getElementText(mod_New_Plan_Title);
@@ -287,11 +284,11 @@ public class MyAccountPage extends BasePage {
 	public String getBillingContactEditTitle() throws Exception {
 		return getElementText(mod_Bill_Contact_Title);
 	}
-	
+
 	public String getBillingContactCity() throws Exception {
 		return getElementText(txt_Bill_Contact_City);
 	}
-	
+
 	public String getBillingContactPostalCode() throws Exception {
 		return getElementText(txt_Bill_Contact_PostalCode);
 	}
@@ -310,13 +307,13 @@ public class MyAccountPage extends BasePage {
 		waitAndClickElement(btn_Bill_Contact_Edit_SaveChanges);
 		return new MyAccountPage();
 	}
-	
+
 	// Change Password methods
 
 	public String getChangePasswordWindowTitle() throws Exception {
 		return getElementText(mod_Account_Contact_ChangePassword_Title);
 	}
-	
+
 	public MyAccountPage setCurrentPassword(String currentPass) throws Exception {
 		sendKeysToWebElement(txtF_Account_Contact_ChangePassword_CurrPass, currentPass);
 		return new MyAccountPage();
@@ -331,15 +328,15 @@ public class MyAccountPage extends BasePage {
 		waitAndClickElement(btn_Account_Contact_ChangePassword_ChangePass);
 		return new MyAccountPage();
 	}
-	
+
 	public String getCurrentPasswordErrorMsg() throws Exception {
 		return getElementText(err_Current_Password);
 	}
-	
+
 	public String getNewPasswordErrorMsg() throws Exception {
 		return getElementText(err_New_Password);
 	}
-	
+
 	public String getInvalidCurrentPasswordErrorMsg() throws Exception {
 		return getElementText(err_Invalid_Current_Password);
 	}
@@ -347,53 +344,55 @@ public class MyAccountPage extends BasePage {
 	public String getWeakNewPasswordWarningMsg() throws Exception {
 		return getElementText(wrn_TooWeak_New_Password);
 	}
-	
+
 	public String getWeakNewPasswordTooltip() throws Exception {
 		return getElementText(txt_Weak_New_PasswordTooltip);
 	}
-	
+
 	public MyAccountPage clickNewPasswordTooltipIcon() throws Exception {
 		waitAndClickElement(icon_New_PasswordTooltip);
 		return new MyAccountPage();
 	}
-	
+
 	public String getPasswordRequirementsTxt() throws Exception {
 		return getElementText(txt_Weak_New_PasswordTooltip);
 	}
-	
+
 	// Account Resources
 	public String getPrepaidBlocksTxt() throws Exception {
 		return getElementText(lnk_Prepaid_Blocks);
 	}
-	
+
 	public String getBlackListWhiteListTxt() throws Exception {
 		return getElementText(lnk_Blacklist_Whitelist);
 	}
-	
+
 	public String getAutoPurchaseTxt() throws Exception {
 		return getElementText(lnk_Auto_Purchase);
 	}
-	
+
 	public String getPurchaseHistoryTxt() throws Exception {
 		return getElementText(lnk_Purchase_History);
 	}
-	
-	public String getPurchaseHistoryTitle() throws Exception {
-		return getElementText(mod_Purchase_History);
-	}
-	
+
+	/*
+	 * public String getPurchaseHistoryTitle() throws Exception { return
+	 * getElementText(mod_Purchase_History); }
+	 */
+
 	public MyAccountPage clickPurchaseHistorylnk() throws Exception {
 		waitAndClickElement(lnk_Purchase_History);
 		return new MyAccountPage();
 	}
-	
-	public MyAccountPage clickPurchaseHistoryPageSizedropDown() throws Exception {
-		waitAndClickElement(dropdown_Page_Size);
-		return new MyAccountPage();
-	}
-	
+
+	/*
+	 * public MyAccountPage clickPurchaseHistoryPageSizedropDown() throws Exception
+	 * { waitAndClickElement(dropdown_Page_Size); return new MyAccountPage(); }
+	 */
+
 	public MyAccountPage clickPurchaseHistoryPageSize(String size) throws Exception {
 		waitAndClickElement(num_PageSize(size));
 		return new MyAccountPage();
 	}
+
 }
