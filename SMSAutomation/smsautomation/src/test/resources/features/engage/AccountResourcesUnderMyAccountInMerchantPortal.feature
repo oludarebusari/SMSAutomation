@@ -37,7 +37,7 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     Then User is redirected to my account page
 
  @tag-Purchase-History
-  Scenario: Verify the Purchase History
+  Scenario: Verify Purchase History option
     Then User verifies the Account Resources section options 
     When User clicks on Purchase History option
     Then Purchase History window pops up and user can view all Purchase history
@@ -50,5 +50,27 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     Then CSV file is created and exported to the local machine
     
   @tag-Auto-Purchase
-  Scenario Outline: Title of your scenario outline
+  Scenario Outline: Verify Auto Purchase option
+  When User clicks the Auto Purchase option
+  Then Auto Purchase window pops
+  When User hovers over the question mark next to Max Monthly Auto purchases dropdown
+  Then information about the Max Monthly Auto purchases dropdown is displayed
+  When User selects month from the Max Monthly Auto Purchases and clicks change plan 
+  Then a message indicating that your plan is updated is displayed
+  
+  
+  @tag-Blacklist-Whitelist
+  Scenario Outline: Verify Blacklist-Whitelist option
+  When User clicks the Blacklist-whitelist option
+  Then the Blacklist-Whitelist pop up screen appears
+  When User clicks the Private Campaign mode toggle (Off)
+  Then the blacklist options appears
+  When User clicks the New button under Blacklist section
+  Then the Add to blacklist window is opened
+  When user adds the number to blacklist and cliks Add Number button
+  Then the number is added to the blacklist
+  
+  
+   
+  
    

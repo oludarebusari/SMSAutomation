@@ -68,6 +68,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("CSV file is created and exported to the local machine")
 	public void csv_file_is_created_and_exported_to_the_local_machine() throws InterruptedException {
+		
 		Thread.sleep(6000);
 	
 	}
