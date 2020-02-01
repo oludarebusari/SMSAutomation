@@ -20,7 +20,6 @@ public class EngLoginPage extends BasePage {
 	}
 
 	public EngLoginPage getLoginPage() throws IOException {
-//		driver.get("https://staging.smsmmadmin.com/");
 		driver.get(reader.getConfigValue("GeneralSettings", "engBaseURL"));
 		return new EngLoginPage();
 	}
