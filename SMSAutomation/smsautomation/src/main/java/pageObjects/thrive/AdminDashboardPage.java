@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
-public class ThriveDashboardPage extends BasePage {
+public class AdminDashboardPage extends BasePage {
 
-	public ThriveDashboardPage() throws IOException {
+	public AdminDashboardPage() throws IOException {
 		super();
 
 	}
@@ -34,59 +34,59 @@ public class ThriveDashboardPage extends BasePage {
 		return getElementText(txt_Page_Title);
 	}
 	
-	public ThriveDashboardPage clickDasboardTab() throws Exception {
+	public AdminDashboardPage clickDasboardTab() throws Exception {
 		waitAndClickElement(tab_Dashboard);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickExperienceTab() throws Exception {
+	public AdminDashboardPage clickExperienceTab() throws Exception {
 	    waitAndClickElement(tab_Experience);	
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickCompaniesTab() throws Exception {
+	public AdminDashboardPage clickCompaniesTab() throws Exception {
 		waitAndClickElement(tab_Companies);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickUsersTab() throws Exception  {
+	public AdminDashboardPage clickUsersTab() throws Exception  {
 		waitAndClickElement(tab_Users);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickBillingTab() throws Exception {
+	public AdminDashboardPage clickBillingTab() throws Exception {
 		waitAndClickElement(tab_Billing);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickZeonTab() throws Exception {
+	public AdminDashboardPage clickZeonTab() throws Exception {
 		waitAndClickElement(tab_Zeon);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickSettingsTab() throws Exception  {
+	public AdminDashboardPage clickSettingsTab() throws Exception  {
 		waitAndClickElement(tab_Settings);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickReportsTab() throws Exception  {
+	public AdminDashboardPage clickReportsTab() throws Exception  {
 		waitAndClickElement(tab_Reports);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickSupportTab() throws Exception  {
+	public AdminDashboardPage clickSupportTab() throws Exception  {
 		waitAndClickElement(tab_Support);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickResellersLink() throws Exception  {
+	public AdminDashboardPage clickResellersLink() throws Exception  {
 		waitAndClickElement(lnk_Resellers);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
-	public ThriveDashboardPage clickBusinessesLink() throws Exception  {
+	public AdminDashboardPage clickBusinessesLink() throws Exception  {
 		waitAndClickElement(lnk_Businesses);
-		return new ThriveDashboardPage();
+		return new AdminDashboardPage();
 	}
 	
 

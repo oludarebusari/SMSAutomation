@@ -8,7 +8,7 @@ import org.testng.Assert;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.thrive.ThriveDashboardPage;
+import pageObjects.thrive.AdminDashboardPage;
 import pageObjects.thrive.ThriveLoginPage;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
@@ -17,7 +17,7 @@ public class ThriveLoginSteps  extends DriverFactory {
 	
 	JsonConfigReader reader = new JsonConfigReader();
 	public ThriveLoginPage thrLoginPage = PageFactory.initElements(driver, ThriveLoginPage.class);
-	public ThriveDashboardPage thrDashboardPage = PageFactory.initElements(driver, ThriveDashboardPage.class);
+	public AdminDashboardPage thrDashboardPage = PageFactory.initElements(driver, AdminDashboardPage.class);
 	
 	@Given("User Navigates to Thrive URL")
 	public void user_Navigates_to_Thrive_URL() throws IOException {

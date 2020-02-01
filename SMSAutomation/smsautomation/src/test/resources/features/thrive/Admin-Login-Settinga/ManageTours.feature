@@ -20,23 +20,29 @@
 @tag-SMSM-185 @RegressionTest
 Feature: Manage tours under settings in admin dashboard for Thrive system
 
-  #@tag1
-  #Scenario: Exisiting User should be able to login to Thrive System
-   # Given User Navigates to Thrive URL
-   # Then Thrive login page is displayed
-   # When User enters a valid username for thrive
-   # And User enters a valid password for thrive
-   # And User clicks the sign in button for thrve
-   # Then Thrive Dashboard page is displayed
+ Background: User logs in and navigates to the Thrive's Dashboard
+   Given User Navigates to Thrive URL
+   Then Thrive login page is displayed
+   When User enters a valid username for thrive
+   And User enters a valid password for thrive
+   And User clicks the sign in button for thrve
+   Then Thrive Dashboard page is displayed
+   Given User clicks on settings on top menu bar
+   Then the settings options are displayed
+   Given User clicks on Tours under settings
+   Then User is redirected to Tours page
     
-  @tag2
+  @tag1
   Scenario: Navigate to manage tour option under settings on thrive system.
     Given User clicks on settings on top menu bar
     Then the settings options are displayed
-    Given User clicks on Manage tour under settings
+    Given User clicks on Tours under settings
     Then User is redirected to Tours page
     
 
-  @tag3
-  Scenario Outline: Title of your scenario outline
-   
+  @tag2
+  Scenario: Edit existing tour in the list
+		Given User types in a Tour name on the search textfield
+		And User clicks the Search button
+		Then the Tour is displayed on the page
+		

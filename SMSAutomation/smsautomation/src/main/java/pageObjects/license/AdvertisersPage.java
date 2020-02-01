@@ -14,8 +14,8 @@ public class AdvertisersPage extends BasePage {
 		super();
 	}
 
-// Page Elements
 
+	// Page Elements
 	public @FindBy(xpath = ElementLocator.ELEM_PAGE_TITLE) WebElement page_Heading;
 	public @FindBy(xpath = "//input[contains(@class, \"table-search\")]") WebElement txt_SearchTxtF;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./a[contains(text(), \"New\")]]") WebElement btn_New;
@@ -29,8 +29,7 @@ public class AdvertisersPage extends BasePage {
 
 	public @FindBy(xpath = "//tr[@role=\"row\" and .//td[text()=\"QA, Aclate\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_LOGIN_LOV;
 
-// Page Methods
-
+	// Page Methods
 	public AdvertisersPage clickLoginBtnByBusinessContact() throws Exception {
 		waitAndClickElement(getLoginBtnByBusinessContact("QA, Aclate"));
 		return new AdvertisersPage();
