@@ -2,7 +2,7 @@
 	"GeneralSettings": {
 		"engBaseURL": "https://staging.smsmmadmin.com/",
 		"licBaseURL": "https://www.smsmmtest.com/admin/",
-		"thrBaseURL": "https://staging.mmdigital.us/login"
+		"thrBaseURL": "https://thrive.stage2-aut.mastermindsdigital.com/login"
 	},
 	"engage": {
 		"username": "superadmin",

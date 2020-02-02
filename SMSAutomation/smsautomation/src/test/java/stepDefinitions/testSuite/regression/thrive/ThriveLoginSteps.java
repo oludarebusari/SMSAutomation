@@ -21,7 +21,7 @@ public class ThriveLoginSteps  extends DriverFactory {
 	
 	@Given("User Navigates to Thrive URL")
 	public void user_Navigates_to_Thrive_URL() throws IOException {
-		thrLoginPage.getLoginPage();
+		driver.get(reader.getConfigValue("GeneralSettings", "thrBaseURL"));
 	}
 
 	@Then("Thrive login page is displayed")
@@ -31,22 +31,22 @@ public class ThriveLoginSteps  extends DriverFactory {
 
 	@When("User enters a valid username for thrive")
 	public void user_enters_a_valid_username_for_thrive() throws Exception {
-		thrLoginPage.enterUserName(reader.getConfigValue("thrive", "username"));
+		thrLoginPage.sendKeysToWebElement(thrLoginPage.txtF_UserName, reader.getConfigValue("thrive", "username"));
 	}
 
 	@When("User enters a valid password for thrive")
 	public void user_enters_a_valid_password_for() throws Exception {
-		thrLoginPage.enterPassWord(reader.getConfigValue("thrive", "password"));
+		thrLoginPage.sendKeysToWebElement(thrLoginPage.txtF_PassWord, reader.getConfigValue("thrive", "password"));
 	}
 	
 	@When("User clicks the sign in button for thrve")
 	public void user_clicks_the_sign_in_button_for_thrve() throws Exception {
-		thrLoginPage.clickOnSubmiButton();
+		thrLoginPage.waitAndClickElement(thrLoginPage.button_signIn);
 	}
 
 	@Then("Thrive Dashboard page is displayed")
 	public void thrive_Dashboard_page_is_displayed() throws Exception {
-	 Assert.assertEquals(thrDashboardPage.getThrivePageTitle(), "Dashboard");
+	 Assert.assertEquals(thrDashboardPage.getElementText(thrDashboardPage.txt_Page_Title), "Dashboard");
 	}
 
 

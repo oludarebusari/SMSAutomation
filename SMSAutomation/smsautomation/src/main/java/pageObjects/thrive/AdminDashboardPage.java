@@ -30,9 +30,6 @@ public class AdminDashboardPage extends BasePage {
 
 		
 	// Page methods
-	public String getThrivePageTitle() throws Exception {
-		return getElementText(txt_Page_Title);
-	}
 	
 	public AdminDashboardPage clickDasboardTab() throws Exception {
 		waitAndClickElement(tab_Dashboard);

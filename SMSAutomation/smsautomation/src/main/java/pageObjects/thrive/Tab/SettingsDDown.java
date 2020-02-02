@@ -63,9 +63,4 @@ public class SettingsDDown extends BasePage {
 		waitAndClickElement(opt_Alerts);
 		return new SettingsDDown();
 	}
-	
-	public SettingsDDown clickToursOpt() throws Exception {
-		waitAndClickElement(opt_Tours);
-		return new SettingsDDown();
-	}
 }
