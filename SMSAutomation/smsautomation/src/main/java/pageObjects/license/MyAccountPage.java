@@ -5,10 +5,8 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import components.elements.ElementLocator;
 import pageObjects.BasePage;
-import utils.Constant;
 
 public class MyAccountPage extends BasePage {
 
@@ -359,22 +357,19 @@ public class MyAccountPage extends BasePage {
 	}
 
 	// Account Resources
-	public String getPrepaidBlocksTxt() throws Exception {
-		return getElementText(lnk_Prepaid_Blocks);
-	}
-
-	public String getBlackListWhiteListTxt() throws Exception {
-		return getElementText(lnk_Blacklist_Whitelist);
-	}
-
-	public String getAutoPurchaseTxt() throws Exception {
-		return getElementText(lnk_Auto_Purchase);
-	}
-
-	public String getPurchaseHistoryTxt() throws Exception {
-		return getElementText(lnk_Purchase_History);
-	}
-
+	/*
+	 * public String getPrepaidBlocksTxt() throws Exception { return
+	 * getElementText(lnk_Prepaid_Blocks); }
+	 * 
+	 * public String getBlackListWhiteListTxt() throws Exception { return
+	 * getElementText(lnk_Blacklist_Whitelist); }
+	 * 
+	 * public String getAutoPurchaseTxt() throws Exception { return
+	 * getElementText(lnk_Auto_Purchase); }
+	 * 
+	 * public String getPurchaseHistoryTxt() throws Exception { return
+	 * getElementText(lnk_Purchase_History); }
+	 */
 	/*
 	 * public String getPurchaseHistoryTitle() throws Exception { return
 	 * getElementText(mod_Purchase_History); }

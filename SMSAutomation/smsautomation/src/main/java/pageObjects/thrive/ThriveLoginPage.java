@@ -11,7 +11,6 @@ public class ThriveLoginPage extends BasePage {
 	public ThriveLoginPage() throws IOException {
 		super();
 	}
-
 	
 	// Page elements
 	public @FindBy(xpath = "//input[@id=\"username\"]") WebElement txtF_UserName;

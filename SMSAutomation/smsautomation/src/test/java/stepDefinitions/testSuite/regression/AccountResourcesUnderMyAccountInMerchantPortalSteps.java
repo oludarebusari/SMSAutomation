@@ -16,10 +16,10 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("User verifies the Account Resources section options")
 	public void user_verifies_the_Account_Resources_section_options() throws Exception {
-		Assert.assertEquals("Prepaid Blocks", myAccountPage.getPrepaidBlocksTxt());
-		Assert.assertEquals("Blacklist/Whitelist", myAccountPage.getBlackListWhiteListTxt());
-		Assert.assertEquals("Auto Purchase", myAccountPage.getAutoPurchaseTxt());
-		Assert.assertEquals("Purchase History", myAccountPage.getPurchaseHistoryTxt());
+		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Prepaid_Blocks));
+		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Blacklist_Whitelist));
+		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Auto_Purchase));
+		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Purchase_History));
 	}
 
 	@When("User clicks on Purchase History option")
@@ -68,9 +68,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("CSV file is created and exported to the local machine")
 	public void csv_file_is_created_and_exported_to_the_local_machine() throws InterruptedException {
-		
-		Thread.sleep(6000);
-	
+
 	}
 
 }
