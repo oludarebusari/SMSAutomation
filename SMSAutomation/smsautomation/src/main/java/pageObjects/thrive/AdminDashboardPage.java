@@ -25,17 +25,14 @@ public class AdminDashboardPage extends BasePage {
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Settings\"]]") WebElement tab_Settings;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement tab_Reports;
 	public @FindBy(xpath = "//li[@class=\"last\" and .//a[text()[normalize-space()=\"Support\"]]]") WebElement tab_Support;
+	public @FindBy(xpath = "//a[@id=\"start-tour\"]") WebElement btn_Help;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement lnk_Resellers;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement lnk_Businesses;
+	
 
 		
 	// Page methods
-	
-	public AdminDashboardPage clickDasboardTab() throws Exception {
-		waitAndClickElement(tab_Dashboard);
-		return new AdminDashboardPage();
-	}
-	
+		
 	public AdminDashboardPage clickExperienceTab() throws Exception {
 	    waitAndClickElement(tab_Experience);	
 		return new AdminDashboardPage();

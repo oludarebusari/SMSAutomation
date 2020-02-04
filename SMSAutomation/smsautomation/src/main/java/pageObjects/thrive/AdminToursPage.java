@@ -30,6 +30,7 @@ public class AdminToursPage extends BasePage {
 	public WebElement btn_EditDropdownByTourName(String TourName) {
 		return parentBtn.findElement(By.xpath("//tr[//td[(.)=\'" + TourName + "']][1]//button[@data-toggle=\"dropdown\"]"));
 	}
+	public @FindBy(xpath = "//tbody//td[1]") WebElement txt_TourName;
 	public @FindBy(xpath = "//tbody//td[2]") WebElement txt_Role;
 	public @FindBy(xpath = "//tbody//td[3]") WebElement txt_Status;
 

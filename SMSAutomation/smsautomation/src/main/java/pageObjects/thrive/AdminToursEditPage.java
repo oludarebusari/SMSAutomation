@@ -19,6 +19,7 @@ public class AdminToursEditPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"tour_type_title\"]") WebElement txtF_TourName;
 	public @FindBy(xpath = "//input[@id=\"tour_type_path\"]") WebElement txtF_Path;
 	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\")]") WebElement lov_Role;
+	
 	public @FindBy(xpath = "//input[@id=\"tour_type_tourSteps_0_selector\"]") WebElement txtF_Selector;
 	public @FindBy(xpath = "//input[@id=\"tour_type_tourSteps_0_title\"]") WebElement textF_Title;
 	public @FindBy(xpath = "//input[@id=\"tour_type_tourSteps_0_path\"]") WebElement txtF_StepPath;
@@ -30,5 +31,7 @@ public class AdminToursEditPage extends BasePage {
 	public WebElement selectRole(String role) {
 		return parentBtn.findElement(By.xpath("//div[text()=\'" + role + "']"));
 	}
-
+	public WebElement removeRole(String role) {
+		return parentBtn.findElement(By.xpath("//div[text()=\'" + role + "']//a[@class=\"remove\"]"));
+	}
 }

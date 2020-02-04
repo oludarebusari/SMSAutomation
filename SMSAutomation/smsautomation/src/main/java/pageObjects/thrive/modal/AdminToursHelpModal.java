@@ -19,6 +19,7 @@ public class AdminToursHelpModal extends BasePage {
 	public @FindBy(xpath = "//button[@data-role=\"prev\"]") WebElement btn_Tours_Help_Prev;
 	public @FindBy(xpath = "//button[@data-role=\"next\"]") WebElement btn_Tours_Help_Next;
 	public @FindBy(xpath = "//button[@data-role=\"end\"]") WebElement btn_Tours_Help_EndTour;
+	public @FindBy(xpath = "//div[contains(@class, \"tour-mmd-tour\")]") WebElement mod_Tours;
 	
 	// Modal methods
 	public String getToursHelpModalTitle() throws Exception {
