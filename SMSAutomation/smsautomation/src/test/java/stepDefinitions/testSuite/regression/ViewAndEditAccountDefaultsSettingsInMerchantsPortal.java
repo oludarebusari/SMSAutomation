@@ -23,7 +23,7 @@ public class ViewAndEditAccountDefaultsSettingsInMerchantsPortal extends DriverF
 
 	@And("User clicks the Settings menu")
 	public void user_clicks_the_Settings_menu() throws Exception {
-		merchantMenu.clickSettings();
+		merchantMenu.waitAndClickElement(merchantMenu.menu_Settings);
 	}
 
 	@And("User clicks the Accounts Defaults menu")

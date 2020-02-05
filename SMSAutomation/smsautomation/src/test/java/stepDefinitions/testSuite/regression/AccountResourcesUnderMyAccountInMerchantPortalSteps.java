@@ -17,9 +17,9 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	@Then("User verifies the Account Resources section options")
 	public void user_verifies_the_Account_Resources_section_options() throws Exception {
 		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Prepaid_Blocks));
-		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Blacklist_Whitelist));
-		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Auto_Purchase));
-		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Purchase_History));
+		Assert.assertEquals("Blacklist/Whitelist", myAccountPage.getElementText(myAccountPage.lnk_Blacklist_Whitelist));
+		Assert.assertEquals("Auto Purchase", myAccountPage.getElementText(myAccountPage.lnk_Auto_Purchase));
+		Assert.assertEquals("Purchase History", myAccountPage.getElementText(myAccountPage.lnk_Purchase_History));
 	}
 
 	@When("User clicks on Purchase History option")

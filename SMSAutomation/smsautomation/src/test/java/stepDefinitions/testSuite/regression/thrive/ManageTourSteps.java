@@ -3,7 +3,6 @@ package stepDefinitions.testSuite.regression.thrive;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

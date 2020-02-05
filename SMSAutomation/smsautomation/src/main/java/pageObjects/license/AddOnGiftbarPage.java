@@ -12,25 +12,8 @@ public class AddOnGiftbarPage extends BasePage {
 	}
 
 	// Page Elements
-
 	public @FindBy(xpath = "//h1[text()=\"Giftbar\"]") WebElement page_Title;
 	public @FindBy(xpath = "//button[@id=\"notify_licensee_giftbar\"]") WebElement btn_Giftbar_Interested;
 	public @FindBy(xpath = "//div[@id=\"notified_licensee_giftbar\"]") WebElement msg_Giftbar_Notification;
-
-	// Page Methods
-
-	public String getPageTitleTxt() throws Exception {
-		return getElementText(page_Title);
-	}
-
-	public AddOnGiftbarPage clickGiftbarInterestedBtn() throws Exception {
-		waitAndClickElement(btn_Giftbar_Interested);
-		return new AddOnGiftbarPage();
-	}
-	
-	public String getGiftbarNotificationTxt() throws Exception {
-		 return getElementText(msg_Giftbar_Notification);		 
-	}
-
 
 }

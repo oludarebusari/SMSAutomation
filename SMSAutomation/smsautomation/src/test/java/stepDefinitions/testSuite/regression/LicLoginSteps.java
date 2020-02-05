@@ -40,17 +40,14 @@ public class LicLoginSteps extends DriverFactory {
 		commonPageLocators.waitAndClickElement(commonPageLocators.btn_signIn);
 	}
 
-	@And("User clicks X icon to close the notification banner")
-	public void user_clicks_X_icon_to_close_the_notification_banner() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
+	/*
+	 * @And("User clicks X icon to close the notification banner") public void
+	 * user_clicks_X_icon_to_close_the_notification_banner() { try {
+	 * Thread.sleep(2000); } catch (InterruptedException e) { // TODO Auto-generated
+	 * catch block e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 	@And("User clicks X icon on the new revenue streams banner")
 	public void user_clicks_X_icon_on_the_new_revenue_streams_banner() {
 	 

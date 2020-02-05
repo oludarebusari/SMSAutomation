@@ -31,37 +31,39 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
-		manageSitesPage.clickManageResellers();
+		manageSitesPage.waitAndClickElement(manageSitesPage.menu_Manage_Resellers);
 	}
 
 	@When("User logs in to a reseller")
 	public void user_logs_in_to_a_reseller() throws Exception {
-		manageSitesPage.loginToReseller("smsmmtest ", "SUPER");
+		manageSitesPage.sendKeysToWebElement(manageSitesPage.SearchTxtF, "test");
+		manageSitesPage.waitAndClickElement(manageSitesPage.loginAS("smsmmtest ", "SUPER"));
 	}
 
 	@And("User is redirected to the Engaged Admin Dashboard page")
 	public void user_is_redirected_to_the_Engaged_Admin_Dashboard_page() throws Exception {
 		manageSitesPage.switchWindow();
-		Assert.assertEquals(manageSitesPage.getCurrentURL(), "https://www.smsmmtest.com/admin/");
+		Assert.assertEquals(manageSitesPage.getCurrentURL(), reader.getConfigValue("GeneralSettings", "licBaseURL"));
 	}
 
 	@Then("User clicks Business tabs at the left side")
 	public void user_clicks_Business_tabs_at_the_left_side() throws Exception {
-		if (reader.getConfigValue("DriverConfig", "environment").equals("localHub")) {
-			licAdminPage.clickCloseUpdateStatusOfBusinesses();
-			licAdminPage.waitForBusinessesDialogToDisappear();
-		}
-		licAdminPage.clickBusinesses();
+		/*
+		 * if (reader.getConfigValue("DriverConfig", "environment").equals("localHub"))
+		 * { licAdminPage.clickCloseUpdateStatusOfBusinesses();
+		 * licAdminPage.waitForBusinessesDialogToDisappear(); }
+		 */
+		licAdminPage.waitAndClickElement(licAdminPage.menu_Businesses);
 	}
 
 	@Then("the merchants detailed information is listed")
 	public void the_merchants_detailed_information_is_listed() throws Exception {
-		Assert.assertEquals(advertisersPage.getPageHeading(), "Businesses");
+		Assert.assertTrue(advertisersPage.getElementText(advertisersPage.page_Heading).contentEquals("Businesses"));
 	}
 
 	@Then("Users click Login tab for a merchant")
 	public void users_click_Login_tab_for_a_merchant() throws Exception {
-		advertisersPage.clickLoginBtnByBusinessContact();
+		advertisersPage.waitAndClickElement(advertisersPage.getLoginBtnByBusinessContact("QA, Aclate"));
 	}
 
 	@Then("the user is redirected to a new window of Merchant's Dashboard")
@@ -72,37 +74,37 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("User verifies that Add-On Services menu is available")
 	public void user_verifies_that_Add_On_Services_menu_is_available() throws Exception {
-		Assert.assertEquals("Add-On Services", merchantMenu.getAddOnServicesMenuTxt());
+		Assert.assertTrue(merchantMenu.getElementText(merchantMenu.menu_Add_On_Services).contentEquals("Add-On Services"));
 	}
 
 	@Then("User clicks the Add-On Services menu option")
 	public void user_clicks_the_Add_On_Services_menu_option() throws Exception {
-		merchantMenu.clickAddOnServices();
+		merchantMenu.waitAndClickElement(merchantMenu.menu_Add_On_Services);
 	}
 
 	@Then("the Giftbar menu option is displayed")
 	public void the_Giftbar_menu_option_is_displayed() throws Exception {
-		Assert.assertEquals("Giftbar", addOnServicesSubMenu.getGiftbarTxt());
+		Assert.assertTrue(addOnServicesSubMenu.getElementText(addOnServicesSubMenu.menu_Giftbar).contentEquals("Giftbar"));
 	}
 
 	@When("User clicks the Giftbar menu option")
 	public void user_clicks_the_Giftbar_menu_option() throws Exception {
-		addOnServicesSubMenu.clickGiftbar();
+		addOnServicesSubMenu.waitAndClickElement(addOnServicesSubMenu.menu_Giftbar);
 	}
 
 	@Then("the giftbar page is opened")
 	public void the_giftbar_page_is_opened() throws Exception {
-		Assert.assertEquals("Giftbar", addOnGiftbarPage.getPageTitleTxt());		
+		Assert.assertTrue(addOnGiftbarPage.getElementText(addOnGiftbarPage.page_Title).contentEquals("Giftbar"));
 	}
 	
 	@Then("User clicks the Interested button")
 	public void user_clicks_the_Interested_button() throws Exception {
-		addOnGiftbarPage.clickGiftbarInterestedBtn();
+		addOnGiftbarPage.waitAndClickElement(addOnGiftbarPage.btn_Giftbar_Interested);
 	}
 
 	@Then("an interest notification is sent message is displayed")
 	public void an_interest_notification_is_sent_message_is_displayed() throws Exception {
-		Assert.assertEquals("Thanks — a notification was sent about your interest!", addOnGiftbarPage.getGiftbarNotificationTxt());
+		Assert.assertTrue(addOnGiftbarPage.getElementText(addOnGiftbarPage.msg_Giftbar_Notification).contentEquals("Thanks — a notification was sent about your interest!"));
 	}
 
 }

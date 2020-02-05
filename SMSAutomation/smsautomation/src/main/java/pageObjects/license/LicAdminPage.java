@@ -55,11 +55,10 @@ public class LicAdminPage extends BasePage {
 	
 	// Methods
 
-	public LicAdminPage clickBusinesses() throws Exception {
-		waitAndClickElement(menu_Businesses);
-		return new LicAdminPage();
-	}
-
+	/*
+	 * public LicAdminPage clickBusinesses() throws Exception {
+	 * waitAndClickElement(menu_Businesses); return new LicAdminPage(); }
+	 */
 	public LicAdminPage clickAffiliates() throws Exception {
 		waitAndClickElement(menu_Affiliates);
 		return new LicAdminPage();

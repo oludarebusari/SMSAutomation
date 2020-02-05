@@ -52,7 +52,7 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 	@And("User clicks on the campaigns menu item")
 	public void user_clicks_on_the_campaigns_menu_item() throws Exception {
 		merchantMenu.switchWindow();
-		merchantMenu.clickCampaigns();
+		merchantMenu.waitAndClickElement(merchantMenu.menu_Campaigns);
 	}
 
 	@And("User clicks campaign groups under campaigns")

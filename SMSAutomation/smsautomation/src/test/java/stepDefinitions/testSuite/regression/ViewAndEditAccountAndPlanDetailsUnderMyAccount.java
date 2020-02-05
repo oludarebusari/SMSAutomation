@@ -24,7 +24,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@When("User clicks on My Accounts from the left hand side menu")
 	public void user_clicks_on_My_Accounts_from_the_left_hand_side_menu() throws Exception {
-		merchantMenu.clickMyAccount();
+		merchantMenu.waitAndClickElement(merchantMenu.menu_My_Account);
 	}
 
 	@Then("User is redirected to my account page")
