@@ -44,6 +44,7 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//a[contains(text(), \"Blacklist/Whitelist\")]") WebElement lnk_Blacklist_Whitelist;
 	public @FindBy(xpath = "//a[@data-target=\"#autopurchase-modal\"]") WebElement lnk_Auto_Purchase;
 	public @FindBy(xpath = "//a[@data-target=\"#purchase-history-modal\"]") WebElement lnk_Purchase_History;
+	public @FindBy(xpath = "//div[@id=\"autopurchase-update-message\"]") WebElement txt_Update_Message;
 
 	// Account Contacts Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Account Contact\"]") WebElement mod_Account_Contact_Edit_Title;
@@ -356,34 +357,12 @@ public class MyAccountPage extends BasePage {
 		return getElementText(txt_Weak_New_PasswordTooltip);
 	}
 
-	// Account Resources
-	/*
-	 * public String getPrepaidBlocksTxt() throws Exception { return
-	 * getElementText(lnk_Prepaid_Blocks); }
-	 * 
-	 * public String getBlackListWhiteListTxt() throws Exception { return
-	 * getElementText(lnk_Blacklist_Whitelist); }
-	 * 
-	 * public String getAutoPurchaseTxt() throws Exception { return
-	 * getElementText(lnk_Auto_Purchase); }
-	 * 
-	 * public String getPurchaseHistoryTxt() throws Exception { return
-	 * getElementText(lnk_Purchase_History); }
-	 */
-	/*
-	 * public String getPurchaseHistoryTitle() throws Exception { return
-	 * getElementText(mod_Purchase_History); }
-	 */
-
+	
 	public MyAccountPage clickPurchaseHistorylnk() throws Exception {
 		waitAndClickElement(lnk_Purchase_History);
 		return new MyAccountPage();
 	}
 
-	/*
-	 * public MyAccountPage clickPurchaseHistoryPageSizedropDown() throws Exception
-	 * { waitAndClickElement(dropdown_Page_Size); return new MyAccountPage(); }
-	 */
 
 	public MyAccountPage clickPurchaseHistoryPageSize(String size) throws Exception {
 		waitAndClickElement(num_PageSize(size));

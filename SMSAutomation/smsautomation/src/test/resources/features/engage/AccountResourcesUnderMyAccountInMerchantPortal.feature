@@ -50,14 +50,24 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     Then CSV file is created and exported to the local machine
     
   @tag-Auto-Purchase
-  Scenario Outline: Verify Auto Purchase option
+  Scenario: Verify Auto Purchase option
   When User clicks the Auto Purchase option
   Then Auto Purchase window pops
-  When User hovers over the question mark next to Max Monthly Auto purchases dropdown
-  Then information about the Max Monthly Auto purchases dropdown is displayed
-  When User selects month from the Max Monthly Auto Purchases and clicks change plan 
+  And User selects an auto purchase plan
+  And User clicks the Change Plan butto
   Then a message indicating that your plan is updated is displayed
   
+  
+  @tag-Blacklist-Whitelist
+  Scenario: Verify Blacklist-Whitelist option
+  When User clicks the Blacklist-whitelist option
+  Then the Blacklist-Whitelist page is opened
+  When User clicks the Private Campaign mode toggle (Off)
+  Then the blacklist options appears
+  When User clicks the New button under Blacklist section
+  Then the Add to blacklist window is opened
+  When user adds the number to blacklist and cliks Add Number button
+  Then the number is added to the blacklist
   
   @tag-Blacklist-Whitelist
   Scenario Outline: Verify Blacklist-Whitelist option
@@ -70,7 +80,5 @@ Background: User is logged in and navigates to the Merchant's Dashboard
   When user adds the number to blacklist and cliks Add Number button
   Then the number is added to the blacklist
   
-  
-   
   
    
