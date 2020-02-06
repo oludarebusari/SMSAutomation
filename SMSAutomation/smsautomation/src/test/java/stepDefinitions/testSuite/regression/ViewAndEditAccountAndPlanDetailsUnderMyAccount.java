@@ -17,10 +17,9 @@ import utils.DriverFactory;
 public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactory {
 	
 	Actions action = new Actions(driver);
-	
-
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
+	
 
 	@When("User clicks on My Accounts from the left hand side menu")
 	public void user_clicks_on_My_Accounts_from_the_left_hand_side_menu() throws Exception {
@@ -29,7 +28,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("User is redirected to my account page")
 	public void user_is_redirected_to_my_account_page() throws Exception {
-		Assert.assertEquals("My Account", myAccountPage.getPageTitle());
+		Assert.assertEquals("My Account", myAccountPage.getElementText(myAccountPage.page_Title));
 	}
 
 	@And("User verifies the sections on my account page")

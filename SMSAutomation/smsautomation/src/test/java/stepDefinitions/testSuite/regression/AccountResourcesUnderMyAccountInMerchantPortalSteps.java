@@ -6,8 +6,10 @@ import io.cucumber.java.en.When;
 import junit.framework.Assert;
 import pageObjects.license.BlackListPage;
 import pageObjects.license.MyAccountPage;
+import pageObjects.license.modal.AddToWhitelistModal;
 import pageObjects.license.modal.AutoPurchaseModal;
 import pageObjects.license.modal.PurchaseHistoryModal;
+import pageObjects.license.modal.PurchaseMessageCreditsModal;
 import utils.DriverFactory;
 
 public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverFactory {
@@ -15,7 +17,9 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
 	PurchaseHistoryModal purchaseHistoryModal = PageFactory.initElements(driver, PurchaseHistoryModal.class);
 	AutoPurchaseModal autoPurchaseModal = PageFactory.initElements(driver, AutoPurchaseModal.class);
+	PurchaseMessageCreditsModal purchaseMessageCreditsModal = PageFactory.initElements(driver, PurchaseMessageCreditsModal.class);
 	BlackListPage blackListPage = PageFactory.initElements(driver, BlackListPage.class);
+	AddToWhitelistModal addToWhitelistModal = PageFactory.initElements(driver, AddToWhitelistModal.class);
 	
 
 	@Then("User verifies the Account Resources section options")
@@ -98,7 +102,43 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("a message indicating that your plan is updated is displayed")
 	public void a_message_indicating_that_your_plan_is_updated_is_displayed() throws Exception {
-		Assert.assertEquals("Success! Your plan is updated!",myAccountPage.getElementText(myAccountPage.txt_Update_Message));
+		Assert.assertEquals("Success! Your plan is updated!",myAccountPage.getElementText(myAccountPage.txt_Auto_Purchase_Update_Message));
+	}
+	
+	@When("User clicks the prepaid block option")
+	public void user_clicks_the_prepaid_block_option() throws Exception {
+	   myAccountPage.waitAndClickElement(myAccountPage.lnk_Prepaid_Blocks);
+	}
+
+	@Then("the Purchase Message Credits pop up screen appears")
+	public void the_Purchase_Message_Credits_pop_up_screen_appears() throws Exception {
+	  Assert.assertEquals("Purchase Message Credits", purchaseHistoryModal.getElementText(purchaseMessageCreditsModal.mod_Purchase_Message_Credits));
+	}
+
+	@When("User selects a plan from the given option")
+	public void user_selects_a_plan_from_the_given_option() throws Exception {
+	 purchaseMessageCreditsModal.waitAndClickElement(purchaseMessageCreditsModal.selectPurchaseMessageCredit("BASIC ENGAGEMENT BULK 100 "));
+	}
+
+	@Then("the option is selected successfully")
+	public void the_option_is_selected_successfully() {
+		Assert.assertTrue(purchaseMessageCreditsModal.selectPurchaseMessageCredit("BASIC ENGAGEMENT BULK 100 ").getAttribute("class").contains("active"));
+	}
+
+	@Then("User verifies the value of the due Amount")
+	public void user_verifies_the_value_of_the_due_Amount() throws Exception {
+		String messageCost = purchaseMessageCreditsModal.getElementText(purchaseMessageCreditsModal.lab_CostOfMessages("BASIC ENGAGEMENT BULK 100 ")).substring(0, 3);
+		Assert.assertTrue(messageCost.equals(purchaseMessageCreditsModal.getElementText(purchaseMessageCreditsModal.lab_Amount_Due_Today)));
+	}
+
+	@When("user clicks the Purchase Now button")
+	public void user_clicks_the_Purchase_Now_button() throws Exception {
+	   purchaseMessageCreditsModal.waitAndClickElement(purchaseMessageCreditsModal.btn_Purchase_Now);
+	}
+
+	@Then("the plan is selected and messages are creadit to the account")
+	public void the_plan_is_selected_and_messages_are_creadit_to_the_account() throws Exception {
+		Assert.assertEquals("Success! Your plan is updated!", myAccountPage.getElementText(myAccountPage.txt_Purchase_Message_Credit_Update_Message));
 	}
 
 	@When("User clicks the Blacklist-whitelist option")
@@ -113,28 +153,29 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	}
 
 	@When("User clicks the Private Campaign mode toggle \\(Off)")
-	public void user_clicks_the_Private_Campaign_mode_toggle_Off() {
-
+	public void user_clicks_the_Private_Campaign_mode_toggle_Off() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.tog_Off);
 	}
 
-	@Then("the blacklist options appears")
-	public void the_blacklist_options_appears() {
-
+	@Then("the whitelist option appears on the screen")
+	public void the_whitelist_option_appears_on_the_screen() throws Exception {
+		Assert.assertEquals("Whitelist", blackListPage.getElementText(blackListPage.txt_Whitelist_Subtitle));
 	}
-
+	
 	@When("User clicks the New button under Blacklist section")
-	public void user_clicks_the_New_button_under_Blacklist_section() {
-
+	public void user_clicks_the_New_button_under_Blacklist_section() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.btn_Whitelist_New);
 	}
 
-	@Then("the Add to blacklist window is opened")
-	public void the_Add_to_blacklist_window_is_opened() {
-
+	@Then("the Add to whitelist window is opened")
+	public void the_Add_to_whitelist_window_is_opened() throws InterruptedException {
+		Assert.assertEquals("Add to Whitelist", addToWhitelistModal.getElementText(addToWhitelistModal.mod_Add_To_Whitelist_Title));
 	}
-
-	@When("user adds the number to blacklist and cliks Add Number button")
-	public void user_adds_the_number_to_blacklist_and_cliks_Add_Number_button() {
-
+		
+	@When("user adds the number to whitelist and cliks Add Number button")
+	public void user_adds_the_number_to_whitelist_and_cliks_Add_Number_button() throws Exception {
+	  addToWhitelistModal.sendKeysToWebElement(addToWhitelistModal.txt_Phone_Number, "5551112424");
+	  addToWhitelistModal.waitAndClickElement(addToWhitelistModal.btn_Add_Number);
 	}
 
 	@Then("the number is added to the blacklist")

@@ -44,7 +44,10 @@ public class MyAccountPage extends BasePage {
 	public @FindBy(xpath = "//a[contains(text(), \"Blacklist/Whitelist\")]") WebElement lnk_Blacklist_Whitelist;
 	public @FindBy(xpath = "//a[@data-target=\"#autopurchase-modal\"]") WebElement lnk_Auto_Purchase;
 	public @FindBy(xpath = "//a[@data-target=\"#purchase-history-modal\"]") WebElement lnk_Purchase_History;
-	public @FindBy(xpath = "//div[@id=\"autopurchase-update-message\"]") WebElement txt_Update_Message;
+	public @FindBy(xpath = "//div[@id=\"autopurchase-update-message\"]") WebElement txt_Auto_Purchase_Update_Message;
+	public @FindBy(xpath = "//div[@id=\"prepaid-blocks-update-message\"]") WebElement txt_Purchase_Message_Credit_Update_Message;
+	
+	
 
 	// Account Contacts Edit elements
 	public @FindBy(xpath = "//h3[@class=\"modal-title\" and text()=\"Account Contact\"]") WebElement mod_Account_Contact_Edit_Title;
@@ -114,10 +117,6 @@ public class MyAccountPage extends BasePage {
 	};
 
 	// Page Methods
-
-	public String getPageTitle() throws Exception {
-		return getElementText(page_Title);
-	}
 
 	public String getMyPlanTxt() throws Exception {
 		return getElementText(page_My_Plan_Section);

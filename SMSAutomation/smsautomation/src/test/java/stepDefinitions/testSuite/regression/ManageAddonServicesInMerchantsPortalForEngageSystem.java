@@ -15,20 +15,17 @@ import pageObjects.license.menu.MerchantMenu;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
 
-
 public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverFactory {
 
 	JsonConfigReader reader = new JsonConfigReader();
-	
+
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	AdvertisersPage advertisersPage = PageFactory.initElements(driver, AdvertisersPage.class);
 	LicAdminPage licAdminPage = PageFactory.initElements(driver, LicAdminPage.class);
 	ManageSitesPage manageSitesPage = PageFactory.initElements(driver, ManageSitesPage.class);
 	AddOnServicesSubMenu addOnServicesSubMenu = PageFactory.initElements(driver, AddOnServicesSubMenu.class);
-	AddOnGiftbarPage  addOnGiftbarPage = PageFactory.initElements(driver, AddOnGiftbarPage.class);
-	
-	
-	
+	AddOnGiftbarPage addOnGiftbarPage = PageFactory.initElements(driver, AddOnGiftbarPage.class);
+
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
 		manageSitesPage.waitAndClickElement(manageSitesPage.menu_Manage_Resellers);
@@ -74,7 +71,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("User verifies that Add-On Services menu is available")
 	public void user_verifies_that_Add_On_Services_menu_is_available() throws Exception {
-		Assert.assertTrue(merchantMenu.getElementText(merchantMenu.menu_Add_On_Services).contentEquals("Add-On Services"));
+		Assert.assertTrue(
+				merchantMenu.getElementText(merchantMenu.menu_Add_On_Services).contentEquals("Add-On Services"));
 	}
 
 	@Then("User clicks the Add-On Services menu option")
@@ -84,7 +82,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("the Giftbar menu option is displayed")
 	public void the_Giftbar_menu_option_is_displayed() throws Exception {
-		Assert.assertTrue(addOnServicesSubMenu.getElementText(addOnServicesSubMenu.menu_Giftbar).contentEquals("Giftbar"));
+		Assert.assertTrue(
+				addOnServicesSubMenu.getElementText(addOnServicesSubMenu.menu_Giftbar).contentEquals("Giftbar"));
 	}
 
 	@When("User clicks the Giftbar menu option")
@@ -96,7 +95,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	public void the_giftbar_page_is_opened() throws Exception {
 		Assert.assertTrue(addOnGiftbarPage.getElementText(addOnGiftbarPage.page_Title).contentEquals("Giftbar"));
 	}
-	
+
 	@Then("User clicks the Interested button")
 	public void user_clicks_the_Interested_button() throws Exception {
 		addOnGiftbarPage.waitAndClickElement(addOnGiftbarPage.btn_Giftbar_Interested);
@@ -104,7 +103,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("an interest notification is sent message is displayed")
 	public void an_interest_notification_is_sent_message_is_displayed() throws Exception {
-		Assert.assertTrue(addOnGiftbarPage.getElementText(addOnGiftbarPage.msg_Giftbar_Notification).contentEquals("Thanks — a notification was sent about your interest!"));
+		Assert.assertTrue(addOnGiftbarPage.getElementText(addOnGiftbarPage.msg_Giftbar_Notification)
+				.contentEquals("Thanks — a notification was sent about your interest!"));
 	}
 
 }

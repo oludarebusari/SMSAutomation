@@ -57,18 +57,27 @@ Background: User is logged in and navigates to the Merchant's Dashboard
   And User clicks the Change Plan butto
   Then a message indicating that your plan is updated is displayed
   
+  @tag-Prepaid-Block
+  Scenario: Verify Purchase block option
+  When User clicks the prepaid block option
+  Then the Purchase Message Credits pop up screen appears
+  When User selects a plan from the given option
+  Then the option is selected successfully
+   And User verifies the value of the due Amount 
+  When user clicks the Purchase Now button
+  Then the plan is selected and messages are creadit to the account
   
   @tag-Blacklist-Whitelist
   Scenario: Verify Blacklist-Whitelist option
   When User clicks the Blacklist-whitelist option
   Then the Blacklist-Whitelist page is opened
   When User clicks the Private Campaign mode toggle (Off)
-  Then the blacklist options appears
+  Then the whitelist option appears on the screen
   When User clicks the New button under Blacklist section
-  Then the Add to blacklist window is opened
-  When user adds the number to blacklist and cliks Add Number button
+  Then the Add to whitelist window is opened
+  When user adds the number to whitelist and cliks Add Number button
   Then the number is added to the blacklist
-  
+    
   @tag-Blacklist-Whitelist
   Scenario Outline: Verify Blacklist-Whitelist option
   When User clicks the Blacklist-whitelist option
@@ -79,6 +88,5 @@ Background: User is logged in and navigates to the Merchant's Dashboard
   Then the Add to blacklist window is opened
   When user adds the number to blacklist and cliks Add Number button
   Then the number is added to the blacklist
-  
   
    
