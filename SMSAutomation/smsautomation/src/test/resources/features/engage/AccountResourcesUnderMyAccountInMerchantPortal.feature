@@ -76,7 +76,31 @@ Background: User is logged in and navigates to the Merchant's Dashboard
   When User clicks the New button under Blacklist section
   Then the Add to whitelist window is opened
   When user adds the number to whitelist and cliks Add Number button
-  Then the number is added to the blacklist
+  Then the number is added to the whiteklist
+  Then user confirms that both Copy and CSV buttons are present
+  When user clicks the copy button
+  Then user confirms row data is copied
+  When User clicks the CSV tab
+  Then User confirms that the CSV file is exported to the local machine
+  When User enters an incorrect number in the search box
+  Then a text indicating no matching records is displayed
+  
+    
+  
+  # Workaround for testing the removal of a number from Whitelist
+  @tag-Blacklist-Whitelist-2
+  Scenario: Remove number from Whitelist table and Add number to blacklist
+  When User clicks the Blacklist-whitelist option
+  Then the Blacklist-Whitelist page is opened
+  When User clicks the Private Campaign mode toggle (Off)
+  Then the whitelist option appears on the screen
+  When User clicks the New button under Blacklist section
+  Then the Add to whitelist window is opened
+  When user adds the number to whitelist and cliks Add Number button
+  Then the number is added to the whiteklist
+  When user clicks on the X button user the Actions column
+  Then the number is deleted from the whitelist table
+  
     
   @tag-Blacklist-Whitelist
   Scenario Outline: Verify Blacklist-Whitelist option
