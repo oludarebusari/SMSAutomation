@@ -18,7 +18,7 @@ public class CampaignGroupsPage extends BasePage {
 	}
 
 	// Page Elements
-	
+
 	public @FindBy(xpath = "//a[contains(@class, \"btn-primary\")]") WebElement btn_CampaignGroupsNewBtn;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\") and ./span[(.)=\"Copy\"]]") WebElement btn_Copy;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\") and ./span[(.)=\"CSV\"]]") WebElement btn_CSV;
@@ -55,51 +55,6 @@ public class CampaignGroupsPage extends BasePage {
 	}
 
 	// Page Functions
-	
-	public CampaignGroupsPage clickCampaignGroupsNewBtn() throws Exception {
-		waitAndClickElement(btn_CampaignGroupsNewBtn);
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage clickCampaignGroupsCampaignEditBtn(String campaignName) throws Exception {
-		waitAndClickElement(btn_EditByName(campaignName));
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage clickCampaignGroupsCampaignEditDDownBtn(String campaignName) throws Exception {
-		waitAndClickElement(btn_EditDropDownByName(campaignName));
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage clickCampaignGroupsCampaignDeleteBtn(String name) throws Exception {
-		waitAndClickElement(btn_Delete(name));
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage clickCampaignGroupsPageLeftArrow() throws Exception {
-		waitAndClickElement(btn_Page_Left_Arrow);
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage clickCampaignGroupsPageRightArrow() throws Exception {
-		waitAndClickElement(btn_Page_Right_Arrow);
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage copyCampaignGroups() throws Exception {
-		waitAndClickElement(btn_Copy);
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage exportCampaignGroups() throws Exception {
-		waitAndClickElement(btn_CSV);
-		return new CampaignGroupsPage();
-	}
-
-	public CampaignGroupsPage clickCampaignGroupsPageGroupsLength() throws Exception {
-		waitAndClickElement(drp_Group_Length);
-		return new CampaignGroupsPage();
-	}
 
 	public CampaignGroupsPage selectCampaignGroupsPageGroupsLength(String value) throws Exception {
 		clickOnTextFromDropdownList(drp_Group_Length, value);

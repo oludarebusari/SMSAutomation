@@ -122,29 +122,6 @@ public class MyAccountPage extends BasePage {
 		return getElementText(page_My_Plan_Section);
 	}
 
-	public String getAccountDetailsTxt() throws Exception {
-		return getElementText(page_Account_Details_Section);
-	}
-
-	public String getAccountResourcesTxt() throws Exception {
-		return getElementText(page_Account_Resources_Section);
-	}
-
-	public MyAccountPage clickPlanDetailsLink() throws Exception {
-		waitAndClickElement(lnk_Plan_Details);
-		return new MyAccountPage();
-	}
-
-	public MyAccountPage clickNewPlanChangePlanBtn() throws Exception {
-		waitAndClickElement(btn_Change_Plan_New_Plan);
-		return new MyAccountPage();
-	}
-
-	public MyAccountPage clickChangePlanBtn() throws Exception {
-		waitAndClickElement(btn_Change_Plan);
-		return new MyAccountPage();
-	}
-
 	public MyAccountPage clickAccountContactEditBtn() throws Exception {
 		waitAndClickElement(btn_Account_Contact_Edit);
 		return new MyAccountPage();
@@ -153,19 +130,6 @@ public class MyAccountPage extends BasePage {
 	public MyAccountPage clickAccountContactChangePasswordBtn() throws Exception {
 		waitAndClickElement(btn_Account_Contact_Change_Password);
 		return new MyAccountPage();
-	}
-
-	public MyAccountPage clickBillingContactEditBtn() throws Exception {
-		waitAndClickElement(btn_Billing_Contact_Edit);
-		return new MyAccountPage();
-	}
-
-	public String getPlanDetailsTxt() throws Exception {
-		return getElementText(win_Plan_Details_Body);
-	}
-
-	public String getPlanUpdateMessageTxt() throws Exception {
-		return getElementText(txt_Plan_Update_Message);
 	}
 
 	public String getPlanNameTxt() throws Exception {
@@ -228,15 +192,7 @@ public class MyAccountPage extends BasePage {
 	}
 
 	// New Plan Window methods
-	public String getNewPlanWindowTitle() throws Exception {
-		return getElementText(mod_New_Plan_Title);
-	}
-
-	public MyAccountPage selectPlan(String planName) throws Exception {
-		waitAndClickElement(rBtn_Plan_Name_Opt(planName));
-		return new MyAccountPage();
-	}
-
+	
 	// Account Contact methods
 
 	public String getAccountContactEditTitle() throws Exception {
@@ -278,10 +234,6 @@ public class MyAccountPage extends BasePage {
 	}
 
 	// Billing Contact methods
-
-	public String getBillingContactEditTitle() throws Exception {
-		return getElementText(mod_Bill_Contact_Title);
-	}
 
 	public String getBillingContactCity() throws Exception {
 		return getElementText(txt_Bill_Contact_City);

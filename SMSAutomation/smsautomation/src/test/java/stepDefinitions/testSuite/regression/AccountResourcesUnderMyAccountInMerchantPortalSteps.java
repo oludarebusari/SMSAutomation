@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import junit.framework.Assert;
 import pageObjects.license.BlackListPage;
 import pageObjects.license.MyAccountPage;
-import pageObjects.license.modal.AddToWhitelistModal;
+import pageObjects.license.modal.AddToBlacklistWhitelistModal;
 import pageObjects.license.modal.AutoPurchaseModal;
 import pageObjects.license.modal.PurchaseHistoryModal;
 import pageObjects.license.modal.PurchaseMessageCreditsModal;
@@ -20,7 +20,8 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	PurchaseMessageCreditsModal purchaseMessageCreditsModal = PageFactory.initElements(driver,
 			PurchaseMessageCreditsModal.class);
 	BlackListPage blackListPage = PageFactory.initElements(driver, BlackListPage.class);
-	AddToWhitelistModal addToWhitelistModal = PageFactory.initElements(driver, AddToWhitelistModal.class);
+	AddToBlacklistWhitelistModal addToBlackWhitelistModal = PageFactory.initElements(driver,
+			AddToBlacklistWhitelistModal.class);
 
 	@Then("User verifies the Account Resources section options")
 	public void user_verifies_the_Account_Resources_section_options() throws Exception {
@@ -159,7 +160,6 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	@Then("the Blacklist-Whitelist page is opened")
 	public void the_Blacklist_Whitelist_pop_up_screen_appears() throws Exception {
 		Assert.assertEquals("Blacklist/Whitelist", blackListPage.getElementText(blackListPage.pag_Blacklist_Whitelist));
-
 	}
 
 	@When("User clicks the Private Campaign mode toggle \\(Off)")
@@ -172,21 +172,21 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 		Assert.assertEquals("Whitelist", blackListPage.getElementText(blackListPage.txt_Whitelist_Subtitle));
 	}
 
-	@When("User clicks the New button under Blacklist section")
-	public void user_clicks_the_New_button_under_Blacklist_section() throws Exception {
+	@When("User clicks the New button under Whitelist section")
+	public void user_clicks_the_New_button_under_Whitelist_section() throws InterruptedException {
 		blackListPage.waitAndClickElement(blackListPage.btn_Whitelist_New);
 	}
 
 	@Then("the Add to whitelist window is opened")
 	public void the_Add_to_whitelist_window_is_opened() throws InterruptedException {
 		Assert.assertEquals("Add to Whitelist",
-				addToWhitelistModal.getElementText(addToWhitelistModal.mod_Add_To_Whitelist_Title));
+				addToBlackWhitelistModal.getElementText(addToBlackWhitelistModal.mod_Add_To_Whitelist_Title));
 	}
 
 	@When("user adds the number to whitelist and cliks Add Number button")
 	public void user_adds_the_number_to_whitelist_and_cliks_Add_Number_button() throws Exception {
-		addToWhitelistModal.sendKeysToWebElement(addToWhitelistModal.txt_Phone_Number, "5551112424");
-		addToWhitelistModal.waitAndClickElement(addToWhitelistModal.btn_Add_Number);
+		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "5551112424");
+		addToBlackWhitelistModal.waitAndClickElement(addToBlackWhitelistModal.btn_Add_Number);
 	}
 
 	@Then("the number is added to the whiteklist")
@@ -195,31 +195,32 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 		Assert.assertEquals("555-111-2424",
 				blackListPage.getElementText(blackListPage.txt_WhiteList_Number("555-111-2424")));
 	}
-	
+
 	@Then("user confirms that both Copy and CSV buttons are present")
 	public void user_confirms_that_both_Copy_and_CSV_buttons_are_present() {
-	Assert.assertTrue(blackListPage.btn_Copy.isDisplayed());
-	Assert.assertTrue(blackListPage.btn_CSV.isDisplayed());
+		Assert.assertTrue(blackListPage.btn_Copy.isDisplayed());
+		Assert.assertTrue(blackListPage.btn_CSV.isDisplayed());
 	}
 
 	@When("user clicks the copy button")
 	public void user_clicks_the_copy_button() throws Exception {
-	 blackListPage.waitAndClickElement(blackListPage.btn_Copy);
+		blackListPage.waitAndClickElement(blackListPage.btn_Copy);
 	}
-	
+
 	@Then("user confirms row data is copied")
 	public void user_confirms_row_data_is_copied() throws Exception {
-		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_Copied_To_Clipboard).contentEquals("Copied one row to clipboard"));	
+		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_Copied_To_Clipboard)
+				.contentEquals("Copied one row to clipboard"));
 	}
-	
+
 	@When("User clicks the CSV tab")
 	public void user_clicks_the_CSV_tab() throws Exception {
-	 blackListPage.waitAndClickElement(blackListPage.btn_CSV);
+		blackListPage.waitAndClickElement(blackListPage.btn_CSV);
 	}
 
 	@Then("User confirms that the CSV file is exported to the local machine")
 	public void user_confirms_that_the_CSV_file_is_exported_to_the_local_machine() {
-	   
+
 	}
 
 	@When("User enters an incorrect number in the search box")
@@ -229,21 +230,54 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("a text indicating no matching records is displayed")
 	public void a_text_indicating_no_matching_records_is_displayed() throws Exception {
-		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_No_Match_Message).contentEquals("No matching records found"));
+		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_No_Match_Message)
+				.contentEquals("No matching records found"));
 		blackListPage.waitAndClickElement(blackListPage.tog_On);
 	}
 
 	@When("user clicks on the X button user the Actions column")
 	public void user_clicks_on_the_X_button_user_the_Actions_column() throws Exception {
-		blackListPage.waitAndClickElement(blackListPage.btn_Whitelist_Remove);
-		blackListPage.waitAndClickElement(blackListPage.tog_On);
+//		To be completed when https://jira.devfactory.com/browse/PLSMS-986 is fixed
+
 	}
 
 	@Then("the number is deleted from the whitelist table")
 	public void the_number_is_deleted_from_the_whitelist_table() throws Exception {
-		Thread.sleep(1000);
-		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_No_Data_Message).contentEquals("No data available in table"));
-//		blackListPage.waitAndClickElement(blackListPage.tog_On);
+//		To be completed when https://jira.devfactory.com/browse/PLSMS-986 is fixed
+	}
+
+
+	@When("User leaves the Private Campaign mode toggle as Off")
+	public void user_leaves_the_Private_Campaign_mode_toggle_as_Off() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.tog_Off);
+		Assert.assertTrue(blackListPage.getElementText(blackListPage.tog_Off).contentEquals("Off"));
+	}
+
+	@Then("User clicks the Blacklist New button")
+	public void user_clicks_the_Blacklist_New_button() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.btn_Blacklist_New);
+	}
+
+	@Then("the blacklist options appears")
+	public void the_blacklist_options_appears() throws Exception {
+		Assert.assertEquals("Blacklist", blackListPage.getElementText(blackListPage.txt_Blacklist_Subtitle));
+	}
+
+	@Then("the Add to blacklist window is opened")
+	public void the_Add_to_blacklist_window_is_opened() throws Exception {
+		Assert.assertEquals("Add to Blacklist",
+				addToBlackWhitelistModal.getElementText(addToBlackWhitelistModal.mod_Add_To_Blacklist_Title));
+	}
+
+	@When("user adds the number to blacklist and cliks Add Number button")
+	public void user_adds_the_number_to_blacklist_and_cliks_Add_Number_button() throws Exception {
+		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "5211112424");
+		addToBlackWhitelistModal.waitAndClickElement(addToBlackWhitelistModal.btn_Add_Number);
+	}
+
+	@Then("the number is added to the blacklist")
+	public void the_number_is_added_to_the_blacklist() {
+
 	}
 
 }

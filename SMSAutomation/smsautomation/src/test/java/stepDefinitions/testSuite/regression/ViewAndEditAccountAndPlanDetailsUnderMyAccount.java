@@ -33,38 +33,38 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@And("User verifies the sections on my account page")
 	public void user_verifies_the_sections_on_my_account_page() throws Exception {
-		Assert.assertEquals("Account Details", myAccountPage.getAccountDetailsTxt());
-		Assert.assertEquals("Account Resources", myAccountPage.getAccountResourcesTxt());
+		Assert.assertEquals("Account Details", myAccountPage.getElementText(myAccountPage.page_Account_Details_Section));
+		Assert.assertEquals("Account Resources", myAccountPage.getElementText(myAccountPage.page_Account_Resources_Section));
 	}
 
 	@And("User verifies My Plan section on my account page")
 	public void user_verifies_the_My_Plan_section_on_my_account_page() throws Exception {
-		Assert.assertEquals("My Plan", myAccountPage.getMyPlanTxt());
+		Assert.assertEquals("My Plan", myAccountPage.getElementText(myAccountPage.page_My_Plan_Section));
 	}
 
 	@When("User clicks on the Plan Details link")
 	public void user_clicks_on_the_Plan_Details_link() throws Exception {
-		myAccountPage.clickPlanDetailsLink();
+		myAccountPage.waitAndClickElement(myAccountPage.lnk_Plan_Details);
 	}
 
 	@Then("details of the plan is displayed within the Plan Details popup window")
 	public void details_of_the_plan_is_displayed_within_the_Plan_Details_popup_window() throws Exception {
-		Assert.assertEquals(Constant.PLAN_DETAILS, myAccountPage.getPlanDetailsTxt());
+		Assert.assertEquals(Constant.PLAN_DETAILS, myAccountPage.getElementText(myAccountPage.win_Plan_Details_Body));
 	}
 
 	@And("User clicks on the Change Plan button")
 	public void user_clicks_on_the_Change_Plan_button() throws Exception {
-		myAccountPage.clickChangePlanBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Change_Plan);
 	}
 
 	@Then("User confirms a new window popup to select a plan")
 	public void user_confirms_a_new_window_popu_to_select_a_plan() throws Exception {
-		Assert.assertEquals("Select a New Plan", myAccountPage.getNewPlanWindowTitle());
+		Assert.assertEquals("Select a New Plan", myAccountPage.getElementText(myAccountPage.mod_New_Plan_Title));
 	}
 
 	@And("User selects another plan")
 	public void user_selects_another_plan() throws Exception {
-		myAccountPage.selectPlan(Constant.NEW_PLAN_DETAILS);
+		myAccountPage.waitAndClickElement(myAccountPage.rBtn_Plan_Name_Opt(Constant.NEW_PLAN_DETAILS));
 	}
 
 	@Then("User verifies that the plan is selected")
@@ -75,71 +75,73 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@And("User clicks Change Plan button")
 	public void user_clicks_Change_Plan_button() throws Exception {
-		myAccountPage.clickNewPlanChangePlanBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Change_Plan_New_Plan);
 	}
 
 	@Then("Success message is displayed and the plan is changed to the new plan")
 	public void success_message_is_displayed_and_the_plan_is_changed_to_the_new_plan() throws Exception {
-		Assert.assertEquals("Success! Your plan is updated!", myAccountPage.getPlanUpdateMessageTxt());
+		Assert.assertEquals("Success! Your plan is updated!", myAccountPage.getElementText(myAccountPage.txt_Plan_Update_Message));
 	}
 	
 	@Then("User clicks on the Change Plan button agaian")
 	public void user_clicks_on_the_Change_Plan_button_agaian() throws Exception {
-		myAccountPage.clickChangePlanBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Change_Plan);
 	}
 
 	@Then("User selects a different plan and clicks and clicks the Change plan button")
 	public void user_selects_a_different_plan_and_clicks_and_clicks_the_Change_plan_button() throws Exception {
-		myAccountPage.selectPlan(Constant.CURRENT_PLAN_NAME);
-		myAccountPage.clickNewPlanChangePlanBtn();;
+		myAccountPage.waitAndClickElement(myAccountPage.rBtn_Plan_Name_Opt(Constant.CURRENT_PLAN_NAME));
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Change_Plan_New_Plan);
 	}
 
 
 	@And("User clicks the edit button under Contact Details")
 	public void user_clicks_the_edit_button_under_Contact_Details() throws Exception {
-		myAccountPage.clickAccountContactEditBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Edit);
+		
 	}
 
 	@Then("the Account Contact details screen appears")
 	public void the_Account_Contact_details_screen_appears() throws Exception {
-		myAccountPage.getAccountContactEditTitle();
+		myAccountPage.getElementText(myAccountPage.mod_Account_Contact_Edit_Title);
+		
 	}
 
 	@And("User made some changes and click Save Changes")
 	public void user_made_some_changes_and_click_Save_Changes() throws Exception {
-		myAccountPage.setFirstName("Aclate2");
-		myAccountPage.setLastName("QA2");
-		myAccountPage.setStreetAddress("ABC Testing RD");
-		myAccountPage.setAccountContactCity("Grove");
-		myAccountPage.setAccountContactPostalCode("123456");
-		myAccountPage.clickAccountContactEditSaveChanges();
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_First, "Aclate2");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_LastName, "QA2");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_StreetAddr, "ABC Testing RD");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_City, "Grove");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_PostalCode, "123456");
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Edit_SaveChanges);
 	}
 
 	@Then("A successful message indicating that the changes were saved is displayed")
 	public void a_suucessful_message_indicating_that_the_changes_were_saved_is_displayed() throws Exception {
-		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
+		Assert.assertEquals("Account Details successfully saved", myAccountPage.getElementText(myAccountPage.txtF_Account_Details_Save_Alert));
 	}
 
 	@Then("User clicks edit button again and revert the changes made to Account Details")
 	public void user_clicks_edit_button_again_and_revert_the_changes_made_to_Account_Details() throws Exception {
-		myAccountPage.clickAccountContactEditBtn();
-		myAccountPage.setFirstName("Aclate");
-		myAccountPage.setLastName("QA");
-		myAccountPage.setStreetAddress("123 Testing Street");
-		myAccountPage.setAccountContactCity("Denver");
-		myAccountPage.setAccountContactPostalCode("1234567");
-		myAccountPage.clickAccountContactEditSaveChanges();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Edit);
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_First,"Aclate");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_LastName, "QA");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_StreetAddr, "123 Testing Street");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_City, "Denver");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_PostalCode, "1234567");
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Edit_SaveChanges);
 	}
 
 	@And("User clicks edit button under Billing contact")
 	public void user_clicks_edit_button_under_Billing_contact() throws Exception {
 		Thread.sleep(500);
-		myAccountPage.clickBillingContactEditBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Billing_Contact_Edit);
 	}
 
 	@Then("the Billing Contact details screen appears")
 	public void the_Billing_Contact_details_screen_appears() throws Exception {
-		Assert.assertEquals("Billing Contact", myAccountPage.getBillingContactEditTitle());
+		Assert.assertEquals("Billing Contact", myAccountPage.getElementText(myAccountPage.mod_Bill_Contact_Title));
 	}
 
 	@Then("User made some changes and click save button")

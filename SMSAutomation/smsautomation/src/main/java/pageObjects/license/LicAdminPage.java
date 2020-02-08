@@ -119,11 +119,6 @@ public class LicAdminPage extends BasePage {
 		return new LicAdminPage();
 	}
 	
-	public LicAdminPage clickCloseUpdateStatusOfBusinesses() throws Exception {
-		waitAndClickElement(win_Update_Status_Of_Business);
-		return new LicAdminPage();
-	}
-
 	public LicAdminPage waitForBusinessesDialogToDisappear() throws IOException {
 		waitUntilPreLoadElementDissapears(By.xpath("//div[@class=\"modal-header\" and .//h4[@id=\"terminate_modal_label\"]]//button[@aria-label=\"Close\"]"));
 		return new LicAdminPage();
