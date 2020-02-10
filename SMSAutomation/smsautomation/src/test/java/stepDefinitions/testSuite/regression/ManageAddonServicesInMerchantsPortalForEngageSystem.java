@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import junit.framework.Assert;
+import pageObjects.engage.EngageDashboardPage;
 import pageObjects.engage.ManageSitesPage;
 import pageObjects.license.AddOnGiftbarPage;
 import pageObjects.license.AdvertisersPage;
@@ -19,15 +20,44 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	JsonConfigReader reader = new JsonConfigReader();
 
-	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
-	AdvertisersPage advertisersPage = PageFactory.initElements(driver, AdvertisersPage.class);
-	LicAdminPage licAdminPage = PageFactory.initElements(driver, LicAdminPage.class);
-	ManageSitesPage manageSitesPage = PageFactory.initElements(driver, ManageSitesPage.class);
 	AddOnServicesSubMenu addOnServicesSubMenu = PageFactory.initElements(driver, AddOnServicesSubMenu.class);
 	AddOnGiftbarPage addOnGiftbarPage = PageFactory.initElements(driver, AddOnGiftbarPage.class);
+	AdvertisersPage advertisersPage = PageFactory.initElements(driver, AdvertisersPage.class);
+	EngageDashboardPage engDashboard = PageFactory.initElements(driver, EngageDashboardPage.class);
+	LicAdminPage licAdminPage = PageFactory.initElements(driver, LicAdminPage.class);
+	ManageSitesPage manageSitesPage = PageFactory.initElements(driver, ManageSitesPage.class);
+	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
+	
+	
+	@Then("User checks the page content \\(Title, list of Resellers, search and Status)")
+	public void user_checks_the_page_content_Title_list_of_Resellers_search_and_Status() throws Exception {
+		Assert.assertTrue(driver.getTitle().contentEquals("Engage Dashboard"));
+		Assert.assertTrue(engDashboard.txtF_Search.isDisplayed());
+		Assert.assertTrue(engDashboard.table_Reseller.isDisplayed());
+	}
+
+	@Then("User confirms the possibility to Copy to clipboard and export to csv")
+	public void user_confirms_the_possibility_to_Copy_to_clipboard_and_export_to_csv() {
+		Assert.assertTrue(engDashboard.btn_Copy.isDisplayed());
+		Assert.assertTrue(engDashboard.btn_CSV.isDisplayed());
+	}
+	
+	@Then("user is redirected to the manage site page")
+	public void user_is_redirected_to_the_manage_site_page() throws Exception {
+		Assert.assertTrue(manageSitesPage.getElementText(manageSitesPage.pag_Title).contentEquals("Manage Resellers"));
+		Assert.assertTrue(manageSitesPage.SearchTxtF.isDisplayed());
+		Assert.assertTrue(manageSitesPage.table_Reseller.isDisplayed());
+		Assert.assertTrue(manageSitesPage.btn_Copy.isDisplayed());
+		Assert.assertTrue(manageSitesPage.btn_CSV.isDisplayed());
+	}
 
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
+
+		if (reader.getConfigValue("DriverConfig", "environment").equals("remoteHub")) {
+			manageSitesPage.waitAndClickElement(manageSitesPage.tog_Navbar);
+		}
+
 		manageSitesPage.waitAndClickElement(manageSitesPage.menu_Manage_Resellers);
 	}
 

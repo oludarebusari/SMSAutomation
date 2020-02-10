@@ -124,6 +124,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("User clicks edit button again and revert the changes made to Account Details")
 	public void user_clicks_edit_button_again_and_revert_the_changes_made_to_Account_Details() throws Exception {
+		Thread.sleep(500);
 		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Edit);
 		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_First,"Aclate");
 		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_LastName, "QA");
@@ -146,29 +147,29 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 
 	@Then("User made some changes and click save button")
 	public void user_made_some_changes_and_click_save_button() throws Exception {
-		myAccountPage.setBillingCity("Grove");
-		myAccountPage.setBillingPostalCode("654321");
-		myAccountPage.clickBillingContactEditSaveChanges();
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Bill_Contact_City, "Grove");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Bill_Contact_City, "654321");
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Bill_Contact_Edit_SaveChanges);;
 	}
 
 	@Then("A successful message indicating that the details were saved is displayed")
 	public void a_suucessful_message_indicating_that_the_details_were_saved_is_displayed() throws Exception {
-		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
+		Assert.assertEquals("Account Details successfully saved", myAccountPage.getElementText(myAccountPage.txtF_Account_Details_Save_Alert));
 	}
 	
 	@Then("User verifies the changes made to billing contacts")
 	public void user_verifies_the_changes_made_to_billing_contacts() throws Exception {
-		Assert.assertEquals("654321", myAccountPage.getBillingContactPostalCode());
+		Assert.assertEquals("654321", myAccountPage.getElementText(myAccountPage.txt_Bill_Contact_PostalCode));
 	}
 	
 	@And("User clicks the change password button")
 	public void user_clicks_the_change_password_button() throws Exception {
-		myAccountPage.clickAccountContactChangePasswordBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Change_Password);;
 	}
 
 	@Then("the change password window is opened")
 	public void the_change_password_window_is_opened() throws Exception {
-		Assert.assertEquals("Change Password", myAccountPage.getChangePasswordWindowTitle());
+		Assert.assertEquals("Change Password", myAccountPage.getElementText(myAccountPage.mod_Account_Contact_ChangePassword_Title));
 	}
 
 	@Then("User verifies the fields, icon and button on the Change password window")
@@ -181,98 +182,100 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	
 	@And("User clicks on the new password tooltip icon")
 	public void user_clicks_on_the_new_password_tooltip_icon() throws Exception {
-		myAccountPage.clickNewPasswordTooltipIcon();
+		myAccountPage.waitAndClickElement(myAccountPage.icon_New_PasswordTooltip);;
 	}
 
 	@Then("the minimum password requirement window is displayed")
 	public void the_minimum_password_requirement_window_is_displayed() throws Exception {
-		Assert.assertEquals(Constant.PASSWORD_REQUIREMENTS, myAccountPage.getPasswordRequirementsTxt());
+		Assert.assertEquals(Constant.PASSWORD_REQUIREMENTS, myAccountPage.getElementText(myAccountPage.txt_Weak_New_PasswordTooltip));
 	}
 
 	@Then("User leaves current and new password fields blank and clicks on the Change password button")
 	public void user_leaves_current_and_new_password_fields_blank_and_clicks_on_the_Change_password_button()
 			throws Exception {
-		myAccountPage.clickChangePasswordBtn();
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass);;
 	}
 
 	@Then("validation message is displayed")
 	public void validation_message_is_displayed() throws Exception {
-		Assert.assertEquals(Constant.PASSWORD_ERROR_MSG, myAccountPage.getCurrentPasswordErrorMsg());
-		Assert.assertEquals(Constant.PASSWORD_ERROR_MSG, myAccountPage.getNewPasswordErrorMsg());
+		Assert.assertEquals(Constant.PASSWORD_ERROR_MSG, myAccountPage.getElementText(myAccountPage.err_Current_Password));
+		Assert.assertEquals(Constant.PASSWORD_ERROR_MSG, myAccountPage.getElementText(myAccountPage.err_New_Password));
 	}
 
 	@And("User enters invalid current password and valid new password and clicks Change Password")
 	public void user_enters_invalid_current_password_and_valid_new_password_and_clicks_Change_Password() throws Exception {
-		myAccountPage.setCurrentPassword("Invalid");
-		myAccountPage.setNewPassword(Constant.PLAN_PASSWORD);
-		myAccountPage.clickChangePasswordBtn();
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass, "Invalid");
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_ChangePassword_NewPass, Constant.PLAN_PASSWORD);
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass);
 	}
 
 	@Then("Invalid Current password error message is displayed")
 	public void invalid_Current_password_error_message_is_displayed() throws Exception {
-		Assert.assertEquals("Invalid Current Password", myAccountPage.getInvalidCurrentPasswordErrorMsg());
+		Assert.assertEquals("Invalid Current Password", myAccountPage.getElementText(myAccountPage.err_Invalid_Current_Password));
 	}
 
 	@And("User enters a weak new password")
 	public void user_enters_a_weak_new_password() throws Exception {
-		myAccountPage.setCurrentPassword(Constant.PLAN_PASSWORD);
-		myAccountPage.setNewPassword("1234");
-		myAccountPage.clickChangePasswordBtn();
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass, Constant.PLAN_PASSWORD);
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_ChangePassword_NewPass, "1234");
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass);
 	}
 
 	@Then("Weak password warning message is displayed")
 	public void weak_password_warning_message_is_displayed() throws Exception {
-		Assert.assertEquals("Too weak. Refer to help icon.", myAccountPage.getWeakNewPasswordWarningMsg());
+		Assert.assertEquals("Too weak. Refer to help icon.", myAccountPage.getElementText(myAccountPage.wrn_TooWeak_New_Password));
 	}
 
 	@Then("User enters the correct password for current password and new password and clicks on Change Password button")
 	public void user_enters_the_correct_password_for_current_password_and_new_password_and_clicks_on_Change_Password_button()
 			throws Exception {
 		Robot robot = new Robot();
-		myAccountPage.setCurrentPassword(Constant.PLAN_PASSWORD);
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass, Constant.PLAN_PASSWORD);
 		action.contextClick(myAccountPage.txtF_Account_Contact_ChangePassword_CurrPass).perform();
 		robot.keyPress(KeyEvent.VK_CONTROL); 
 		robot.keyPress(KeyEvent.VK_C);
 		robot.keyRelease(KeyEvent.VK_C);
 		robot.keyRelease(KeyEvent.VK_CONTROL); 
-		myAccountPage.setNewPassword(Constant.PLAN_PASSWORD);
-		myAccountPage.clickChangePasswordBtn();
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Account_Contact_ChangePassword_NewPass, Constant.PLAN_PASSWORD);
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_ChangePassword_ChangePass);
 	}
 
 	@Then("Success message is displayed")
 	public void success_message_is_displayed() throws Exception {
-		Assert.assertEquals("Account Details successfully saved", myAccountPage.getAccountDetailsSavedMessageTxt());
+		Assert.assertEquals("Account Details successfully saved", myAccountPage.getElementText(myAccountPage.txtF_Account_Details_Save_Alert));
 	}
 	
 	@Then("User verifies the  Billing section of the Payment section")
 	public void user_verifies_the_Billing_section_of_the_Payment_section() throws Exception {
-		Assert.assertEquals("Billing Period", myAccountPage.getBillingPeriodText());
+		Assert.assertEquals("Billing Period", myAccountPage.getElementText(myAccountPage.txt_Billing_Period));
 	}
 	
 	@And("User clicks the Edit button under Credit Card")
 	public void user_clicks_the_Edit_button_under_Credit_Card() throws Exception {
-	  myAccountPage.clickCreditCardEditBtn(); 
+	  myAccountPage.waitAndClickElement(myAccountPage.btn_Credit_Card_Edit); 
 	}
 
 	@Then("Credit card details windows is opened")
 	public void credit_card_details_windows_is_opened() throws Exception {
-		Assert.assertEquals("Credit Card Details", myAccountPage.getCreditCardEditTitle());
+		Assert.assertEquals("Credit Card Details", myAccountPage.getElementText(myAccountPage.mod_Credit_Card_Title));
 	}
 
 	@And("User enter valid details on credit card window and click on Update Credit Card button")
 	public void user_enter_valid_details_on_credit_card_window_and_click_on_button() throws Exception  {
-		myAccountPage.setNameOnCard(Constant.CREDIT_CARD_NAME);
-		myAccountPage.setCreditCardNumber(Constant.CREDIT_CARD_NUMBER);
-		myAccountPage.setCreditCardZipCode(Constant.CREDIT_CARD_ZIPCODE);
-		myAccountPage.setCreditCardExpMonth(Constant.CREDIT_CARD_EXP_MONTH);
-		myAccountPage.setCreditCardExpYear(Constant.CREDIT_CARD_EXP_YEAR);
-		myAccountPage.setCreditCardCVV(Constant.CREDIT_CARD_CCV);
-		myAccountPage.clickUpdateCreditCardBtn();
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Name_On_Card, Constant.CREDIT_CARD_NAME);
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Card_Number, Constant.CREDIT_CARD_NUMBER);
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_Zip_Code, Constant.CREDIT_CARD_ZIPCODE);
+		myAccountPage.waitAndClickElement(myAccountPage.lov_Exp_Month);
+		myAccountPage.waitAndClickElement(myAccountPage.num_CreditCardMonth(Constant.CREDIT_CARD_EXP_MONTH));
+		myAccountPage.waitAndClickElement(myAccountPage.lov_Exp_Year);
+		myAccountPage.waitAndClickElement(myAccountPage.num_CreditCardMonth(Constant.CREDIT_CARD_EXP_YEAR));
+		myAccountPage.sendKeysToWebElement(myAccountPage.txtF_CVV, Constant.CREDIT_CARD_CCV);
+		myAccountPage.waitAndClickElement(myAccountPage.btn_Update_Credit_Card);
 	}
 
 	@Then("the details is saved successfully and a successful message is displayed")
 	public void the_details_is_saved_successfully_and_a_successful_message_is_displayed() throws Exception {
-		Assert.assertEquals("CC processing is not configured in the site table!", myAccountPage.getCreditCardUpdateMsg());
+		Assert.assertEquals("CC processing is not configured in the site table!", myAccountPage.getElementText(myAccountPage.txt_Credit_Card_Update_Msg));
 	}
 
 }

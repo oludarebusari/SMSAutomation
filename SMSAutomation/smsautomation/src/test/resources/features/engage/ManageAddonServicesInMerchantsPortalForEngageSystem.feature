@@ -1,6 +1,19 @@
-@RegressionTest
+#@RegressionTest
 Feature: Manage Add On Services in Merchant's portal for Engage System
 
+  @SMSM-131, @RegressionTest
+  Scenario: Verify that User is able to check Manage Resellers page content
+    Given User navigate to Engage url
+    And User enters a valid username
+    And User enters a valid password
+    And User clicks on the login button
+    Then User should be taken to Engage SMS home page
+    And User checks the page content (Title, list of Resellers, search and Status)
+    And User confirms the possibility to Copy to clipboard and export to csv
+    When User clicks the Manage Resellers menubar option
+    Then user is redirected to the manage site page
+
+  @SMSM-200, @RegressionTest
   Scenario: User should be redirected to new window of Merchant's Dashboard
     Given User navigate to Engage url
     And User enters a valid username
