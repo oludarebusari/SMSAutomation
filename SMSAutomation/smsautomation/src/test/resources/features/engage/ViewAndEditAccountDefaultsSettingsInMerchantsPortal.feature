@@ -16,12 +16,12 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag-SMSM-139 @RegressionTest
+
 Feature: View and Edit Account Default settings
   I want to be able to View & edit Account Defaults settings in Merchant's portal
 
-Background: User is logged in and navigates to the Merchant's Dashboard
-		Given User navigate to Engage url
+  Background: User is logged in and navigates to the Merchant's Dashboard
+    Given User navigate to Engage url
     And User enters a valid username
     And User enters a valid password
     And User clicks on the login button
@@ -30,12 +30,12 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page
     And User clicks Business tabs at the left side
-    Then the merchants detailed information is listed
+    Then the Businesses page is opened
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
     And User clicks the Settings menu
 
-  @tag-View-Settings-page
+  @SMSM-139-View-Settings-page @RegressionTest
   Scenario: View Settings page
     And User clicks the Accounts Defaults menu
     Then AccountDefaults page is displayed
@@ -44,7 +44,7 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     And User clicks on Web Widget link from the LHS menu
     Then User is redirected to the Web Widget page, Configure your widget and preview fields are displayed
 
-  @tag-View-Settings-Account-Defaults
+  @SMSM-139-View-Settings-Account-Defaults @RegressionTest
   Scenario: View Settings-Account Defaults
     And User clicks the Account Defaults
     Then the Accounts Defaults page is displayed
@@ -53,5 +53,3 @@ Background: User is logged in and navigates to the Merchant's Dashboard
     Then Saved validation message is displayed within the Inbox section
     And User enters the default first name variable value and click save button
     Then Saved validation message is displayed within the Default value section
-    
-    

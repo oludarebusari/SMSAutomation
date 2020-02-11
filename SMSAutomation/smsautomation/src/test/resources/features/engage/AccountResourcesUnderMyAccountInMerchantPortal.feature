@@ -16,7 +16,6 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag-SMSM-138 @RegressionTest
 Feature: View and Edit account resources under My Account in Merchant's Portal
 
   Background: User is logged in and navigates to the Merchant's Dashboard
@@ -29,13 +28,13 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page
     And User clicks Business tabs at the left side
-    Then the merchants detailed information is listed
+    Then the Businesses page is opened
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
     And User clicks on My Accounts from the left hand side menu
     Then User is redirected to my account page
 
-  @tag-Purchase-History
+  @SMSM-138-Purchase-History @RegressionTest
   Scenario: Verify Purchase History option
     Then User verifies the Account Resources section options
     When User clicks on Purchase History option
@@ -48,7 +47,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     When User clicks on the CSV tab
     Then CSV file is created and exported to the local machine
 
-  @tag-Auto-Purchase
+  @SMSM-138-Auto-Purchase @RegressionTest
   Scenario: Verify Auto Purchase option
     When User clicks the Auto Purchase option
     Then Auto Purchase window pops
@@ -56,7 +55,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     And User clicks the Change Plan butto
     Then a message indicating that your plan is updated is displayed
 
-  @tag-Prepaid-Block
+  @SMSM-138-Prepaid-Block @RegressionTest
   Scenario: Verify Purchase block option
     When User clicks the prepaid block option
     Then the Purchase Message Credits pop up screen appears
@@ -66,7 +65,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     When user clicks the Purchase Now button
     Then the plan is selected and messages are creadit to the account
 
-  @tag-Blacklist-Whitelist-1
+  @SMSM-138-Blacklist-Whitelist-1 @RegressionTest
   Scenario: Verify Whitelist option
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
@@ -85,7 +84,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     Then a text indicating no matching records is displayed
 
   # Workaround for testing the removal of a number from Whitelist
-  @tag-Whitelist-2
+  @SMSM-138-Whitelist-2 @RegressionTest
   Scenario: Remove number from Whitelist table and Add number to blacklist
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
@@ -98,7 +97,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     When user clicks on the X button user the Actions column
     Then the number is deleted from the whitelist table
 
-  @tag-Blacklist
+  @SMSM-138-Blacklist @RegressionTest
   Scenario: Verify Blacklist option
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened

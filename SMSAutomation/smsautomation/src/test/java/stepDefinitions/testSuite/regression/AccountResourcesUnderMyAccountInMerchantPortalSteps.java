@@ -23,6 +23,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	AddToBlacklistWhitelistModal addToBlackWhitelistModal = PageFactory.initElements(driver,
 			AddToBlacklistWhitelistModal.class);
 
+	//@SMSM-138-Purchase-History @RegressionTest
 	@Then("User verifies the Account Resources section options")
 	public void user_verifies_the_Account_Resources_section_options() throws Exception {
 		Assert.assertEquals("Prepaid Blocks", myAccountPage.getElementText(myAccountPage.lnk_Prepaid_Blocks));
@@ -82,6 +83,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	}
 
+    //@SMSM-138-Auto-Purchase @RegressionTest
 	@When("User clicks the Auto Purchase option")
 	public void user_clicks_the_Auto_Purchase_option() throws Exception {
 		myAccountPage.waitAndClickElement(myAccountPage.lnk_Auto_Purchase);
@@ -109,6 +111,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 				myAccountPage.getElementText(myAccountPage.txt_Auto_Purchase_Update_Message));
 	}
 
+	//  @SMSM-138-Prepaid-Block @RegressionTest
 	@When("User clicks the prepaid block option")
 	public void user_clicks_the_prepaid_block_option() throws Exception {
 		myAccountPage.waitAndClickElement(myAccountPage.lnk_Prepaid_Blocks);
@@ -152,6 +155,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 				myAccountPage.getElementText(myAccountPage.txt_Purchase_Message_Credit_Update_Message));
 	}
 
+	//@SMSM-138-Blacklist-Whitelist-1 @RegressionTest
 	@When("User clicks the Blacklist-whitelist option")
 	public void user_clicks_the_Blacklist_whitelist_option() throws Exception {
 		myAccountPage.waitAndClickElement(myAccountPage.lnk_Blacklist_Whitelist);
@@ -235,6 +239,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 		blackListPage.waitAndClickElement(blackListPage.tog_On);
 	}
 
+	//@SMSM-138-Whitelist-2 @RegressionTest
 	@When("user clicks on the X button user the Actions column")
 	public void user_clicks_on_the_X_button_user_the_Actions_column() throws Exception {
 //		To be completed when https://jira.devfactory.com/browse/PLSMS-986 is fixed
@@ -246,7 +251,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 //		To be completed when https://jira.devfactory.com/browse/PLSMS-986 is fixed
 	}
 
-
+    //@SMSM-138-Blacklist @RegressionTest
 	@When("User leaves the Private Campaign mode toggle as Off")
 	public void user_leaves_the_Private_Campaign_mode_toggle_as_Off() throws Exception {
 		blackListPage.waitAndClickElement(blackListPage.tog_Off);

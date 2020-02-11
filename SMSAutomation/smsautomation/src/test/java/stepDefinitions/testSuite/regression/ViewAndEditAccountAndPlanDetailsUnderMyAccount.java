@@ -20,7 +20,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	
-
+	//@SMSM-137-Verify-Plan-Details @RegressionTest
 	@When("User clicks on My Accounts from the left hand side menu")
 	public void user_clicks_on_My_Accounts_from_the_left_hand_side_menu() throws Exception {
 		merchantMenu.waitAndClickElement(merchantMenu.menu_My_Account);
@@ -52,6 +52,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 		Assert.assertEquals(Constant.PLAN_DETAILS, myAccountPage.getElementText(myAccountPage.win_Plan_Details_Body));
 	}
 
+	//@SMSM-137-Change-Plan @RegressionTest
 	@And("User clicks on the Change Plan button")
 	public void user_clicks_on_the_Change_Plan_button() throws Exception {
 		myAccountPage.waitAndClickElement(myAccountPage.btn_Change_Plan);
@@ -94,17 +95,15 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 		myAccountPage.waitAndClickElement(myAccountPage.btn_Change_Plan_New_Plan);
 	}
 
-
+	//@SMSM-137-Edit-Account-Contact-And-Billing @RegressionTest
 	@And("User clicks the edit button under Contact Details")
 	public void user_clicks_the_edit_button_under_Contact_Details() throws Exception {
 		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Edit);
-		
 	}
 
 	@Then("the Account Contact details screen appears")
 	public void the_Account_Contact_details_screen_appears() throws Exception {
 		myAccountPage.getElementText(myAccountPage.mod_Account_Contact_Edit_Title);
-		
 	}
 
 	@And("User made some changes and click Save Changes")
@@ -162,6 +161,7 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactor
 		Assert.assertEquals("654321", myAccountPage.getElementText(myAccountPage.txt_Bill_Contact_PostalCode));
 	}
 	
+    //@SMSM-137-Change-Password-Account-Contact @RegressionTest
 	@And("User clicks the change password button")
 	public void user_clicks_the_change_password_button() throws Exception {
 		myAccountPage.waitAndClickElement(myAccountPage.btn_Account_Contact_Change_Password);;

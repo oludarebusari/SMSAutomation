@@ -17,7 +17,6 @@
 ## (Comments)
 #Sample Feature Definition Template
 
-@tag-SMSM-137 @RegressionTest
 Feature: View and Edit account and plan details under my account
 
   Background: User is logged in and navigates to the Merchant's Dashboard
@@ -30,20 +29,20 @@ Feature: View and Edit account and plan details under my account
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page
     And User clicks Business tabs at the left side
-    Then the merchants detailed information is listed
+    Then the Businesses page is opened
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
     And User clicks on My Accounts from the left hand side menu
     Then User is redirected to my account page
 
-  @tag-Verify-Plan-Details
+  @SMSM-137-Verify-Plan-Details @RegressionTest
   Scenario: My Plan details section is present on "My Accounts" screen in Merchant portal
     And User verifies the sections on my account page
     And User verifies My Plan section on my account page
     And User clicks on the Plan Details link
     Then details of the plan is displayed within the Plan Details popup window
 
-  @tag-Change-Plan
+  @SMSM-137-Change-Plan @RegressionTest
   Scenario: Verify the plan can be changed by clicking "Change Plan" button under "My Plan"
     And User clicks on the Change Plan button
     Then User confirms a new window popup to select a plan
@@ -55,7 +54,7 @@ Feature: View and Edit account and plan details under my account
     And User clicks on the Change Plan button agaian
     And User selects a different plan and clicks and clicks the Change plan button
 
-  @tag-Edit-Account-Contact-And-Billing
+  @SMSM-137-Edit-Account-Contact-And-Billing @RegressionTest
   Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account Details"
     And User clicks the edit button under Contact Details
     Then the Account Contact details screen appears
@@ -74,7 +73,7 @@ Feature: View and Edit account and plan details under my account
     And User enter valid details on credit card window and click on Update Credit Card button
     Then the details is saved successfully and a successful message is displayed
 
-  @tag-Change-Password-Account-Contact
+  @SMSM-137-Change-Password-Account-Contact @RegressionTest
   Scenario: Verify the user can Change the Password by clicking "Change Password" button under Contacts section
     And User clicks the change password button
     Then the change password window is opened

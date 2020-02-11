@@ -28,7 +28,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	ManageSitesPage manageSitesPage = PageFactory.initElements(driver, ManageSitesPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	
-	
+	// @SMSM-131, @RegressionTest
 	@Then("User checks the page content \\(Title, list of Resellers, search and Status)")
 	public void user_checks_the_page_content_Title_list_of_Resellers_search_and_Status() throws Exception {
 		Assert.assertTrue(driver.getTitle().contentEquals("Engage Dashboard"));
@@ -50,7 +50,37 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertTrue(manageSitesPage.btn_Copy.isDisplayed());
 		Assert.assertTrue(manageSitesPage.btn_CSV.isDisplayed());
 	}
+	
+//	@SMSM-131, @RegressionTest
+	@Then("User verify the contents - Search textbox, New button, Show Terminated button and table grid")
+	public void user_verify_the_contents_Search_textbox_New_button_Show_Terminated_button_and_table_grid() {
+		Assert.assertTrue(advertisersPage.txt_SearchTxtF.isDisplayed());
+		Assert.assertTrue(advertisersPage.btn_New.isDisplayed());
+		Assert.assertTrue(advertisersPage.btn_Show_Terminated.isDisplayed());
+		Assert.assertTrue(advertisersPage.table_Businesses.isDisplayed());
+	}
 
+	@Then("User confirms the Table Grid elements")
+	public void user_confirms_the_Table_Grid_elements() {
+		Assert.assertTrue(advertisersPage.btn_Copy.isDisplayed());
+		Assert.assertTrue(advertisersPage.btn_CSV.isDisplayed());
+		Assert.assertTrue(advertisersPage.con_Pagination.isDisplayed());
+	}
+	@Then("User confirms the Table columns")
+	public void user_confirms_the_Table_columns() throws InterruptedException {
+		Assert.assertEquals("ID", advertisersPage.getElementText(advertisersPage.col_ID));
+		Assert.assertEquals("Business Contact", advertisersPage.getElementText(advertisersPage.col_Business_Contact));
+		Assert.assertEquals("Business Name", advertisersPage.getElementText(advertisersPage.col_Business_Name));
+		Assert.assertEquals("City, State", advertisersPage.getElementText(advertisersPage.col_City_Sate));
+		Assert.assertEquals("Phone", advertisersPage.getElementText(advertisersPage.col_Phone));
+		Assert.assertEquals("Plan", advertisersPage.getElementText(advertisersPage.col_Plan));
+		Assert.assertEquals("Billing Type", advertisersPage.getElementText(advertisersPage.col_Billing_Type));
+		Assert.assertEquals("Status", advertisersPage.getElementText(advertisersPage.col_Status));
+		Assert.assertEquals("Text Number", advertisersPage.getElementText(advertisersPage.col_Text_Number));
+		Assert.assertEquals("Action", advertisersPage.getElementText(advertisersPage.col_Action));
+}
+
+//	 @SMSM-200, @RegressionTest
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
 
@@ -83,11 +113,11 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		licAdminPage.waitAndClickElement(licAdminPage.menu_Businesses);
 	}
 
-	@Then("the merchants detailed information is listed")
-	public void the_merchants_detailed_information_is_listed() throws Exception {
+	@Then("the Businesses page is opened")
+	public void the_Businesses_page_is_opened() throws Exception {
 		Assert.assertTrue(advertisersPage.getElementText(advertisersPage.page_Heading).contentEquals("Businesses"));
 	}
-
+	
 	@Then("Users click Login tab for a merchant")
 	public void users_click_Login_tab_for_a_merchant() throws Exception {
 		advertisersPage.waitAndClickElement(advertisersPage.getLoginBtnByBusinessContact("QA, Aclate"));
