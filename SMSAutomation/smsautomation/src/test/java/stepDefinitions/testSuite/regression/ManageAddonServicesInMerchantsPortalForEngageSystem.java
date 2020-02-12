@@ -11,8 +11,11 @@ import pageObjects.engage.ManageSitesPage;
 import pageObjects.license.AddOnGiftbarPage;
 import pageObjects.license.AdvertisersPage;
 import pageObjects.license.LicAdminPage;
+import pageObjects.license.SubscriberViewPage;
+import pageObjects.license.SubscribersPage;
 import pageObjects.license.menu.AddOnServicesSubMenu;
 import pageObjects.license.menu.MerchantMenu;
+import pageObjects.license.modal.SendMessageModal;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
 
@@ -27,8 +30,11 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	LicAdminPage licAdminPage = PageFactory.initElements(driver, LicAdminPage.class);
 	ManageSitesPage manageSitesPage = PageFactory.initElements(driver, ManageSitesPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
-	
-	// @SMSM-131, @RegressionTest
+	SubscribersPage subscribersPage = PageFactory.initElements(driver, SubscribersPage.class);
+	SubscriberViewPage subscriberViewPage = PageFactory.initElements(driver, SubscriberViewPage.class);
+	SendMessageModal sendMessageModal = PageFactory.initElements(driver, SendMessageModal.class);
+
+	// @SMSM-131-Check-Manage-Page-Content, @RegressionTest
 	@Then("User checks the page content \\(Title, list of Resellers, search and Status)")
 	public void user_checks_the_page_content_Title_list_of_Resellers_search_and_Status() throws Exception {
 		Assert.assertTrue(driver.getTitle().contentEquals("Engage Dashboard"));
@@ -41,7 +47,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertTrue(engDashboard.btn_Copy.isDisplayed());
 		Assert.assertTrue(engDashboard.btn_CSV.isDisplayed());
 	}
-	
+
 	@Then("user is redirected to the manage site page")
 	public void user_is_redirected_to_the_manage_site_page() throws Exception {
 		Assert.assertTrue(manageSitesPage.getElementText(manageSitesPage.pag_Title).contentEquals("Manage Resellers"));
@@ -50,8 +56,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertTrue(manageSitesPage.btn_Copy.isDisplayed());
 		Assert.assertTrue(manageSitesPage.btn_CSV.isDisplayed());
 	}
-	
-//	@SMSM-131, @RegressionTest
+
+	// @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest
 	@Then("User verify the contents - Search textbox, New button, Show Terminated button and table grid")
 	public void user_verify_the_contents_Search_textbox_New_button_Show_Terminated_button_and_table_grid() {
 		Assert.assertTrue(advertisersPage.txt_SearchTxtF.isDisplayed());
@@ -66,6 +72,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertTrue(advertisersPage.btn_CSV.isDisplayed());
 		Assert.assertTrue(advertisersPage.con_Pagination.isDisplayed());
 	}
+
 	@Then("User confirms the Table columns")
 	public void user_confirms_the_Table_columns() throws InterruptedException {
 		Assert.assertEquals("ID", advertisersPage.getElementText(advertisersPage.col_ID));
@@ -78,9 +85,72 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertEquals("Status", advertisersPage.getElementText(advertisersPage.col_Status));
 		Assert.assertEquals("Text Number", advertisersPage.getElementText(advertisersPage.col_Text_Number));
 		Assert.assertEquals("Action", advertisersPage.getElementText(advertisersPage.col_Action));
-}
+	}
 
-//	 @SMSM-200, @RegressionTest
+//	@SMSM-131-Opening-Subscribers-Page, @RegressionTest
+
+	@Then("User verifies that the Subscribers menu is present")
+	public void user_verifies_that_the_Subscribers_menu_is_present() {
+		Assert.assertTrue(merchantMenu.menu_Subscribers.isDisplayed());
+	}
+
+	@When("User clicks the Subscribers menu")
+	public void user_clicks_the_Subscribers_menu() throws Exception {
+		merchantMenu.waitAndClickElement(merchantMenu.menu_Subscribers);
+	}
+
+	@Then("the Subscribers page is opened")
+	public void the_Subscribers_page_is_opened() throws Exception {
+		Assert.assertTrue(subscribersPage.getElementText(subscribersPage.pag_Title).contentEquals("Subscribers"));
+	}
+
+	@Then("User verifies the list of Subscribers")
+	public void user_verifies_the_list_of_Subscribers() throws NumberFormatException, Exception {
+		Assert.assertTrue(Integer.parseInt(subscribersPage.getElementText(subscribersPage.num_Subscribers).substring(7, 8)) > 0);
+	}
+
+//	 @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
+	@When("user types in a subscriber's name in the textbox and click Get Result button")
+	public void user_types_in_a_subscriber_s_name_in_the_textbox_and_click_Get_Result_button() {
+
+	}
+
+	@Then("the Subscriber is displayed")
+	public void the_Subscriber_is_displayed() {
+
+	}
+
+	@When("user clicks the view button for the Subcriber")
+	public void user_clicks_the_view_button_for_the_Subcriber() {
+
+	}
+
+	@Then("the Subscriber View page is opened")
+	public void the_Subscriber_View_page_is_opened() {
+
+	}
+
+	@When("user clicks the Send Message button")
+	public void user_clicks_the_Send_Message_button() {
+
+	}
+
+	@Then("the Send message window is opened")
+	public void the_Send_message_window_is_opened() {
+
+	}
+
+	@When("user enters a message and click Send button")
+	public void user_enters_a_message_and_click_Send_button() {
+
+	}
+
+	@Then("Message sent notification is displayed on the Subscriber View page")
+	public void message_sent_notification_is_displayed_on_the_Subscriber_View_page() {
+
+	}
+
+//	 @SMSM-200-Verify-the-Giftbar-Profile,, @RegressionTest
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
 
@@ -117,7 +187,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	public void the_Businesses_page_is_opened() throws Exception {
 		Assert.assertTrue(advertisersPage.getElementText(advertisersPage.page_Heading).contentEquals("Businesses"));
 	}
-	
+
 	@Then("Users click Login tab for a merchant")
 	public void users_click_Login_tab_for_a_merchant() throws Exception {
 		advertisersPage.waitAndClickElement(advertisersPage.getLoginBtnByBusinessContact("QA, Aclate"));

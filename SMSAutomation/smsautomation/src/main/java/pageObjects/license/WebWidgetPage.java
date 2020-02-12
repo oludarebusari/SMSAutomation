@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import components.elements.ElementLocator;
+import components.elements.CommonElementLocator;
 import pageObjects.BasePage;
 
 public class WebWidgetPage extends BasePage {
@@ -17,7 +17,7 @@ public class WebWidgetPage extends BasePage {
 
 	// Page Elements
 
-	public @FindBy(xpath = ElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
+	public @FindBy(xpath = CommonElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
 	public @FindBy(xpath = "//h3[(.)=\"Configure Your Widget\"]") WebElement page_Configure_Your_Widget;
 	public @FindBy(xpath = "//input[@name=\"name\"]") WebElement page_Earn_Rewards;
 	

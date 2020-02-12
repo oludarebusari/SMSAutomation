@@ -97,6 +97,7 @@ public class ManageTourSteps extends DriverFactory {
 	@Then("User clicks the Save Tour button")
 	public void user_clicks_the_Save_Tour_button() throws Exception {
 		adminToursEditPage.waitAndClickElement(adminToursEditPage.btn_SaveTour);
+		Thread.sleep(2000);
 	}
 
 	@Then("the tour is saved successfuland user confirmed the changes")
@@ -284,8 +285,9 @@ public class ManageTourSteps extends DriverFactory {
 
 	@Then("the tour is saved successful and user confirmed the changes")
 	public void the_tour_is_saved_successful_and_user_confirmed_the_changes() throws Exception {
+		Thread.sleep(2000);
 		adminToursEditPage.waitAndClickElement(adminToursEditPage.btn_SaveTour);
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 	}
 
 

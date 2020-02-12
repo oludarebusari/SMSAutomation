@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import components.elements.ElementLocator;
+import components.elements.CommonElementLocator;
 import pageObjects.BasePage;
 
 public class AdvertisersPage extends BasePage {
@@ -16,8 +16,8 @@ public class AdvertisersPage extends BasePage {
 
 
 	// Page Elements
-	public @FindBy(xpath = ElementLocator.ELEM_PAGE_TITLE) WebElement page_Heading;
-	public @FindBy(xpath = "//input[contains(@class, \"table-search\")]") WebElement txt_SearchTxtF;
+	public @FindBy(xpath = CommonElementLocator.ELEM_PAGE_TITLE) WebElement page_Heading;
+	public @FindBy(xpath = CommonElementLocator.ELEM_SEARCH_TEXTFIELD) WebElement txt_SearchTxtF;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./a[contains(text(), \"New\")]]") WebElement btn_New;
 	public @FindBy(xpath = "//div[@class=\"toggle-group\" and .//label[contains(@class, \"toggle-off\") and text()=\"Show Terminated\"]]") WebElement btn_Show_Terminated;
 	public @FindBy(xpath = "//div[@id=\"advertisers_wrapper\"]") WebElement table_Businesses;

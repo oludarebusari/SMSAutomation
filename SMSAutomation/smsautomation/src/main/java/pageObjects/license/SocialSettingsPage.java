@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import components.elements.ElementLocator;
+import components.elements.CommonElementLocator;
 import pageObjects.BasePage;
 
 public class SocialSettingsPage extends BasePage {
@@ -16,7 +16,7 @@ public class SocialSettingsPage extends BasePage {
 
 	// Page Elements
 
-	public @FindBy(xpath = ElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
+	public @FindBy(xpath = CommonElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
 	public @FindBy(xpath = "//h4[contains((.), \"Facebook Integration\")]") WebElement page_Facebook_Integration;
 	public @FindBy(xpath = "//div[contains(@class, \"form-group\")]//div[contains(@class, \"selectize-input\")]") WebElement lov_Select_A_Campaign;
 	public @FindBy(xpath = "//button[@type=\"button\" and contains((.), \"Connect to Facebook\")]") WebElement btn_Connect_To_Facebook;

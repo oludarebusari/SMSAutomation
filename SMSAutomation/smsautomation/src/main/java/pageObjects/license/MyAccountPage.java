@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import components.elements.ElementLocator;
+import components.elements.CommonElementLocator;
 import pageObjects.BasePage;
 
 public class MyAccountPage extends BasePage {
@@ -15,7 +15,7 @@ public class MyAccountPage extends BasePage {
 	}
 
 	// Page Elements
-	public @FindBy(xpath = ElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
+	public @FindBy(xpath = CommonElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
 	public @FindBy(xpath = "//h4[(.)=\"My Plan\"]") WebElement page_My_Plan_Section;
 	public @FindBy(xpath = "//h4[(.)=\"Account Details\"]") WebElement page_Account_Details_Section;
 	public @FindBy(xpath = "//h4[(.)=\"Account Resources\"]") WebElement page_Account_Resources_Section;
