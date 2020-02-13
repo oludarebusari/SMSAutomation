@@ -33,7 +33,7 @@ public class BlackListPage extends BasePage {
 	public @FindBy(xpath = "//h2[@class=\"remove-top\" and text()=\"Whitelist\"]") WebElement txt_Whitelist_Subtitle;
 	public @FindBy(xpath = "//h2[@class=\"remove-top\" and text()=\"Blacklist\"]") WebElement txt_Blacklist_Subtitle;
 	public @FindBy(xpath = "//tr[@role=\"row\"]") WebElement par_Whitelist_Number;
-	public WebElement txt_WhiteList_Number(String num) {
+	public WebElement txt_Black_WhiteList_Number(String num) {
 		return par_Whitelist_Number.findElement(By.xpath("//span[text()='" + num + "']"));
 	}
 	

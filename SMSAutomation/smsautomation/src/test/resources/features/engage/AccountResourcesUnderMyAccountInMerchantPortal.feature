@@ -106,4 +106,16 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     Then the blacklist options appears
     Then the Add to blacklist window is opened
     When user adds the number to blacklist and cliks Add Number button
-    Then the number is added to the blacklist
+    Then User verifies that the number is added to blacklist table
+    And user verifies that both Copy and CSV buttons are present
+    When User clicks the copy buttonon the blacklist window
+		Then User confirms that the data is copied to clipboard
+		When User clicks on the CSV tab on the Blacklist window
+		Then User confirms data is exported successfully
+		When User clicks on arrow icon on the side of the column heading
+		Then User confirms the number is sorted successfully
+		When User enters a number in the Search box
+		Then the table is filtered as per the search criteria
+		When User clicks on the icon under Actions column to delete added number
+		Then user confirms the number is deleted from the Blacklist table
+		     

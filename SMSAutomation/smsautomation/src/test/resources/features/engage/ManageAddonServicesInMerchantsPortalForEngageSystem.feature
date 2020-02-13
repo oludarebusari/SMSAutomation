@@ -67,14 +67,12 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     When User clicks the Subscribers menu
     Then the Subscribers page is opened
   	And User verifies the list of Subscribers
-    When user types in a subscriber's name in the textbox and click Get Result button
-    Then the Subscriber is displayed
-    When user clicks the view button for the Subcriber
-    Then the Subscriber View page is opened
-    When user clicks the Send Message button
-    Then the Send message window is opened
-    When user enters a message and click Send button
-    Then Message sent notification is displayed on the Subscriber View page
+    When user clicks the Reply button
+    Then The Send Message window is displayed
+    When User clicks the Send as MMS toggle and fill in the required fields
+    And User clicks on the Send button
+    Then a message sent notification is displayed.
+    
     
   @SMSM-200-Verify-the-Giftbar-Profile, @RegressionTest
   Scenario: Verify the Giftbar Profile in Giftbar option on Add on

@@ -14,12 +14,10 @@ public class SendMessageModal extends BasePage {
 	}
 	
 	public @FindBy(xpath = "//h4[@class=\"modal-title\" and text()=\"Send Message\"]") WebElement mod_Title;
-	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\")]") WebElement drpd_Campaign_To_Send_From;
-	public @FindBy(xpath = "//div[contains(@class, \"selectize-input\")]") WebElement opt_parent;
-	public WebElement opt_Campaign(String CampaignName) {
-		return opt_parent.findElement(By.xpath("//div[contains(@class, \"option selected\") and text()=\'" + CampaignName +"']"));
-	}
-	public @FindBy(xpath = "//button[@data-dismiss=\"modal\" and text()=\"Close\"]") WebElement btn_Cancel;
-	public @FindBy(xpath = "//button[@type=\"submit\" and text()=\"Send\"]") WebElement btn_Send;
+	public @FindBy(xpath = "//label[contains(@class, \"toggle-off\")]") WebElement tog_Send_As_MMS;
+	public @FindBy(xpath = "//input[@name=\"reply_message_subject\"]") WebElement txt_Introduction;
+	public @FindBy(xpath = "//textarea[@name=\"reply_message\"]") WebElement txt_Message;
+	public @FindBy(xpath = "//form[@class=\"modal-content\" and .//h4[@id=\"replyModalLabel\"]]//button[@type=\"submit\" and text()=\"Send\"]") WebElement btn_Send;
+	public @FindBy(xpath = "//form[@class=\"modal-content\" and .//h4[@id=\"replyModalLabel\"]]//button[@data-dismiss=\"modal\" and text()=\"Close\"]") WebElement btn_Close;
 	
 }

@@ -197,7 +197,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	public void the_number_is_added_to_the_whiteklist() throws Exception {
 		Thread.sleep(500);
 		Assert.assertEquals("555-111-2424",
-				blackListPage.getElementText(blackListPage.txt_WhiteList_Number("555-111-2424")));
+				blackListPage.getElementText(blackListPage.txt_Black_WhiteList_Number("555-111-2424")));
 	}
 
 	@Then("user confirms that both Copy and CSV buttons are present")
@@ -223,8 +223,8 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	}
 
 	@Then("User confirms that the CSV file is exported to the local machine")
-	public void user_confirms_that_the_CSV_file_is_exported_to_the_local_machine() {
-
+	public void user_confirms_that_the_CSV_file_is_exported_to_the_local_machine() throws InterruptedException {
+		Thread.sleep(6000000);
 	}
 
 	@When("User enters an incorrect number in the search box")
@@ -276,12 +276,68 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@When("user adds the number to blacklist and cliks Add Number button")
 	public void user_adds_the_number_to_blacklist_and_cliks_Add_Number_button() throws Exception {
-		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "5211112424");
+		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "5252525252");
 		addToBlackWhitelistModal.waitAndClickElement(addToBlackWhitelistModal.btn_Add_Number);
+		Thread.sleep(6000);
 	}
 
-	@Then("the number is added to the blacklist")
-	public void the_number_is_added_to_the_blacklist() {
+	@Then("User verifies that the number is added to blacklist table")
+	public void user_verifies_that_the_number_is_added_to_blacklist_table() {
+	
+	}
+
+	@Then("user verifies that both Copy and CSV buttons are present")
+	public void user_verifies_that_both_Copy_and_CSV_buttons_are_present() {
+	 
+	}
+	
+	@When("User clicks the copy buttonon the blacklist window")
+	public void user_clicks_the_copy_buttonon_the_blacklist_window() {
+	
+	}
+
+	@Then("User confirms that the data is copied to clipboard")
+	public void user_confirms_that_the_data_is_copied_to_clipboard() {
+	  
+	}
+
+	@When("User clicks on the CSV tab on the Blacklist window")
+	public void user_clicks_on_the_CSV_tab_on_the_Blacklist_window() {
+	 
+	}
+	
+	@Then("User confirms data is exported successfully")
+	public void user_confirms_data_is_exported_successfully() {
+
+	}
+
+	@When("User clicks on arrow icon on the side of the column heading")
+	public void user_clicks_on_arrow_icon_on_the_side_of_the_column_heading() {
+	   
+	}
+
+	@Then("User confirms the number is sorted successfully")
+	public void user_confirms_the_number_is_sorted_successfully() {
+	   
+	}
+
+	@When("User enters a number in the Search box")
+	public void user_enters_a_number_in_the_Search_box() {
+	 
+	}
+
+	@Then("the table is filtered as per the search criteria")
+	public void the_table_is_filtered_as_per_the_search_criteria() {
+	
+	}
+
+	@When("User clicks on the icon under Actions column to delete added number")
+	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() {
+
+	}
+
+	@Then("user confirms the number is deleted from the Blacklist table")
+	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() {
 
 	}
 

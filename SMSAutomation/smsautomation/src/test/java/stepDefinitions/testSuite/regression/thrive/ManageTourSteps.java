@@ -287,7 +287,7 @@ public class ManageTourSteps extends DriverFactory {
 	public void the_tour_is_saved_successful_and_user_confirmed_the_changes() throws Exception {
 		Thread.sleep(2000);
 		adminToursEditPage.waitAndClickElement(adminToursEditPage.btn_SaveTour);
-		Thread.sleep(10000);
+		Thread.sleep(6000000);
 	}
 
 

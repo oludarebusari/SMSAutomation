@@ -110,43 +110,30 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	}
 
 //	 @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
-	@When("user types in a subscriber's name in the textbox and click Get Result button")
-	public void user_types_in_a_subscriber_s_name_in_the_textbox_and_click_Get_Result_button() {
-
+	@When("user clicks the Reply button")
+	public void user_clicks_the_Reply_button() throws Exception {
+	  subscribersPage.waitAndClickElement(subscribersPage.btn_Reply("111-152-5252"));
 	}
 
-	@Then("the Subscriber is displayed")
-	public void the_Subscriber_is_displayed() {
-
+	@Then("The Send Message window is displayed")
+	public void the_Send_Message_window_is_displayed() throws Exception {
+		Assert.assertTrue(sendMessageModal.getElementText(sendMessageModal.mod_Title).contentEquals("Send Message"));
 	}
 
-	@When("user clicks the view button for the Subcriber")
-	public void user_clicks_the_view_button_for_the_Subcriber() {
-
+	@When("User clicks the Send as MMS toggle and fill in the required fields")
+	public void user_clicks_the_Send_as_MMS_toggle_and_fill_in_the_required_fields() throws Exception {
+		sendMessageModal.waitAndClickElement(sendMessageModal.tog_Send_As_MMS);
+		sendMessageModal.sendKeysToWebElement(sendMessageModal.txt_Introduction, "Hello");
+		sendMessageModal.sendKeysToWebElement(sendMessageModal.txt_Message, "Test");
 	}
 
-	@Then("the Subscriber View page is opened")
-	public void the_Subscriber_View_page_is_opened() {
-
+	@When("User clicks on the Send button")
+	public void user_clicks_on_the_Send_button() {
+	  
 	}
 
-	@When("user clicks the Send Message button")
-	public void user_clicks_the_Send_Message_button() {
-
-	}
-
-	@Then("the Send message window is opened")
-	public void the_Send_message_window_is_opened() {
-
-	}
-
-	@When("user enters a message and click Send button")
-	public void user_enters_a_message_and_click_Send_button() {
-
-	}
-
-	@Then("Message sent notification is displayed on the Subscriber View page")
-	public void message_sent_notification_is_displayed_on_the_Subscriber_View_page() {
+	@Then("a message sent notification is displayed.")
+	public void a_message_sent_notification_is_displayed() {
 
 	}
 

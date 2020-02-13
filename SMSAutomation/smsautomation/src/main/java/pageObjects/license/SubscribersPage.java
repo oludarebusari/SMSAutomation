@@ -2,6 +2,7 @@ package pageObjects.license;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,5 +26,16 @@ public class SubscribersPage extends BasePage {
 	public @FindBy(xpath = "//button[@data-toggle=\"dropdown\" and text()[normalize-space()]]") WebElement btn_Bulk_Edit;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\")]") WebElement btn_Copy;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_CSV;
-	
+	public @FindBy(xpath = "//div[contains(@class, \"pull-right open\")]//a[contains(@title, \"Reply\")]") WebElement btn_Reply;
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Reply_Dropdown;
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Blacklist;
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Unsubscribe_WText;
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Unsubscribe_WOText;
+	public @FindBy(xpath = "//tbody") WebElement par_Subscribers;
+	public WebElement btn_Reply_Dropdown(String num) {
+		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//button[contains(@class, \"toggle-dropdown\")]//i[contains(@class, \"fa fa-caret-down\")]"));
+	}
+	public WebElement btn_Reply(String num) {
+		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//a[contains(@title, \"Reply\")]"));
+	}
 }
