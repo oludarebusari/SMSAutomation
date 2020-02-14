@@ -166,7 +166,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 		Assert.assertEquals("Blacklist/Whitelist", blackListPage.getElementText(blackListPage.pag_Blacklist_Whitelist));
 	}
 
-	@When("User clicks the Private Campaign mode toggle \\(Off)")
+	@When("User clicks the Private Campaign mode toggle Off button")
 	public void user_clicks_the_Private_Campaign_mode_toggle_Off() throws Exception {
 		blackListPage.waitAndClickElement(blackListPage.tog_Off);
 	}
@@ -189,26 +189,26 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@When("user adds the number to whitelist and cliks Add Number button")
 	public void user_adds_the_number_to_whitelist_and_cliks_Add_Number_button() throws Exception {
-		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "5551112424");
+		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "1111525252");
 		addToBlackWhitelistModal.waitAndClickElement(addToBlackWhitelistModal.btn_Add_Number);
 	}
 
 	@Then("the number is added to the whiteklist")
 	public void the_number_is_added_to_the_whiteklist() throws Exception {
 		Thread.sleep(500);
-		Assert.assertEquals("555-111-2424",
-				blackListPage.getElementText(blackListPage.txt_Black_WhiteList_Number("555-111-2424")));
+		Assert.assertEquals("111-152-5252",
+				blackListPage.getElementText(blackListPage.txt_Black_WhiteList_Number("111-152-5252")));
 	}
 
 	@Then("user confirms that both Copy and CSV buttons are present")
 	public void user_confirms_that_both_Copy_and_CSV_buttons_are_present() {
-		Assert.assertTrue(blackListPage.btn_Copy.isDisplayed());
-		Assert.assertTrue(blackListPage.btn_CSV.isDisplayed());
+		Assert.assertTrue(blackListPage.btn_Copy_WL.isDisplayed());
+		Assert.assertTrue(blackListPage.btn_CSV_WL.isDisplayed());
 	}
 
 	@When("user clicks the copy button")
 	public void user_clicks_the_copy_button() throws Exception {
-		blackListPage.waitAndClickElement(blackListPage.btn_Copy);
+		blackListPage.waitAndClickElement(blackListPage.btn_Copy_WL);
 	}
 
 	@Then("user confirms row data is copied")
@@ -219,12 +219,12 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@When("User clicks the CSV tab")
 	public void user_clicks_the_CSV_tab() throws Exception {
-		blackListPage.waitAndClickElement(blackListPage.btn_CSV);
+		blackListPage.waitAndClickElement(blackListPage.btn_CSV_WL);
 	}
 
 	@Then("User confirms that the CSV file is exported to the local machine")
 	public void user_confirms_that_the_CSV_file_is_exported_to_the_local_machine() throws InterruptedException {
-		Thread.sleep(6000000);
+		Thread.sleep(6000);
 	}
 
 	@When("User enters an incorrect number in the search box")
@@ -236,25 +236,29 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	public void a_text_indicating_no_matching_records_is_displayed() throws Exception {
 		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_No_Match_Message)
 				.contentEquals("No matching records found"));
-		blackListPage.waitAndClickElement(blackListPage.tog_On);
 	}
 
 	//@SMSM-138-Whitelist-2 @RegressionTest
 	@When("user clicks on the X button user the Actions column")
 	public void user_clicks_on_the_X_button_user_the_Actions_column() throws Exception {
-//		To be completed when https://jira.devfactory.com/browse/PLSMS-986 is fixed
+		blackListPage.waitAndClickElement(blackListPage.btn_Whitelist_Remove);
 
 	}
 
 	@Then("the number is deleted from the whitelist table")
 	public void the_number_is_deleted_from_the_whitelist_table() throws Exception {
-//		To be completed when https://jira.devfactory.com/browse/PLSMS-986 is fixed
+		Thread.sleep(500);
+		Assert.assertTrue((blackListPage.txt_No_Data_Message).isDisplayed());
+	}
+	
+	@Then("User click the toggle on button")
+	public void user_click_the_toggle_on_button() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.tog_On);
 	}
 
     //@SMSM-138-Blacklist @RegressionTest
 	@When("User leaves the Private Campaign mode toggle as Off")
 	public void user_leaves_the_Private_Campaign_mode_toggle_as_Off() throws Exception {
-		blackListPage.waitAndClickElement(blackListPage.tog_Off);
 		Assert.assertTrue(blackListPage.getElementText(blackListPage.tog_Off).contentEquals("Off"));
 	}
 
@@ -278,67 +282,71 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	public void user_adds_the_number_to_blacklist_and_cliks_Add_Number_button() throws Exception {
 		addToBlackWhitelistModal.sendKeysToWebElement(addToBlackWhitelistModal.txt_Phone_Number, "5252525252");
 		addToBlackWhitelistModal.waitAndClickElement(addToBlackWhitelistModal.btn_Add_Number);
-		Thread.sleep(6000);
 	}
 
 	@Then("User verifies that the number is added to blacklist table")
-	public void user_verifies_that_the_number_is_added_to_blacklist_table() {
-	
+	public void user_verifies_that_the_number_is_added_to_blacklist_table() throws Exception {
+		Thread.sleep(500);
+		Assert.assertTrue(blackListPage.txt_Black_WhiteList_Number("525-252-5252").isDisplayed());
 	}
 
 	@Then("user verifies that both Copy and CSV buttons are present")
 	public void user_verifies_that_both_Copy_and_CSV_buttons_are_present() {
-	 
+	 Assert.assertTrue(blackListPage.btn_Copy_BL.isDisplayed());
+	 Assert.assertTrue(blackListPage.btn_CSV_BL.isDisplayed());
+
 	}
 	
 	@When("User clicks the copy buttonon the blacklist window")
-	public void user_clicks_the_copy_buttonon_the_blacklist_window() {
-	
+	public void user_clicks_the_copy_buttonon_the_blacklist_window() throws InterruptedException {
+		blackListPage.waitAndClickElement(blackListPage.btn_Copy_BL);
 	}
 
 	@Then("User confirms that the data is copied to clipboard")
-	public void user_confirms_that_the_data_is_copied_to_clipboard() {
-	  
+	public void user_confirms_that_the_data_is_copied_to_clipboard() throws Exception {
+		Assert.assertTrue(blackListPage.getElementText(blackListPage.txt_Copied_To_Clipboard)
+				.contentEquals("Copied 2 rows to clipboard"));
 	}
 
 	@When("User clicks on the CSV tab on the Blacklist window")
-	public void user_clicks_on_the_CSV_tab_on_the_Blacklist_window() {
-	 
+	public void user_clicks_on_the_CSV_tab_on_the_Blacklist_window() throws Exception {
+	 blackListPage.waitAndClickElement(blackListPage.btn_CSV_BL);
 	}
 	
 	@Then("User confirms data is exported successfully")
 	public void user_confirms_data_is_exported_successfully() {
-
+//		TODO
 	}
 
 	@When("User clicks on arrow icon on the side of the column heading")
-	public void user_clicks_on_arrow_icon_on_the_side_of_the_column_heading() {
-	   
+	public void user_clicks_on_arrow_icon_on_the_side_of_the_column_heading() throws Exception {
+		Thread.sleep(500);
+	   blackListPage.waitAndClickElement(blackListPage.btn_Sort);
 	}
 
 	@Then("User confirms the number is sorted successfully")
 	public void user_confirms_the_number_is_sorted_successfully() {
-	   
+//		ToDO
 	}
 
 	@When("User enters a number in the Search box")
-	public void user_enters_a_number_in_the_Search_box() {
-	 
+	public void user_enters_a_number_in_the_Search_box() throws Exception {
+		blackListPage.sendKeysToWebElement(blackListPage.txt_Blacklist_SearchField, "111");
 	}
 
 	@Then("the table is filtered as per the search criteria")
 	public void the_table_is_filtered_as_per_the_search_criteria() {
-	
+		Assert.assertTrue(blackListPage.txt_Black_WhiteList_Number("111-152-5252").isDisplayed());
 	}
 
 	@When("User clicks on the icon under Actions column to delete added number")
-	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() {
-
+	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.btn_Whitelist_Remove);
 	}
 
 	@Then("user confirms the number is deleted from the Blacklist table")
 	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() {
-
+		Assert.assertFalse(blackListPage.txt_Black_WhiteList_Number("525-252-5252").isDisplayed());
 	}
 
 }

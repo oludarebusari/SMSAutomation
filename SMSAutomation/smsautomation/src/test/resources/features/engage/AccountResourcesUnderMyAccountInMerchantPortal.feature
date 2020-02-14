@@ -69,7 +69,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
   Scenario: Verify Whitelist option
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
-    When User clicks the Private Campaign mode toggle (Off)
+    When User clicks the Private Campaign mode toggle Off button
     Then the whitelist option appears on the screen
     When User clicks the New button under Whitelist section
     Then the Add to whitelist window is opened
@@ -88,14 +88,15 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
   Scenario: Remove number from Whitelist table and Add number to blacklist
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
-    When User clicks the Private Campaign mode toggle (Off)
-    Then the whitelist option appears on the screen
-    When User clicks the New button under Whitelist section
-    Then the Add to whitelist window is opened
-    When user adds the number to whitelist and cliks Add Number button
-    Then the number is added to the whiteklist
+    # When User clicks the Private Campaign mode toggle (Off)
+    # Then the whitelist option appears on the screen
+    # When User clicks the New button under Whitelist section
+    # Then the Add to whitelist window is opened
+    # When user adds the number to whitelist and cliks Add Number button
+    # Then the number is added to the whiteklist
     When user clicks on the X button user the Actions column
     Then the number is deleted from the whitelist table
+    And User click the toggle on button 
 
   @SMSM-138-Blacklist @RegressionTest
   Scenario: Verify Blacklist option
@@ -109,13 +110,12 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     Then User verifies that the number is added to blacklist table
     And user verifies that both Copy and CSV buttons are present
     When User clicks the copy buttonon the blacklist window
-		Then User confirms that the data is copied to clipboard
-		When User clicks on the CSV tab on the Blacklist window
-		Then User confirms data is exported successfully
-		When User clicks on arrow icon on the side of the column heading
-		Then User confirms the number is sorted successfully
-		When User enters a number in the Search box
-		Then the table is filtered as per the search criteria
-		When User clicks on the icon under Actions column to delete added number
-		Then user confirms the number is deleted from the Blacklist table
-		     
+    Then User confirms that the data is copied to clipboard
+    When User clicks on the CSV tab on the Blacklist window
+    Then User confirms data is exported successfully
+    When User clicks on arrow icon on the side of the column heading
+    Then User confirms the number is sorted successfully
+    When User enters a number in the Search box
+    Then the table is filtered as per the search criteria
+    When User clicks on the icon under Actions column to delete added number
+    Then user confirms the number is deleted from the Blacklist table
