@@ -33,9 +33,14 @@ public class BlackListPage extends BasePage {
 	public @FindBy(xpath = "//button[contains(@class, \"remove-list-item\")]") WebElement btn_Whitelist_Remove;
 	public @FindBy(xpath = "//h2[@class=\"remove-top\" and text()=\"Whitelist\"]") WebElement txt_Whitelist_Subtitle;
 	public @FindBy(xpath = "//h2[@class=\"remove-top\" and text()=\"Blacklist\"]") WebElement txt_Blacklist_Subtitle;
+	public @FindBy(xpath = "//tbody") WebElement parent;
+	public WebElement btn_Remove(String PhoneNo) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//span[text()=\"" + PhoneNo + "\"]]//button[contains(@class, \"remove-list-item\")]"));
+	}
+	public @FindBy(xpath = "//tr[@role=\"row\" and .//span[text()=\"525-252-5252\"]]//button[contains(@class, \"remove-list-item\")]") WebElement par_Remove;
 	public @FindBy(xpath = "//tr[@role=\"row\"]") WebElement par_Whitelist_Number;
 	public WebElement txt_Black_WhiteList_Number(String num) {
-		return par_Whitelist_Number.findElement(By.xpath("//span[text()='" + num + "']"));
+		return par_Whitelist_Number.findElement(By.xpath("//span[text()=\"" + num + "\"]"));
 	}
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]") WebElement win_Copy_To_Clipboard_Title;
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]/h2") WebElement copy_To_Clipboard_Title;

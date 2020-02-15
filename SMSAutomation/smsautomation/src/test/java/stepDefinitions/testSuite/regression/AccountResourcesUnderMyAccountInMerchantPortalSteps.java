@@ -341,12 +341,14 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@When("User clicks on the icon under Actions column to delete added number")
 	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() throws Exception {
-		blackListPage.waitAndClickElement(blackListPage.btn_Whitelist_Remove);
+		blackListPage.sendKeysToWebElement(blackListPage.txt_Blacklist_SearchField, " ");
+		blackListPage.waitAndClickElement(blackListPage.par_Remove);
 	}
 
 	@Then("user confirms the number is deleted from the Blacklist table")
 	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() {
-		Assert.assertFalse(blackListPage.txt_Black_WhiteList_Number("525-252-5252").isDisplayed());
+//		TODO
+		
 	}
 
 }

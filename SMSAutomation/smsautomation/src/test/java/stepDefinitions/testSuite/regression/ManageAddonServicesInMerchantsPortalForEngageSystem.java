@@ -128,13 +128,14 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	}
 
 	@When("User clicks on the Send button")
-	public void user_clicks_on_the_Send_button() {
-	  
+	public void user_clicks_on_the_Send_button() throws Exception {
+	  sendMessageModal.waitAndClickElement(sendMessageModal.btn_Send);
 	}
 
 	@Then("a message sent notification is displayed.")
-	public void a_message_sent_notification_is_displayed() {
-
+	public void a_message_sent_notification_is_displayed() throws Exception {
+		System.out.println(subscribersPage.getElementText(subscribersPage.txt_Notification));
+		Assert.assertEquals("×Message has been sent.", subscribersPage.getElementText(subscribersPage.txt_Notification).replaceAll("[\\n]", ""));
 	}
 
 //	 @SMSM-200-Verify-the-Giftbar-Profile,, @RegressionTest

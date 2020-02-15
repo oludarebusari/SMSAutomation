@@ -31,6 +31,7 @@ public class SubscribersPage extends BasePage {
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Blacklist;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Unsubscribe_WText;
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_Unsubscribe_WOText;
+	public @FindBy(xpath = "//div[@id=\"message-sent-ok\" and text()[normalize-space()=\"Message has been sent.\"]]") WebElement txt_Notification;
 	public @FindBy(xpath = "//tbody") WebElement par_Subscribers;
 	public WebElement btn_Reply_Dropdown(String num) {
 		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//button[contains(@class, \"toggle-dropdown\")]//i[contains(@class, \"fa fa-caret-down\")]"));
