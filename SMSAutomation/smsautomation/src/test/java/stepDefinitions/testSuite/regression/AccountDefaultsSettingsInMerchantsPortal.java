@@ -13,7 +13,7 @@ import pageObjects.license.menu.MerchantMenu;
 import pageObjects.license.menu.SettingsSubMenu;
 import utils.DriverFactory;
 
-public class ViewAndEditAccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
+public class AccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
 
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	AccountDefaultsPage accountDefaultsPage = PageFactory.initElements(driver, AccountDefaultsPage.class);

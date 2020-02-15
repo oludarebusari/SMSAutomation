@@ -15,7 +15,7 @@ public class AdminDashboardPage extends BasePage {
 	}
 
 	// Page elements
-	public @FindBy(xpath = "//h1[@class=\"pull-left\" and text()[normalize-space()=\"Dashboard\"]]") WebElement txt_Page_Title;
+	public @FindBy(xpath = "//h1[@class=\"pull-left\" and text()[normalize-space()=\"Dashboard\"]]") WebElement pag_Title;
 	public @FindBy(xpath = "//li[@class=\"first\" and .//a[text()[normalize-space()=\"Dashboard\"]]]") WebElement tab_Dashboard;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Experience\"]]") WebElement tab_Experience;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Companies\"]]") WebElement tab_Companies;
@@ -25,63 +25,21 @@ public class AdminDashboardPage extends BasePage {
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Settings\"]]") WebElement tab_Settings;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement tab_Reports;
 	public @FindBy(xpath = "//li[@class=\"last\" and .//a[text()[normalize-space()=\"Support\"]]]") WebElement tab_Support;
-	public @FindBy(xpath = "//a[@id=\"start-tour\"]") WebElement btn_Help;
+	public @FindBy(xpath = "//div[contains(@class, \"quarter-right\")]") WebElement btn_Help;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement lnk_Resellers;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement lnk_Businesses;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-licensees\"]") WebElement reseller_Summary;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-merchants\"]") WebElement business_Summary;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-posts\"]") WebElement socialPost_Summary;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-revenue\"]") WebElement revenue_Summary;
+	public @FindBy(xpath = "//tbody") WebElement list_Reseller;
+	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement num_Reseller;
 	
-
-		
-	// Page methods
-		
-	public AdminDashboardPage clickExperienceTab() throws Exception {
-	    waitAndClickElement(tab_Experience);	
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickCompaniesTab() throws Exception {
-		waitAndClickElement(tab_Companies);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickUsersTab() throws Exception  {
-		waitAndClickElement(tab_Users);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickBillingTab() throws Exception {
-		waitAndClickElement(tab_Billing);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickZeonTab() throws Exception {
-		waitAndClickElement(tab_Zeon);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickSettingsTab() throws Exception  {
-		waitAndClickElement(tab_Settings);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickReportsTab() throws Exception  {
-		waitAndClickElement(tab_Reports);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickSupportTab() throws Exception  {
-		waitAndClickElement(tab_Support);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickResellersLink() throws Exception  {
-		waitAndClickElement(lnk_Resellers);
-		return new AdminDashboardPage();
-	}
-	
-	public AdminDashboardPage clickBusinessesLink() throws Exception  {
-		waitAndClickElement(lnk_Businesses);
-		return new AdminDashboardPage();
-	}
-	
-
+	//Reseller Columns
+	public @FindBy(xpath = "//tr/th[contains(text(), \"Company\")]") WebElement col_Company;
+	public @FindBy(xpath = "//tr/th[contains(text(), \"Location\")]") WebElement col_Locaton;
+	public @FindBy(xpath = "//tr/th[contains(text(), \"Phone\")]") WebElement col_Phone;
+	public @FindBy(xpath = "//tr/th[contains(text(), \"Support Email\")]") WebElement col_SupportEmail;
+	public @FindBy(xpath = "//tr/th[contains(text(), \"Created\")]") WebElement col_Created;
+	public @FindBy(xpath = "//tr/th[contains(text(), \"Action\")]") WebElement col_Action;
 }

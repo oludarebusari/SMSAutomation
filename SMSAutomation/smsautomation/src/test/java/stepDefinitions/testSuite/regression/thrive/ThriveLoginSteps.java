@@ -46,7 +46,7 @@ public class ThriveLoginSteps  extends DriverFactory {
 
 	@Then("Thrive Dashboard page is displayed")
 	public void thrive_Dashboard_page_is_displayed() throws Exception {
-	 Assert.assertEquals(thrDashboardPage.getElementText(thrDashboardPage.txt_Page_Title), "Dashboard");
+	 Assert.assertEquals(thrDashboardPage.getElementText(thrDashboardPage.pag_Title), "Dashboard");
 	}
 
 
