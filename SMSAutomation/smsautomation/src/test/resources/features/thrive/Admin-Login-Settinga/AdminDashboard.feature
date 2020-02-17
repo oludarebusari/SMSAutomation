@@ -64,15 +64,42 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on the logged In user dropdown link
     Then the dropdown is opened
     And User verifies that Sign Out option is available
-    When User clicks on the Sing Out option
+    When User clicks on the Sign Out option
     Then user is redirected to the Admin Dashboard page
-    
- @SMSM-203 @Verify-the-options-and-link-from-the-Action-dropdown @RegressionTest @OnlyMe
+
+  @SMSM-203 @Verify-the-options-and-link-from-the-Action-dropdown @RegressionTest
   Scenario: Verify the options and link from the Action dropdown.
-		When User clicks a Reseller action dropdown
-		Then User verifies the two Action options displayed
-		When user clicks the Edit Reseller Company option
-		Then user is redirected to the Edit Reseller page
-		When User clicks on Cancel Services options
-		Then the Cancel services window is displayed
-		
+    When User clicks a Reseller action dropdown
+    Then User verifies two Action options are displayed
+    When user clicks the Edit Reseller Company option
+    Then user is redirected to the Edit Reseller page
+    And User clicks the Dashboard menu option
+    When User clicks on Cancel Services options
+    Then the Cancel services window is displayed
+
+  @SMSM-203 @Verify-the-user-can-edit-the-Reseller-details @RegressionTest @OnlyMe
+  Scenario: Verify the User can edit the Reseller details.
+    When User clicks a Reseller action dropdown
+    Then User verifies two Action options are displayed
+    When user clicks the Edit Reseller Company option
+    Then user is redirected to the Edit Reseller page
+    When Edits some of the Resellers details
+    And User clicks the Save Reseller's button
+    Then a message indicating the Reseller has been updated is displayed
+    When User clicks the Dashboard menu
+    Then User is redirected to the Dashboard and and confirms changes to Reseller
+    And User revert changes
+
+  @SMSM-203 @Verify-the-admin-can-cancel-service @RegressionTest @OnlyMe
+  Scenario: Verify the admin can cancel service.
+    When User selects a reseller to cancel and clicks the action dropdown button
+    And user clicks the Cancel services option
+    And User clicks the Cancel Services button
+    Then the Manage Resellers page is displayed
+    When User types the Resellers name on the search textfield and click Search button
+    Then the reseller is displayed
+    And User verifies the new status of the Reseller
+    When User clicks the Dashboard menu
+    Then User verifies that the cancelled reseller services is not displayed
+    Then Revert Changes 
+    

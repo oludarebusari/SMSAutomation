@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
  		 features = {"src/test/resources/features/"},
  		 glue = {"stepDefinitions"},
  		 monochrome = true,
- 		 tags = {"@RegressionTest"},
+ 		 tags = {"@OnlyMe"},
  		 plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json", "html:target/selenium-reports"}
  		
 )

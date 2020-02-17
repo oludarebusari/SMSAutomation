@@ -17,7 +17,6 @@ public class AdminDashboardPage extends BasePage {
 
 	// Page elements
 	public @FindBy(xpath = "//h1[@class=\"pull-left\" and text()[normalize-space()=\"Dashboard\"]]") WebElement pag_Title;
-	
 	public @FindBy(xpath = "//li[@class=\"first\" and .//a[text()[normalize-space()=\"Dashboard\"]]]") WebElement tab_Dashboard;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Experience\"]]") WebElement tab_Experience;
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Companies\"]]") WebElement tab_Companies;
@@ -55,6 +54,18 @@ public class AdminDashboardPage extends BasePage {
 	
 	public WebElement btn_SignIn_Dropdown(String reseller) {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"new-licensee\") and ./td[text()=\'" + reseller + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	
+	public WebElement txt_CompanyName(String companyName) {
+		return parent.findElement(By.xpath("//td[@class=\"new-licensee-name\" and text()=\'" + companyName + "']"));
+	}
+	
+	public WebElement txt_PhoneNumber(String phoneNumber) {
+		return parent.findElement(By.xpath("//td[@class=\"new-licensee-phone\" and text()=\'" + phoneNumber + "']"));
+	}
+	
+	public WebElement opt_Reseller(String reseller) {
+		return parent.findElement(By.xpath("//tr[contains(@id, \"new-licensee\") and ./td[text()=\'" + reseller + "']]"));
 	}
 	
 	//Dropdown Action options
