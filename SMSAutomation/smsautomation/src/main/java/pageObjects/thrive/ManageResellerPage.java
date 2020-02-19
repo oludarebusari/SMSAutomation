@@ -18,6 +18,7 @@ public class ManageResellerPage extends BasePage {
 	public @FindBy(xpath = "//a[@id=\"create-entity\"]") WebElement btn_New;
 	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
 	public @FindBy(xpath = "//button[@id=\"search-text-submit\"]") WebElement btn_Search;
+	public @FindBy(xpath = "//a[@id=\"start-tour\"]") WebElement btn_Help;
 	public @FindBy(xpath = "//tbody") WebElement parent;
 
 	public WebElement opt_Reseller(String reseller) {

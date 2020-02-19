@@ -75,7 +75,7 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     
     
   @SMSM-200-Verify-the-Giftbar-Profile, @RegressionTest
-  Scenario: Verify the Giftbar Profile in Giftbar option on Add on
+  Scenario: Verify the Giftbar Profile in Giftbar option on Add-on
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page
@@ -90,3 +90,5 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     Then the giftbar page is opened
     And User clicks the Interested button
     Then an interest notification is sent message is displayed
+    
+    

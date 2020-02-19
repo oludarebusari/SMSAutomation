@@ -27,8 +27,8 @@ public class AdminDashboardPage extends BasePage {
 	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement tab_Reports;
 	public @FindBy(xpath = "//li[@class=\"last\" and .//a[text()[normalize-space()=\"Support\"]]]") WebElement tab_Support;
 	public @FindBy(xpath = "//div[contains(@class, \"quarter-right\")]") WebElement btn_Help;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement lnk_Resellers;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement lnk_Businesses;
+	public @FindBy(xpath = "//a[@class=\"text-info\" and text()[normalize-space()=\"View Resellers\"]]") WebElement lnk_Resellers;
+	public @FindBy(xpath = "//a[@class=\"text-info\" and text()[normalize-space()=\"View Businesses\"]]") WebElement lnk_Businesses;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-licensees\"]") WebElement reseller_Summary;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-merchants\"]") WebElement business_Summary;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-posts\"]") WebElement socialPost_Summary;
@@ -76,4 +76,23 @@ public class AdminDashboardPage extends BasePage {
 	public WebElement btn_Cancel_Services(String reseller) {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"new-licensee\") and ./td[text()=\'" + reseller + "']]//a[@title=\"Cancel Services\"]"));
 	}
+	
+	// Pagination elements
+	public @FindBy(xpath = "//div[@id=\"data-table_info\"]") WebElement lbl_DataTablesInfo;
+	public @FindBy(xpath = "//div[@id=\"data-table_length\"]") WebElement lbl_DataTablesLength;
+	public @FindBy(xpath = "//div[@id=\"data-table_paginate\"]") WebElement lbl_DataTablesPaginate;
+	public @FindBy(xpath = "//li[contains(@class, \"pagination-prev\")]/a") WebElement btn_PaginationPrevious;
+	public @FindBy(xpath = "//li[contains(@class, \"pagination-prev\")]") WebElement btn_PaginationPreviousDisabled;
+	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]/a") WebElement btn_PaginationNext;
+	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]") WebElement btn_PaginationNextDisabled;
+	public @FindBy(xpath = "//ul[@class=\"pagination\"]") WebElement parent_PaginatioElement;
+	public WebElement btn_PageNumber(String number) {
+		return parent_PaginatioElement.findElement(By.xpath("//a[text()=\'" + number + "']"));
+	}
+	public WebElement btn_PageNumberSelected(String number) {
+		return parent_PaginatioElement.findElement(By.xpath("//span[contains(text(), \'" + number + "')]//span[@class=\"sr-only\" and contains(text(), \"current\")]"));
+	}
+	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]") WebElement btn_PaginationNextTest;
+
+	
 }

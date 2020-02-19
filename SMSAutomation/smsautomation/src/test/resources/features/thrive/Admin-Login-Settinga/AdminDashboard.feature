@@ -49,7 +49,7 @@ Feature: Verify all the components on the Admin Dashboard
   @SMSM-203 @Verify-the-user-is-on-Licensee-Dashboard @RegressionTest
   Scenario: Verify the user is on "Licensee Dashboard"
     When User clicks the SignIn button on a Reseller
-    Then the Reseller page is opened
+    Then the Business page is opened
     And User verifies the Merchant list
     And User verifies the late payment tab
     And User verifies the Pending Payments tab
@@ -59,7 +59,7 @@ Feature: Verify all the components on the Admin Dashboard
   @SMSM-203 @Verify-the-user-is-able-to-log-out-from-Resellee @RegressionTest
   Scenario: Verify the user is able to logged out from Reseller.
     When User clicks the SignIn button on a Reseller
-    Then the Reseller page is opened
+    Then the Business page is opened
     And user verifies the login user link is available
     When User clicks on the logged In user dropdown link
     Then the dropdown is opened
@@ -77,7 +77,7 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on Cancel Services options
     Then the Cancel services window is displayed
 
-  @SMSM-203 @Verify-the-user-can-edit-the-Reseller-details @RegressionTest @OnlyMe
+  @SMSM-203 @Verify-the-user-can-edit-the-Reseller-details @RegressionTest
   Scenario: Verify the User can edit the Reseller details.
     When User clicks a Reseller action dropdown
     Then User verifies two Action options are displayed
@@ -90,7 +90,7 @@ Feature: Verify all the components on the Admin Dashboard
     Then User is redirected to the Dashboard and and confirms changes to Reseller
     And User revert changes
 
-  @SMSM-203 @Verify-the-admin-can-cancel-service @RegressionTest @OnlyMe
+  @SMSM-203 @Verify-the-admin-can-cancel-service @RegressionTest
   Scenario: Verify the admin can cancel service.
     When User selects a reseller to cancel and clicks the action dropdown button
     And user clicks the Cancel services option
@@ -102,4 +102,47 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks the Dashboard menu
     Then User verifies that the cancelled reseller services is not displayed
     Then Revert Changes 
-    
+ 
+  @SMSM-203 @Verify-the-pagination-on-the-dashboard @RegressionTest
+  Scenario: Verify the pagination on the dashboard.
+  	And User verifies Show n Entries is available
+  	And User verifies the number of results displayed
+  	And User verifies the number of pages available
+
+ @SMSM-203 @Verify-the-previous-and-next-pagination-option @RegressionTest 
+  Scenario: Verify the 'Previous' and 'Next' options are working.
+  	And User verifies that the Previous and Next buttons are available
+  	And user verifies the Previous button is disabled when on first page
+  	When User clicks any ie last page number
+  	Then User is redirected to that respective page
+  	And user verifies that the Next button is disabled when on the last page
+  	When User clicks on the Previous button
+  	Then User is redirected to the previous page
+  	When User clicks on the Next button
+  	Then User is navigated to the Next page
+  	
+  @SMSM-203 @Verify-admin-can-be-redirected-to-Manage-Resellers-page-from-View-Resellers-link @RegressionTest @OnlyMe
+  Scenario: Verify admin can be redirected to the Manage Resellers page from View Reseller link.
+  And admin user verifies the View Resellers link is available
+  When admin User clicks the View Resellers link
+  Then User is redirected to the Manage Resellers page
+  
+  @SMSM-203 @Verify-user-is-able-to-access-the-buttons-on-Manage-Reseller-page @RegressionTest @OnlyMe
+  Scenario: Verify user is able to access the buttons on Manage Reseller page.
+  And admin user verifies the View Resellers link is available
+  When admin User clicks the View Resellers link
+  Then User is redirected to the Manage Resellers page
+  And User verifies that the New button is available
+  When User clicks on the New button
+  Then User is redirected to the Create Reseller page
+  When User clicks back on the browser
+  Then User verifies all the buttons on the page are available
+  
+  
+  
+  
+  
+  
+  
+  
+  

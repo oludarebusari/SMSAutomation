@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
-public class ResellerPage extends BasePage {
+public class BusinessPage extends BasePage {
 
-	public ResellerPage() throws IOException {
+	public BusinessPage() throws IOException {
 		super();
 	}
 
