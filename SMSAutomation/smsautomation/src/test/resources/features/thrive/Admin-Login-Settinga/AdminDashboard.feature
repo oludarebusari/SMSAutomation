@@ -101,48 +101,85 @@ Feature: Verify all the components on the Admin Dashboard
     And User verifies the new status of the Reseller
     When User clicks the Dashboard menu
     Then User verifies that the cancelled reseller services is not displayed
-    Then Revert Changes 
- 
+    Then Revert Changes
+
   @SMSM-203 @Verify-the-pagination-on-the-dashboard @RegressionTest
   Scenario: Verify the pagination on the dashboard.
-  	And User verifies Show n Entries is available
-  	And User verifies the number of results displayed
-  	And User verifies the number of pages available
+    And User verifies Show n Entries is available
+    And User verifies the number of results displayed
+    And User verifies the number of pages available
 
- @SMSM-203 @Verify-the-previous-and-next-pagination-option @RegressionTest 
+  @SMSM-203 @Verify-the-previous-and-next-pagination-option @RegressionTest
   Scenario: Verify the 'Previous' and 'Next' options are working.
-  	And User verifies that the Previous and Next buttons are available
-  	And user verifies the Previous button is disabled when on first page
-  	When User clicks any ie last page number
-  	Then User is redirected to that respective page
-  	And user verifies that the Next button is disabled when on the last page
-  	When User clicks on the Previous button
-  	Then User is redirected to the previous page
-  	When User clicks on the Next button
-  	Then User is navigated to the Next page
-  	
-  @SMSM-203 @Verify-admin-can-be-redirected-to-Manage-Resellers-page-from-View-Resellers-link @RegressionTest @OnlyMe
+    And User verifies that the Previous and Next buttons are available
+    And user verifies the Previous button is disabled when on first page
+    When User clicks any ie last page number
+    Then User is redirected to that respective page
+    And user verifies that the Next button is disabled when on the last page
+    When User clicks on the Previous button
+    Then User is redirected to the previous page
+    When User clicks on the Next button
+    Then User is navigated to the Next page
+
+  @SMSM-294 @Verify-admin-can-be-redirected-to-Manage-Resellers-page-from-View-Resellers-link @RegressionTest
   Scenario: Verify admin can be redirected to the Manage Resellers page from View Reseller link.
-  And admin user verifies the View Resellers link is available
-  When admin User clicks the View Resellers link
-  Then User is redirected to the Manage Resellers page
-  
-  @SMSM-203 @Verify-user-is-able-to-access-the-buttons-on-Manage-Reseller-page @RegressionTest @OnlyMe
+    And admin user verifies the View Resellers link is available
+    When admin User clicks the View Resellers link
+    Then User is redirected to the Manage Resellers page
+
+  @SMSM-294 @Verify-user-is-able-to-access-the-buttons-on-Manage-Reseller-page @RegressionTest
   Scenario: Verify user is able to access the buttons on Manage Reseller page.
-  And admin user verifies the View Resellers link is available
-  When admin User clicks the View Resellers link
-  Then User is redirected to the Manage Resellers page
-  And User verifies that the New button is available
-  When User clicks on the New button
-  Then User is redirected to the Create Reseller page
-  When User clicks back on the browser
-  Then User verifies all the buttons on the page are available
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    And admin user verifies the View Resellers link is available
+    When admin User clicks the View Resellers link
+    Then User is redirected to the Manage Resellers page
+    And User verifies that the New button is available
+    When User clicks on the New button
+    Then User is redirected to the Create Reseller page
+    When User clicks back on the browser
+    Then User verifies all the buttons on the page are available
+
+  @SMSM-294 @Verify-Admin-redirects-to-the-manage-Business-page @RegressionTest
+  Scenario: Verify Admin redirects to the Manage Merchants page.
+    And Admin User verifies the View Business link is available
+    When admin User clicks the View Business link
+    Then User is redirected to the Manage Businesses page
+
+  @SMSM-294 @Verify-Admin-user-is-able-to-Sign-into-a-Business-Dashboard @RegressionTest
+  Scenario: Verify Admin user is able to sign into a Business Dashboard
+    And Admin User verifies the View Business link is available
+    When admin User clicks the View Business link
+    Then User is redirected to the Manage Businesses page
+    When User types in a text in the search field and clicks the Search button
+    Then the resut is displayed
+    When User clears the search field and clicks Search button
+    Then all the data is displayed
+    When User clicks on SignIn button
+    Then user is redirected to the dashboard
+
+  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest @OnlyMe
+  Scenario: Verify that Admin can see count of social Posts and count businesses on the dashboard page.
+		And User verifies the Social Post is available
+		And User verifies the social post count is available
+		And User verifies the message displayed about the post
+		
+  @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest @OnlyMe
+  Scenario: Verify that Admin can see Resellers revenue on the dashboard page.
+     And User verifies the Revenue tab is available
+     And User verifies revenue amount is available
+     And User verifies the message displayed about the revenue
+     
+  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest @OnlyMe
+  Scenario: Verify user is able to edit the Business's Details
+		When User navigates to Companies menu and clicks the Businesses option
+		Then the user is redirected to the Manage Businesses page
+		When User clicks the Action drop down beside SignIn button
+		Then three action options are displayed.
+		When User clicks the Edit option
+		Then the Edit Business page is displayed
+		When User update some details and Click Save Business button
+		Then a notification for that Business is successfully saved is displayed
+		
+
+		
+		
+		

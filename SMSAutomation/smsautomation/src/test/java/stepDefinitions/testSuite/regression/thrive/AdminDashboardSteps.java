@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import pageObjects.license.modal.ResellerLoggedInSettingsModal;
 import pageObjects.thrive.AdminDashboardPage;
 import pageObjects.thrive.EditResellerPage;
+import pageObjects.thrive.ManageBusinessPage;
 import pageObjects.thrive.ManageResellerPage;
 import pageObjects.thrive.BusinessPage;
 import pageObjects.thrive.CreateResellerPage;
@@ -25,6 +26,7 @@ public class AdminDashboardSteps extends DriverFactory {
 	public CreateResellerPage createResellerPage = PageFactory.initElements(driver, CreateResellerPage.class);
 	public EditResellerPage editResellerPage = PageFactory.initElements(driver, EditResellerPage.class);
 	public EnableServicesModal enableServicesModal = PageFactory.initElements(driver, EnableServicesModal.class);
+	public ManageBusinessPage manageBusinessPage = PageFactory.initElements(driver, ManageBusinessPage.class);
 	public ManageResellerPage manageResellerPage = PageFactory.initElements(driver, ManageResellerPage.class);
 	public BusinessPage businessPage = PageFactory.initElements(driver, BusinessPage.class);
 	public ResellerLoggedInSettingsModal resellerLoggedInModal = PageFactory.initElements(driver,
@@ -423,5 +425,122 @@ public class AdminDashboardSteps extends DriverFactory {
 	 Assert.assertTrue(manageResellerPage.btn_Search.isDisplayed());
 	 Assert.assertTrue(manageResellerPage.btn_Help.isDisplayed());
 	}
+	
+//	@SMSM-294 @Verify-Admin-redirects-to-the-manage-Business-page @RegressionTest 
+	@Then("Admin User verifies the View Business link is available")
+	public void admin_User_verifies_the_View_Business_link_is_available() {
+	  Assert.assertTrue(thrDashboardPage.lnk_Businesses.isDisplayed());
+	}
 
+	@When("admin User clicks the View Business link")
+	public void admin_User_clicks_the_View_Business_link() throws Exception {
+		thrDashboardPage.waitAndClickElement(thrDashboardPage.lnk_Businesses);
+	}
+
+	@Then("User is redirected to the Manage Businesses page")
+	public void user_is_redirected_to_the_Manage_Businesses_page() throws Exception {
+	  Assert.assertEquals("Manage Business", manageBusinessPage.getElementText(manageBusinessPage.pag_Title));
+	}
+
+//	@SMSM-294 @Verify-Admin-user-is-able-to-Sign-into-a-Business-Dashboard
+	@When("User types in a text in the search field and clicks the Search button")
+	public void user_types_in_a_text_in_the_search_field_and_clicks_the_Search_button() throws Exception {
+	  manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "aa");
+	  manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+	}
+
+	@Then("the resut is displayed")
+	public void the_resut_is_displayed() throws NumberFormatException, InterruptedException {
+	   Assert.assertTrue(Integer.parseInt(manageBusinessPage.getElementText(manageBusinessPage.lbl_Pagination_Total)) > 0);
+	}
+
+	@When("User clears the search field and clicks Search button")
+	public void user_clears_the_search_field_and_clicks_Search_button() throws Exception {
+	   manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "");
+	   manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+	}
+
+	@Then("all the data is displayed")
+	public void all_the_data_is_displayed() throws NumberFormatException, InterruptedException {
+		int pageStart = Integer.parseInt(manageBusinessPage.getElementText(manageBusinessPage.lbl_Pagination_Start));
+		int pageTotal = Integer.parseInt(manageBusinessPage.getElementText(manageBusinessPage.lbl_Pagination_Total));
+		Assert.assertTrue(pageStart > 0);
+		Assert.assertTrue(pageTotal > 0);
+	}
+
+	@When("User clicks on SignIn button")
+	public void user_clicks_on_SignIn_button() throws Exception {
+		 manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
+		 manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		 manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("AclateQA"));
+	}
+
+	@Then("user is redirected to the dashboard")
+	public void user_is_redirected_to_the_dashboard() throws InterruptedException {
+	 Assert.assertEquals("Dashboard", thrDashboardPage.getElementText(thrDashboardPage.pag_Title));
+	}
+
+//	  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest
+	@Then("User verifies the social post count is available")
+	public void user_verifies_the_social_post_count_is_available() {
+	 Assert.assertTrue(thrDashboardPage.socialPost_Count.isDisplayed());
+	}
+
+	@Then("User verifies the message displayed about the post")
+	public void user_verifies_the_message_displayed_about_the_post() throws Exception {
+		Assert.assertEquals("We stream posts for 480 Business", thrDashboardPage.getElementText(thrDashboardPage.socialPost_Message));
+	}
+
+//	 @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest
+	@Then("User verifies revenue amount is available")
+	public void user_verifies_revenue_amount_is_available() {
+	Assert.assertTrue(thrDashboardPage.revenue_Amount.isDisplayed());
+	}
+
+	@Then("User verifies the message displayed about the revenue")
+	public void user_verifies_the_message_displayed_about_the_revenue() throws Exception {
+		Assert.assertEquals("From 480 Business", thrDashboardPage.getElementText(thrDashboardPage.revenue_Message));
+	}
+
+
+//  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
+	@When("User navigates to Companies menu and clicks the Businesses option")
+	public void user_navigates_to_Companies_menu_and_clicks_the_Businesses_option() {
+	 
+	}
+
+	@Then("the user is redirected to the Manage Businesses page")
+	public void the_user_is_redirected_to_the_Manage_Businesses_page() {
+
+	}
+
+	@When("User clicks the Action drop down beside SignIn button")
+	public void user_clicks_the_Action_drop_down_beside_SignIn_button() {
+
+	}
+
+	@Then("three action options are displayed.")
+	public void three_action_options_are_displayed() {
+	
+	}
+
+	@When("User clicks the Edit option")
+	public void user_clicks_the_Edit_option() {
+
+	}
+
+	@Then("the Edit Business page is displayed")
+	public void the_Edit_Business_page_is_displayed() {
+	 
+	}
+
+	@When("User update some details and Click Save Business button")
+	public void user_update_some_details_and_Click_Save_Business_button() {
+	 
+	}
+
+	@Then("a notification for that Business is successfully saved is displayed")
+	public void a_notification_for_that_Business_is_successfully_saved_is_displayed() {
+	 
+	}	
 }

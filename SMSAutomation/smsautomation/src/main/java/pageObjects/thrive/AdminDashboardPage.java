@@ -32,7 +32,11 @@ public class AdminDashboardPage extends BasePage {
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-licensees\"]") WebElement reseller_Summary;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-merchants\"]") WebElement business_Summary;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-posts\"]") WebElement socialPost_Summary;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-posts\"]//h1[@class=\"text-right\"]") WebElement socialPost_Count;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-posts\"]//div[@class=\"panel-body\"]//p") WebElement socialPost_Message;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-revenue\"]") WebElement revenue_Summary;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-revenue\"]//h1[@class=\"text-right\"]") WebElement revenue_Amount;
+	public @FindBy(xpath = "//div[@id=\"summary-tiles-revenue\"]//div[@class=\"panel-body\"]//p") WebElement revenue_Message;
 	public @FindBy(xpath = "//tbody") WebElement list_Reseller;
 	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement num_Reseller;
 	
@@ -92,7 +96,6 @@ public class AdminDashboardPage extends BasePage {
 	public WebElement btn_PageNumberSelected(String number) {
 		return parent_PaginatioElement.findElement(By.xpath("//span[contains(text(), \'" + number + "')]//span[@class=\"sr-only\" and contains(text(), \"current\")]"));
 	}
-	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]") WebElement btn_PaginationNextTest;
-
+	
 	
 }
