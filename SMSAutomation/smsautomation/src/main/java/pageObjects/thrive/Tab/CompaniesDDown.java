@@ -14,6 +14,6 @@ public class CompaniesDDown extends BasePage {
 	}
 	
 	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\"Resellers\"]]") WebElement opt_Resellers;
-	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\"Resellers\"]]") WebElement opt_Businesses;
+	public @FindBy(xpath = "//li[@class=\"last\"]//a[text()[normalize-space()=\"Businesses\"]]") WebElement opt_Businesses;
 
 }

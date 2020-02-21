@@ -13,6 +13,7 @@ import pageObjects.thrive.ManageBusinessPage;
 import pageObjects.thrive.ManageResellerPage;
 import pageObjects.thrive.BusinessPage;
 import pageObjects.thrive.CreateResellerPage;
+import pageObjects.thrive.EditBusinessPage;
 import pageObjects.thrive.Tab.CompaniesDDown;
 import pageObjects.thrive.modal.CancelServicesModal;
 import pageObjects.thrive.modal.EnableServicesModal;
@@ -24,6 +25,7 @@ public class AdminDashboardSteps extends DriverFactory {
 	public CancelServicesModal cancelServicesModal = PageFactory.initElements(driver, CancelServicesModal.class);
 	public CompaniesDDown companiesDDown = PageFactory.initElements(driver, CompaniesDDown.class);
 	public CreateResellerPage createResellerPage = PageFactory.initElements(driver, CreateResellerPage.class);
+	public EditBusinessPage editBusinessPage = PageFactory.initElements(driver, EditBusinessPage.class);
 	public EditResellerPage editResellerPage = PageFactory.initElements(driver, EditResellerPage.class);
 	public EnableServicesModal enableServicesModal = PageFactory.initElements(driver, EnableServicesModal.class);
 	public ManageBusinessPage manageBusinessPage = PageFactory.initElements(driver, ManageBusinessPage.class);
@@ -323,7 +325,7 @@ public class AdminDashboardSteps extends DriverFactory {
 	public void user_verifies_Show_n_Entries_is_available() {
 		Assert.assertTrue(thrDashboardPage.lbl_DataTablesInfo.isDisplayed());
 	}
-	
+
 	@Then("User verifies the number of results displayed")
 	public void user_verifies_the_number_of_results_displayed() {
 		Assert.assertTrue(thrDashboardPage.lbl_DataTablesLength.isDisplayed());
@@ -333,7 +335,7 @@ public class AdminDashboardSteps extends DriverFactory {
 	public void user_verifies_the_number_of_pages_available() {
 		Assert.assertTrue(thrDashboardPage.lbl_DataTablesPaginate.isDisplayed());
 	}
-	
+
 //   @SMSM-203 @Verify-the-previous-and-next-pagination-option @RegressionTest
 	@Then("User verifies that the Previous and Next buttons are available")
 	public void user_verifies_that_the_Previous_and_Next_buttons_are_available() {
@@ -343,17 +345,17 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("user verifies the Previous button is disabled when on first page")
 	public void user_verifies_the_Previous_button_is_disabled_when_on_first_page() {
-     Assert.assertTrue(thrDashboardPage.btn_PaginationPreviousDisabled.getAttribute("class").contains("disabled"));
+		Assert.assertTrue(thrDashboardPage.btn_PaginationPreviousDisabled.getAttribute("class").contains("disabled"));
 	}
 
 	@When("User clicks any ie last page number")
 	public void user_clicks_any_ie_last_page_number() throws Exception {
-	  thrDashboardPage.waitAndClickElement(thrDashboardPage.btn_PageNumber("13"));
+		thrDashboardPage.waitAndClickElement(thrDashboardPage.btn_PageNumber("13"));
 	}
 
 	@Then("User is redirected to that respective page")
 	public void user_is_redirected_to_that_respective_page() {
-    	Assert.assertTrue(thrDashboardPage.btn_PageNumberSelected("13").getText().contentEquals("(current)"));
+		Assert.assertTrue(thrDashboardPage.btn_PageNumberSelected("13").getText().contentEquals("(current)"));
 	}
 
 	@Then("user verifies that the Next button is disabled when on the last page")
@@ -363,7 +365,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks on the Previous button")
 	public void user_clicks_on_the_Previous_button() throws Exception {
-	 thrDashboardPage.waitAndClickElement(thrDashboardPage.btn_PaginationPrevious);
+		thrDashboardPage.waitAndClickElement(thrDashboardPage.btn_PaginationPrevious);
 	}
 
 	@Then("User is redirected to the previous page")
@@ -373,14 +375,13 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks on the Next button")
 	public void user_clicks_on_the_Next_button() throws Exception {
-	  thrDashboardPage.waitAndClickElement(thrDashboardPage.btn_PaginationNext);
+		thrDashboardPage.waitAndClickElement(thrDashboardPage.btn_PaginationNext);
 	}
 
 	@Then("User is navigated to the Next page")
 	public void user_is_navigated_to_the_Next_page() {
 		Assert.assertTrue(thrDashboardPage.btn_PageNumberSelected("13").getText().contentEquals("(current)"));
 	}
-	
 
 //	 @SMSM-203 @Verify-admin-can-be-redirected-to-Manage-Resellers-page-from-View-Resellers-link @RegressionTest
 	@Then("admin user verifies the View Resellers link is available")
@@ -416,20 +417,20 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks back on the browser")
 	public void user_clicks_back_on_the_browser() {
-	 driver.navigate().back();
+		driver.navigate().back();
 	}
 
 	@Then("User verifies all the buttons on the page are available")
 	public void user_verifies_all_the_buttons_on_the_page_are_available() throws Exception {
-	 Assert.assertTrue(manageResellerPage.btn_New.isDisplayed());
-	 Assert.assertTrue(manageResellerPage.btn_Search.isDisplayed());
-	 Assert.assertTrue(manageResellerPage.btn_Help.isDisplayed());
+		Assert.assertTrue(manageResellerPage.btn_New.isDisplayed());
+		Assert.assertTrue(manageResellerPage.btn_Search.isDisplayed());
+		Assert.assertTrue(manageResellerPage.btn_Help.isDisplayed());
 	}
-	
+
 //	@SMSM-294 @Verify-Admin-redirects-to-the-manage-Business-page @RegressionTest 
 	@Then("Admin User verifies the View Business link is available")
 	public void admin_User_verifies_the_View_Business_link_is_available() {
-	  Assert.assertTrue(thrDashboardPage.lnk_Businesses.isDisplayed());
+		Assert.assertTrue(thrDashboardPage.lnk_Businesses.isDisplayed());
 	}
 
 	@When("admin User clicks the View Business link")
@@ -439,25 +440,26 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("User is redirected to the Manage Businesses page")
 	public void user_is_redirected_to_the_Manage_Businesses_page() throws Exception {
-	  Assert.assertEquals("Manage Business", manageBusinessPage.getElementText(manageBusinessPage.pag_Title));
+		Assert.assertEquals("Manage Business", manageBusinessPage.getElementText(manageBusinessPage.pag_Title));
 	}
 
 //	@SMSM-294 @Verify-Admin-user-is-able-to-Sign-into-a-Business-Dashboard
 	@When("User types in a text in the search field and clicks the Search button")
 	public void user_types_in_a_text_in_the_search_field_and_clicks_the_Search_button() throws Exception {
-	  manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "aa");
-	  manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "aa");
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
 	}
 
 	@Then("the resut is displayed")
 	public void the_resut_is_displayed() throws NumberFormatException, InterruptedException {
-	   Assert.assertTrue(Integer.parseInt(manageBusinessPage.getElementText(manageBusinessPage.lbl_Pagination_Total)) > 0);
+		Assert.assertTrue(
+				Integer.parseInt(manageBusinessPage.getElementText(manageBusinessPage.lbl_Pagination_Total)) > 0);
 	}
 
 	@When("User clears the search field and clicks Search button")
 	public void user_clears_the_search_field_and_clicks_Search_button() throws Exception {
-	   manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "");
-	   manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "");
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
 	}
 
 	@Then("all the data is displayed")
@@ -470,31 +472,32 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks on SignIn button")
 	public void user_clicks_on_SignIn_button() throws Exception {
-		 manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
-		 manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
-		 manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("AclateQA"));
+		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("AclateQA"));
 	}
 
 	@Then("user is redirected to the dashboard")
 	public void user_is_redirected_to_the_dashboard() throws InterruptedException {
-	 Assert.assertEquals("Dashboard", thrDashboardPage.getElementText(thrDashboardPage.pag_Title));
+		Assert.assertEquals("Dashboard", thrDashboardPage.getElementText(thrDashboardPage.pag_Title));
 	}
 
 //	  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest
 	@Then("User verifies the social post count is available")
 	public void user_verifies_the_social_post_count_is_available() {
-	 Assert.assertTrue(thrDashboardPage.socialPost_Count.isDisplayed());
+		Assert.assertTrue(thrDashboardPage.socialPost_Count.isDisplayed());
 	}
 
 	@Then("User verifies the message displayed about the post")
 	public void user_verifies_the_message_displayed_about_the_post() throws Exception {
-		Assert.assertEquals("We stream posts for 480 Business", thrDashboardPage.getElementText(thrDashboardPage.socialPost_Message));
+		Assert.assertEquals("We stream posts for 480 Business",
+				thrDashboardPage.getElementText(thrDashboardPage.socialPost_Message));
 	}
 
 //	 @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest
 	@Then("User verifies revenue amount is available")
 	public void user_verifies_revenue_amount_is_available() {
-	Assert.assertTrue(thrDashboardPage.revenue_Amount.isDisplayed());
+		Assert.assertTrue(thrDashboardPage.revenue_Amount.isDisplayed());
 	}
 
 	@Then("User verifies the message displayed about the revenue")
@@ -502,45 +505,52 @@ public class AdminDashboardSteps extends DriverFactory {
 		Assert.assertEquals("From 480 Business", thrDashboardPage.getElementText(thrDashboardPage.revenue_Message));
 	}
 
-
 //  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
 	@When("User navigates to Companies menu and clicks the Businesses option")
-	public void user_navigates_to_Companies_menu_and_clicks_the_Businesses_option() {
-	 
+	public void user_navigates_to_Companies_menu_and_clicks_the_Businesses_option() throws Exception {
+		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Companies);
+		companiesDDown.waitAndClickElement(companiesDDown.opt_Businesses);
 	}
 
 	@Then("the user is redirected to the Manage Businesses page")
-	public void the_user_is_redirected_to_the_Manage_Businesses_page() {
-
+	public void the_user_is_redirected_to_the_Manage_Businesses_page() throws Exception {
+		Assert.assertEquals("Manage Business", manageBusinessPage.getElementText(manageBusinessPage.pag_Title));
 	}
 
 	@When("User clicks the Action drop down beside SignIn button")
-	public void user_clicks_the_Action_drop_down_beside_SignIn_button() {
-
+	public void user_clicks_the_Action_drop_down_beside_SignIn_button() throws Exception {
+		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_ActionDDown("AclateQA"));
 	}
 
 	@Then("three action options are displayed.")
 	public void three_action_options_are_displayed() {
-	
+		Assert.assertTrue(manageBusinessPage.btn_Edit("AclateQA").isDisplayed());
+		Assert.assertTrue(manageBusinessPage.btn_EditRecurringPlan("AclateQA").isDisplayed());
+		Assert.assertTrue(manageBusinessPage.btn_CancelServices("AclateQA").isDisplayed());
 	}
 
 	@When("User clicks the Edit option")
-	public void user_clicks_the_Edit_option() {
-
+	public void user_clicks_the_Edit_option() throws Exception {
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Edit("AclateQA"));
 	}
 
 	@Then("the Edit Business page is displayed")
-	public void the_Edit_Business_page_is_displayed() {
-	 
+	public void the_Edit_Business_page_is_displayed() throws Exception {
+		Assert.assertEquals("Edit Business", editBusinessPage.getElementText(editBusinessPage.pag_Title));
 	}
 
 	@When("User update some details and Click Save Business button")
-	public void user_update_some_details_and_Click_Save_Business_button() {
-	 
+	public void user_update_some_details_and_Click_Save_Business_button() throws Exception {
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_SupportEmail, "testAclate@test.com");
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_BusinessPhone, "555-223-1717");
+		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}
 
 	@Then("a notification for that Business is successfully saved is displayed")
-	public void a_notification_for_that_Business_is_successfully_saved_is_displayed() {
-	 
-	}	
+	public void a_notification_for_that_Business_is_successfully_saved_is_displayed() throws Exception {
+		Assert.assertEquals("This company has been successfully updated.", editBusinessPage.getElementText(editBusinessPage.txt_SentNotification).replace("Close", "")
+				.replaceAll("[×\\n]", ""));
+	}
 }

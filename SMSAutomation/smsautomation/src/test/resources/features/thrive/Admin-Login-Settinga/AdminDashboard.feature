@@ -156,7 +156,7 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on SignIn button
     Then user is redirected to the dashboard
 
-  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest @OnlyMe
+  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest
   Scenario: Verify that Admin can see count of social Posts and count businesses on the dashboard page.
 		And User verifies the Social Post is available
 		And User verifies the social post count is available

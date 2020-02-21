@@ -26,4 +26,24 @@ public class ManageBusinessPage extends BasePage {
 		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//a[@title=\"Sign In\"]"));
 		
 	}
+	public WebElement btn_ActionDDown(String companyName) {
+		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//button[@data-toggle=\"dropdown\"]"));
+		
+	}
+	
+	//Actions Dropdown elements
+	
+	public WebElement btn_Edit(String companyName) {
+		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//a[@title=\"Edit\" and text()[normalize-space()=\"Edit\"]]"));
+		
+	}
+	public WebElement btn_EditRecurringPlan(String companyName) {
+		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//a[@id=\"edit-recurring-plan\" and text()[normalize-space()=\"Edit Recurring Plan\"]]"));
+		
+	}
+	public WebElement btn_CancelServices(String companyName) {
+		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//a[@class=\"company-delete-action\" and text()[normalize-space()=\"Cancel Services\"]]"));
+		
+	}
+	
 }
