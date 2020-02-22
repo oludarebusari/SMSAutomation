@@ -3,6 +3,7 @@ package stepDefinitions.testSuite.regression.thrive;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,18 +20,19 @@ public class ManageTourSteps extends DriverFactory {
 
 	
 	public AdminDashboardPage thrDashboardPage = PageFactory.initElements(driver, AdminDashboardPage.class);
-	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
 	public AdminToursPage adminToursPage = PageFactory.initElements(driver, AdminToursPage.class);
 	public AdminToursEditPage adminToursEditPage = PageFactory.initElements(driver, AdminToursEditPage.class);
 	public AdminToursDeactivateModal adminToursDeactivateModal = PageFactory.initElements(driver, AdminToursDeactivateModal.class);
 	public AdminToursActivateModal adminToursActivateModal = PageFactory.initElements(driver, AdminToursActivateModal.class);
 	public AdminToursHelpModal adminToursHelpModal = PageFactory.initElements(driver, AdminToursHelpModal.class);
+	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
+	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
 	
 	
 	
 	@Given("User clicks on settings on top menu bar")
 	public void user_clicks_on_settings_on_top_menu_bar() throws Exception {
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Settings);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Settings);
 	}
 
 	@Then("the settings options are displayed")

@@ -162,13 +162,13 @@ Feature: Verify all the components on the Admin Dashboard
 		And User verifies the social post count is available
 		And User verifies the message displayed about the post
 		
-  @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest @OnlyMe
+  @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest
   Scenario: Verify that Admin can see Resellers revenue on the dashboard page.
      And User verifies the Revenue tab is available
      And User verifies revenue amount is available
      And User verifies the message displayed about the revenue
      
-  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest @OnlyMe
+  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
   Scenario: Verify user is able to edit the Business's Details
 		When User navigates to Companies menu and clicks the Businesses option
 		Then the user is redirected to the Manage Businesses page

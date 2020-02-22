@@ -17,16 +17,6 @@ public class AdminDashboardPage extends BasePage {
 
 	// Page elements
 	public @FindBy(xpath = "//h1[@class=\"pull-left\" and text()[normalize-space()=\"Dashboard\"]]") WebElement pag_Title;
-	public @FindBy(xpath = "//li[@class=\"first\" and .//a[text()[normalize-space()=\"Dashboard\"]]]") WebElement tab_Dashboard;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Experience\"]]") WebElement tab_Experience;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Companies\"]]") WebElement tab_Companies;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Users\"]]") WebElement tab_Users;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Billing\"]]") WebElement tab_Billing;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Zeon\"]]") WebElement tab_Zeon;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Settings\"]]") WebElement tab_Settings;
-	public @FindBy(xpath = "//a[@class=\"dropdown-toggle\" and text()[normalize-space()=\"Reports\"]]") WebElement tab_Reports;
-	public @FindBy(xpath = "//li[@class=\"last\" and .//a[text()[normalize-space()=\"Support\"]]]") WebElement tab_Support;
-	public @FindBy(xpath = "//div[contains(@class, \"quarter-right\")]") WebElement btn_Help;
 	public @FindBy(xpath = "//a[@class=\"text-info\" and text()[normalize-space()=\"View Resellers\"]]") WebElement lnk_Resellers;
 	public @FindBy(xpath = "//a[@class=\"text-info\" and text()[normalize-space()=\"View Businesses\"]]") WebElement lnk_Businesses;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-licensees\"]") WebElement reseller_Summary;

@@ -12,6 +12,7 @@ import pageObjects.thrive.EditResellerPage;
 import pageObjects.thrive.ManageBusinessPage;
 import pageObjects.thrive.ManageResellerPage;
 import pageObjects.thrive.BusinessPage;
+import components.elements.CommonElementLocator;
 import pageObjects.thrive.CreateResellerPage;
 import pageObjects.thrive.EditBusinessPage;
 import pageObjects.thrive.Tab.CompaniesDDown;
@@ -24,6 +25,7 @@ public class AdminDashboardSteps extends DriverFactory {
 	public AdminDashboardPage thrDashboardPage = PageFactory.initElements(driver, AdminDashboardPage.class);
 	public CancelServicesModal cancelServicesModal = PageFactory.initElements(driver, CancelServicesModal.class);
 	public CompaniesDDown companiesDDown = PageFactory.initElements(driver, CompaniesDDown.class);
+	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public CreateResellerPage createResellerPage = PageFactory.initElements(driver, CreateResellerPage.class);
 	public EditBusinessPage editBusinessPage = PageFactory.initElements(driver, EditBusinessPage.class);
 	public EditResellerPage editResellerPage = PageFactory.initElements(driver, EditResellerPage.class);
@@ -68,7 +70,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("User verifies the Help button is available")
 	public void user_verifies_the_Help_button_is_available() {
-		Assert.assertTrue(thrDashboardPage.btn_Help.isDisplayed());
+		Assert.assertTrue(commonElementLocator.btn_Help.isDisplayed());
 	}
 
 //	@SMSM-203 @Verify-all-reseller-data @RegressionTest
@@ -193,7 +195,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks the Dashboard menu option")
 	public void user_clicks_the_Dashboard_menu_option() throws Exception {
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Dashboard);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Dashboard);
 	}
 
 	@Then("the Admin Dashboard page is displayed")
@@ -233,7 +235,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks the Dashboard menu")
 	public void user_clicks_the_Dashboard_menu() throws Exception {
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Dashboard);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Dashboard);
 	}
 
 	@Then("User is redirected to the Dashboard and and confirms changes to Reseller")
@@ -251,7 +253,7 @@ public class AdminDashboardSteps extends DriverFactory {
 		editResellerPage.sendKeysToWebElement(editResellerPage.txtF_BusinessName, "AutomationQA");
 		editResellerPage.sendKeysToWebElement(editResellerPage.txtF_BusinessPhone, "555-555-1827");
 		editResellerPage.waitAndClickElement(editResellerPage.btn_Save_Reseller);
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Dashboard);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Dashboard);
 	}
 
 //	 @SMSM-203 @Verify-the-admin-can-cancel-service @RegressionTest
@@ -295,7 +297,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User Clicks the Dashboard menu")
 	public void user_Clicks_the_Dashboard_menu() throws Exception {
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Dashboard);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Dashboard);
 	}
 
 	@Then("User verifies that the cancelled reseller services is not displayed")
@@ -311,7 +313,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("Revert Changes")
 	public void revert_Changes() throws Exception {
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Companies);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Companies);
 		companiesDDown.waitAndClickElement(companiesDDown.opt_Resellers);
 		manageResellerPage.sendKeysToWebElement(manageResellerPage.txtF_Search, "Automation1");
 		manageResellerPage.waitAndClickElement(manageResellerPage.btn_Search);
@@ -508,7 +510,7 @@ public class AdminDashboardSteps extends DriverFactory {
 //  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
 	@When("User navigates to Companies menu and clicks the Businesses option")
 	public void user_navigates_to_Companies_menu_and_clicks_the_Businesses_option() throws Exception {
-		thrDashboardPage.waitAndClickElement(thrDashboardPage.tab_Companies);
+		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Companies);
 		companiesDDown.waitAndClickElement(companiesDDown.opt_Businesses);
 	}
 
