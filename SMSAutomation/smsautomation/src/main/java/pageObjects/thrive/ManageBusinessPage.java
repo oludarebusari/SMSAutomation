@@ -23,7 +23,7 @@ public class ManageBusinessPage extends BasePage {
 	public @FindBy(xpath = "//span[@id=\"pagination-end\"]") WebElement lbl_Pagination_End;
 	public @FindBy(xpath = "//tbody") WebElement parent_SelectCompany;
 	public WebElement btn_SignIn(String companyName) {
-		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//a[@title=\"Sign In\"]"));
+		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName + "']]//a[@title=\"Sign In\"]"));
 		
 	}
 	public WebElement btn_ActionDDown(String companyName) {

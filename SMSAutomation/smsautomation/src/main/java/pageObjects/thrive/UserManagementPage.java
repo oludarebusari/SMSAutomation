@@ -2,6 +2,7 @@ package pageObjects.thrive;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -27,8 +28,10 @@ public class UserManagementPage extends BasePage {
 	public @FindBy(xpath = "//a[text()=\"Status\"]") WebElement col_Status;
 	public @FindBy(xpath = "//a[text()=\"Updated\"]") WebElement col_Updated;
 	public @FindBy(xpath = "//th[text()=\"Action\"]") WebElement col_Action;
-	
-	// Record elements
+	public @FindBy(xpath = "//tr") WebElement parent;
+	public WebElement btn_UserEdit(String userName) {
+		return parent.findElement(By.xpath("//td[text()=\'" + userName + "']/..//div[contains(@class, \"btn-group-sm\")]//a[@title=\"Edit\"]"));
+	}
 	
 
 }
