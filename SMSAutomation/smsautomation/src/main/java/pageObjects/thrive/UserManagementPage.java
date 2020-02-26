@@ -33,5 +33,9 @@ public class UserManagementPage extends BasePage {
 		return parent.findElement(By.xpath("//td[text()=\'" + userName + "']/..//div[contains(@class, \"btn-group-sm\")]//a[@title=\"Edit\"]"));
 	}
 	
+	public WebElement selectColumnByName(String name) {
+		return parent.findElement(By.xpath("//td[text()=\'" + name + "']"));
+	}
+	
 
 }

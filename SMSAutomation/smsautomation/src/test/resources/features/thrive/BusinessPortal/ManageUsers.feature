@@ -44,14 +44,14 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     Then All option was selected successfully
     And User verifies that all the records are displayed
 
-  @SMSM-134 @verify-the-user-record-by-sorting-first-name-column @RegressionTest 
+  @SMSM-134 @verify-the-user-record-by-sorting-first-name-column @RegressionTest
   Scenario: View the user record by sorting "First Name" column
     When User clicks the first name column
     Then the user records should be sorted in ascending order by firstname column
     When User clicks the first name column again
     Then the user records should be sorted in descending order by firstname column
 
-  @SMSM-134 @verify-the-user-record-by-sorting-last-name-column @RegressionTest 
+  @SMSM-134 @verify-the-user-record-by-sorting-last-name-column @RegressionTest
   Scenario: View the user record by sorting "Last Name" column
     When User clicks the last name column
     Then the user records should be sorted in ascending order by lastname column
@@ -73,17 +73,23 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     Then the user records should be sorted in descending order by updated column
 
   @SMSM-134 @Edit-a-user-from-user-management @RegressionTest @OnlyMe
-  Scenario: Edit a user from user management 
-  When user clicks on a User's Edit button under the Action column
-  Then the Edit User page is displayed
-  When user enters the information on the fields to be edited
-  And user toggles on some settings on the Edit User page
-  When user clicks the Save User button
-  Then a notification that the details were saved successfully is displayed
+  Scenario: Edit a user from user management
+    When user clicks on a User's Edit button under the Action column
+    Then the Edit User page is displayed
+    When user enters the information on the fields to be edited
+    And user toggles on some settings on the Edit User page
+    When user clicks the Save User button
+    Then a notification that the details were saved successfully is displayed
 
- 
- 
- 
- 
- 
- 
+  @SMSM-134 @Updated-user-changes-must-be-reflected-on-user-management-page @RegressionTest @OnlyMe
+  Scenario: Updated user changes must be reflected on user management page
+    When User clicks the Dashborad menu
+    And User clicks the Users menu
+    And User searched for the editted record
+    Then User confirms the changes were saved correctly.
+
+  @Revert-changes-to-User-record
+  Scenario: Revert changes to user record
+    When user clicks on a User's Edit button under the Action column
+    Then the Edit User page is displayed
+    And User revert the changes

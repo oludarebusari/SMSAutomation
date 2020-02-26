@@ -17,6 +17,7 @@ public class AdminDashboardPage extends BasePage {
 
 	// Page elements
 	public @FindBy(xpath = "//h1[@class=\"pull-left\" and text()[normalize-space()=\"Dashboard\"]]") WebElement pag_Title;
+	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\"Dashboard\"]]") WebElement menu_Dashboard;
 	public @FindBy(xpath = "//a[@class=\"text-info\" and text()[normalize-space()=\"View Resellers\"]]") WebElement lnk_Resellers;
 	public @FindBy(xpath = "//a[@class=\"text-info\" and text()[normalize-space()=\"View Businesses\"]]") WebElement lnk_Businesses;
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-licensees\"]") WebElement reseller_Summary;
@@ -29,6 +30,8 @@ public class AdminDashboardPage extends BasePage {
 	public @FindBy(xpath = "//div[@id=\"summary-tiles-revenue\"]//div[@class=\"panel-body\"]//p") WebElement revenue_Message;
 	public @FindBy(xpath = "//tbody") WebElement list_Reseller;
 	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement num_Reseller;
+	
+	
 	
 	//Reseller Columns
 	public @FindBy(xpath = "//div[@id=\"overview\"]//h4") WebElement panel_Reseller_Title;

@@ -10,6 +10,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.BasePage;
+import pageObjects.thrive.AdminDashboardPage;
 import pageObjects.thrive.BusinessDashboardPage;
 import pageObjects.thrive.EditUserPage;
 import pageObjects.thrive.ManageBusinessPage;
@@ -180,7 +181,7 @@ public class ManageUsersSteps extends BasePage {
 	@Then("the user records should be sorted in descending order by updated column")
 	public void the_user_records_should_be_sorted_in_descending_order_by_updated_column() throws Exception {
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("desc"));
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("02/25/2020"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("02/26/2020"));
 	}
 	
 //	@SMSM-134 @Edit-a-user-from-user-management
@@ -198,7 +199,7 @@ public class ManageUsersSteps extends BasePage {
 	public void user_enters_the_information_on_the_fields_to_be_edited() throws Exception {
 		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "fonade");
 		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "jane@fonade.com");
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_CellPhone, "555-093-4343");
+		editUserPage.waitAndClickElement(editUserPage.btn_Status_Inactive);
 	}
 
 	@And("user toggles on some settings on the Edit User page")
@@ -217,6 +218,39 @@ public class ManageUsersSteps extends BasePage {
 	 Assert.assertTrue(editUserPage.getElementText(editUserPage.txt_Save_Alert_Notification).contentEquals("Item has been successfully updated."));
 	}
 	
-	
+
+//	@SMSM-134 @Edit-a-user-from-user-management
+	@When("User clicks the Dashborad menu")
+	public void user_clicks_the_Dashborad_menu() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.menu_Dashboard);
+	}
+
+	@When("User clicks the Users menu")
+	public void user_clicks_the_Users_menu() throws Exception {
+	 commonElementLocator.waitAndClickElement(commonElementLocator.menu_Users);
+	}
+
+	@When("User searched for the editted record")
+	public void user_searched_for_the_editted_record() throws Exception {
+	  manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AutoEdit");
+	  manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+	}
+
+	@Then("User confirms the changes were saved correctly.")
+	public void user_confirms_the_changes_were_saved_correctly() throws Exception {
+		Assert.assertEquals("fonade", userManagementPage.getElementText(userManagementPage.selectColumnByName("fonade")));
+		Assert.assertEquals("Disabled", userManagementPage.getElementText(userManagementPage.selectColumnByName("Disabled")));
+	}
+
+//	@Revert-changes-to-User-record
+	@Then("User revert the changes")
+	public void user_revert_the_changes() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "fona");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "jane@fona.com");
+		editUserPage.waitAndClickElement(editUserPage.btn_Status_Active);
+		editUserPage.waitAndClickElement(editUserPage.tog_Company);
+		editUserPage.waitAndClickElement(editUserPage.tog_Plans);
+	}
+
 
 }
