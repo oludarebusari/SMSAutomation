@@ -36,7 +36,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
   Scenario: On user Management page, Confirm all existing Users are visible
     And User verifies that existing users are displayed on the page
 
-  @SMSM-134 @verify-user-should-be-able-to-view-all-entries-on-user-management-page @RegressionTest
+  @SMSM-134 @verify-user-should-be-able-to-view-all-entries-on-user-management-page @RegressionTest @OnlyMe
   Scenario: Verify user should able to view ALL entries on user management page.
     When User clicks the Show entries dropdown
     Then the dropdown should open successfully
@@ -72,7 +72,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When User clicks the updated column again
     Then the user records should be sorted in descending order by updated column
 
-  @SMSM-134 @Edit-a-user-from-user-management @RegressionTest @OnlyMe
+  @SMSM-134 @Edit-a-user-from-user-management @RegressionTest 
   Scenario: Edit a user from user management
     When user clicks on a User's Edit button under the Action column
     Then the Edit User page is displayed
@@ -81,7 +81,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When user clicks the Save User button
     Then a notification that the details were saved successfully is displayed
 
-  @SMSM-134 @Updated-user-changes-must-be-reflected-on-user-management-page @RegressionTest @OnlyMe
+  @SMSM-134 @Updated-user-changes-must-be-reflected-on-user-management-page @RegressionTest
   Scenario: Updated user changes must be reflected on user management page
     When User clicks the Dashborad menu
     And User clicks the Users menu
@@ -93,3 +93,37 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When user clicks on a User's Edit button under the Action column
     Then the Edit User page is displayed
     And User revert the changes
+
+  @Create-a-test-user @OnlyMe
+  Scenario: I want to create a test user
+    When User clicks the New button
+    Then the Create User page is opened
+    When user types in the information for a test user and clicks the Save User button
+    Then a notification that the user has been created is displayed
+
+  @SMSM-134 @Clicking-on-cancel-on-delete-user-popup-should-not-delete-the-user @RegressionTest @OnlyMe
+  Scenario: Clicking cancel on delete user popup should not delete the user.
+    When user clicks on a User's dropdown button under the Action column
+    Then the Actions option is displayed
+    When User clicks the Delete option
+    Then the Delete User modal is displayed
+    When user clicks the Cancel button on the Delete User modal
+    Then confirms that the user is not deleted
+
+  @SMSM-134 @User-can-be-deleted-from-user-management-page @RegressionTest @OnlyMe
+  Scenario: User can be deleted from user management page
+    When user clicks on a User's dropdown button under the Action column
+    Then the Actions option is displayed
+    When User clicks the Delete option
+    Then the Delete User modal is displayed
+    When user clicks the Delete button on the Delete User modal
+    Then a notification confirming successfully deletion is displayed.
+  
+ @SMSM-134 @Verfy-that-deleted-user-is-not-displayed-on-user-management-page @RegressionTest @OnlyMe
+  Scenario: Verify that deleted user is not displayed on user management page.
+  When the deleted username is typed into the search field and the search button is clicked
+  Then no result should be displayed.
+  
+  
+    
+    

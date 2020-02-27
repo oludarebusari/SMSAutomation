@@ -1,6 +1,7 @@
 package pageObjects.thrive;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -32,10 +33,24 @@ public class UserManagementPage extends BasePage {
 	public WebElement btn_UserEdit(String userName) {
 		return parent.findElement(By.xpath("//td[text()=\'" + userName + "']/..//div[contains(@class, \"btn-group-sm\")]//a[@title=\"Edit\"]"));
 	}
+	public WebElement btn_ActionDropdown(String userName) {
+		return parent.findElement(By.xpath("//td[text()=\'" + userName + "']/..//div[contains(@class, \"btn-group-sm\")]//button[@data-toggle=\"dropdown\"]"));
+	}
+	public WebElement btn_DropdownDeleteOpt(String userName) {
+		return parent.findElement(By.xpath("//td[text()=\'" + userName + "']/..//div[contains(@class, \"btn-group-sm\")]//a[@class=\"user-delete-action\"]"));
+	}
 	
 	public WebElement selectColumnByName(String name) {
 		return parent.findElement(By.xpath("//td[text()=\'" + name + "']"));
 	}
+	public @FindBy(xpath = "//table[@id=\"data-table\"]") WebElement table_Users;
+	public List<WebElement> all_Users() {
+		return table_Users.findElements(By.xpath("//tbody/tr"));
+	}
+	
+	public @FindBy(xpath = "//div[contains(@class, \"alert-success\")]//p[normalize-space()]") WebElement txt_Action_Notification;
+	
+	
 	
 
 }
