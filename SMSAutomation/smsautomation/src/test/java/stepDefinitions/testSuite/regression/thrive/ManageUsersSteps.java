@@ -196,7 +196,7 @@ public class ManageUsersSteps extends BasePage {
 	public void the_user_records_should_be_sorted_in_descending_order_by_updated_column() throws Exception {
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("desc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("02/27/2020"));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("02/28/2020"));
 	}
 
 //	@SMSM-134 @Edit-a-user-from-user-management
@@ -366,5 +366,69 @@ public class ManageUsersSteps extends BasePage {
 			Assert.assertFalse(result);
 		}
 	}
+	
+//	@SMSM-134 @User-search-by-different-search-parameters @RegressionTest
+	@When("User enters first name of any user in the search field")
+	public void user_enters_first_name_of_any_user_in_the_search_field() throws Exception {
+		userManagementPage.sendKeysToWebElement(userManagementPage.txtF_Search, "AutoEdit");
+	}
 
+	@When("User clicks the search button")
+	public void user_clicks_the_search_button() throws Exception {
+		userManagementPage.waitAndClickElement(userManagementPage.btn_Search);	
+	}
+
+	@Then("the search result record with the typed in first name is displayed successfully")
+	public void the_search_result_record_with_the_typed_in_first_name_is_displayed_successfully() {
+	   Assert.assertTrue(userManagementPage.selectColumnByName("AutoEdit").isDisplayed());
+	}
+
+	@When("User enters last name of the user in the search field")
+	public void user_enters_last_name_of_the_user_in_the_search_field() throws Exception {
+	 userManagementPage.sendKeysToWebElement(userManagementPage.txtF_Search, "AutoLAsc");
+	}
+
+	@Then("the search result record with the typed in last name is displayed successfully")
+	public void the_search_result_record_with_the_typed_in_last_name_is_displayed_successfully() {
+	   Assert.assertTrue(userManagementPage.selectColumnByName("AutoLAsc").isDisplayed());
+	}
+	
+//	@SMSM-134 @Help-tour-should-starts-on-clicking-help-button
+	@When("User clicks on Help button on the top right of the screen")
+	public void user_clicks_on_Help_button_on_the_top_right_of_the_screen() throws Exception {
+	 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the Help Tour guide is displayed")
+	public void the_Help_Tour_guide_is_displayed() throws InterruptedException {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Tours_Help_Title).contentEquals("Manage Users"));
+	}
+
+	@When("User clicks on Next button on Manage user popup")
+	public void user_clicks_on_Next_button_on_Manage_user_popup() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Tours_Help_Next);
+	}
+
+	@Then("the tour guide should proceed to next step")
+	public void the_tour_guide_should_proceed_to_next_step() throws Exception {
+	Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Tours_Help_Title).contentEquals("Add a New User to Your Account"));
+	}
+
+	@When("User clicks on Previous button on Manage user popup")
+	public void user_clicks_on_Previous_button_on_Manage_user_popup() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Tours_Help_Prev);
+	}
+
+	@Then("the tour guide should be navigated to previous step")
+	public void the_tour_guide_should_be_navigated_to_previous_step() throws Exception {
+		commonElementLocator.waitForTextToBePresentInElement(commonElementLocator.mod_Tours_Help_Title, "Manage User");
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Tours_Help_Title).contentEquals("Manage Users"));
+	}
+	
+//	@SMSM-134 @Help-tour-should-terminate-on-clicking-End-Tour-button
+	@Then("the tour guide closes successfully")
+	public void the_tour_guide_closes_successfully() {
+		commonElementLocator.waitUntilElementDissapears(commonElementLocator.mod_Tours_Help_Title);
+	}
+	
 }

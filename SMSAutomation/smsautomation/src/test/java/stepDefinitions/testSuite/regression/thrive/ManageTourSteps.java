@@ -62,12 +62,12 @@ public class ManageTourSteps extends DriverFactory {
 	
 	@Then("the Tour is displayed on the page")
 	public void the_Tour_is_displayed_on_the_page() throws Exception {
-		Assert.assertTrue(adminToursPage.WaitUntilWebElementIsVisible(adminToursPage.btn_EditByTourName("Aclate QA")));
+		Assert.assertTrue(adminToursPage.WaitUntilWebElementIsVisible(adminToursPage.btn_EditByTourName("AclateQA")));
 	}
 
 	@When("User clicks the Edit button on the Tour")
 	public void user_clicks_the_Edit_button_on_the_Tour() throws Exception {
-		adminToursPage.waitAndClickElement(adminToursPage.btn_EditByTourName("Aclate QA"));
+		adminToursPage.waitAndClickElement(adminToursPage.btn_EditByTourName("AclateQA"));
 	}
 
 	@Then("the Edit Tour Page is opened")
@@ -242,7 +242,8 @@ public class ManageTourSteps extends DriverFactory {
 
 	@When("User clicks on End Tour button")
 	public void user_clicks_on_End_Tour_button() throws Exception {
-		adminToursHelpModal.waitAndClickElement(adminToursHelpModal.btn_Tours_Help_EndTour);
+//		adminToursHelpModal.waitAndClickElement(adminToursHelpModal.btn_Tours_Help_EndTour);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Tours_Help_EndTour);
     	Thread.sleep(200);
 	}
 
@@ -275,7 +276,7 @@ public class ManageTourSteps extends DriverFactory {
 
 	@Then("User enters details for selector, title, path and message")
 	public void user_enters_details_for_selector_title_path_and_message() throws Exception {
-		adminToursEditPage.sendKeysToWebElement(adminToursEditPage.txtF_TourName, "Aclate QA");
+		adminToursEditPage.sendKeysToWebElement(adminToursEditPage.txtF_TourName, "AclateQA");
 		adminToursEditPage.waitAndClickElement(adminToursEditPage.removeRole("Admin"));
 		adminToursEditPage.waitAndClickElement(adminToursEditPage.lov_Role);
 		adminToursEditPage.waitAndClickElement(adminToursEditPage.selectRole("Merchant"));

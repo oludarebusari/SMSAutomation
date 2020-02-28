@@ -59,7 +59,7 @@ public class LicLoginSteps extends DriverFactory {
 	}
 	@And("User clicks on Campaigns with Broadcasts in {int} Days")
 	public void user_clicks_on_Campaigns_with_Broadcasts_in_Days(Integer int1) throws Exception {
-		licPortalPage.clickOnCampaigns_WO_Broadcast_In_7_Days();
+//		licPortalPage.clickOnCampaigns_WO_Broadcast_In_7_Days();
 	}
 
 	@And("User click the Username displayed on the side menu")

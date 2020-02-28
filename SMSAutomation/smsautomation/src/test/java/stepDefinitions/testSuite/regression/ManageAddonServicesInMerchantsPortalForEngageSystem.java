@@ -88,7 +88,6 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	}
 
 //	@SMSM-131-Opening-Subscribers-Page, @RegressionTest
-
 	@Then("User verifies that the Subscribers menu is present")
 	public void user_verifies_that_the_Subscribers_menu_is_present() {
 		Assert.assertTrue(merchantMenu.menu_Subscribers.isDisplayed());
@@ -106,13 +105,14 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("User verifies the list of Subscribers")
 	public void user_verifies_the_list_of_Subscribers() throws NumberFormatException, Exception {
-		Assert.assertTrue(Integer.parseInt(subscribersPage.getElementText(subscribersPage.num_Subscribers).substring(7, 8)) > 0);
+		Assert.assertTrue(
+				Integer.parseInt(subscribersPage.getElementText(subscribersPage.num_Subscribers).substring(7, 8)) > 0);
 	}
 
 //	 @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
 	@When("user clicks the Reply button")
 	public void user_clicks_the_Reply_button() throws Exception {
-	  subscribersPage.waitAndClickElement(subscribersPage.btn_Reply("111-152-5252"));
+		subscribersPage.waitAndClickElement(subscribersPage.btn_Reply("111-152-5252"));
 	}
 
 	@Then("The Send Message window is displayed")
@@ -129,13 +129,14 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@When("User clicks on the Send button")
 	public void user_clicks_on_the_Send_button() throws Exception {
-	  sendMessageModal.waitAndClickElement(sendMessageModal.btn_Send);
+		sendMessageModal.waitAndClickElement(sendMessageModal.btn_Send);
 	}
 
 	@Then("a message sent notification is displayed.")
 	public void a_message_sent_notification_is_displayed() throws Exception {
 		System.out.println(subscribersPage.getElementText(subscribersPage.txt_Notification));
-		Assert.assertEquals("×Message has been sent.", subscribersPage.getElementText(subscribersPage.txt_Notification).replaceAll("[\\n]", ""));
+		Assert.assertEquals("×Message has been sent.",
+				subscribersPage.getElementText(subscribersPage.txt_Notification).replaceAll("[\\n]", ""));
 	}
 
 //	 @SMSM-200-Verify-the-Giftbar-Profile,, @RegressionTest
@@ -163,11 +164,13 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@Then("User clicks Business tabs at the left side")
 	public void user_clicks_Business_tabs_at_the_left_side() throws Exception {
-		/*
-		 * if (reader.getConfigValue("DriverConfig", "environment").equals("localHub"))
-		 * { licAdminPage.clickCloseUpdateStatusOfBusinesses();
-		 * licAdminPage.waitForBusinessesDialogToDisappear(); }
-		 */
+
+		if (reader.getConfigValue("DriverConfig", "environment").equals("localHub")) {
+//			licAdminPage.clickCloseUpdateStatusOfBusinesses();
+			licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
+			licAdminPage.waitForBusinessesDialogToDisappear();
+		}
+
 		licAdminPage.waitAndClickElement(licAdminPage.menu_Businesses);
 	}
 

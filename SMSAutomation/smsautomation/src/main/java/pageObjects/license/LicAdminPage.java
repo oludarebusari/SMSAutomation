@@ -18,7 +18,6 @@ public class LicAdminPage extends BasePage {
 	}
 
 	//Menu Elements
-	
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and ./a[contains(text(), \"Businesses\")]]") WebElement menu_Businesses;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and ./a[contains(text(), \"Affiliates\")]]") WebElement menu_Affiliates;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and ./a[contains(text(), \"Subscribers\")]]") WebElement menu_Subscribers;
@@ -34,7 +33,6 @@ public class LicAdminPage extends BasePage {
 	public @FindBy(xpath = "//button[@id=\"utility-menu\"]") WebElement btn_superadmin;
 
 	// Other Page Objects
-
 	public @FindBy(xpath = "//div[contains(@class, \"text-warning\")]") WebElement btn_Panel_Suspended_Businesses;
 	public @FindBy(xpath = "//div[contains(@class, \"panel-button\") and .//div[text()=\"All-Time Subscribers\"]]") WebElement btn_Panel_All_Time_Subscribers;
 	public @FindBy(xpath = "//input[@id=\"id_password\"]") WebElement btn_Panel_Email_Addresses;
@@ -54,65 +52,40 @@ public class LicAdminPage extends BasePage {
 
 	
 	// Methods
-
 	/*
-	 * public LicAdminPage clickBusinesses() throws Exception {
-	 * waitAndClickElement(menu_Businesses); return new LicAdminPage(); }
+	 * public LicAdminPage clickAffiliates() throws Exception {
+	 * waitAndClickElement(menu_Affiliates); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickSubscribers() throws Exception {
+	 * waitAndClickElement(menu_Subscribers); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickPurchasePlans() throws Exception {
+	 * waitAndClickElement(menu_Purchase_Plans); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickContent() throws Exception {
+	 * waitAndClickElement(menu_Content); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickAnalytics() throws Exception {
+	 * waitAndClickElement(menu_Analytics); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickReports() throws Exception {
+	 * waitAndClickElement(menu_Reports); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickTools() throws Exception {
+	 * waitAndClickElement(menu_Tools); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickAddOnServices() throws Exception {
+	 * waitAndClickElement(menu_Add_On_Services); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickSuperAdmin() throws Exception {
+	 * waitAndClickElement(menu_Super_Admin); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickResourceAndSupport() throws Exception {
+	 * waitAndClickElement(menu_Resources_Support); return new LicAdminPage(); }
+	 * 
+	 * public LicAdminPage clickSuperAdminMenu() throws Exception {
+	 * waitAndClickElement(btn_superadmin); return new LicAdminPage(); }
 	 */
-	public LicAdminPage clickAffiliates() throws Exception {
-		waitAndClickElement(menu_Affiliates);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickSubscribers() throws Exception {
-		waitAndClickElement(menu_Subscribers);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickPurchasePlans() throws Exception {
-		waitAndClickElement(menu_Purchase_Plans);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickContent() throws Exception {
-		waitAndClickElement(menu_Content);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickAnalytics() throws Exception {
-		waitAndClickElement(menu_Analytics);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickReports() throws Exception {
-		waitAndClickElement(menu_Reports);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickTools() throws Exception {
-		waitAndClickElement(menu_Tools);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickAddOnServices() throws Exception {
-		waitAndClickElement(menu_Add_On_Services);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickSuperAdmin() throws Exception {
-		waitAndClickElement(menu_Super_Admin);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickResourceAndSupport() throws Exception {
-		waitAndClickElement(menu_Resources_Support);
-		return new LicAdminPage();
-	}
-
-	public LicAdminPage clickSuperAdminMenu() throws Exception {
-		waitAndClickElement(btn_superadmin);
-		return new LicAdminPage();
-	}
 
 	public LicAdminPage clickOnCampaigns_WO_Broadcast_In_7_Days() throws Exception {
 //		waitAndClickElement(toggle_Campaigns_WO_Broadcast_In_7_Days);
