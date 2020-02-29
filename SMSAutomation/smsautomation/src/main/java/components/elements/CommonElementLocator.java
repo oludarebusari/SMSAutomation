@@ -13,11 +13,11 @@ public class CommonElementLocator extends BasePage {
 	public CommonElementLocator() throws IOException {
 		super();
 	}
+	
 	// The following elements can be used in multiple sections of this project.
 	public final static String ELEM_PAGE_TITLE =  "//div[contains(@class, \"page-heading\")]";
 	public final static String ELEM_SEARCH_TEXTFIELD = "//input[contains(@class, \"table-search\")]";
 	
-
 	//Thrive menu options
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Dashboard\"]]") WebElement menu_Dashboard;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Experience\"]]") WebElement menu_Experience;

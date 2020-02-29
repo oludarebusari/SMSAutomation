@@ -38,6 +38,7 @@ public class BlackListPage extends BasePage {
 		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//span[text()=\"" + PhoneNo + "\"]]//button[contains(@class, \"remove-list-item\")]"));
 	}
 	public @FindBy(xpath = "//tr[@role=\"row\" and .//span[text()=\"525-252-5252\"]]//button[contains(@class, \"remove-list-item\")]") WebElement par_Remove;
+//	public @FindBy(xpath = "//tr[@role=\"row\" and .//span[text()=\"525-252-5252\"]]//i[contains(@class, \"remove-blacklist\")]") WebElement par_Remove;
 	public @FindBy(xpath = "//tr[@role=\"row\"]") WebElement par_Whitelist_Number;
 	public WebElement txt_Black_WhiteList_Number(String num) {
 		return par_Whitelist_Number.findElement(By.xpath("//span[text()=\"" + num + "\"]"));

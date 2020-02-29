@@ -286,7 +286,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("User verifies that the number is added to blacklist table")
 	public void user_verifies_that_the_number_is_added_to_blacklist_table() throws Exception {
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		Assert.assertTrue(blackListPage.txt_Black_WhiteList_Number("525-252-5252").isDisplayed());
 	}
 
@@ -346,7 +346,8 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	}
 
 	@Then("user confirms the number is deleted from the Blacklist table")
-	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() {
+	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() throws Exception {
+		Thread.sleep(4000);
 //		TODO
 		
 	}
