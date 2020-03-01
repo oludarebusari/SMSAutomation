@@ -50,7 +50,5 @@ public class UserManagementPage extends BasePage {
 	
 	public @FindBy(xpath = "//div[contains(@class, \"alert-success\")]//p[normalize-space()]") WebElement txt_Action_Notification;
 	
-	
-	
 
 }

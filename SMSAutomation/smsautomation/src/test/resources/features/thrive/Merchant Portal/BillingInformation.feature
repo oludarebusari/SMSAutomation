@@ -46,3 +46,35 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     Then the View Invoice page is opened
     And User verifies One TimePrice, Recurring price and Date is present on the page
     And User verifies the Current Balance on the Invoice page
+
+  @SMSM-135 @Print-the-Invoice @RegressionTest
+  Scenario: Print the Invoice
+    When User clicks on View Invoice link
+    Then the View Invoice page is opened
+    When User clicks the Print Invoice
+    Then the windows print dialog is opened
+
+  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest
+  Scenario: Edit Company information from Invoice page
+    When User clicks on View Invoice link
+    Then the View Invoice page is opened
+    And User validate the Company Information is present
+    When User clicks te Edit icon from Company Information pane
+		Then the Edit Company page is opened
+		And User edits the Business name
+		And User edits the Support email
+		And User edits the Business phone
+		When User clicks the company logo choose button, selects a file and clicks open
+		Then the file is selected
+		When User clicks on Save button
+		Then a success message is displayed
+		
+		
+		
+    
+    
+    
+    
+    
+    
+    
