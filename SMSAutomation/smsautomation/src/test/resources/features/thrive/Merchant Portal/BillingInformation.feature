@@ -54,27 +54,50 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Print Invoice
     Then the windows print dialog is opened
 
-  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest
+  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest @OnlyMe
   Scenario: Edit Company information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
     And User validate the Company Information is present
-    When User clicks te Edit icon from Company Information pane
-		Then the Edit Company page is opened
-		And User edits the Business name
-		And User edits the Support email
-		And User edits the Business phone
-		When User clicks the company logo choose button, selects a file and clicks open
-		Then the file is selected
-		When User clicks on Save button
-		Then a success message is displayed
-		
-		
-		
+    When User clicks te Edit icon from Company Information panel
+    Then the Edit Company page is opened
+    And User edits the Business name
+    And User edits the Support email
+    And User edits the Business phone
+    And User clicks the company logo choose button, selects a file and clicks open
+    When User clicks on Save button
+    Then a success message is displayed
+    #Revert-changes-to-Company
+    When User changes Business name, support email and business phone to their original value
+    When User clicks on Save button
+    Then a success message is displayed
+
+  @SMSM-135 @Edit-Billing-information-from-Invoice-page @RegressionTest 
+  Scenario: Edit Billing information from Invoice page
+    When User clicks on View Invoice link
+    Then the View Invoice page is opened
+    When User clicks Edit Billing Information link
+    Then the Edit Company page is opened
+    And User verifies that Business Information section exists
+    And User edits the Business Information pnhone number
+    And User verifies that Billing Information section exists
+    And User edits the State and Country from billing Info Section
+    When User clicks on Save button
+    Then a success message is displayed
+    #Revert-changes-to-Billing Information
+    When User changes Business phone, State and country to thier original value
+    When User clicks on Save button
+    Then a success message is displayed
+
+  @SMSM-135 @Check-for-transaction-history-from-Invoice-page @RegressionTest
+  Scenario: Check for Transaction History from Invoice page
+    When User clicks on View Invoice link
+    Then the View Invoice page is opened
+    And User verifies that the Transaction History panel is present on the View Invoice page
+    And User verifies that Date column is present under Transaction history
+    And USer verifies that Status columnr is present under Transaction history
+    And User verifies that Amount Due column is present under Transaction history
     
-    
-    
-    
-    
+
     
     

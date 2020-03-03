@@ -124,7 +124,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When the deleted username is typed into the search field and the search button is clicked
     Then no result should be displayed.
 
-  @SMSM-134 @User-search-by-different-search-parameters @RegressionTest @OnlyMe
+  @SMSM-134 @User-search-by-different-search-parameters @RegressionTest 
   Scenario: User search by different search parameters
     When User enters first name of any user in the search field
     And User clicks the search button
@@ -133,7 +133,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     And User clicks the search button
     Then the search result record with the typed in last name is displayed successfully
 
-  @SMSM-134 @Help-tour-should-starts-on-clicking-help-button @RegressionTest @OnlyMe
+  @SMSM-134 @Help-tour-should-starts-on-clicking-help-button @RegressionTest
   Scenario: Help tour should starts on clicking "Help" button
     When User clicks on Help button on the top right of the screen
     Then the Help Tour guide is displayed
@@ -142,7 +142,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When User clicks on Previous button on Manage user popup
     Then the tour guide should be navigated to previous step
 
-  @SMSM-134 @Help-tour-should-terminate-on-clicking-End-Tour-button @RegressionTest @OnlyMe
+  @SMSM-134 @Help-tour-should-terminate-on-clicking-End-Tour-button @RegressionTest
   Scenario: Help tour should terminate on clicking "End Tour" button
     When User clicks on Help button on the top right of the screen
     Then the Help Tour guide is displayed

@@ -1,6 +1,6 @@
 {
 	"GeneralSettings": {
-		"engBaseURL": "https://staging.smsmmadmin.com/",
+		"engBaseURL": "https://stage2-aut.smsmmadmin.com/",
 		"licBaseURL": "https://www.smsmmtest.com/admin/",
 		"thrBaseURL": "https://thrive.stage2-aut.mastermindsdigital.com/login"
 	},
