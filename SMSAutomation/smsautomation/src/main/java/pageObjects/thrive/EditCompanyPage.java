@@ -34,9 +34,15 @@ public class EditCompanyPage extends BasePage {
 	public WebElement opt_Country (String country) {
 		return lov_Country.findElement(By.xpath("//option[text()=\'" + country + "']"));
 	}
+	public WebElement selectedCountry () {
+		return lov_Country.findElement(By.xpath("//select[@id=\"company_type_companyAddress_country\"]//option[@selected]"));
+	}
 	public @FindBy(xpath = "//select[@id=\"company_type_companyAddress_state\"]") WebElement lov_State;
 	public WebElement opt_State (String state) {
 	    return lov_State.findElement(By.xpath("//option[text()=\'" + state + "']"));
+	}
+	public WebElement selectedState() {
+	    return lov_State.findElement(By.xpath("//select[@id=\"company_type_companyAddress_state\"]//option[@selected]"));
 	}
 	public @FindBy(xpath = "//input[@id=\"company_merchant_type_singleCompanyAddress_zipCode\"]") WebElement txtF_ZipCode;
 }

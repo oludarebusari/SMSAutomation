@@ -111,8 +111,8 @@ public class BillingInformationSteps extends DriverFactory {
 		Assert.assertTrue(viewInvoicePage.tile_CompanyInformation.isDisplayed());
 	}
 
-	@When("User clicks te Edit icon from Company Information panel")
-	public void user_clicks_te_Edit_icon_from_Company_Information_panel() throws Exception {
+	@When("User clicks the Edit icon from Company Information panel")
+	public void user_clicks_the_Edit_icon_from_Company_Information_panel() throws Exception {
 		viewInvoicePage.waitAndClickElement(viewInvoicePage.btn_CompanyInformationEdit);
 
 	}
@@ -150,6 +150,16 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@When("User clicks on Save button")
 	public void user_clicks_on_Save_button() throws Exception {
+		
+		/*
+		 * if (reader.getConfigValue("DriverConfig", "environment").equals("remoteHub"))
+		 * {
+		 * editCompanyPage.scrollToElementByWebElementLocator(editCompanyPage.btn_Save);
+		 * Thread.sleep(500);
+		 * editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save); } else {
+		 * editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save); }
+		 */
+		
 		editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save);
 	}
 
@@ -196,6 +206,13 @@ public class BillingInformationSteps extends DriverFactory {
 		editCompanyPage.waitAndClickElement(editCompanyPage.lov_State);
 		editCompanyPage.waitAndClickElement(editCompanyPage.opt_State("Quebec"));
 	}
+	
+	@Then("User verifies that the edited Billing info fields were saved correctly")
+	public void user_verifies_that_the_edited_Billing_info_fields_were_saved_correctly() throws Exception {
+		Assert.assertEquals("555-223-1785", editCompanyPage.txtF_BusinessPhone.getAttribute("value"));
+		Assert.assertEquals("Canada", editCompanyPage.getElementText(editCompanyPage.selectedCountry()));
+		Assert.assertEquals("Quebec", editCompanyPage.getElementText(editCompanyPage.selectedState()));
+	}
 
 //	 #Revert-changes-to-Billing Information 
 	@When("User changes Business phone, State and country to thier original value")
@@ -210,22 +227,58 @@ public class BillingInformationSteps extends DriverFactory {
 //	 @SMSM-135 @Check-for-transaction-history-from-Invoice-page
 	@Then("User verifies that the Transaction History panel is present on the View Invoice page")
 	public void user_verifies_that_the_Transaction_History_panel_is_present_on_the_View_Invoice_page() {
-
+		Assert.assertTrue(viewInvoicePage.tile_TransactionHistory.isDisplayed());
 	}
 
 	@Then("User verifies that Date column is present under Transaction history")
 	public void user_verifies_that_Date_column_is_present_under_Transaction_history() {
-
+		Assert.assertTrue(viewInvoicePage.col_TranssactionHistoryDate.isDisplayed());
 	}
 
 	@Then("USer verifies that Status columnr is present under Transaction history")
 	public void user_verifies_that_Status_columnr_is_present_under_Transaction_history() {
-
+		Assert.assertTrue(viewInvoicePage.col_Status.isDisplayed());
 	}
 
 	@Then("User verifies that Amount Due column is present under Transaction history")
 	public void user_verifies_that_Amount_Due_column_is_present_under_Transaction_history() {
+		Assert.assertTrue(viewInvoicePage.col_AmountDue.isDisplayed());
+	}
+	
+//	@SMSM-135 @Edit-Payment-Information-from-Billing-page
+	@When("User clicks the Edit Payment link from the Billing page")
+	public void user_clicks_the_Edit_Payment_link_from_the_Billing_page() throws Exception {
+	billingPage.waitAndClickElement(billingPage.lnk_EditPaymentMethod);
+	}
 
+	@Then("User edits the Address field")
+	public void user_edits_the_Address_field() throws Exception {
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_Address, "45 Test Street");
+	}
+
+    @Then("User edits the City field")
+	public void user_edits_the_City_field() throws Exception {
+	 editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_City, "Washington");
+	}
+
+	@Then("User edits the ZipCode field")
+	public void user_edits_the_ZipCode_field() throws Exception {
+	  editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_ZipCode, "94402");
+	}
+	
+//  Revert Changes to Payment Information
+	@Then("User verifies that the edited fields were saved correctly")
+	public void user_verifies_that_the_edited_fields_were_saved_correctly() throws InterruptedException {
+	 Assert.assertEquals("45 Test Street", editCompanyPage.txtF_Address.getAttribute("value"));
+	 Assert.assertEquals("Washington", editCompanyPage.txtF_City.getAttribute("value"));
+	 Assert.assertEquals("94402", editCompanyPage.txtF_ZipCode.getAttribute("value"));
+	}
+
+	@Then("User changes Address City and ZipCode fields to thier original value")
+	public void user_changes_Address_City_and_ZipCode_fields_to_thier_original_value() throws Exception {
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_Address,"123 main street");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_City, "BAHAMA");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_ZipCode, "93401");
 	}
 
 }

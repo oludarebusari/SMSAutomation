@@ -59,7 +59,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on View Invoice link
     Then the View Invoice page is opened
     And User validate the Company Information is present
-    When User clicks te Edit icon from Company Information panel
+    When User clicks the Edit icon from Company Information panel
     Then the Edit Company page is opened
     And User edits the Business name
     And User edits the Support email
@@ -72,7 +72,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Edit-Billing-information-from-Invoice-page @RegressionTest 
+  @SMSM-135 @Edit-Billing-information-from-Invoice-page @RegressionTest
   Scenario: Edit Billing information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -84,12 +84,16 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And User edits the State and Country from billing Info Section
     When User clicks on Save button
     Then a success message is displayed
+    When User clicks the Billing menu option
+    And User clicks on View Invoice link
+    And User clicks the Edit icon from Company Information panel
+    Then User verifies that the edited Billing info fields were saved correctly
     #Revert-changes-to-Billing Information
     When User changes Business phone, State and country to thier original value
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Check-for-transaction-history-from-Invoice-page @RegressionTest
+  @SMSM-135 @Check-for-transaction-history-from-Invoice-page @RegressionTest @OnlyMe
   Scenario: Check for Transaction History from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -97,7 +101,23 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And User verifies that Date column is present under Transaction history
     And USer verifies that Status columnr is present under Transaction history
     And User verifies that Amount Due column is present under Transaction history
-    
 
+  @SMSM-135 @Edit-Payment-Information-from-Billing-page @RegressionTest @OnlyMe
+  Scenario: Edit Payment information from Billing page
+    When User clicks the Edit Payment link from the Billing page
+    Then the Edit Company page is opened
+    And User edits the Address field
+    And User edits the City field
+    And User edits the ZipCode field
+    When User clicks on Save button
+    Then a success message is displayed
+    When User clicks the Billing menu option
+    And User clicks the Edit Payment link from the Billing page
+    Then User verifies that the edited fields were saved correctly
+    #Revert-changes-to-Billing Information
+    And User changes Address City and ZipCode fields to thier original value
+    When User clicks on Save button
+    Then a success message is displayed
     
     
+    #Edit Billing Information from Billing page

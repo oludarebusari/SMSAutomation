@@ -25,10 +25,18 @@ public class ViewInvoicePage extends BasePage {
 	
 	public @FindBy(xpath = "//div[@id=\"content\"]/embed") WebElement mod_PrintWindow;
 	public @FindBy(xpath = "//*[@id=\"sidebar\"]//print-preview-button-strip//cr-button[1]") WebElement btn_WindowsPrint;
+	
+	//Company Panel
 	public @FindBy(xpath = "//div[contains(@class, \"panel-default\") and .//h3[text()=\"Company Information\"]]") WebElement tile_CompanyInformation;
 	public @FindBy(xpath = "//div[contains(@class, \"panel-default\") and .//h3[text()=\"Company Information\"]]") WebElement par_Company;
 	public @FindBy(xpath = "//div[contains(@class, \"panel-default\") and .//h3[text()=\"Company Information\"]]//a[contains(@class, \"pull-right\")]") WebElement btn_CompanyInformationEdit;
 
+	//Transaction History Panel
+	public @FindBy(xpath = "//div[contains(@class, \"panel-default\") and .//h3[text()=\"Transaction History\"]]") WebElement tile_TransactionHistory;
+	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Date\"]") WebElement col_TranssactionHistoryDate;
+	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Status\"]") WebElement col_Status;
+	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Amount Due\"]") WebElement col_AmountDue;
+	
 	/*
 	 * public WebElement btn_CompanyInformationEdit(String company) { return
 	 * par_Company.findElement(By.
