@@ -52,9 +52,9 @@ public class BillingInformationSteps extends DriverFactory {
 		Assert.assertTrue(billingPage.tile_BillingInformation.isDisplayed());
 	}
 
-	@Then("User verifies that Invoice History is present")
-	public void user_verifies_that_Invoice_History_is_present() {
-		Assert.assertTrue(billingPage.InvoiceHistory.isDisplayed());
+	@Then("User verifies that the Invoice History section is present")
+	public void user_verifies_that_the_Invoice_History_section_is_present() {
+		Assert.assertTrue(billingPage.tile_InvoiceHistory.isDisplayed());
 	}
 
 //	@SMSM-135 @View-the-Invoice-and-Current-Balance
@@ -150,17 +150,12 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@When("User clicks on Save button")
 	public void user_clicks_on_Save_button() throws Exception {
-		
-		/*
-		 * if (reader.getConfigValue("DriverConfig", "environment").equals("remoteHub"))
-		 * {
-		 * editCompanyPage.scrollToElementByWebElementLocator(editCompanyPage.btn_Save);
-		 * Thread.sleep(500);
-		 * editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save); } else {
-		 * editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save); }
-		 */
-		
-		editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save);
+		if (reader.getConfigValue("DriverConfig", "environment").equals("remoteHub")) {
+			editCompanyPage.scrollToElementByWebElementLocator(editCompanyPage.btn_Save);
+			editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save);
+		} else {
+			editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save);
+		}
 	}
 
 	@Then("a success message is displayed")
@@ -206,7 +201,7 @@ public class BillingInformationSteps extends DriverFactory {
 		editCompanyPage.waitAndClickElement(editCompanyPage.lov_State);
 		editCompanyPage.waitAndClickElement(editCompanyPage.opt_State("Quebec"));
 	}
-	
+
 	@Then("User verifies that the edited Billing info fields were saved correctly")
 	public void user_verifies_that_the_edited_Billing_info_fields_were_saved_correctly() throws Exception {
 		Assert.assertEquals("555-223-1785", editCompanyPage.txtF_BusinessPhone.getAttribute("value"));
@@ -244,11 +239,11 @@ public class BillingInformationSteps extends DriverFactory {
 	public void user_verifies_that_Amount_Due_column_is_present_under_Transaction_history() {
 		Assert.assertTrue(viewInvoicePage.col_AmountDue.isDisplayed());
 	}
-	
+
 //	@SMSM-135 @Edit-Payment-Information-from-Billing-page
 	@When("User clicks the Edit Payment link from the Billing page")
 	public void user_clicks_the_Edit_Payment_link_from_the_Billing_page() throws Exception {
-	billingPage.waitAndClickElement(billingPage.lnk_EditPaymentMethod);
+		billingPage.waitAndClickElement(billingPage.lnk_EditPaymentMethod);
 	}
 
 	@Then("User edits the Address field")
@@ -256,29 +251,90 @@ public class BillingInformationSteps extends DriverFactory {
 		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_Address, "45 Test Street");
 	}
 
-    @Then("User edits the City field")
+	@Then("User edits the City field")
 	public void user_edits_the_City_field() throws Exception {
-	 editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_City, "Washington");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_City, "Washington");
 	}
 
 	@Then("User edits the ZipCode field")
 	public void user_edits_the_ZipCode_field() throws Exception {
-	  editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_ZipCode, "94402");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_ZipCode, "94402");
 	}
-	
+
 //  Revert Changes to Payment Information
 	@Then("User verifies that the edited fields were saved correctly")
 	public void user_verifies_that_the_edited_fields_were_saved_correctly() throws InterruptedException {
-	 Assert.assertEquals("45 Test Street", editCompanyPage.txtF_Address.getAttribute("value"));
-	 Assert.assertEquals("Washington", editCompanyPage.txtF_City.getAttribute("value"));
-	 Assert.assertEquals("94402", editCompanyPage.txtF_ZipCode.getAttribute("value"));
+		Assert.assertEquals("45 Test Street", editCompanyPage.txtF_Address.getAttribute("value"));
+		Assert.assertEquals("Washington", editCompanyPage.txtF_City.getAttribute("value"));
+		Assert.assertEquals("94402", editCompanyPage.txtF_ZipCode.getAttribute("value"));
 	}
 
 	@Then("User changes Address City and ZipCode fields to thier original value")
 	public void user_changes_Address_City_and_ZipCode_fields_to_thier_original_value() throws Exception {
-		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_Address,"123 main street");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_Address, "123 main street");
 		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_City, "BAHAMA");
 		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_ZipCode, "93401");
 	}
+	
+
+//	@SMSM-135 @Edit-Billing-Information-from-Billing-page @RegressionTest
+	@When("User clicks the Edit Billing Information link")
+	public void user_clicks_the_Edit_Billing_Information_link() throws Exception {
+		billingPage.waitAndClickElement(billingPage.lnk_EditBillingInformation);
+	}
+	
+//	@SMSM-135 @check-for-Invoice-History-from-Billing-page
+	@Then("User verifies that Due Column is present")
+	public void user_verifies_that_Due_Column_is_present() {
+		Assert.assertTrue(billingPage.col_Due.isDisplayed());
+	}
+
+	@Then("User verifies Amount Column is present")
+	public void user_verifies_Amount_Column_is_present() {
+	 Assert.assertTrue(billingPage.col_Amount.isDisplayed());
+	}
+
+	@Then("User verifies Status column is present")
+	public void user_verifies_Status_column_is_present() {
+	  Assert.assertTrue(billingPage.col_Status.isDisplayed());
+	}
+
+	@Then("User verifies Action Column is present")
+	public void user_verifies_Action_Column_is_present() {
+		Assert.assertTrue(billingPage.col_Action.isDisplayed());
+	}
+
+//	@SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History
+	@When("User clicks the View button for an Invoice")
+	public void user_clicks_the_View_button_for_an_Invoice() throws Exception {
+		billingPage.waitAndClickElement(billingPage.btn_ViewButtonByAmount("495"));
+	}
+
+	@Then("the details of the Invoice clicked is displayed on the Invoice page")
+	public void the_details_of_the_Invoice_clicked_is_displayed_on_the_Invoice_page() throws Exception {
+	  Assert.assertEquals("View Invoice", viewInvoicePage.getElementText(viewInvoicePage.pag_Title));
+	  Assert.assertTrue(viewInvoicePage.tile_CompanyInformation.isDisplayed());
+	  Assert.assertTrue(viewInvoicePage.tile_TransactionHistory.isDisplayed());
+	}
+	
+//	 @SMSM-135 @Verify-Help-option-for-Billing-page
+	@Then("User verifies that Help button is present on the page")
+	public void user_verifies_that_Help_button_is_present_on_the_page() {
+	
+	}
+
+	@When("User clicks the Help button")
+	public void user_clicks_the_Help_button() {
+	
+	}
+
+	@Then("the help tour guide is opened")
+	public void the_help_tour_guide_is_opened() {
+	
+	}
+
+	
+
+
 
 }

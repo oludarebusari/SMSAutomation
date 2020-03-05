@@ -48,7 +48,6 @@ public class CommonElementLocator extends BasePage {
 	public WebElement firstName(String index) {
 		return parent_Element.findElement(By.xpath("(//tr/td[text()])['" + index + "']"));
 	}
-	
 	public @FindBy(xpath = "(//tr/td[text()])[1]") WebElement sort_FirstName;
 	public @FindBy(xpath = "(//tr/td[text()])[2]") WebElement sort_LastName;
 	public @FindBy(xpath = "(//tr/td[text()])[3]") WebElement sort_Status;

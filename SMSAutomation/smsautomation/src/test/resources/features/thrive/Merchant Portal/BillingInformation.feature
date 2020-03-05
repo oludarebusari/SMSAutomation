@@ -32,12 +32,12 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Billing menu option
     Then User is redirected to Billing page
 
-  @SMSM-135 @Validate-the-options-in-Billing-page @RegressionTest
+  @SMSM-135 @Validate-the-options-in-Billing-page @RegressionTest 
   Scenario: Validate the options in Billing page
     And User verifies the Current Balance Tile
     And User verifies the Invoice Method Payment Tile
     And User verifies the Billing information Tile
-    And User verifies that Invoice History is present
+    And User verifies that the Invoice History section is present
 
   @SMSM-135 @View-the-Invoice-and-Current-Balance @RegressionTest
   Scenario: View the Invoice and Current Balance
@@ -54,7 +54,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Print Invoice
     Then the windows print dialog is opened
 
-  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest @OnlyMe
+  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest 
   Scenario: Edit Company information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -93,7 +93,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Check-for-transaction-history-from-Invoice-page @RegressionTest @OnlyMe
+  @SMSM-135 @Check-for-transaction-history-from-Invoice-page @RegressionTest
   Scenario: Check for Transaction History from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -102,7 +102,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And USer verifies that Status columnr is present under Transaction history
     And User verifies that Amount Due column is present under Transaction history
 
-  @SMSM-135 @Edit-Payment-Information-from-Billing-page @RegressionTest @OnlyMe
+  @SMSM-135 @Edit-Payment-Information-from-Billing-page @RegressionTest 
   Scenario: Edit Payment information from Billing page
     When User clicks the Edit Payment link from the Billing page
     Then the Edit Company page is opened
@@ -118,6 +118,60 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And User changes Address City and ZipCode fields to thier original value
     When User clicks on Save button
     Then a success message is displayed
-    
-    
-    #Edit Billing Information from Billing page
+
+  @SMSM-135 @Edit-Billing-Information-from-Billing-page @RegressionTest 
+  Scenario: Edit Billing Information from Billing page
+    When User clicks the Edit Billing Information link
+    Then the Edit Company page is opened
+    And User verifies that Business Information section exists
+    And User edits the Business Information pnhone number
+    And User verifies that Billing Information section exists
+    And User edits the State and Country from billing Info Section
+    When User clicks on Save button
+    Then a success message is displayed
+    When User clicks the Billing menu option
+    And User clicks on View Invoice link
+    And User clicks the Edit icon from Company Information panel
+    Then User verifies that the edited Billing info fields were saved correctly
+    #Revert-changes-to-Billing Information
+    When User changes Business phone, State and country to thier original value
+    When User clicks on Save button
+    Then a success message is displayed
+
+  @SMSM-135 @check-for-Invoice-History-from-Billing-page @RegressionTest 
+  Scenario: Check for Invoice History from Billing page
+  	And User verifies that the Invoice History section is present
+  	And User verifies that Due Column is present
+  	And User verifies Amount Column is present
+  	And User verifies Status column is present
+  	And User verifies Action Column is present
+  	
+  @SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History @RegressionTest @OnlyMe
+  Scenario: View the selected Invoice details from Invoice History
+  And User verifies that the Invoice History section is present
+  When User clicks the View button for an Invoice
+  Then the details of the Invoice clicked is displayed on the Invoice page
+  
+  @SMSM-135 @Verify-Help-option-for-Billing-page @RegressionTest 
+  Scenario: Verify Help option for Billing page
+  And User verifies that Help button is present on the page
+  When User clicks the Help button
+  Then the help tour guide is opened
+  
+  
+  #@SMSM-135 @Verify-Help-option-for-Invoice-page @RegressionTest 
+  #Scenario: Verify Help option for Invoice page
+    #When User clicks on the Help button on top right of screen
+    #And Tour guide should starts successfully.
+    #When User clicks on Next button on Manage user group
+    #Then Tour guide should proceed to next step
+    #When User clicks on Previous button on Manage user group
+    #Then Tour guide is navigated to previous step
+    #When User clicks on End Tour button
+    #Then Tour ends successfully
+  #
+  
+  
+  
+  
+  

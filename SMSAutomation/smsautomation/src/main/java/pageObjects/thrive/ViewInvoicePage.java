@@ -37,11 +37,4 @@ public class ViewInvoicePage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Status\"]") WebElement col_Status;
 	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Amount Due\"]") WebElement col_AmountDue;
 	
-	/*
-	 * public WebElement btn_CompanyInformationEdit(String company) { return
-	 * par_Company.findElement(By.
-	 * xpath("//div[contains(@class, \"panel-default\") and .//h4[text()=\'"+
-	 * company + "']]//a[contains(@class, \"pull-right\")]")); }
-	 */
-
 }
