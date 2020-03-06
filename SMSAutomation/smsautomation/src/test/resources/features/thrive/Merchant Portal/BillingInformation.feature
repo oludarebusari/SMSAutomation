@@ -32,7 +32,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Billing menu option
     Then User is redirected to Billing page
 
-  @SMSM-135 @Validate-the-options-in-Billing-page @RegressionTest 
+  @SMSM-135 @Validate-the-options-in-Billing-page @RegressionTest
   Scenario: Validate the options in Billing page
     And User verifies the Current Balance Tile
     And User verifies the Invoice Method Payment Tile
@@ -54,7 +54,23 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Print Invoice
     Then the windows print dialog is opened
 
-  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest 
+  @SMSM-135 @Edit-User-Information-from-Invoice-page @RegressionTest @OnlyMe
+  Scenario: Edit User Information from Invoice page
+    When User clicks on View Invoice link
+    Then the View Invoice page is opened
+    And user verifies that he Users panel is present
+    When User navigates to a desired user object and click the Edit icon beside it
+    Then the Update Account page is displayed
+    And User edits the first name
+    And User edits the last name
+    And user edits the primary email
+    And user edits the password
+    And User edits the cell phone
+    And User selects a status from System Notifications
+    When User clicks on Update Account button
+    Then a success message is displayed
+
+  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest
   Scenario: Edit Company information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -102,7 +118,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And USer verifies that Status columnr is present under Transaction history
     And User verifies that Amount Due column is present under Transaction history
 
-  @SMSM-135 @Edit-Payment-Information-from-Billing-page @RegressionTest 
+  @SMSM-135 @Edit-Payment-Information-from-Billing-page @RegressionTest
   Scenario: Edit Payment information from Billing page
     When User clicks the Edit Payment link from the Billing page
     Then the Edit Company page is opened
@@ -119,7 +135,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Edit-Billing-Information-from-Billing-page @RegressionTest 
+  @SMSM-135 @Edit-Billing-Information-from-Billing-page @RegressionTest
   Scenario: Edit Billing Information from Billing page
     When User clicks the Edit Billing Information link
     Then the Edit Company page is opened
@@ -138,40 +154,42 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @check-for-Invoice-History-from-Billing-page @RegressionTest 
+  @SMSM-135 @check-for-Invoice-History-from-Billing-page @RegressionTest
   Scenario: Check for Invoice History from Billing page
-  	And User verifies that the Invoice History section is present
-  	And User verifies that Due Column is present
-  	And User verifies Amount Column is present
-  	And User verifies Status column is present
-  	And User verifies Action Column is present
-  	
-  @SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History @RegressionTest @OnlyMe
+    And User verifies that the Invoice History section is present
+    And User verifies that Due Column is present
+    And User verifies Amount Column is present
+    And User verifies Status column is present
+    And User verifies Action Column is present
+
+  @SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History @RegressionTest
   Scenario: View the selected Invoice details from Invoice History
-  And User verifies that the Invoice History section is present
-  When User clicks the View button for an Invoice
-  Then the details of the Invoice clicked is displayed on the Invoice page
-  
-  @SMSM-135 @Verify-Help-option-for-Billing-page @RegressionTest 
+    And User verifies that the Invoice History section is present
+    When User clicks the View button for an Invoice
+    Then the details of the Invoice clicked is displayed on the Invoice page
+
+  @SMSM-135 @Verify-Help-option-for-Billing-page @RegressionTest @OnlyMe
   Scenario: Verify Help option for Billing page
-  And User verifies that Help button is present on the page
-  When User clicks the Help button
-  Then the help tour guide is opened
-  
-  
-  #@SMSM-135 @Verify-Help-option-for-Invoice-page @RegressionTest 
-  #Scenario: Verify Help option for Invoice page
-    #When User clicks on the Help button on top right of screen
-    #And Tour guide should starts successfully.
-    #When User clicks on Next button on Manage user group
-    #Then Tour guide should proceed to next step
-    #When User clicks on Previous button on Manage user group
-    #Then Tour guide is navigated to previous step
-    #When User clicks on End Tour button
-    #Then Tour ends successfully
-  #
-  
-  
-  
-  
-  
+    And User verifies that Help button is present on the page
+    When User clicks the Help button
+    Then the help tour guide is opened
+    When USer clicks the Next button
+    Then the tour guide proceeds to the next step for Billing
+    When User clicks the Previous button
+    Then the tour guide navigates to the previous for Billing
+    When User clicks the End Tour button
+    Then the Tour ends successfully
+
+  @SMSM-135 @Verify-Help-option-for-Invoice-page @RegressionTest
+  Scenario: Verify Help option for Invoice page
+    When User clicks on View Invoice link
+    Then the View Invoice page is opened
+    And User verifies that Help button is present on the page
+    When User clicks the Help button
+    Then the help tour guide is opened
+    When USer clicks the Next button
+    Then the tour guide proceeds to the next step for Invoice
+    When User clicks the Previous button
+    Then the tour guide navigates to the previous step for Invoice
+    When User clicks the End Tour button
+    Then the Tour ends successfully

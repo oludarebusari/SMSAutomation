@@ -2,7 +2,7 @@ package pageObjects.thrive;
 
 import java.io.IOException;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -36,5 +36,12 @@ public class ViewInvoicePage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Date\"]") WebElement col_TranssactionHistoryDate;
 	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Status\"]") WebElement col_Status;
 	public @FindBy(xpath = "//div[@class=\"col-xs-4\"]//strong[text()=\"Amount Due\"]") WebElement col_AmountDue;
+	
+    // Users
+	public @FindBy(xpath = "//div[@class=\"panel-heading\" and ./h3[text()=\"Users\"]]") WebElement panel_Users;
+	public @FindBy(xpath = "//ul[@class=\"list-group\"]") WebElement parent_Element;
+	public WebElement editUserByName(String name) {
+		return parent_Element.findElement(By.xpath("//li[@class=\"list-group-item\" and .//strong[text()=\'" + name +"']]//a[contains(@class, \"btn-default\")]"));
+	}
 	
 }

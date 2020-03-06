@@ -13,6 +13,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.thrive.BillingPage;
 import pageObjects.thrive.EditCompanyPage;
+import pageObjects.thrive.EditUserPage;
 import pageObjects.thrive.ViewInvoicePage;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
@@ -24,6 +25,7 @@ public class BillingInformationSteps extends DriverFactory {
 	public BillingPage billingPage = PageFactory.initElements(driver, BillingPage.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public EditCompanyPage editCompanyPage = PageFactory.initElements(driver, EditCompanyPage.class);
+	public EditUserPage editUserPage = PageFactory.initElements(driver, EditUserPage.class);
 	public ViewInvoicePage viewInvoicePage = PageFactory.initElements(driver, ViewInvoicePage.class);
 
 //	@SMSM-135 @Validate-the-options-in-Billing-page 
@@ -104,6 +106,58 @@ public class BillingInformationSteps extends DriverFactory {
 		}
 		Assert.assertTrue(driver.getWindowHandle().equals(newWinHandle));
 	}
+	
+//	@SMSM-135 @Edit-User-Information-from-Invoice-page
+	@Then("user verifies that he Users panel is present")
+	public void user_verifies_that_he_Users_panel_is_present() {
+	  Assert.assertTrue(viewInvoicePage.panel_Users.isDisplayed());
+	}
+
+	@When("User navigates to a desired user object and click the Edit icon beside it")
+	public void user_navigates_to_a_desired_user_object_and_click_the_Edit_icon_beside_it() throws InterruptedException {
+		viewInvoicePage.waitAndClickElement(viewInvoicePage.editUserByName("Zella Holmes"));
+	}
+
+	@Then("the Update Account page is displayed")
+	public void the_Update_Account_page_is_displayed() {
+	
+	}
+
+	@Then("User edits the first name")
+	public void user_edits_the_first_name() {
+	 
+	}
+
+	@Then("User edits the last name")
+	public void user_edits_the_last_name() {
+	  
+	}
+
+	@Then("user edits the primary email")
+	public void user_edits_the_primary_email() {
+	 
+	}
+
+	@Then("user edits the password")
+	public void user_edits_the_password() {
+	  
+	}
+
+	@Then("User edits the cell phone")
+	public void user_edits_the_cell_phone() {
+	
+	}
+
+	@Then("User selects a status from System Notifications")
+	public void user_selects_a_status_from_System_Notifications() {
+	
+	}
+
+	@When("User clicks on Update Account button")
+	public void user_clicks_on_Update_Account_button() {
+	  
+	}
+
 
 //	@SMSM-135 @Edit-Company-information-from-Invoice-page
 	@Then("User validate the Company Information is present")
@@ -114,7 +168,6 @@ public class BillingInformationSteps extends DriverFactory {
 	@When("User clicks the Edit icon from Company Information panel")
 	public void user_clicks_the_Edit_icon_from_Company_Information_panel() throws Exception {
 		viewInvoicePage.waitAndClickElement(viewInvoicePage.btn_CompanyInformationEdit);
-
 	}
 
 	@Then("the Edit Company page is opened")
@@ -239,6 +292,7 @@ public class BillingInformationSteps extends DriverFactory {
 	public void user_verifies_that_Amount_Due_column_is_present_under_Transaction_history() {
 		Assert.assertTrue(viewInvoicePage.col_AmountDue.isDisplayed());
 	}
+	
 
 //	@SMSM-135 @Edit-Payment-Information-from-Billing-page
 	@When("User clicks the Edit Payment link from the Billing page")
@@ -275,14 +329,13 @@ public class BillingInformationSteps extends DriverFactory {
 		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_City, "BAHAMA");
 		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_ZipCode, "93401");
 	}
-	
 
 //	@SMSM-135 @Edit-Billing-Information-from-Billing-page @RegressionTest
 	@When("User clicks the Edit Billing Information link")
 	public void user_clicks_the_Edit_Billing_Information_link() throws Exception {
 		billingPage.waitAndClickElement(billingPage.lnk_EditBillingInformation);
 	}
-	
+
 //	@SMSM-135 @check-for-Invoice-History-from-Billing-page
 	@Then("User verifies that Due Column is present")
 	public void user_verifies_that_Due_Column_is_present() {
@@ -291,12 +344,12 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@Then("User verifies Amount Column is present")
 	public void user_verifies_Amount_Column_is_present() {
-	 Assert.assertTrue(billingPage.col_Amount.isDisplayed());
+		Assert.assertTrue(billingPage.col_Amount.isDisplayed());
 	}
 
 	@Then("User verifies Status column is present")
 	public void user_verifies_Status_column_is_present() {
-	  Assert.assertTrue(billingPage.col_Status.isDisplayed());
+		Assert.assertTrue(billingPage.col_Status.isDisplayed());
 	}
 
 	@Then("User verifies Action Column is present")
@@ -312,29 +365,75 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@Then("the details of the Invoice clicked is displayed on the Invoice page")
 	public void the_details_of_the_Invoice_clicked_is_displayed_on_the_Invoice_page() throws Exception {
-	  Assert.assertEquals("View Invoice", viewInvoicePage.getElementText(viewInvoicePage.pag_Title));
-	  Assert.assertTrue(viewInvoicePage.tile_CompanyInformation.isDisplayed());
-	  Assert.assertTrue(viewInvoicePage.tile_TransactionHistory.isDisplayed());
+		Assert.assertEquals("View Invoice", viewInvoicePage.getElementText(viewInvoicePage.pag_Title));
+		Assert.assertTrue(viewInvoicePage.tile_CompanyInformation.isDisplayed());
+		Assert.assertTrue(viewInvoicePage.tile_TransactionHistory.isDisplayed());
 	}
-	
+
 //	 @SMSM-135 @Verify-Help-option-for-Billing-page
 	@Then("User verifies that Help button is present on the page")
 	public void user_verifies_that_Help_button_is_present_on_the_page() {
-	
+		Assert.assertTrue(commonElementLocator.btn_Help.isDisplayed());
 	}
 
 	@When("User clicks the Help button")
-	public void user_clicks_the_Help_button() {
-	
+	public void user_clicks_the_Help_button() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
 	}
 
 	@Then("the help tour guide is opened")
-	public void the_help_tour_guide_is_opened() {
-	
+	public void the_help_tour_guide_is_opened() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.mod_Help_Title);
 	}
 
+	@When("USer clicks the Next button")
+	public void user_clicks_the_Next_button() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the tour guide proceeds to the next step for Billing")
+	public void the_tour_guide_proceeds_to_the_next_step_for_Billing() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title)
+				.contentEquals("Current Balance Tile"));
+	}
+
+	@When("User clicks the Previous button")
+	public void user_clicks_the_Previous_button() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
+
+	@Then("the tour guide navigates to the previous for Billing")
+	public void the_tour_guide_navigates_to_the_previous_for_Billing() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title)
+				.contentEquals("Actionable Tiles"));
+	}
+
+	@When("User clicks the End Tour button")
+	public void user_clicks_the_End_Tour_button() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_EndTour);
+	}
+
+	@Then("the Tour ends successfully")
+	public void the_Tour_ends_successfully() throws InterruptedException {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.btn_Help_EndTour);
+		Assert.assertFalse(commonElementLocator.isElementClickable(commonElementLocator.btn_Help_EndTour));
+	}
+		
+	@Then("the tour guide proceeds to the next step for Invoice")
+	public void the_tour_guide_proceeds_to_the_next_step_for_Invoice() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title)
+				.contentEquals("Features"));
+	}
+
+	@Then("the tour guide navigates to the previous step for Invoice")
+	public void the_tour_guide_navigates_to_the_previous_step_for_Invoice() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title)
+				.contentEquals("Invoice Overview"));
+	}
 	
-
-
 
 }

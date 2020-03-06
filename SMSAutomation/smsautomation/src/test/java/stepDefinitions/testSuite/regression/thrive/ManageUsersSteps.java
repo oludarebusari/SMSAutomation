@@ -401,34 +401,34 @@ public class ManageUsersSteps extends BasePage {
 
 	@Then("the Help Tour guide is displayed")
 	public void the_Help_Tour_guide_is_displayed() throws InterruptedException {
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Tours_Help_Title).contentEquals("Manage Users"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title).contentEquals("Manage Users"));
 	}
 
 	@When("User clicks on Next button on Manage user popup")
 	public void user_clicks_on_Next_button_on_Manage_user_popup() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Tours_Help_Next);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the tour guide should proceed to next step")
 	public void the_tour_guide_should_proceed_to_next_step() throws Exception {
-	Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Tours_Help_Title).contentEquals("Add a New User to Your Account"));
+	Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title).contentEquals("Add a New User to Your Account"));
 	}
 
 	@When("User clicks on Previous button on Manage user popup")
 	public void user_clicks_on_Previous_button_on_Manage_user_popup() throws Exception {
-	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Tours_Help_Prev);
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
 	}
 
 	@Then("the tour guide should be navigated to previous step")
 	public void the_tour_guide_should_be_navigated_to_previous_step() throws Exception {
-		commonElementLocator.waitForTextToBePresentInElement(commonElementLocator.mod_Tours_Help_Title, "Manage User");
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Tours_Help_Title).contentEquals("Manage Users"));
+		commonElementLocator.waitForTextToBePresentInElement(commonElementLocator.mod_Help_Title, "Manage User");
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.mod_Help_Title).contentEquals("Manage Users"));
 	}
 	
 //	@SMSM-134 @Help-tour-should-terminate-on-clicking-End-Tour-button
 	@Then("the tour guide closes successfully")
 	public void the_tour_guide_closes_successfully() {
-		commonElementLocator.waitUntilElementDissapears(commonElementLocator.mod_Tours_Help_Title);
+		commonElementLocator.waitUntilElementDissapears(commonElementLocator.mod_Help_Title);
 	}
 	
 }

@@ -242,8 +242,7 @@ public class ManageTourSteps extends DriverFactory {
 
 	@When("User clicks on End Tour button")
 	public void user_clicks_on_End_Tour_button() throws Exception {
-//		adminToursHelpModal.waitAndClickElement(adminToursHelpModal.btn_Tours_Help_EndTour);
-		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Tours_Help_EndTour);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_EndTour);
     	Thread.sleep(200);
 	}
 

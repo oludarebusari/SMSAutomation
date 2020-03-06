@@ -18,7 +18,7 @@ public class CommonElementLocator extends BasePage {
 	public final static String ELEM_PAGE_TITLE =  "//div[contains(@class, \"page-heading\")]";
 	public final static String ELEM_SEARCH_TEXTFIELD = "//input[contains(@class, \"table-search\")]";
 	
-	//Thrive menu options
+	//menu options
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Dashboard\"]]") WebElement menu_Dashboard;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Experience\"]]") WebElement menu_Experience;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Companies\"]]") WebElement menu_Companies;
@@ -55,10 +55,10 @@ public class CommonElementLocator extends BasePage {
 	
 	
 	//Help
-	public @FindBy(xpath = "//h3[@class=\"popover-title\"]") WebElement mod_Tours_Help_Title;
-	public @FindBy(xpath = "//button[@data-role=\"prev\"]") WebElement btn_Tours_Help_Prev;
-	public @FindBy(xpath = "//button[@data-role=\"next\"]") WebElement btn_Tours_Help_Next;
-	public @FindBy(xpath = "//button[@data-role=\"end\"]") WebElement btn_Tours_Help_EndTour;
+	public @FindBy(xpath = "//h3[@class=\"popover-title\"]") WebElement mod_Help_Title;
+	public @FindBy(xpath = "//button[@data-role=\"prev\"]") WebElement btn_Help_Prev;
+	public @FindBy(xpath = "//button[@data-role=\"next\"]") WebElement btn_Help_Next;
+	public @FindBy(xpath = "//button[@data-role=\"end\"]") WebElement btn_Help_EndTour;
 	public @FindBy(xpath = "//div[contains(@class, \"tour-mmd-tour\")]") WebElement mod_Tours;
 	
 	
