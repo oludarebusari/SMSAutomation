@@ -110,7 +110,7 @@ public class BillingInformationSteps extends DriverFactory {
 //	@SMSM-135 @Edit-User-Information-from-Invoice-page
 	@Then("user verifies that he Users panel is present")
 	public void user_verifies_that_he_Users_panel_is_present() {
-	  Assert.assertTrue(viewInvoicePage.panel_Users.isDisplayed());
+		Assert.assertTrue(viewInvoicePage.panel_Users.isDisplayed());
 	}
 
 	@When("User navigates to a desired user object and click the Edit icon beside it")
@@ -118,47 +118,57 @@ public class BillingInformationSteps extends DriverFactory {
 		viewInvoicePage.waitAndClickElement(viewInvoicePage.editUserByName("Zella Holmes"));
 	}
 
-	@Then("the Update Account page is displayed")
-	public void the_Update_Account_page_is_displayed() {
-	
-	}
-
 	@Then("User edits the first name")
-	public void user_edits_the_first_name() {
-	 
+	public void user_edits_the_first_name() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_FirstName, "Zelly");
 	}
 
 	@Then("User edits the last name")
-	public void user_edits_the_last_name() {
-	  
+	public void user_edits_the_last_name() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "Holders");
 	}
 
 	@Then("user edits the primary email")
-	public void user_edits_the_primary_email() {
-	 
+	public void user_edits_the_primary_email() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "testAcl@test.com");
 	}
 
 	@Then("user edits the password")
-	public void user_edits_the_password() {
-	  
+	public void user_edits_the_password() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_Password, "QA@vnet1"); 
 	}
 
 	@Then("User edits the cell phone")
-	public void user_edits_the_cell_phone() {
-	
+	public void user_edits_the_cell_phone() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_CellPhone, "555-123-4545");
 	}
-
+	
 	@Then("User selects a status from System Notifications")
-	public void user_selects_a_status_from_System_Notifications() {
+	public void user_selects_a_status_from_System_Notifications() throws InterruptedException {
+		editUserPage.waitAndClickElement(editUserPage.btn_Status_Active); 
+	}
 	
+	@When("User clicks on Save button on the edit User page")
+	public void user_clicks_on_Save_button_on_the_edit_User_page() throws Exception {
+		editUserPage.waitAndClickElement(editUserPage.btn_SaveUser);
 	}
 
-	@When("User clicks on Update Account button")
-	public void user_clicks_on_Update_Account_button() {
-	  
+	@Then("a success message about the update is displayed")
+	public void a_success_message_about_the_update_is_displayed() throws Exception {
+	   Assert.assertEquals("Item has been successfully updated.", editUserPage.getElementText(editUserPage.txt_Save_Alert_Notification));
+	}
+	
+//	Revert-changes-to-User
+	@When("User changes first name, last name email amd Cell phone to their original values")
+	public void user_changes_first_name_last_name_email_amd_Cell_phone_to_their_original_values() throws Exception {
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_FirstName, "Zella");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "Holmes");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "test@test.com");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_Password, "QA@vnet2"); 
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_CellPhone, "555-023-1718");
 	}
 
-
+	
 //	@SMSM-135 @Edit-Company-information-from-Invoice-page
 	@Then("User validate the Company Information is present")
 	public void user_validate_the_Company_Information_is_present() {
@@ -207,6 +217,7 @@ public class BillingInformationSteps extends DriverFactory {
 			editCompanyPage.scrollToElementByWebElementLocator(editCompanyPage.btn_Save);
 			editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save);
 		} else {
+			Thread.sleep(500);
 			editCompanyPage.waitAndClickElement(editCompanyPage.btn_Save);
 		}
 	}

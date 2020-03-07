@@ -60,15 +60,19 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     Then the View Invoice page is opened
     And user verifies that he Users panel is present
     When User navigates to a desired user object and click the Edit icon beside it
-    Then the Update Account page is displayed
+    Then the Edit User page is displayed
     And User edits the first name
     And User edits the last name
     And user edits the primary email
     And user edits the password
     And User edits the cell phone
     And User selects a status from System Notifications
-    When User clicks on Update Account button
-    Then a success message is displayed
+    When User clicks on Save button on the edit User page
+    Then a success message about the update is displayed
+    #Revert-changes-to-Company
+    When User changes first name, last name email amd Cell phone to their original values
+    When User clicks on Save button on the edit User page
+    Then a success message about the update is displayed
 
   @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest
   Scenario: Edit Company information from Invoice page
@@ -193,3 +197,10 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     Then the tour guide navigates to the previous step for Invoice
     When User clicks the End Tour button
     Then the Tour ends successfully
+    
+  @SMSM-135 @Change-the-Show-Entry-Count-for-Invoice-History-in-Billing-Page @RegressionTest
+  Scenario: Change the Show Entry count for Invoice History in Billing page
+   #ToDO - There is not sufficient data to complete this test.
+    
+    
+    

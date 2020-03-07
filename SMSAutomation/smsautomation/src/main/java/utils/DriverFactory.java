@@ -84,6 +84,7 @@ public class DriverFactory {
 			URL url = null;
 			try {
 				url = new URL("http://34.98.89.28/wd/hub");
+//				url = new URL("http://192.168.0.17:4444/wd/hub");
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
