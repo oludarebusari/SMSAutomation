@@ -36,8 +36,8 @@ public class ManageUsersSteps extends BasePage {
 //	 @SMSM-134 @View-User--On-user-Management-page,-Confirm-all-existing-Users-are-visible
 	@When("User navigates to the actions column of a Business and clicks Sign In button")
 	public void user_navigates_to_the_actions_column_of_a_Business_and_clicks_Sign_In_button() throws Exception {
-		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AclateQA");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("AclateQA"));
 	}
 
@@ -196,7 +196,7 @@ public class ManageUsersSteps extends BasePage {
 	public void the_user_records_should_be_sorted_in_descending_order_by_updated_column() throws Exception {
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("desc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("02/28/2020"));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("03/07/2020"));
 	}
 
 //	@SMSM-134 @Edit-a-user-from-user-management
@@ -247,8 +247,8 @@ public class ManageUsersSteps extends BasePage {
 
 	@When("User searched for the editted record")
 	public void user_searched_for_the_editted_record() throws Exception {
-		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AutoEdit");
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoEdit");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 	}
 
 	@Then("User confirms the changes were saved correctly.")

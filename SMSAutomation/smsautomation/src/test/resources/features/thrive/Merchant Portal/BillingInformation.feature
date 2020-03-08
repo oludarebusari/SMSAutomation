@@ -54,7 +54,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Print Invoice
     Then the windows print dialog is opened
 
-  @SMSM-135 @Edit-User-Information-from-Invoice-page @RegressionTest @OnlyMe
+  @SMSM-135 @Edit-User-Information-from-Invoice-page @RegressionTest 
   Scenario: Edit User Information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -172,7 +172,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the View button for an Invoice
     Then the details of the Invoice clicked is displayed on the Invoice page
 
-  @SMSM-135 @Verify-Help-option-for-Billing-page @RegressionTest @OnlyMe
+  @SMSM-135 @Verify-Help-option-for-Billing-page @RegressionTest 
   Scenario: Verify Help option for Billing page
     And User verifies that Help button is present on the page
     When User clicks the Help button

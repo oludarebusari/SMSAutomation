@@ -15,8 +15,6 @@ public class ManageBusinessPage extends BasePage {
 	}
 
 	public @FindBy(xpath = "//h1[@class=\"pull-left\" and text()[normalize-space()]]") WebElement pag_Title;
-	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
-	public @FindBy(xpath = "//button[@id=\"search-text-submit\"]") WebElement btn_Search;
 	public @FindBy(xpath = "//a[@id=\"start-tour\"]") WebElement btn_Help;
 	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement lbl_Pagination_Total;
 	public @FindBy(xpath = "//span[@id=\"pagination-start\"]") WebElement lbl_Pagination_Start;

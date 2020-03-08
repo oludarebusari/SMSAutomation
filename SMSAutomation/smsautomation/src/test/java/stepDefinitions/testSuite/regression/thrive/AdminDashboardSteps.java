@@ -448,8 +448,8 @@ public class AdminDashboardSteps extends DriverFactory {
 //	@SMSM-294 @Verify-Admin-user-is-able-to-Sign-into-a-Business-Dashboard
 	@When("User types in a text in the search field and clicks the Search button")
 	public void user_types_in_a_text_in_the_search_field_and_clicks_the_Search_button() throws Exception {
-		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "aa");
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "aa");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 	}
 
 	@Then("the resut is displayed")
@@ -460,8 +460,8 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clears the search field and clicks Search button")
 	public void user_clears_the_search_field_and_clicks_Search_button() throws Exception {
-		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "");
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 	}
 
 	@Then("all the data is displayed")
@@ -474,8 +474,8 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks on SignIn button")
 	public void user_clicks_on_SignIn_button() throws Exception {
-		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AclateQA");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("AclateQA"));
 	}
 
@@ -521,8 +521,8 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User clicks the Action drop down beside SignIn button")
 	public void user_clicks_the_Action_drop_down_beside_SignIn_button() throws Exception {
-		manageBusinessPage.sendKeysToWebElement(manageBusinessPage.txtF_Search, "AclateQA");
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AclateQA");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_ActionDDown("AclateQA"));
 	}
 
