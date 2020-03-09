@@ -26,6 +26,7 @@ public class SettingsPage extends BasePage {
 	public @FindBy(xpath = "//th[@id=\"settings-updated\"]//a[text()=\"Updated\"]") WebElement col_Updated;
 	public @FindBy(xpath = "//th[@id=\"settings-action\"]//a[text()=\"Action\"]") WebElement col_Action;
 	
+	
 	public @FindBy(xpath = "//tbody") WebElement parent_SettingsRecord;
 	public WebElement searchRecord(String recordTitle) {
 		return parent_SettingsRecord.findElement(By.xpath("//tr[@data-id and ./td[text()=\'" + recordTitle + "']]"));
@@ -34,6 +35,8 @@ public class SettingsPage extends BasePage {
 		return searchRecord(recordTitle).findElement(By.xpath("//div[contains(@class, \"btn-group-sm\") and ./a[text()=\"Edit\"]]"));
 	}
 	
-	
+	public WebElement colValueOption(String option) {
+		return parent_SettingsRecord.findElement(By.xpath("//td[@data-field=\"value\" and text()[normalize-space()=\'" + option + "']]"));
+	}
 	
 }

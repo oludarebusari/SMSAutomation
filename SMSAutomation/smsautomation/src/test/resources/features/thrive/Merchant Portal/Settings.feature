@@ -32,25 +32,25 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Settings menu item
     Then a dropdown apears with the Settings options
 
-  @SMSM-136 @View-Settings-Under-Settings-option @RegressionTest 
+  @SMSM-136 @View-Settings-Under-Settings-option @RegressionTest
   Scenario: View Settings under Settings option
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
     And User confirms the columns on the Settings page
 
-  @SMSM-136 @View-Language-String-Under-Settings-option @RegressionTest 
+  @SMSM-136 @View-Language-String-Under-Settings-option @RegressionTest
   Scenario: View Language String under Settings option
     When User clicks on Language Strings from the dropdown
     Then the Language Strings page is opened
     And User confirms the columns on the Language Strings page
 
-  @SMSM-136 @View-Email-Templates-Under-Settings-option @RegressionTest @OnlyMe
+  @SMSM-136 @View-Email-Templates-Under-Settings-option @RegressionTest
   Scenario: View Email Templates under Settings option
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
     And User confirms the columns on the Message Templates page
 
-  @SMSM-136 @Edit-any-Manage-Settings-option @RegressionTest @OnlyMe
+  @SMSM-136 @Edit-any-Manage-Settings-option @RegressionTest
   Scenario: Edit any Settings option
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
@@ -59,22 +59,25 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Edit button for the Settings
     Then the Edit Setting popup is displayed
     When User clicks the dropdown textbox on the Edit Setting modal
-    Then the Settings options available are displayed
-    When User clicks a Setting option and clicks the Update Setting button
-    Then the changes is Saved.
+    And User clicks a Setting option and clicks the Update Setting button
     And User confirms that the changes is reflected on the settings page
     #Revert-changes-to-Company
-    #And User clicks the Edit button for the Settings
-    #Then the Edit Setting popup is displayed
-    #When User clicks the dropdown textbox on the Edit Setting modal
-    #Then the Settings options available are displayed
-    #When User changes Settings option to it's original value and clicks the Update Setting button
-    #When User clicks on Save button
-    #Then the changes is Saved.
+    And User clicks the Edit button for the Settings
+    When User clicks the dropdown textbox on the Edit Setting modal
+    When User changes Settings option to it's original value and clicks the Update Setting button
 
-   
-  @SMSM-136 @Edit-any-Manage-Settings-option @RegressionTest
+  @SMSM-136 @Edit-any-Manage-Settings-option @RegressionTest @OnlyMe
   Scenario: Edit any Settings option
-  
-    
-    
+    When User clicks on Language Strings option from the dropdown
+    Then the Language Strings page is opened
+    When User types the Language String title in the Search box and click Search button
+    Then the Language String record is displayed
+    When User clicks the Edit button for the Language Strings
+    Then the Edit String popup is displayed
+    When User clicks the dropdown textbox on the Edit Setting modal
+    And User clicks a Setting option and clicks the Update Setting button
+    And User confirms that the changes is reflected on the settings page
+    #Revert-changes-to-Company
+    And User clicks the Edit button for the Settings
+    When User clicks the dropdown textbox on the Edit Setting modal
+    When User changes Settings option to it's original value and clicks the Update Setting button
