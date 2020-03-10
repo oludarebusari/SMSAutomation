@@ -14,11 +14,6 @@ public class SettingsPage extends BasePage {
 		super();
 	}
 
-	
-	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\"Settings\"]]") WebElement opt_Settings;
-	public @FindBy(xpath = "//a[text()[normalize-space()=\"Language Strings\"]]") WebElement opt_LanguageStrings;
-	public @FindBy(xpath = "//a[text()[normalize-space()=\"Message Templates\"]]") WebElement opt_MessageTemplates;
-	
 	public @FindBy(xpath = "//th[@id=\"settings-title\"]//a[text()=\"Title\"]") WebElement col_Title;
 	public @FindBy(xpath = "//th[@id=\"settings-section\"]//a[text()=\"Group\"]") WebElement col_Group;
 	public @FindBy(xpath = "//th[@id=\"settings-value\"]//a[text()=\"Value\"]") WebElement col_Value;

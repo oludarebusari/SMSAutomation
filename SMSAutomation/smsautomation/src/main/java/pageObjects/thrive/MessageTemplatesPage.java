@@ -2,6 +2,7 @@ package pageObjects.thrive;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -18,4 +19,18 @@ public class MessageTemplatesPage extends BasePage {
 	public @FindBy(xpath = "//th[@id=\"email-templates-description\"]//a[text()=\"Description\"]") WebElement col_Description;
 	public @FindBy(xpath = "//th[@id=\"email-templates-updated\"]//a[text()=\"Updated\"]") WebElement col_Updated;
 	public @FindBy(xpath = "//th[@id=\"email-templates-action\" and text()=\"Action\"]") WebElement col_Action;
+	
+	
+	public @FindBy(xpath = "//tbody") WebElement parent_SettingsRecord;
+	public WebElement searchRecord(String recordTitle) {
+		return parent_SettingsRecord.findElement(By.xpath("//tr[@data-id and ./td[text()=\'" + recordTitle + "']]"));
+	}
+	public WebElement editMessageTemplatesByTitle(String recordTitle) {
+		return searchRecord(recordTitle).findElement(By.xpath("//div[contains(@class, \"btn-group-sm\") and ./a[text()=\"Edit\"]]"));
+	}
+	
+	public WebElement colValueOption(String option) {
+		return parent_SettingsRecord.findElement(By.xpath("//td[@data-field=\"subject\" and text()[normalize-space()=\'" + option + "']]"));
+	}
+	
 }

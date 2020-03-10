@@ -10,13 +10,17 @@ import io.cucumber.java.en.When;
 import pageObjects.thrive.LanguageStringsPage;
 import pageObjects.thrive.MessageTemplatesPage;
 import pageObjects.thrive.SettingsPage;
+import pageObjects.thrive.modal.EditEmailTemplateModal;
 import pageObjects.thrive.modal.EditSettingsModal;
+import pageObjects.thrive.modal.EditStringModal;
 import utils.DriverFactory;
 
 public class SettingsSteps extends DriverFactory {
 
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
+	public EditEmailTemplateModal editEmailTemplateModal = PageFactory.initElements(driver, EditEmailTemplateModal.class);
 	public EditSettingsModal editSettingsModal = PageFactory.initElements(driver, EditSettingsModal.class);
+	public EditStringModal editStringModal = PageFactory.initElements(driver, EditStringModal.class);
 	public LanguageStringsPage languageStringsPage = PageFactory.initElements(driver, LanguageStringsPage.class);
 	public MessageTemplatesPage messageTemplatesPage = PageFactory.initElements(driver, MessageTemplatesPage.class);
 	public SettingsPage settingsPage = PageFactory.initElements(driver, SettingsPage.class);
@@ -34,7 +38,7 @@ public class SettingsSteps extends DriverFactory {
 
 	@When("User clicks on Settings option from the dropdown")
 	public void user_clicks_on_Settings_option_from_the_dropdown() throws Exception {
-		settingsPage.waitAndClickElement(settingsPage.opt_Settings);
+		commonElementLocator.waitAndClickElement(commonElementLocator.opt_Settings);
 	}
 
 	@Then("the Settings page is opened")
@@ -54,7 +58,7 @@ public class SettingsSteps extends DriverFactory {
 //	 @SMSM-136 @View-Language-String-Under-Settings-option
 	@When("User clicks on Language Strings from the dropdown")
 	public void user_clicks_on_Language_Strings_from_the_dropdown() throws InterruptedException {
-		settingsPage.waitAndClickElement(settingsPage.opt_LanguageStrings);
+		commonElementLocator.waitAndClickElement(commonElementLocator.opt_LanguageStrings);
 	}
 
 	@Then("the Language Strings page is opened")
@@ -76,7 +80,7 @@ public class SettingsSteps extends DriverFactory {
 //	 @SMSM-136 @View-Email-Templates-Under-Settings-option
 	@When("User clicks on Message Templates from the dropdown")
 	public void user_clicks_on_Message_Templates_from_the_dropdown() throws Exception {
-		settingsPage.waitAndClickElement(settingsPage.opt_MessageTemplates);
+		commonElementLocator.waitAndClickElement(commonElementLocator.opt_MessageTemplates);
 	}
 
 	@Then("the Message Templates page is opened")
@@ -137,6 +141,111 @@ public class SettingsSteps extends DriverFactory {
 			throws Exception {
 		editSettingsModal.waitAndClickElement(editSettingsModal.editSettingOption("Suppressed"));
 		editSettingsModal.waitAndClickElement(editSettingsModal.btn_SaveSetting);
+	}
+
+	@When("User clicks on Language Strings option from the dropdown")
+	public void user_clicks_on_Language_Strings_option_from_the_dropdown() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.opt_LanguageStrings);
+	}
+
+	@When("User types the Language String title in the Search box and click Search button")
+	public void user_types_the_Language_String_title_in_the_Search_box_and_click_Search_button() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Select account");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the Language String record is displayed")
+	public void the_Language_String_record_is_displayed() {
+		Assert.assertTrue(settingsPage.searchRecord("Select account").isDisplayed());
+	}
+
+	@When("User clicks the Edit button for the Language Strings")
+	public void user_clicks_the_Edit_button_for_the_Language_Strings() throws Exception {
+		languageStringsPage.waitAndClickElement(languageStringsPage.editLanguageStringsByTitle("Select account"));
+	}
+
+	@Then("the Edit String popup is displayed")
+	public void the_Edit_String_popup_is_displayed() throws Exception {
+		Assert.assertEquals("Edit String", editStringModal.getElementText(editStringModal.mod_Title));
+	}
+	
+	@Then("User enters the required information into the text field")
+	public void user_enters_the_required_information_into_the_text_field() throws Exception {
+		editStringModal.sendKeysToWebElement(editStringModal.txt_EditString, "Select account1");
+	}
+
+	@Then("User clicks the Update Setting button")
+	public void user_clicks_the_Update_Setting_button() throws Exception {
+	  editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
+	}
+
+	@Then("User confirms the change is reflected on the settings page")
+	public void user_confirms_the_change_is_reflected_on_the_settings_page() {
+		driver.navigate().refresh();
+		Assert.assertTrue(settingsPage.colValueOption("Select account1").isDisplayed());
+	}
+
+	@Then("User clicks the Edit button for Language Strings")
+	public void user_clicks_the_Edit_button_for_Language_Strings() throws Exception {
+		languageStringsPage.waitAndClickElement(languageStringsPage.editLanguageStringsByTitle("Select account"));
+	}
+	
+	@When("User changed the Language String to it's original value and clicks the Update Setting button")
+	public void user_changed_the_Language_String_to_it_s_original_value_and_clicks_the_Update_Setting_button() throws Exception {
+		editStringModal.sendKeysToWebElement(editStringModal.txt_EditString, "Select account");
+		editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
+	}
+	
+	@When("User types a Message Templates title in the Search box and click Search button")
+	public void user_types_a_Message_Templates_title_in_the_Search_box_and_click_Search_button() throws Exception {
+	  commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Response to review");
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the Message Templates record is displayed")
+	public void the_Message_Templates_record_is_displayed() throws Exception {
+		Assert.assertTrue(messageTemplatesPage.searchRecord("Response to review").isDisplayed());
+	}
+
+	@When("User clicks the Edit button for the Message Templates")
+	public void user_clicks_the_Edit_button_for_the_Message_Templates() throws Exception {
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Response to review"));
+	}
+
+	@Then("the Edit Message Template popup is displayed")
+	public void the_Edit_Message_Template_popup_is_displayed() throws InterruptedException {
+		Assert.assertEquals("Edit Message Template", editEmailTemplateModal.getElementText(editEmailTemplateModal.mod_Title));
+	}
+
+	@Then("User enters the required information into the text field on the popup")
+	public void user_enters_the_required_information_into_the_text_field_on_the_popup() throws Exception {
+	   editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_Subject, "Response to Automation");
+	   editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_To, "test@aclate.com");
+	   editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_SMSText, "Automation text");
+	}
+
+	@Then("User clicks the Save Settings button")
+	public void user_clicks_the_Save_Settings_button() throws Exception {
+	   editEmailTemplateModal.waitAndClickElement(editEmailTemplateModal.btn_SaveSettings);
+	}
+
+	@Then("User confirms the change is reflected on the Message Templates page")
+	public void user_confirms_the_change_is_reflected_on_the_Message_Templates_page() {
+		driver.navigate().refresh();
+		Assert.assertTrue(messageTemplatesPage.colValueOption("Response to Automation").isDisplayed());
+	}
+
+	@Then("User clicks the Edit button for the Message Template")
+	public void user_clicks_the_Edit_button_for_the_Message_Template() throws Exception {
+	  messageTemplatesPage.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Response to review"));
+	}
+
+	@When("User changed the Message Template fields to it's original value and clicks the Save Settings button")
+	public void user_changed_the_Message_Template_fields_to_it_s_original_value_and_clicks_the_Save_Settings_button() throws Exception {
+		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_Subject, "Response to your review");
+		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_To, "");
+		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_SMSText, "");
+		editEmailTemplateModal.waitAndClickElement(editEmailTemplateModal.btn_SaveSettings);
 	}
 
 }

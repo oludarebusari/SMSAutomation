@@ -16,7 +16,7 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag-SMSM-185 @RegressionTest
+
 Feature: Manage tours under settings in admin dashboard for Thrive system
 
   Background: User logs in and navigates to the Thrive's Dashboard
@@ -31,14 +31,14 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     Given User clicks on Tours under settings
     Then User is redirected to Tours page
 
-  @tag1
+ 	@SMSM-185-Navigate-to-manage-tour-option @RegressionTest
   Scenario: Navigate to manage tour option under settings on thrive system.
     Given User clicks on settings on top menu bar
     Then the settings options are displayed
     Given User clicks on Tours under settings
     Then User is redirected to Tours page
 
-  @tag2
+ 	@SMSM-185-Search-and-edit-existing-tour-in-the-edit @RegressionTest
   Scenario: Search and Edit existing tour in the list
     Given User types in a Tour name on the search textfield
     And User clicks the Search button
@@ -52,7 +52,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User clicks the Save Tour button
     Then the tour is saved successfuland user confirmed the changes
 
-  @tag3
+  @SMSM-185-Deactivate-existing-tour-in-the-edit @RegressionTest
   Scenario: Deactivate existing tour in the list
     Given User types in a Tour name on the search textfield to open an active tour
     And User clicks the Search button for the active tour
@@ -65,7 +65,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User searches for the deactivated Tour 
     Then the status of the Tour changes to Inactive
 
-  @tag4
+  @SMSM-185-Activate-existing-deactivated-tour-in-the-list @RegressionTest
   Scenario: Activate existing deactivated tour in the list
     Given User types in a Tour name on the search textfield to open the deactivated tour
     And User clicks the Search button to bring up the deactivated tour
@@ -77,7 +77,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     When User clicks the Activate button on the Activate Tour popo up
     Then the status of the Tour changes to Active
     
-  @tag5
+   @SMSM-185-Verify-the-help-option-for-manage-tours-page @RegressionTest
    Scenario: Verify the Help option for Manage tours page
     Given User clicks on the Help button on top right of screen
     And Tour guide should starts successfully.
@@ -88,8 +88,8 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     When User clicks on End Tour button
     Then Tour ends successfully
     
-  @tag6
-   Scenario: Edit the existing tour in the list- add a step
+   @SMSM-185-Edit-the-existing-tour-in-the-list-add-a-step
+   Scenario: Edit the existing tour in the list - add a step
     Given User type a tour name to search in the search textfield 
     And User clicks the Search button
     Then the searched Tour is displayed 

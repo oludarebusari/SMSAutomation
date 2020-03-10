@@ -88,13 +88,13 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     And User searched for the editted record
     Then User confirms the changes were saved correctly.
 
-  @Revert-changes-to-User-record
+  @Revert-changes-to-User-record @RegressionTest
   Scenario: Revert changes to user record
     When user clicks on a User's Edit button under the Action column
     Then the Edit User page is displayed
     And User revert the changes
 
-  @Create-a-test-user
+  @Create-a-test-user @RegressionTest
   Scenario: I want to create a test user
     When User clicks the New button
     Then the Create User page is opened

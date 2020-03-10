@@ -1,6 +1,7 @@
-@RegressionTest
+
 Feature: To verify that the user is able to create a new campaign
 	Existing user should be able to create a new campaign
+@Create-a-campaign @RegressionTest
 Scenario: Log in, Access the License Portal and create a new campaign
 	Given User navigate to License url 
 	And User enters valid username 

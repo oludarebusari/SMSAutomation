@@ -17,9 +17,10 @@
 ## (Comments)
 #Sample Feature Definition Template
 
-@tag-SMSM-133 @RegressionTest
+
 Feature: Login to BeSpeak Application for Thrive System
 
+	@SMSM-133-Thrive-login @RegressionTest
   Scenario: Exisiting User should be able to login to Thrive System
     Given User Navigates to Thrive URL
     Then Thrive login page is displayed

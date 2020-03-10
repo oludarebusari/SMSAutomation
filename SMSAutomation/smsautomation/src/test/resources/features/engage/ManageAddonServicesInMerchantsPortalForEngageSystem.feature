@@ -1,4 +1,4 @@
-#@RegressionTest
+
 Feature: Manage Add On Services in Merchant's portal for Engage System
 
   Background: User is logged in and navigates to the Merchant's Dashboard

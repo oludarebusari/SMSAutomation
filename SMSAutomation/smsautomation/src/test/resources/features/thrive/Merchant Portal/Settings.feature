@@ -66,18 +66,34 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the dropdown textbox on the Edit Setting modal
     When User changes Settings option to it's original value and clicks the Update Setting button
 
-  @SMSM-136 @Edit-any-Manage-Settings-option @RegressionTest @OnlyMe
-  Scenario: Edit any Settings option
+  @SMSM-136 @Edit-any-Language-String-option @RegressionTest
+  Scenario: Edit any Language String option
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
     When User types the Language String title in the Search box and click Search button
     Then the Language String record is displayed
     When User clicks the Edit button for the Language Strings
     Then the Edit String popup is displayed
-    When User clicks the dropdown textbox on the Edit Setting modal
-    And User clicks a Setting option and clicks the Update Setting button
-    And User confirms that the changes is reflected on the settings page
+    And  User enters the required information into the text field
+    And User clicks the Update Setting button
+    And User confirms the change is reflected on the settings page
     #Revert-changes-to-Company
-    And User clicks the Edit button for the Settings
-    When User clicks the dropdown textbox on the Edit Setting modal
-    When User changes Settings option to it's original value and clicks the Update Setting button
+    And User clicks the Edit button for Language Strings
+    When User changed the Language String to it's original value and clicks the Update Setting button
+    
+  @SMSM-136 @Edit-any-Email-Template @RegressionTest @OnlyMe
+  Scenario: Edit any Email Template
+    When User clicks on Message Templates from the dropdown
+    Then the Message Templates page is opened
+    When User types a Message Templates title in the Search box and click Search button 
+    Then the Message Templates record is displayed
+    When User clicks the Edit button for the Message Templates
+    Then the Edit Message Template popup is displayed
+    And User enters the required information into the text field on the popup
+    And User clicks the Save Settings button
+    And User confirms the change is reflected on the Message Templates page
+   #Revert-changes-to-Company
+  	And User clicks the Edit button for the Message Template
+    When User changed the Message Template fields to it's original value and clicks the Save Settings button
+    
+  
