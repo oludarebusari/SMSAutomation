@@ -64,6 +64,7 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//button[@data-role=\"prev\"]") WebElement btn_Help_Prev;
 	public @FindBy(xpath = "//button[@data-role=\"next\"]") WebElement btn_Help_Next;
 	public @FindBy(xpath = "//button[@data-role=\"end\"]") WebElement btn_Help_EndTour;
+	public @FindBy(xpath = "//div[@class=\"popover-content\"]") WebElement mod_Help_Content;
 	public @FindBy(xpath = "//div[contains(@class, \"tour-mmd-tour\")]") WebElement mod_Tours;
 	
 	// Setting Menu Options

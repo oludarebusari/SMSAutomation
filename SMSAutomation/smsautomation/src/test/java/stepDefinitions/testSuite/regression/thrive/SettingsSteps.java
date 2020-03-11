@@ -13,17 +13,22 @@ import pageObjects.thrive.SettingsPage;
 import pageObjects.thrive.modal.EditEmailTemplateModal;
 import pageObjects.thrive.modal.EditSettingsModal;
 import pageObjects.thrive.modal.EditStringModal;
+import pageObjects.thrive.modal.LanguagePageHelpModal;
+import pageObjects.thrive.modal.SettingsPageHelpModal;
 import utils.DriverFactory;
 
 public class SettingsSteps extends DriverFactory {
 
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
-	public EditEmailTemplateModal editEmailTemplateModal = PageFactory.initElements(driver, EditEmailTemplateModal.class);
+	public EditEmailTemplateModal editEmailTemplateModal = PageFactory.initElements(driver,
+			EditEmailTemplateModal.class);
 	public EditSettingsModal editSettingsModal = PageFactory.initElements(driver, EditSettingsModal.class);
 	public EditStringModal editStringModal = PageFactory.initElements(driver, EditStringModal.class);
 	public LanguageStringsPage languageStringsPage = PageFactory.initElements(driver, LanguageStringsPage.class);
+	public LanguagePageHelpModal languagePageHelpModal = PageFactory.initElements(driver, LanguagePageHelpModal.class);
 	public MessageTemplatesPage messageTemplatesPage = PageFactory.initElements(driver, MessageTemplatesPage.class);
 	public SettingsPage settingsPage = PageFactory.initElements(driver, SettingsPage.class);
+	public SettingsPageHelpModal settingsPageHelpModal = PageFactory.initElements(driver, SettingsPageHelpModal.class);
 
 //   @SMSM-136 @View-Settings-Under-Settings-option @RegressionTest
 	@When("User clicks the Settings menu item")
@@ -168,7 +173,7 @@ public class SettingsSteps extends DriverFactory {
 	public void the_Edit_String_popup_is_displayed() throws Exception {
 		Assert.assertEquals("Edit String", editStringModal.getElementText(editStringModal.mod_Title));
 	}
-	
+
 	@Then("User enters the required information into the text field")
 	public void user_enters_the_required_information_into_the_text_field() throws Exception {
 		editStringModal.sendKeysToWebElement(editStringModal.txt_EditString, "Select account1");
@@ -176,7 +181,7 @@ public class SettingsSteps extends DriverFactory {
 
 	@Then("User clicks the Update Setting button")
 	public void user_clicks_the_Update_Setting_button() throws Exception {
-	  editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
+		editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
 	}
 
 	@Then("User confirms the change is reflected on the settings page")
@@ -189,17 +194,18 @@ public class SettingsSteps extends DriverFactory {
 	public void user_clicks_the_Edit_button_for_Language_Strings() throws Exception {
 		languageStringsPage.waitAndClickElement(languageStringsPage.editLanguageStringsByTitle("Select account"));
 	}
-	
+
 	@When("User changed the Language String to it's original value and clicks the Update Setting button")
-	public void user_changed_the_Language_String_to_it_s_original_value_and_clicks_the_Update_Setting_button() throws Exception {
+	public void user_changed_the_Language_String_to_it_s_original_value_and_clicks_the_Update_Setting_button()
+			throws Exception {
 		editStringModal.sendKeysToWebElement(editStringModal.txt_EditString, "Select account");
 		editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
 	}
-	
+
 	@When("User types a Message Templates title in the Search box and click Search button")
 	public void user_types_a_Message_Templates_title_in_the_Search_box_and_click_Search_button() throws Exception {
-	  commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Response to review");
-	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Response to review");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 	}
 
 	@Then("the Message Templates record is displayed")
@@ -209,24 +215,26 @@ public class SettingsSteps extends DriverFactory {
 
 	@When("User clicks the Edit button for the Message Templates")
 	public void user_clicks_the_Edit_button_for_the_Message_Templates() throws Exception {
-		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Response to review"));
+		messageTemplatesPage
+				.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Response to review"));
 	}
 
 	@Then("the Edit Message Template popup is displayed")
 	public void the_Edit_Message_Template_popup_is_displayed() throws InterruptedException {
-		Assert.assertEquals("Edit Message Template", editEmailTemplateModal.getElementText(editEmailTemplateModal.mod_Title));
+		Assert.assertEquals("Edit Message Template",
+				editEmailTemplateModal.getElementText(editEmailTemplateModal.mod_Title));
 	}
 
 	@Then("User enters the required information into the text field on the popup")
 	public void user_enters_the_required_information_into_the_text_field_on_the_popup() throws Exception {
-	   editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_Subject, "Response to Automation");
-	   editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_To, "test@aclate.com");
-	   editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_SMSText, "Automation text");
+		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_Subject, "Response to Automation");
+		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_To, "test@aclate.com");
+		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_SMSText, "Automation text");
 	}
 
 	@Then("User clicks the Save Settings button")
 	public void user_clicks_the_Save_Settings_button() throws Exception {
-	   editEmailTemplateModal.waitAndClickElement(editEmailTemplateModal.btn_SaveSettings);
+		editEmailTemplateModal.waitAndClickElement(editEmailTemplateModal.btn_SaveSettings);
 	}
 
 	@Then("User confirms the change is reflected on the Message Templates page")
@@ -237,15 +245,288 @@ public class SettingsSteps extends DriverFactory {
 
 	@Then("User clicks the Edit button for the Message Template")
 	public void user_clicks_the_Edit_button_for_the_Message_Template() throws Exception {
-	  messageTemplatesPage.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Response to review"));
+		messageTemplatesPage
+				.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Response to review"));
 	}
 
 	@When("User changed the Message Template fields to it's original value and clicks the Save Settings button")
-	public void user_changed_the_Message_Template_fields_to_it_s_original_value_and_clicks_the_Save_Settings_button() throws Exception {
+	public void user_changed_the_Message_Template_fields_to_it_s_original_value_and_clicks_the_Save_Settings_button()
+			throws Exception {
 		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_Subject, "Response to your review");
 		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_To, "");
 		editEmailTemplateModal.sendKeysToWebElement(editEmailTemplateModal.txtF_SMSText, "");
 		editEmailTemplateModal.waitAndClickElement(editEmailTemplateModal.btn_SaveSettings);
+	}
+
+//	@SMSM-136 @Help-Guide-for-Manage-Settings-page
+	@When("User clicks the Help button on the Setting")
+	public void user_clicks_the_Help_button_on_the_Setting() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the Settings Management pop up is opened")
+	public void the_Settings_Management_pop_up_is_opened() throws Exception {
+		Assert.assertEquals("Settings Management",settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getSettingsManagementContent(), settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Settings Management pop up window")
+	public void user_clicks_the_Next_button_on_the_Settings_Management_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Search Setting pop up is displayed")
+	public void the_Search_Setting_pop_up_is_displayed() throws Exception {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Search Settings", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getSearchSettings(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on Search Settings pop up window")
+	public void user_clicks_the_Next_button_on_Search_Settings_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Title pop up dialog is displayed")
+	public void the_Title_pop_up_dialog_is_displayed() throws Exception {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Title", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getTITLE(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Tile pop up window")
+	public void user_clicks_the_Next_button_on_the_Tile_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Group pop up dialog is displayed")
+	public void the_Group_pop_up_dialog_is_displayed() throws InterruptedException {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Group", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getGROUP(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Group pop up window")
+	public void user_clicks_the_Next_button_on_the_Group_pop_up_window() throws InterruptedException {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Value pop up dialog is displayed")
+	public void the_Value_pop_up_dialog_is_displayed() throws Exception {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Value", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getVALUE(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Value pop up window")
+	public void user_clicks_the_Next_button_on_the_Value_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Description pop up dialog is displayed")
+	public void the_Description_pop_up_dialog_is_displayed() throws Exception {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Description", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getDESCRIPTION(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Description pop up window")
+	public void user_clicks_the_Next_button_on_the_Description_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Updated pop up dialog is displayed")
+	public void the_Updated_pop_up_dialog_is_displayed() throws Exception {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Updated", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getUPDATED(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Updated pop up window")
+	public void user_clicks_the_Next_button_on_the_Updated_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Action pop up dialog is displayed")
+	public void the_Action_pop_up_dialog_is_displayed() throws Exception {
+		settingsPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Action", settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(settingsPageHelpModal.getACTION(),
+				settingsPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the End Tour button on the Action pop up window")
+	public void user_clicks_the_End_Tour_button_on_the_Action_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_EndTour);
+	}
+
+	@Then("the pop up window is closed")
+	public void the_pop_up_window_is_closed() {
+		settingsPageHelpModal.waitUntilElementDissapears(commonElementLocator.mod_Help_Title);
+	}
+
+	
+//	@SMSM-136 @Help-Guide-for-Language-String-page
+	@Then("the Language String Management pop up is opened")
+	public void the_Language_String_Management_pop_up_is_opened() throws InterruptedException {
+		Assert.assertEquals("Language Strings Management",languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getLANGUAGE_STRINGS_MANAGEMENT(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Language String Management pop up window")
+	public void user_clicks_the_Next_button_on_the_Language_String_Management_pop_up_window() throws InterruptedException {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Search Language Strings pop up is displayed")
+	public void the_Search_Language_Strings_pop_up_is_displayed() throws Exception {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Search Language Strings", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getSEARCH_LANGUAGE_STRING(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on Search Language Strings pop up window")
+	public void user_clicks_the_Next_button_on_Search_Language_Strings_pop_up_window() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Title pop up dialog for Language String is displayed")
+	public void the_Title_pop_up_dialog_for_Language_String_is_displayed() throws InterruptedException {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Title", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getTITLE(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Tile pop up window for Language Strings")
+	public void user_clicks_the_Next_button_on_the_Tile_pop_up_window_for_Language_Strings() throws Exception {
+	 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Group pop up dialog for Language String is displayed")
+	public void the_Group_pop_up_dialog_for_Language_String_is_displayed() throws Exception {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Group", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getGROUP(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Group pop up window for Language Strings")
+	public void user_clicks_the_Next_button_on_the_Group_pop_up_window_for_Language_Strings() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Value pop up dialog for Language String is displayed")
+	public void the_Value_pop_up_dialog_for_Language_String_is_displayed() throws Exception {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Value", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getVALUE(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Value pop up window for Language Strings")
+	public void user_clicks_the_Next_button_on_the_Value_pop_up_window_for_Language_Strings() throws Exception {
+	 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Description pop up dialog for Language String is displayed")
+	public void the_Description_pop_up_dialog_for_Language_String_is_displayed() throws Exception {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Description", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getDESCRIPTION(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Description pop up window for Language String")
+	public void user_clicks_the_Next_button_on_the_Description_pop_up_window_for_Language_String() throws Exception {
+	 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Updated pop up dialog for Language String is displayed")
+	public void the_Updated_pop_up_dialog_for_Language_String_is_displayed() throws Exception {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Updated", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getUPDATED(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+	@When("User clicks the Next button on the Updated pop up window for Language String")
+	public void user_clicks_the_Next_button_on_the_Updated_pop_up_window_for_Language_String() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Action pop up dialog for Language String is displayed")
+	public void the_Action_pop_up_dialog_for_Language_String_is_displayed() throws Exception {
+		languagePageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Actions", languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(languagePageHelpModal.getACTION(), languagePageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
+	}
+
+//	 @SMSM-136 @Help-Guide-for-Email-Templates-page
+	@Then("the Message Template Management pop up is opened")
+	public void the_Message_Template_Management_pop_up_is_opened() {
+	
+	}
+
+	@When("User clicks the Next button on the Message Template Management pop up window")
+	public void user_clicks_the_Next_button_on_the_Message_Template_Management_pop_up_window() {
+	
+	}
+
+	@Then("the Search Message Templates pop up is displayed")
+	public void the_Search_Message_Templates_pop_up_is_displayed() {
+
+	}
+
+	@When("User clicks the Next button on Search Message Templates pop up window")
+	public void user_clicks_the_Next_button_on_Search_Message_Templates_pop_up_window() {
+	
+	}
+
+	@Then("the Title pop up dialog for Message Templates String is displayed")
+	public void the_Title_pop_up_dialog_for_Message_Templates_String_is_displayed() {
+	
+	}
+
+	@When("User clicks the Next button on the Tile pop up window for Message Templates")
+	public void user_clicks_the_Next_button_on_the_Tile_pop_up_window_for_Message_Templates() {
+	  
+	}
+
+	@Then("the Subject pop up dialog is displayed")
+	public void the_Subject_pop_up_dialog_is_displayed() {
+	   
+	}
+
+	@When("User clicks the Next button on the Subject pop up window")
+	public void user_clicks_the_Next_button_on_the_Subject_pop_up_window() {
+	  
+	}
+
+	@Then("the Description pop up dialog for Message Templates is displayed")
+	public void the_Description_pop_up_dialog_for_Message_Templates_is_displayed() {
+	  
+	}
+
+	@When("User clicks the Next button on the Description pop up window for Message Templates")
+	public void user_clicks_the_Next_button_on_the_Description_pop_up_window_for_Message_Templates() {
+	  
+	}
+
+	@Then("the Updated pop up dialog for Message Templates is displayed")
+	public void the_Updated_pop_up_dialog_for_Message_Templates_is_displayed() {
+	   
+	}
+
+	@When("User clicks the Next button on the Updated pop up window for Message Templates")
+	public void user_clicks_the_Next_button_on_the_Updated_pop_up_window_for_Message_Templates() {
+	  
+	}
+
+	@Then("the Action pop up dialog for Message Templates is displayed")
+	public void the_Action_pop_up_dialog_for_Message_Templates_is_displayed() {
+	 
 	}
 
 }

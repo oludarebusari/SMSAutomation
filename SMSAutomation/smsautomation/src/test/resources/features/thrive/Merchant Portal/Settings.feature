@@ -74,26 +74,103 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the Language String record is displayed
     When User clicks the Edit button for the Language Strings
     Then the Edit String popup is displayed
-    And  User enters the required information into the text field
+    And User enters the required information into the text field
     And User clicks the Update Setting button
     And User confirms the change is reflected on the settings page
     #Revert-changes-to-Company
     And User clicks the Edit button for Language Strings
     When User changed the Language String to it's original value and clicks the Update Setting button
-    
-  @SMSM-136 @Edit-any-Email-Template @RegressionTest @OnlyMe
+
+  @SMSM-136 @Edit-any-Email-Template @RegressionTest
   Scenario: Edit any Email Template
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
-    When User types a Message Templates title in the Search box and click Search button 
+    When User types a Message Templates title in the Search box and click Search button
     Then the Message Templates record is displayed
     When User clicks the Edit button for the Message Templates
     Then the Edit Message Template popup is displayed
     And User enters the required information into the text field on the popup
     And User clicks the Save Settings button
     And User confirms the change is reflected on the Message Templates page
-   #Revert-changes-to-Company
-  	And User clicks the Edit button for the Message Template
+    #Revert-changes-to-Company
+    And User clicks the Edit button for the Message Template
     When User changed the Message Template fields to it's original value and clicks the Save Settings button
+
+  @SMSM-136 @Help-Guide-for-Manage-Settings-page @RegressionTest @OnlyMe
+  Scenario: Help Guide for Manage Settings page
+    When User clicks on Settings option from the dropdown
+    Then the Settings page is opened
+    When User clicks the Help button on the Setting
+    Then the Settings Management pop up is opened
+    When User clicks the Next button on the Settings Management pop up window
+    Then the Search Setting pop up is displayed
+    When User clicks the Next button on Search Settings pop up window
+    Then the Title pop up dialog is displayed
+    When User clicks the Next button on the Tile pop up window
+    Then the Group pop up dialog is displayed
+    When User clicks the Next button on the Group pop up window
+    Then the Value pop up dialog is displayed
+    When User clicks the Next button on the Value pop up window
+    Then the Description pop up dialog is displayed
+    When User clicks the Next button on the Description pop up window
+    Then the Updated pop up dialog is displayed
+    When User clicks the Next button on the Updated pop up window
+    Then the Action pop up dialog is displayed
+    When User clicks the End Tour button on the Action pop up window
+    Then the pop up window is closed
+
+  @SMSM-136 @Help-Guide-for-Language-String-page @RegressionTest @OnlyMe
+  Scenario: Help Guide for Language Strings page
+    When User clicks on Language Strings option from the dropdown
+    Then the Language Strings page is opened
+    When User clicks the Help button on the Setting
+    Then the Language String Management pop up is opened
+    When User clicks the Next button on the Language String Management pop up window
+    Then the Search Language Strings pop up is displayed
+    When User clicks the Next button on Search Language Strings pop up window
+    Then the Title pop up dialog for Language String is displayed
+    When User clicks the Next button on the Tile pop up window for Language Strings
+    Then the Group pop up dialog for Language String is displayed
+    When User clicks the Next button on the Group pop up window for Language Strings
+    # Then the Access Level pop up dialog is displayed
+    # When User clicks the Next button on the Access Level pop up window
+    Then the Value pop up dialog for Language String is displayed
+    When User clicks the Next button on the Value pop up window for Language Strings
+    Then the Description pop up dialog for Language String is displayed
+    When User clicks the Next button on the Description pop up window for Language String
+    Then the Updated pop up dialog for Language String is displayed
+    When User clicks the Next button on the Updated pop up window for Language String
+    Then the Action pop up dialog for Language String is displayed
+    When User clicks the End Tour button on the Action pop up window
+    Then the pop up window is closed
+
+  @SMSM-136 @Help-Guide-for-Email-Templates-page @RegressionTest @OnlyMe
+  Scenario: Help Guide for Email Templates page
+    When User clicks on Message Templates from the dropdown
+    Then the Message Templates page is opened
+    When User clicks the Help button on the Setting
+    Then the Message Template Management pop up is opened
+    When User clicks the Next button on the Message Template Management pop up window
+    Then the Search Message Templates pop up is displayed
+    When User clicks the Next button on Search Message Templates pop up window
+    Then the Title pop up dialog for Message Templates String is displayed
+    When User clicks the Next button on the Tile pop up window for Message Templates
+    Then the Subject pop up dialog is displayed
+    When User clicks the Next button on the Subject pop up window
+    Then the Description pop up dialog for Message Templates is displayed
+    When User clicks the Next button on the Description pop up window for Message Templates
+    Then the Updated pop up dialog for Message Templates is displayed
+    When User clicks the Next button on the Updated pop up window for Message Templates
+    Then the Action pop up dialog for Message Templates is displayed
+    When User clicks the End Tour button on the Action pop up window
+    Then the pop up window is closed
     
-  
+    
+    
+    
+    
+    
+    
+    
+    
+    
