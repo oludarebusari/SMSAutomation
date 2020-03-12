@@ -9,8 +9,6 @@ public class MessageTemplatesPageHelpModal extends BasePage {
 		super();
 	}
 
-	
-
 	private final String MESSAGE_TEMPLATES_MANAGEMENT = "Easily manage all of your email and SMS templates from a single location.";
 	private final String SEARCH_MESSAGE_TEMPLATES ="Quickly find Templates by typing in a title, subject, or other identifiable data into the search box.";
 	private final String TITLE ="The Title provides a brief explanation of the Template's use.";
@@ -19,5 +17,27 @@ public class MessageTemplatesPageHelpModal extends BasePage {
 	private final String UPDATED ="Updated indicates the date when the message was most recently modified.";
 	private final String ACTION ="Actions provides quick access to edit and customize the selected template.";
 	
+	
+	public String getMESSAGE_TEMPLATES_MANAGEMENT() {
+		return MESSAGE_TEMPLATES_MANAGEMENT;
+	}
+	public String getSEARCH_MESSAGE_TEMPLATES() {
+		return SEARCH_MESSAGE_TEMPLATES;
+	}
+	public String getTITLE() {
+		return TITLE;
+	}
+	public String getSUBJECT() {
+		return SUBJECT;
+	}
+	public String getDESCRIPTION() {
+		return DESCRIPTION;
+	}
+	public String getUPDATED() {
+		return UPDATED;
+	}
+	public String getACTION() {
+		return ACTION;
+	}
 	
 }

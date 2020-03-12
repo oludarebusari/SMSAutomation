@@ -50,8 +50,8 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the Message Templates page is opened
     And User confirms the columns on the Message Templates page
 
-  @SMSM-136 @Edit-any-Manage-Settings-option @RegressionTest
-  Scenario: Edit any Settings option
+  @SMSM-136 @Search-and-Edit-any-Manage-Settings-option @RegressionTest
+  Scenario: Search and Edit any Settings option
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
     When User types the Settings title in the Search box and click Search button
@@ -66,8 +66,8 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the dropdown textbox on the Edit Setting modal
     When User changes Settings option to it's original value and clicks the Update Setting button
 
-  @SMSM-136 @Edit-any-Language-String-option @RegressionTest
-  Scenario: Edit any Language String option
+  @SMSM-136 @Search-and-Edit-any-Language-String-option @RegressionTest
+  Scenario: Search and Edit any Language String option
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
     When User types the Language String title in the Search box and click Search button
@@ -81,7 +81,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     And User clicks the Edit button for Language Strings
     When User changed the Language String to it's original value and clicks the Update Setting button
 
-  @SMSM-136 @Edit-any-Email-Template @RegressionTest
+  @SMSM-136 @Search-and-Edit-any-Email-Template @RegressionTest
   Scenario: Edit any Email Template
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
@@ -96,7 +96,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     And User clicks the Edit button for the Message Template
     When User changed the Message Template fields to it's original value and clicks the Save Settings button
 
-  @SMSM-136 @Help-Guide-for-Manage-Settings-page @RegressionTest @OnlyMe
+  @SMSM-136 @Help-Guide-for-Manage-Settings-page @RegressionTest
   Scenario: Help Guide for Manage Settings page
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
@@ -119,7 +119,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the End Tour button on the Action pop up window
     Then the pop up window is closed
 
-  @SMSM-136 @Help-Guide-for-Language-String-page @RegressionTest @OnlyMe
+  @SMSM-136 @Help-Guide-for-Language-String-page @RegressionTest
   Scenario: Help Guide for Language Strings page
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
@@ -144,7 +144,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the End Tour button on the Action pop up window
     Then the pop up window is closed
 
-  @SMSM-136 @Help-Guide-for-Email-Templates-page @RegressionTest @OnlyMe
+  @SMSM-136 @Help-Guide-for-Email-Templates-page @RegressionTest
   Scenario: Help Guide for Email Templates page
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
@@ -164,13 +164,21 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the Action pop up dialog for Message Templates is displayed
     When User clicks the End Tour button on the Action pop up window
     Then the pop up window is closed
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest @OnlyMe
+  Scenario: Apply Sort in Manage Settings page
+    When User clicks on Settings option from the dropdown
+    Then the Settings page is opened
+		When User clicks the Title column name
+		Then the Settings records are sorted by Tilte column
+		When User clicks the Group column name
+		Then the Settings records are sorted by Group column
+		When User clicks the Value column name
+		Then the Settings records are sorted by Value column 
+		When User clicks the Description column name
+		Then the Settings record are sorted by Description column.
+		When User clicks the Updated column name
+		Then the Settings records are sorted by Updated colum
+		
+		
+		

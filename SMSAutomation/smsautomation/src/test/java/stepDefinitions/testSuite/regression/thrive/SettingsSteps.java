@@ -14,6 +14,7 @@ import pageObjects.thrive.modal.EditEmailTemplateModal;
 import pageObjects.thrive.modal.EditSettingsModal;
 import pageObjects.thrive.modal.EditStringModal;
 import pageObjects.thrive.modal.LanguagePageHelpModal;
+import pageObjects.thrive.modal.MessageTemplatesPageHelpModal;
 import pageObjects.thrive.modal.SettingsPageHelpModal;
 import utils.DriverFactory;
 
@@ -27,6 +28,7 @@ public class SettingsSteps extends DriverFactory {
 	public LanguageStringsPage languageStringsPage = PageFactory.initElements(driver, LanguageStringsPage.class);
 	public LanguagePageHelpModal languagePageHelpModal = PageFactory.initElements(driver, LanguagePageHelpModal.class);
 	public MessageTemplatesPage messageTemplatesPage = PageFactory.initElements(driver, MessageTemplatesPage.class);
+	public MessageTemplatesPageHelpModal messageTemplatesPageHelpModal = PageFactory.initElements(driver, MessageTemplatesPageHelpModal.class);
 	public SettingsPage settingsPage = PageFactory.initElements(driver, SettingsPage.class);
 	public SettingsPageHelpModal settingsPageHelpModal = PageFactory.initElements(driver, SettingsPageHelpModal.class);
 
@@ -102,7 +104,7 @@ public class SettingsSteps extends DriverFactory {
 		Assert.assertTrue(messageTemplatesPage.col_Action.isDisplayed());
 	}
 
-//	@SMSM-136 @Edit-any-Manage-Settings-option
+//	@SMSM-136 @Search-and-Edit-any-Manage-Settings-option
 	@When("User types the Settings title in the Search box and click Search button")
 	public void user_types_the_Settings_title_in_the_Search_box_and_click_Search_button() throws Exception {
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Initial");
@@ -148,6 +150,7 @@ public class SettingsSteps extends DriverFactory {
 		editSettingsModal.waitAndClickElement(editSettingsModal.btn_SaveSetting);
 	}
 
+//	@SMSM-136 @Search-and-Edit-any-Language-String-option
 	@When("User clicks on Language Strings option from the dropdown")
 	public void user_clicks_on_Language_Strings_option_from_the_dropdown() throws Exception {
 		commonElementLocator.waitAndClickElement(commonElementLocator.opt_LanguageStrings);
@@ -202,6 +205,7 @@ public class SettingsSteps extends DriverFactory {
 		editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
 	}
 
+//	@SMSM-136 @Search-and-Edit-any-Email-Template
 	@When("User types a Message Templates title in the Search box and click Search button")
 	public void user_types_a_Message_Templates_title_in_the_Search_box_and_click_Search_button() throws Exception {
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Response to review");
@@ -465,68 +469,144 @@ public class SettingsSteps extends DriverFactory {
 
 //	 @SMSM-136 @Help-Guide-for-Email-Templates-page
 	@Then("the Message Template Management pop up is opened")
-	public void the_Message_Template_Management_pop_up_is_opened() {
-	
+	public void the_Message_Template_Management_pop_up_is_opened() throws Exception {
+		Assert.assertEquals("Message Template Management",messageTemplatesPage.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getMESSAGE_TEMPLATES_MANAGEMENT(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
 
 	@When("User clicks the Next button on the Message Template Management pop up window")
-	public void user_clicks_the_Next_button_on_the_Message_Template_Management_pop_up_window() {
-	
+	public void user_clicks_the_Next_button_on_the_Message_Template_Management_pop_up_window() throws Exception {
+	   commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the Search Message Templates pop up is displayed")
-	public void the_Search_Message_Templates_pop_up_is_displayed() {
-
+	public void the_Search_Message_Templates_pop_up_is_displayed() throws Exception {
+		messageTemplatesPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Search Message Templates", messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getSEARCH_MESSAGE_TEMPLATES(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
 
 	@When("User clicks the Next button on Search Message Templates pop up window")
-	public void user_clicks_the_Next_button_on_Search_Message_Templates_pop_up_window() {
-	
+	public void user_clicks_the_Next_button_on_Search_Message_Templates_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the Title pop up dialog for Message Templates String is displayed")
-	public void the_Title_pop_up_dialog_for_Message_Templates_String_is_displayed() {
-	
+	public void the_Title_pop_up_dialog_for_Message_Templates_String_is_displayed() throws Exception {
+		messageTemplatesPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Title", messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getTITLE(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
 
 	@When("User clicks the Next button on the Tile pop up window for Message Templates")
-	public void user_clicks_the_Next_button_on_the_Tile_pop_up_window_for_Message_Templates() {
-	  
+	public void user_clicks_the_Next_button_on_the_Tile_pop_up_window_for_Message_Templates() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the Subject pop up dialog is displayed")
-	public void the_Subject_pop_up_dialog_is_displayed() {
-	   
+	public void the_Subject_pop_up_dialog_is_displayed() throws Exception {
+		messageTemplatesPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Subject", messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getSUBJECT(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
 
 	@When("User clicks the Next button on the Subject pop up window")
-	public void user_clicks_the_Next_button_on_the_Subject_pop_up_window() {
-	  
+	public void user_clicks_the_Next_button_on_the_Subject_pop_up_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the Description pop up dialog for Message Templates is displayed")
-	public void the_Description_pop_up_dialog_for_Message_Templates_is_displayed() {
-	  
+	public void the_Description_pop_up_dialog_for_Message_Templates_is_displayed() throws Exception {
+		messageTemplatesPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Description", messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getDESCRIPTION(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
 
 	@When("User clicks the Next button on the Description pop up window for Message Templates")
-	public void user_clicks_the_Next_button_on_the_Description_pop_up_window_for_Message_Templates() {
-	  
+	public void user_clicks_the_Next_button_on_the_Description_pop_up_window_for_Message_Templates() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the Updated pop up dialog for Message Templates is displayed")
-	public void the_Updated_pop_up_dialog_for_Message_Templates_is_displayed() {
-	   
+	public void the_Updated_pop_up_dialog_for_Message_Templates_is_displayed() throws Exception {
+		messageTemplatesPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Updated", messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getUPDATED(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
 
 	@When("User clicks the Next button on the Updated pop up window for Message Templates")
-	public void user_clicks_the_Next_button_on_the_Updated_pop_up_window_for_Message_Templates() {
-	  
+	public void user_clicks_the_Next_button_on_the_Updated_pop_up_window_for_Message_Templates() throws InterruptedException {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
 
 	@Then("the Action pop up dialog for Message Templates is displayed")
-	public void the_Action_pop_up_dialog_for_Message_Templates_is_displayed() {
-	 
+	public void the_Action_pop_up_dialog_for_Message_Templates_is_displayed() throws Exception {
+		messageTemplatesPageHelpModal.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Action", messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals(messageTemplatesPageHelpModal.getACTION(), messageTemplatesPageHelpModal.getElementText(commonElementLocator.mod_Help_Content));
 	}
+	
+	
+//	@SMSM-136 @Apply-Sort-in-Manage-Settings-page
+	@When("User clicks the Title column name")
+	public void user_clicks_the_Title_column_name() throws InterruptedException {
+		//Verify the current value of the title cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "1")).contentEquals("SMTP Host"));
+		settingsPage.waitAndClickElement(settingsPage.col_Title);
+	}
+
+	@Then("the Settings records are sorted by Tilte column")
+	public void the_Settings_records_are_sorted_by_Tilte_column() throws Exception {
+		//Verify the value of the title cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "1")).contentEquals("Allowed Domains"));
+	}
+	
+	@When("User clicks the Group column name")
+	public void user_clicks_the_Group_column_name() throws Exception {
+		//Reverse sorting on Title
+		settingsPage.waitAndClickElement(settingsPage.col_Title);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Social Streams"));
+		settingsPage.waitAndClickElement(settingsPage.col_Group);
+	}
+
+	@Then("the Settings records are sorted by Group column")
+	public void the_Settings_records_are_sorted_by_Group_column() throws Exception {
+		//Verify the value of the Group cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Email Settings"));
+	}
+
+	@When("User clicks the Value column name")
+	public void user_clicks_the_Value_column_name() throws InterruptedException {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("smtp.sendgrid.net"));	
+		settingsPage.waitAndClickElement(settingsPage.col_Value);
+	}
+
+	@Then("the Settings records are sorted by Value column")
+	public void the_Settings_records_are_sorted_by_Value_column() throws Exception {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("Unread"));
+	}
+
+	@When("User clicks the Description column name")
+	public void user_clicks_the_Description_column_name() throws Exception {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("Set as default Streams Read/Unread"));
+		settingsPage.waitAndClickElement(settingsPage.col_Description);
+	}
+
+	@Then("the Settings record are sorted by Description column.")
+	public void the_Settings_record_are_sorted_by_Description_column() throws InterruptedException {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(""));
+	}
+
+	@When("User clicks the Updated column name")
+	public void user_clicks_the_Updated_column_name() throws Exception {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("08/25/2015"));
+		settingsPage.waitAndClickElement(settingsPage.col_Updated);
+	}
+
+	@Then("the Settings records are sorted by Updated colum")
+	public void the_Settings_records_are_sorted_by_Updated_colum() throws InterruptedException {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("03/06/2020"));
+	}
+
 
 }

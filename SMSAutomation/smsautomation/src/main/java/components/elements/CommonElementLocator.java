@@ -33,7 +33,6 @@ public class CommonElementLocator extends BasePage {
 	
 	public @FindBy(xpath = "//h1[contains(@class, \"pull-left\")]") WebElement pag_Title;
 	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
-//	public @FindBy(xpath = "//h1[contains(@class, \"pull-left\")]") WebElement btn_Search;
 	public @FindBy(xpath = "//button[@id=\"search-text-submit\"]") WebElement btn_Search;
 	
 	//Pagination elements
@@ -58,6 +57,11 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "(//tr/td[text()])[2]") WebElement sort_LastName;
 	public @FindBy(xpath = "(//tr/td[text()])[3]") WebElement sort_Status;
 	public @FindBy(xpath = "(//tr/td[text()])[4]") WebElement sort_Updated;
+	public @FindBy(xpath = "//tbody") WebElement parent_recordCell;
+	
+	public WebElement recordCellValue(String row, String col) { 
+	   return parent_recordCell.findElement(By.xpath("//tr["+ row + "]/td["+ col + "]"));
+	}
 	
 	//Help
 	public @FindBy(xpath = "//h3[@class=\"popover-title\"]") WebElement mod_Help_Title;
@@ -72,5 +76,6 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Language Strings\"]]") WebElement opt_LanguageStrings;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Message Templates\"]]") WebElement opt_MessageTemplates;
 	
+
 	
 }
