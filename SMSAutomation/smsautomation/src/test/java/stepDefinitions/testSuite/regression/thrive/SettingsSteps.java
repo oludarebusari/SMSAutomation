@@ -577,36 +577,175 @@ public class SettingsSteps extends DriverFactory {
 
 	@When("User clicks the Value column name")
 	public void user_clicks_the_Value_column_name() throws InterruptedException {
+		//Verify the current value of the Value cell before sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("smtp.sendgrid.net"));	
 		settingsPage.waitAndClickElement(settingsPage.col_Value);
 	}
 
 	@Then("the Settings records are sorted by Value column")
 	public void the_Settings_records_are_sorted_by_Value_column() throws Exception {
+		//Verify the value of the Value cell after sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("Unread"));
 	}
 
 	@When("User clicks the Description column name")
 	public void user_clicks_the_Description_column_name() throws Exception {
+		//Verify the current value of the Description cell before sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("Set as default Streams Read/Unread"));
 		settingsPage.waitAndClickElement(settingsPage.col_Description);
 	}
 
 	@Then("the Settings record are sorted by Description column.")
 	public void the_Settings_record_are_sorted_by_Description_column() throws InterruptedException {
+		//Verify the value of the Description cell after sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(""));
 	}
 
 	@When("User clicks the Updated column name")
 	public void user_clicks_the_Updated_column_name() throws Exception {
+		//Verify the current value of the Updated cell before sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("08/25/2015"));
 		settingsPage.waitAndClickElement(settingsPage.col_Updated);
 	}
 
 	@Then("the Settings records are sorted by Updated colum")
 	public void the_Settings_records_are_sorted_by_Updated_colum() throws InterruptedException {
+		//Verify the value of the Updated cell after sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("03/06/2020"));
 	}
 
+//	@SMSM-136 @Apply-Sort-in-Language-String-page
+	@When("User clicks the Title column name on Language Strings page")
+	public void user_clicks_the_Title_column_name_on_Language_Strings_page() throws InterruptedException {
+		//Verify the current value of the title cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "1")).contentEquals("Save"));
+		languageStringsPage.waitAndClickElement(languageStringsPage.col_Title);
+	}
+
+	@Then("the Language Strings records are sorted by Tilte column")
+	public void the_Language_Strings_records_are_sorted_by_Tilte_column() throws Exception {
+		//Verify the current value of the title cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "1")).contentEquals("Filters"));
+	}
+
+	@When("User clicks the Group column name on Language Strings page")
+	public void user_clicks_the_Group_column_name_on_Language_Strings_page() throws InterruptedException {
+		//Verify the current value of the Group cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Controls"));
+		languageStringsPage.waitAndClickElement(languageStringsPage.col_Group);
+	}
+
+	@Then("the Language Strings records are sorted by Group column")
+	public void the_Language_Strings_records_are_sorted_by_Group_column() throws Exception {
+		//Verify the current value of the Group cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Streams"));
+	}
+
+	@When("User clicks the Access Level column name")
+	public void user_clicks_the_Access_Level_column_name() throws InterruptedException {
+		//Verify the current value of the Access Level cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("Merchant"));
+		languageStringsPage.waitAndClickElement(languageStringsPage.col_AccessLevel);
+	}
+
+	@Then("the Language Strings records are sorted by Access Level column")
+	public void the_Language_Strings_records_are_sorted_by_Access_Level_column() throws InterruptedException {
+		//Verify the current value of the Access Level cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("Merchant"));
+	}
+
+	@When("User clicks the Value column name on Language Strings page")
+	public void user_clicks_the_Value_column_name_on_Language_Strings_page() throws InterruptedException {
+		//Verify the current value of the Value cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("Save"));
+		languageStringsPage.waitAndClickElement(languageStringsPage.col_Value);
+	}
+
+	@Then("the Language Strings records are sorted by Value column")
+	public void the_Language_Strings_records_are_sorted_by_Value_column() throws InterruptedException {
+		//Verify the current value of the Value cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("Your Review"));
+	}
+
+	@When("User clicks the Description column name on Language Strings page")
+	public void user_clicks_the_Description_column_name_on_Language_Strings_page() throws InterruptedException {
+		//Verify the current value of the Description cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("Heading on the write a review page"));
+		languageStringsPage.waitAndClickElement(languageStringsPage.col_Description);
+	}
+
+	@Then("the Language Strings record are sorted by Description column.")
+	public void the_Language_Strings_record_are_sorted_by_Description_column() throws Exception {
+		//Verify the current value of the Description cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals(""));
+	}
+
+	@When("User clicks the Updated column name on Language String page")
+	public void user_clicks_the_Updated_column_name_on_Language_String_page() throws InterruptedException {
+		//Verify the current value of the Updated cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("03/08/2016"));
+		languageStringsPage.waitAndClickElement(languageStringsPage.col_Updated);
+	}
+
+	@Then("the Language Strings records are sorted by Updated column")
+	public void the_Language_Strings_records_are_sorted_by_Updated_column() throws Exception {
+		//Verify the current value of the Updated cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("01/16/2018"));
+	}
+
+	
+//	@SMSM-136 @Apply-Sort-in-Email-Template-page
+	@When("User clicks the Title column name on Message Template page")
+	public void user_clicks_the_Title_column_name_on_Message_Template_page() throws InterruptedException {
+		//Verify the current value of the Title cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "1")).contentEquals("Contact form Submission"));
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Title);
+	}
+
+	@Then("the Message Templates records are sorted by Tilte column")
+	public void the_Message_Templates_records_are_sorted_by_Tilte_column() throws Exception {
+		//Verify the current value of the Title cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "1")).contentEquals("Contact form Submission"));
+	}
+
+	@When("User clicks the Subject column name on Message Templates page")
+	public void user_clicks_the_Subject_column_name_on_Message_Templates_page() throws Exception {
+		//Verify the current value of the Subject cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Ageless in SLO Website Submission"));
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Subject);
+	}
+
+	@Then("the Message Templates records are sorted by Subject column")
+	public void the_Message_Templates_records_are_sorted_by_Subject_column() throws Exception {
+		//Verify the current value of the Subject cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Thrive reply to your review"));
+	}
+
+	@When("User clicks the Description column name on Message Templates page")
+	public void user_clicks_the_Description_column_name_on_Message_Templates_page() throws InterruptedException {
+		//Verify the current value of the Description cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("This email is set to the user immedatly when admin, licensee or merchant replied to the users thrive review"));
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Description);
+	}
+
+	@Then("the Message Templates record are sorted by Description column.")
+	public void the_Message_Templates_record_are_sorted_by_Description_column() throws InterruptedException {
+		//Verify the current value of the Description cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("This email is sent to a merchant when a user submits a contact form"));
+	
+	}
+
+	@When("User clicks the Updated column name on Message Templates page")
+	public void user_clicks_the_Updated_column_name_on_Message_Templates_page() throws Exception {
+		//Verify the current value of the Updated cell before sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("12/06/2017"));
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Updated);
+	}
+
+	@Then("the Message Templates records are sorted by Updated column")
+	public void the_Message_Templates_records_are_sorted_by_Updated_column() throws InterruptedException {
+		//Verify the current value of the Updated cell after sorting
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.currentDate()));
+	}
 
 }

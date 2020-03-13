@@ -71,6 +71,14 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"popover-content\"]") WebElement mod_Help_Content;
 	public @FindBy(xpath = "//div[contains(@class, \"tour-mmd-tour\")]") WebElement mod_Tours;
 	
+	
+    // Experience Menu Options
+	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\\\"Pages\"]]") WebElement opt_Pages;
+	public @FindBy(xpath = "//a[text()[normalize-space()=\"SmartCode\"]]") WebElement opt_SmartCode;
+	public @FindBy(xpath = "//a[text()[normalize-space()=\"Captivate\"]]") WebElement opt_Captivate;
+	public @FindBy(xpath = "//a[text()[normalize-space()=\"Easy Connect\"]]") WebElement opt_EasyConnect;
+	public @FindBy(xpath = "//li[@class=\"last\"]//a[text()[normalize-space()=\"Streams\"]]") WebElement opt_Streams;
+	
 	// Setting Menu Options
 	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\"Settings\"]]") WebElement opt_Settings;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Language Strings\"]]") WebElement opt_LanguageStrings;

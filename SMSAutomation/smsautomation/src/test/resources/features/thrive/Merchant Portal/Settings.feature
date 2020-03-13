@@ -165,20 +165,55 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the End Tour button on the Action pop up window
     Then the pop up window is closed
 
-  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest @OnlyMe
+  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest 
   Scenario: Apply Sort in Manage Settings page
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
-		When User clicks the Title column name
-		Then the Settings records are sorted by Tilte column
-		When User clicks the Group column name
-		Then the Settings records are sorted by Group column
-		When User clicks the Value column name
-		Then the Settings records are sorted by Value column 
-		When User clicks the Description column name
-		Then the Settings record are sorted by Description column.
-		When User clicks the Updated column name
-		Then the Settings records are sorted by Updated colum
-		
-		
-		
+    When User clicks the Title column name
+    Then the Settings records are sorted by Tilte column
+    When User clicks the Group column name
+    Then the Settings records are sorted by Group column
+    When User clicks the Value column name
+    Then the Settings records are sorted by Value column
+    When User clicks the Description column name
+    Then the Settings record are sorted by Description column.
+    When User clicks the Updated column name
+    Then the Settings records are sorted by Updated colum
+
+  @SMSM-136 @Apply-Sort-in-Language-String-page @RegressionTest
+  Scenario: Apply Sort in Language Strings page
+    When User clicks on Language Strings option from the dropdown
+    Then the Language Strings page is opened
+    When User clicks the Title column name on Language Strings page
+    Then the Language Strings records are sorted by Tilte column
+    When User clicks the Group column name on Language Strings page
+    Then the Language Strings records are sorted by Group column
+    When User clicks the Access Level column name
+    Then the Language Strings records are sorted by Access Level column
+    When User clicks the Value column name on Language Strings page
+    Then the Language Strings records are sorted by Value column
+    When User clicks the Description column name on Language Strings page
+    Then the Language Strings record are sorted by Description column.
+    When User clicks the Updated column name on Language String page
+    Then the Language Strings records are sorted by Updated column
+
+  @SMSM-136 @Apply-Sort-in-Email-Template-page @RegressionTest @OnlyMe
+  Scenario: Apply sort in Email Template page
+    When User clicks on Message Templates from the dropdown
+    Then the Message Templates page is opened
+    When User clicks the Title column name on Message Template page
+    Then the Message Templates records are sorted by Tilte column
+    When User clicks the Subject column name on Message Templates page
+    Then the Message Templates records are sorted by Subject column
+    When User clicks the Description column name on Message Templates page
+    Then the Message Templates record are sorted by Description column.
+    When User clicks the Updated column name on Message Templates page
+    Then the Message Templates records are sorted by Updated column
+    
+    
+    
+    
+    
+    
+    
+    

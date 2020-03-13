@@ -14,14 +14,10 @@ public class ExperienceDDown extends BasePage {
 	}
 
 	
-	// Page elements
-	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Streams\"]]") WebElement opt_Streams;
-	
-	
-	// Page methods
-
-	public ExperienceDDown clickModulesOpt() throws Exception {
-		waitAndClickElement(opt_Streams);
-		return new ExperienceDDown();
-	}
+	 // Experience Menu Options
+		public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\\\"Pages\"]]") WebElement opt_Pages;
+		public @FindBy(xpath = "//a[text()[normalize-space()=\"SmartCode\"]]") WebElement opt_SmartCode;
+		public @FindBy(xpath = "//a[text()[normalize-space()=\"Captivate\"]]") WebElement opt_Captivate;
+		public @FindBy(xpath = "//a[text()[normalize-space()=\"Easy Connect\"]]") WebElement opt_EasyConnect;
+		public @FindBy(xpath = "//li[@class=\"last\"]//a[text()[normalize-space()=\"Streams\"]]") WebElement opt_Streams;
 }
