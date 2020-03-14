@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import pageObjects.thrive.LanguageStringsPage;
 import pageObjects.thrive.MessageTemplatesPage;
 import pageObjects.thrive.SettingsPage;
+import pageObjects.thrive.Tab.SettingsDDown;
 import pageObjects.thrive.modal.EditEmailTemplateModal;
 import pageObjects.thrive.modal.EditSettingsModal;
 import pageObjects.thrive.modal.EditStringModal;
@@ -29,9 +30,11 @@ public class SettingsSteps extends DriverFactory {
 	public LanguagePageHelpModal languagePageHelpModal = PageFactory.initElements(driver, LanguagePageHelpModal.class);
 	public MessageTemplatesPage messageTemplatesPage = PageFactory.initElements(driver, MessageTemplatesPage.class);
 	public MessageTemplatesPageHelpModal messageTemplatesPageHelpModal = PageFactory.initElements(driver, MessageTemplatesPageHelpModal.class);
+	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
 	public SettingsPage settingsPage = PageFactory.initElements(driver, SettingsPage.class);
 	public SettingsPageHelpModal settingsPageHelpModal = PageFactory.initElements(driver, SettingsPageHelpModal.class);
 
+	
 //   @SMSM-136 @View-Settings-Under-Settings-option @RegressionTest
 	@When("User clicks the Settings menu item")
 	public void user_clicks_the_Settings_menu_item() throws InterruptedException {
@@ -45,7 +48,7 @@ public class SettingsSteps extends DriverFactory {
 
 	@When("User clicks on Settings option from the dropdown")
 	public void user_clicks_on_Settings_option_from_the_dropdown() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.opt_Settings);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_Settings);
 	}
 
 	@Then("the Settings page is opened")
@@ -65,7 +68,7 @@ public class SettingsSteps extends DriverFactory {
 //	 @SMSM-136 @View-Language-String-Under-Settings-option
 	@When("User clicks on Language Strings from the dropdown")
 	public void user_clicks_on_Language_Strings_from_the_dropdown() throws InterruptedException {
-		commonElementLocator.waitAndClickElement(commonElementLocator.opt_LanguageStrings);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_LanguageStrings);
 	}
 
 	@Then("the Language Strings page is opened")
@@ -87,7 +90,7 @@ public class SettingsSteps extends DriverFactory {
 //	 @SMSM-136 @View-Email-Templates-Under-Settings-option
 	@When("User clicks on Message Templates from the dropdown")
 	public void user_clicks_on_Message_Templates_from_the_dropdown() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.opt_MessageTemplates);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_MessageTemplates);
 	}
 
 	@Then("the Message Templates page is opened")
@@ -153,7 +156,7 @@ public class SettingsSteps extends DriverFactory {
 //	@SMSM-136 @Search-and-Edit-any-Language-String-option
 	@When("User clicks on Language Strings option from the dropdown")
 	public void user_clicks_on_Language_Strings_option_from_the_dropdown() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.opt_LanguageStrings);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_LanguageStrings);
 	}
 
 	@When("User types the Language String title in the Search box and click Search button")
@@ -693,7 +696,6 @@ public class SettingsSteps extends DriverFactory {
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("01/16/2018"));
 	}
 
-	
 //	@SMSM-136 @Apply-Sort-in-Email-Template-page
 	@When("User clicks the Title column name on Message Template page")
 	public void user_clicks_the_Title_column_name_on_Message_Template_page() throws InterruptedException {
@@ -732,7 +734,6 @@ public class SettingsSteps extends DriverFactory {
 	public void the_Message_Templates_record_are_sorted_by_Description_column() throws InterruptedException {
 		//Verify the current value of the Description cell after sorting
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "3")).contentEquals("This email is sent to a merchant when a user submits a contact form"));
-	
 	}
 
 	@When("User clicks the Updated column name on Message Templates page")
@@ -745,6 +746,7 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Message Templates records are sorted by Updated column")
 	public void the_Message_Templates_records_are_sorted_by_Updated_column() throws InterruptedException {
 		//Verify the current value of the Updated cell after sorting
+//		System.out.println(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.currentDate()));
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.currentDate()));
 	}
 

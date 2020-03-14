@@ -16,7 +16,7 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-Feature: [SMSM-240] User is able to manage review settings in merchant portal for Thrive system
+Feature: [SMSM-228] Add page in merchant portal for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
     Given User Navigates to Thrive URL
@@ -30,23 +30,29 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User navigates to the actions column of a Business and clicks Sign In button
     Then User is logged into the Business and the business dashboard is opened
 
-  @SMSM-136 @Verify-that-user-is-able-to-navigate-to-streams-page @RegressionTest
-  Scenario Outline: Verify that user is able to navigate to streams page
+  @SMSM-136 @Verify-the-user-is-able-to-create-a-new-page-in-merchant-portal @RegressionTest @OnlyMe
+  Scenario: Verify the user is able to create a new page in merchants portal
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
-    When User clicks the Streams option
-    Then the Stream page is opened
+    When User clicks the Pages option
+    Then users is redirected to the Pages page
+    When User clicks on the New button
+    Then the Create Page window is opened
+    When User enters a Name, select a template and clicks the Create Page button
+    Then the new page is created
 
-  @SMSM-136 @Verify-that-user-is-able-to-navigate-to-streams-configuration-windows-pop-up @RegressionTest
-  Scenario Outline: Verify that user is able to navigate to Streams Configuration windows pops-up
+  @SMSM-136 @Verify-all-the-available-menus-on-merchant-page @RegressionTest @OnlyMe
+  Scenario: Verify all the available menus on merchant pages
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
-    When User clicks the Streams option
-    Then the Stream page is opened
-    And User verifies that Settings button is displayed
-    When User clicks the Settings button
-    Then a Settings configuration pop is opened
+    When Users clicks edit button beside a page
+    Then the page window is opened
+    And User confirms that the Header option is available
+    And User confirms that the Footer option is available
+    And User confirms that the Content option is available
+    And User confirms that the Media option is available
+    And User confirms that the Touchpoint option is available
+    And User confirms that the Streams option is available
+    And User confirms that the Parallax option is available
     
-
-    
-    
+  

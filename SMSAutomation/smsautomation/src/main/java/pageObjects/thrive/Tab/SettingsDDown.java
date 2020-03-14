@@ -23,7 +23,6 @@ public class SettingsDDown extends BasePage {
 	public @FindBy(xpath = "//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Tours\"]]") WebElement opt_Tours;
 
 	// Thrive Setting Menu Options
-	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\"Settings\"]]") WebElement opt_ThSettings;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Language Strings\"]]") WebElement opt_LanguageStrings;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Message Templates\"]]") WebElement opt_MessageTemplates;
 
