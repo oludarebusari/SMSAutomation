@@ -14,7 +14,7 @@ public class PagesConfigurationPage extends BasePage {
 	}
 
 	public @FindBy(xpath = "//a[@id=\"edit-settings\"]") WebElement btn_Settings;
-	public @FindBy(xpath = "//a[text()=\"Pages\"]") WebElement lnk_Pages;
+	public @FindBy(xpath = "//a[@href=\"/merchant/pages/\" and text()=\"Pages\"]") WebElement lnk_Pages;
 	public @FindBy(xpath = "//div[@class=\"btn-group\"]//button[contains(@class, \"ladda-button\")]") WebElement btn_Save;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Header\"]]") WebElement sideMenu_Header;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Footer\"]]") WebElement sideMenu_Footer;

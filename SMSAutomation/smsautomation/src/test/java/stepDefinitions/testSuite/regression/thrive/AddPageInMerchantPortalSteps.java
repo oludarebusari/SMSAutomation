@@ -23,7 +23,6 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 	public PagesMainPage pagesMainPage = PageFactory.initElements(driver, PagesMainPage.class);
 	public PageSettingsModal pageSettingsModal = PageFactory.initElements(driver, PageSettingsModal.class);
 	public SaveChangesToPageModal saveChangesToPageModal = PageFactory.initElements(driver, SaveChangesToPageModal.class);
-	
 
 //  @SMSM-136 @Verify-the-user-is-able-to-create-a-new-page-in-merchant-portal 
 	@When("User clicks on the Experience Menu option")
@@ -68,53 +67,54 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Experience);
 		experienceDDown.waitAndClickElement(experienceDDown.opt_Pages);
 		saveChangesToPageModal.waitAndClickElement(saveChangesToPageModal.btn_SaveChanges);
+		Thread.sleep(900);
 		Assert.assertTrue(pagesMainPage.searchPageByPageName("AclateQA").isDisplayed());
 	}
 
 //	@SMSM-136 @Verify-all-the-available-menus-on-merchant-page
 	@When("Users clicks edit button beside a page")
-	public void users_clicks_edit_button_beside_a_page() {
-
+	public void users_clicks_edit_button_beside_a_page() throws InterruptedException {
+		pagesMainPage.waitAndClickElement(pagesMainPage.btn_EditPageByPageName("AclateQA"));
 	}
 
 	@Then("the page window is opened")
-	public void the_page_window_is_opened() {
-
+	public void the_page_window_is_opened() throws InterruptedException {
+		Assert.assertEquals("Pages / AclateQA", pagesMainPage.getElementText(pagesMainPage.pag_title));
 	}
 
 	@Then("User confirms that the Header option is available")
 	public void user_confirms_that_the_Header_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_Header.isDisplayed());
 	}
 
 	@Then("User confirms that the Footer option is available")
 	public void user_confirms_that_the_Footer_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_Footer.isDisplayed());
 	}
 
 	@Then("User confirms that the Content option is available")
 	public void user_confirms_that_the_Content_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_Content.isDisplayed());
 	}
 
 	@Then("User confirms that the Media option is available")
 	public void user_confirms_that_the_Media_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_Media.isDisplayed());
 	}
 
 	@Then("User confirms that the Touchpoint option is available")
 	public void user_confirms_that_the_Touchpoint_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_EasyConnect.isDisplayed());
 	}
 
 	@Then("User confirms that the Streams option is available")
 	public void user_confirms_that_the_Streams_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_Streams.isDisplayed());
 	}
 
 	@Then("User confirms that the Parallax option is available")
 	public void user_confirms_that_the_Parallax_option_is_available() {
-
+		Assert.assertTrue(pagesConfigurationPage.sideMenu_Parallax.isDisplayed());
 	}
 
 }

@@ -45,6 +45,8 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
   Scenario: Verify all the available menus on merchant pages
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
+    When User clicks the Pages option
+    Then users is redirected to the Pages page
     When Users clicks edit button beside a page
     Then the page window is opened
     And User confirms that the Header option is available
@@ -54,5 +56,3 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     And User confirms that the Touchpoint option is available
     And User confirms that the Streams option is available
     And User confirms that the Parallax option is available
-    
-  

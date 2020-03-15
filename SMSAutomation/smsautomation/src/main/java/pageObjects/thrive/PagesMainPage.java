@@ -14,13 +14,13 @@ public class PagesMainPage extends BasePage {
 		super();
 	}
 
-	
-	public @FindBy(xpath = "//tr") WebElement parrent_RecordElement;
+	public @FindBy(xpath = "//h1[@class=\"pull-left\"]") WebElement pag_title;
+	public @FindBy(xpath = "//tbody") WebElement parrent_RecordElement;
 	public WebElement searchPageByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("[td[text()=\'" + pageName +"']]"));
+		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName + "']]"));
 	}
 	public WebElement btn_EditPageByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[contains(@style, \"padding-bottom\")]//a[@title=\"Edit Page\"]"));
+		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@title=\"Edit Page\"]"));
 	}
 	public WebElement btn_ActionDropdownByPageName(String pageName) {
 		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[contains(@style, \"padding-bottom\")]//button[@data-toggle=\"dropdown\"]"));
