@@ -23,4 +23,15 @@ public class PagesConfigurationPage extends BasePage {
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Easy Connect\"]]") WebElement sideMenu_EasyConnect;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Streams\"]]") WebElement sideMenu_Streams;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Parallax\"]]") WebElement sideMenu_Parallax;
+	
+	public @FindBy(xpath = "(//div[@class=\"row-tool\"]//i[contains(@class, \"arrows\")])[1]") WebElement snip_Pointer;
+	public @FindBy(xpath = "(//div[@class=\"row-html\"]//i[contains(@class, \"fa fa-code\")])[1]") WebElement snip_Html;
+	public @FindBy(xpath = "//textarea[@id=\"txtHtml\"]") WebElement snip_HtmlTextArea;
+	public @FindBy(xpath = "(//div[@class=\"row-copy\"]//i[contains(@class, \"fa-plus\")])[1]") WebElement snip_Plus;
+	public @FindBy(xpath = "(//div[@class=\"row-remove\"]//i[contains(@class, \"fa-trash\")])[1]") WebElement snip_Delete;
+	
+	public @FindBy(xpath = "//h1[text()=\"Tagline for your business\"]") WebElement img_Text;
+	
+
+
 }

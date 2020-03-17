@@ -1,5 +1,6 @@
 package stepDefinitions.testSuite.regression.thrive;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -9,15 +10,19 @@ import io.cucumber.java.en.When;
 import pageObjects.thrive.PagesConfigurationPage;
 import pageObjects.thrive.PagesMainPage;
 import pageObjects.thrive.Tab.ExperienceDDown;
+import pageObjects.thrive.modal.ActivatePageModal;
 import pageObjects.thrive.modal.CreatepagePage;
+import pageObjects.thrive.modal.DeletePageModal;
 import pageObjects.thrive.modal.PageSettingsModal;
 import pageObjects.thrive.modal.SaveChangesToPageModal;
 import utils.DriverFactory;
 
 public class AddPageInMerchantPortalSteps extends DriverFactory {
 
+	public ActivatePageModal activatePageModal = PageFactory.initElements(driver, ActivatePageModal.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public CreatepagePage createpagePage = PageFactory.initElements(driver, CreatepagePage.class);
+	public DeletePageModal deletePageModal = PageFactory.initElements(driver, DeletePageModal.class);
 	public ExperienceDDown experienceDDown = PageFactory.initElements(driver, ExperienceDDown.class);
 	public PagesConfigurationPage pagesConfigurationPage = PageFactory.initElements(driver, PagesConfigurationPage.class);
 	public PagesMainPage pagesMainPage = PageFactory.initElements(driver, PagesMainPage.class);
@@ -67,7 +72,7 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Experience);
 		experienceDDown.waitAndClickElement(experienceDDown.opt_Pages);
 		saveChangesToPageModal.waitAndClickElement(saveChangesToPageModal.btn_SaveChanges);
-		Thread.sleep(900);
+		Thread.sleep(1000);
 		Assert.assertTrue(pagesMainPage.searchPageByPageName("AclateQA").isDisplayed());
 	}
 
@@ -115,6 +120,74 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 	@Then("User confirms that the Parallax option is available")
 	public void user_confirms_that_the_Parallax_option_is_available() {
 		Assert.assertTrue(pagesConfigurationPage.sideMenu_Parallax.isDisplayed());
+	}
+
+//	@SMSM-136 @Verify-the-4-options-appear-on-the-left-top-side-of-the-snippet
+	@When("User clicks the text on the image")
+	public void user_clicks_the_text_on_the_image() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.img_Text);
+	}
+
+	@Then("the four action options for the image is displayed")
+	public void the_four_action_options_for_the_image_is_displayed() throws Exception {
+		Assert.assertTrue(pagesConfigurationPage.snip_Pointer.isDisplayed());
+		Assert.assertTrue(pagesConfigurationPage.snip_Html.isDisplayed());
+		Assert.assertTrue(pagesConfigurationPage.snip_Plus.isDisplayed());
+		Assert.assertTrue(pagesConfigurationPage.snip_Delete.isDisplayed());
+	}
+	
+	
+//	 @SMSM-136 @Verify-the-all-code-is-visible-to-user-by-clicking-on-the-</>-icon
+	@When("User clicks the html icon at the left side of the snippet")
+	public void user_clicks_the_html_icon_at_the_left_side_of_the_snippet() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Html);
+	}
+
+	@Then("a new pop-up window with a textarea and snippet code is displayed")
+	public void a_new_pop_up_window_with_a_textarea_and_snippet_code_is_displayed() throws Exception {
+//		System.out.println(pagesConfigurationPage.getElementText(pagesConfigurationPage.snip_HtmlTextArea));
+		Assert.assertTrue(pagesConfigurationPage.snip_HtmlTextArea.isDisplayed());
+	}
+
+//	@SMSM-136 @Verify-the-user-is-able-to-activate-the-page-by-clicking-on-Activate-button	
+	@When("Users clicks the action dropdown button beside a page")
+	public void users_clicks_the_action_dropdown_button_beside_a_page() throws Exception {
+		pagesMainPage.waitAndClickElement(pagesMainPage.btn_ActionDropdownByPageName("AclateQA"));
+	}
+
+	@Then("the actiion options are displayed")
+	public void the_actiion_options_are_displayed() throws Exception {
+		Assert.assertTrue(pagesMainPage.btn_ActivateActionOptByPageName("AclateQA").isDisplayed());
+		Assert.assertTrue(pagesMainPage.btn_DeleteActionOptByPageName("AclateQA").isDisplayed());
+	}
+
+	@When("User clicks the Activate button option")
+	public void user_clicks_the_Activate_button_option() throws Exception {
+		pagesMainPage.waitAndClickElement(pagesMainPage.btn_ActivateActionOptByPageName("AclateQA"));
+		activatePageModal.waitAndClickElement(activatePageModal.btn_Activate);
+	}
+
+	@Then("the page is activated successfully")
+	public void the_page_is_activated_successfully() {
+		Assert.assertTrue(pagesMainPage.lbl_Status("AclateQA", "Active").isDisplayed());
+	}
+
+//	Verify the user is able to delete the page by clicking on delete button
+	@When("User clicks the Delete button option")
+	public void user_clicks_the_Delete_button_option() throws Exception {
+		pagesMainPage.waitAndClickElement(pagesMainPage.btn_DeleteActionOptByPageName("AclateQA"));
+		deletePageModal.waitAndClickElement(deletePageModal.btn_Delete);
+	}
+
+	@Then("the page is deleted successfully")
+	public void the_page_is_deleted_successfully() throws Exception {
+		boolean result = true;
+		try {
+			Assert.assertTrue(pagesMainPage.waitUntilElementDissapears(pagesMainPage.searchPageByPageName("AclateQA")));
+		} catch (NoSuchElementException NSE) {
+			result = false;
+			Assert.assertFalse(result);
+		}
 	}
 
 }

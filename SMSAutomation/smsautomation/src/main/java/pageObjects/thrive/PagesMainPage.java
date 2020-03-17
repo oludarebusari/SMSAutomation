@@ -23,13 +23,16 @@ public class PagesMainPage extends BasePage {
 		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@title=\"Edit Page\"]"));
 	}
 	public WebElement btn_ActionDropdownByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[contains(@style, \"padding-bottom\")]//button[@data-toggle=\"dropdown\"]"));
+		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//button[@data-toggle=\"dropdown\"]"));
 	}
 	public WebElement btn_ActivateActionOptByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[contains(@style, \"padding-bottom\")]//a[@class=\"page-activate-action\"]"));
+		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@class=\"page-activate-action\"]"));
 	}
 	public WebElement btn_DeleteActionOptByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[contains(@style, \"padding-bottom\")]//a[@class=\"page-delete-action\"]"));
+		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@class=\"page-delete-action\"]"));
+	}
+	public WebElement lbl_Status(String pageName, String status) {
+		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[text()=\'" + status + "']"));
 	}
 
 }

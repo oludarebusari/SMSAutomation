@@ -56,3 +56,53 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     And User confirms that the Touchpoint option is available
     And User confirms that the Streams option is available
     And User confirms that the Parallax option is available
+
+  @SMSM-136 @Verify-the-4-options-appear-on-the-left-top-side-of-the-snippet @RegressionTest @OnlyMe
+  Scenario: Verify the 4 option appears on left top side of snippet
+    When User clicks on the Experience Menu option
+    Then the Experience options are displayed
+    When User clicks the Pages option
+    Then users is redirected to the Pages page
+    When Users clicks edit button beside a page
+    Then the page window is opened
+    When User clicks the text on the image
+    Then the four action options for the image is displayed
+    
+  @SMSM-136 @Verify-the-all-code-is-visible-to-user-by-clicking-on-the-</>-icon @RegressionTest @OnlyMe
+  Scenario: Verify the all code is visible to user by clicking on this "</>" icon
+    When User clicks on the Experience Menu option
+    Then the Experience options are displayed
+    When User clicks the Pages option
+    Then users is redirected to the Pages page
+    When Users clicks edit button beside a page
+    Then the page window is opened
+    When User clicks the text on the image
+    And User clicks the html icon at the left side of the snippet
+    Then a new pop-up window with a textarea and snippet code is displayed
+    
+  @SMSM-136 @Verify-the-user-is-able-to-activate-the-page-by-clicking-on-Activate-button @RegressionTest @OnlyMe
+  Scenario: Verify the user is able to activate the page by clicking on Activate button
+   When User clicks on the Experience Menu option
+    Then the Experience options are displayed
+    When User clicks the Pages option
+    Then users is redirected to the Pages page
+    When Users clicks the action dropdown button beside a page
+    Then the actiion options are displayed
+    When User clicks the Activate button option
+  	Then the page is activated successfully
+  	
+  @SMSM-136 @Verify-the-user-is-able-to-activate-the-page-by-clicking-on-Activate-button @RegressionTest @OnlyMe
+  Scenario: Verify the user is able to activate the page by clicking on Activate button
+   When User clicks on the Experience Menu option
+    Then the Experience options are displayed
+    When User clicks the Pages option
+    Then users is redirected to the Pages page
+    When Users clicks the action dropdown button beside a page
+    And  User clicks the Delete button option
+  	Then the page is deleted successfully
+  	
+  
+  
+  
+  
+  

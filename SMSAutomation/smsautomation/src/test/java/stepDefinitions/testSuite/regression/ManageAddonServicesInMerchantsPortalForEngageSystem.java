@@ -142,11 +142,9 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 //	 @SMSM-200-Verify-the-Giftbar-Profile,, @RegressionTest
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
-
 		if (reader.getConfigValue("DriverConfig", "environment").equals("remoteHub")) {
 			manageSitesPage.waitAndClickElement(manageSitesPage.tog_Navbar);
 		}
-
 		manageSitesPage.waitAndClickElement(manageSitesPage.menu_Manage_Resellers);
 	}
 
