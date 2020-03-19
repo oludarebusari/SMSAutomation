@@ -1,6 +1,7 @@
 package stepDefinitions.testSuite.regression.thrive;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -18,7 +19,7 @@ import pageObjects.thrive.modal.SaveChangesToPageModal;
 import utils.DriverFactory;
 
 public class AddPageInMerchantPortalSteps extends DriverFactory {
-
+	
 	public ActivatePageModal activatePageModal = PageFactory.initElements(driver, ActivatePageModal.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public CreatepagePage createpagePage = PageFactory.initElements(driver, CreatepagePage.class);
@@ -145,10 +146,28 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 
 	@Then("a new pop-up window with a textarea and snippet code is displayed")
 	public void a_new_pop_up_window_with_a_textarea_and_snippet_code_is_displayed() throws Exception {
-//		System.out.println(pagesConfigurationPage.getElementText(pagesConfigurationPage.snip_HtmlTextArea));
 		Assert.assertTrue(pagesConfigurationPage.snip_HtmlTextArea.isDisplayed());
 	}
 
+//	@SMSM-136 @Verify-the-same-snippet-is-added-on-the-page-by-clicking-on-plus-icon
+	@When("User clicks the plus icon at the left side of the snippet")
+	public void user_clicks_the_plus_icon_at_the_left_side_of_the_snippet() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Plus);
+		System.out.println("Number = " + pagesConfigurationPage.getNumberOfImage("Tagline for your business").size());
+		Assert.assertEquals(3, pagesConfigurationPage.getNumberOfImage("Tagline for your business").size());
+	}
+	
+//	@SMSM-136 @Verify-the-user-is-able-to-delete-the-snippet-on-the-page-by-clicking-on-delete-icon
+	@When("User clicks the Delete icon at the left side of the snippet")
+	public void user_clicks_the_Delete_icon_at_the_left_side_of_the_snippet() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Delete);
+	}
+
+	@Then("User verifies that the image is deleted")
+	public void user_verifies_that_the_image_is_deleted() {
+		Assert.assertTrue(pagesConfigurationPage.emptyHeaderBox.isDisplayed());		
+	}
+	
 //	@SMSM-136 @Verify-the-user-is-able-to-activate-the-page-by-clicking-on-Activate-button	
 	@When("Users clicks the action dropdown button beside a page")
 	public void users_clicks_the_action_dropdown_button_beside_a_page() throws Exception {
