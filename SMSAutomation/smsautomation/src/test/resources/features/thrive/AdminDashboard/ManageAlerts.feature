@@ -30,7 +30,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     When User clicks on Alert option
     Then the Manage Alert page is displayed
 
-  @SMSM-184 @Edit-existing-alert-in-the-list @RegressionTest
+  @SMSM-184 @Edit-existing-alert-in-the-list @RegressionTest @OnlyMe
   Scenario: Edit existing alert in the list
     When User types in an Alert text on the search box and clicks search
     Then the Alert is displayed on the Manage Alert paage
@@ -39,7 +39,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     When User makes modification to the Alert and clicks Save Alert button
     Then User confirms the changes are saved correctly
 
-  @SMSM-184 @Renew-existing-alert-in-the-list @RegressionTest
+  @SMSM-184 @Renew-existing-alert-in-the-list @RegressionTest 
   Scenario: Renew Existing alert in the list
     When User types in an Alert text on the search box for alert to renew and clicks search
     Then the Alert to be renewed is displayed on the Manage Alert paage

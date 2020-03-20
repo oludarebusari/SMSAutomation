@@ -191,7 +191,7 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 		Assert.assertTrue(pagesMainPage.lbl_Status("AclateQA", "Active").isDisplayed());
 	}
 
-//	Verify the user is able to delete the page by clicking on delete button
+//	Verify user is able to delete the page by clicking on delete button
 	@When("User clicks the Delete button option")
 	public void user_clicks_the_Delete_button_option() throws Exception {
 		pagesMainPage.waitAndClickElement(pagesMainPage.btn_DeleteActionOptByPageName("AclateQA"));

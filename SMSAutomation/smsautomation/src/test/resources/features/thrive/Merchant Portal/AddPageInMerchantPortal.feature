@@ -114,8 +114,8 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     When User clicks the Activate button option
   	Then the page is activated successfully
         
-  @SMSM-136 @Verify-the-user-is-able-to-activate-the-page-by-clicking-on-Activate-button @RegressionTest 
-  Scenario: Verify the user is able to activate the page by clicking on Activate button
+  @SMSM-136 @Verify-user-is-able-to-delete-the-page-by-clicking-on-delete-button @RegressionTest 
+  Scenario: Verify user is able to delete the page by clicking on delete button
    When User clicks on the Experience Menu option
     Then the Experience options are displayed
     When User clicks the Pages option
