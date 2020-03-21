@@ -14,4 +14,5 @@ public class ActivateAlertModal extends BasePage {
 	}
 
 	public @FindBy(xpath = "//button[@data-dismiss=\"modal\" and text()=\"Activate\"]") WebElement btn_Activate;
+	
 }
