@@ -14,4 +14,5 @@ public class DeleteAlertModal extends BasePage {
 	}
 
 	public @FindBy(xpath = "//button[@data-dismiss=\"modal\" and text()=\"Delete\"]") WebElement btn_Delete;
+	public @FindBy(xpath = "//div[@class=\"modal-header\" and .//h4[text()=\"Delete Alert\"]]//button[@class=\"close\"]") WebElement icon_Close;
 }

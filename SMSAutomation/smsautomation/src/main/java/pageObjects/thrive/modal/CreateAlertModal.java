@@ -23,6 +23,6 @@ public class CreateAlertModal extends BasePage  {
 	public WebElement rolesOption(String role) {
 		return par_Element.findElement(By.xpath("//div[text()=\'" + role + "']"));		
 	}
-	public @FindBy(xpath = "//button[@data-dismiss=\"modal\" and text()=\"Activate\"]") WebElement btn_ScheduleThisAlert;
+	public @FindBy(xpath = "//button[contains(@class, \"submit-alert\")]") WebElement btn_ScheduleThisAlert;
 	
 }

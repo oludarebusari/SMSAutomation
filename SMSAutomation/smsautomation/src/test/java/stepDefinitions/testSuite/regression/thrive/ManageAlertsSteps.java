@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import pageObjects.thrive.ManageAlertsPage;
 import pageObjects.thrive.Tab.SettingsDDown;
 import pageObjects.thrive.modal.ActivateAlertModal;
+import pageObjects.thrive.modal.AlertHelpModal;
 import pageObjects.thrive.modal.CreateAlertModal;
 import pageObjects.thrive.modal.DateSelectionModal;
 import pageObjects.thrive.modal.DeactivateAlertModal;
@@ -18,6 +19,7 @@ import utils.DriverFactory;
 
 public class ManageAlertsSteps extends DriverFactory {
 
+	AlertHelpModal alertHelpModal = PageFactory.initElements(driver, AlertHelpModal.class);
 	ActivateAlertModal activateAlertModal = PageFactory.initElements(driver, ActivateAlertModal.class);
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	CreateAlertModal createAlertModal = PageFactory.initElements(driver, CreateAlertModal.class);
@@ -136,7 +138,7 @@ public class ManageAlertsSteps extends DriverFactory {
 	}
 
 	@When("User specifies a date in the future and clicks Apply button")
-	public void user_specifies_a_date_in_the_future_and_clicks_Apply_button() throws Exception { 
+	public void user_specifies_a_date_in_the_future_and_clicks_Apply_button() throws Exception {
 		dateSelectionModal.waitAndClickElement(dateSelectionModal.btn_DateThisMonth);
 	}
 
@@ -145,12 +147,69 @@ public class ManageAlertsSteps extends DriverFactory {
 		editAlertModal.waitAndClickElement(editAlertModal.btn_SaveAlert);
 	}
 
-	@Then("user confirms that the status of the alert is now Inactive")
-	public void user_confirms_that_the_status_of_the_alert_is_now_Inactive() throws Exception {
-		Assert.assertTrue(manageAlertsPage.searchForCellValue("Inactive").isDisplayed());
+	@Then("user confirms that the status of the alert is now Active")
+	public void user_confirms_that_the_status_of_the_alert_is_now_Active() throws Exception {
+		Thread.sleep(500);
+		Assert.assertTrue(manageAlertsPage.searchForCellValue("Active").isDisplayed());
+	}
+
+//	 @SMSM-184 @Cancel-deactivation-of-existing-alert-in-the-list
+	@When("User searches for an active alert")
+	public void user_searches_for_an_active_alert() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the active alert is displayed on the Manage page")
+	public void the_active_alert_is_displayed_on_the_Manage_page() {
+		Assert.assertTrue(manageAlertsPage.searchAlertByAlertText(ALERT_TEXT2).isDisplayed());
+	}
+
+	@Then("the dropdown options for active alerts are displayed")
+	public void the_dropdown_options_for_active_alerts_are_displayed() {
+		Assert.assertTrue(manageAlertsPage.btn_Deactivate(ALERT_TEXT2).isDisplayed());
+		Assert.assertTrue(manageAlertsPage.btn_Delete(ALERT_TEXT2).isDisplayed());
+	}
+
+	@When("User clicks the Deactivate button")
+	public void user_clicks_the_Deactivate_button() throws Exception {
+		manageAlertsPage.waitAndClickElement(manageAlertsPage.btn_Deactivate(ALERT_TEXT2));
+	}
+
+	@When("User clicks the close icon on the Deactivate Alert window")
+	public void user_clicks_the_close_icon_on_the_Deactivate_Alert_window() throws Exception {
+		deactivateAlertModal.waitAndClickElement(deactivateAlertModal.icon_Close);
+	}
+
+	@Then("User confirms that the Alert is not deactivated")
+	public void user_confirms_that_the_Alert_is_not_deactivated() throws Exception {
+	Assert.assertEquals("Active", manageAlertsPage.getElementText(manageAlertsPage.searchForCellValue("Active")));
 	}
 	
-//	@SMSM-184 @Activate-existing-alert-in-the-list
+	
+//	 @SMSM-184 @Deactivate-existing-alert-in-the-list
+	@When("User clicks the Deactivate button on the Deactivate Alert window")
+	public void user_clicks_the_Deactivate_button_on_the_Deactivate_Alert_window() throws Exception {
+		deactivateAlertModal.waitAndClickElement(deactivateAlertModal.btn_Deactivate);
+	}
+
+	@Then("the alert is deactivated and User is redirected to the Manage Alert page")
+	public void the_alert_is_deactivated_and_User_is_redirected_to_the_Manage_Alert_page() throws Exception {
+		Assert.assertEquals("Manage Alerts", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+	}
+
+	@When("User search for the deactivated Alert")
+	public void user_search_for_the_deactivated_Alert() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the alert is displayed with an Inactive status")
+	public void the_alert_is_displayed_with_an_Inactive_status() {
+		Assert.assertTrue(manageAlertsPage.searchForCellValue("Inactive").isDisplayed());
+	}
+
+//	 @SMSM-184 @Cancel-activation-of-existing-alert-in-the-list
 	@When("User types in an Alert text on the search box for a renewed alert and clicks search")
 	public void user_types_in_an_Alert_text_on_the_search_box_for_a_renewed_alert_and_clicks_search() throws Exception {
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
@@ -177,7 +236,18 @@ public class ManageAlertsSteps extends DriverFactory {
 	public void user_clicks_the_Activate_button() throws Exception {
 		manageAlertsPage.waitAndClickElement(manageAlertsPage.btn_Activate(ALERT_TEXT2));
 	}
+	
+	@When("User clicks the close icon on the Activate Alert window")
+	public void user_clicks_the_close_icon_on_the_Activate_Alert_window() throws Exception {
+	  activateAlertModal.waitAndClickElement(activateAlertModal.icon_Close);
+	}
 
+	@Then("User confirms that the Alert is not activated")
+	public void user_confirms_that_the_Alert_is_not_activated() throws Exception {
+		Assert.assertEquals("Inactive", manageAlertsPage.getElementText(manageAlertsPage.searchForCellValue("Inactive")));
+	}
+	
+//	@SMSM-184 @Activate-existing-alert-in-the-list
 	@When("User clicks the Activate button on the Activate Alert window")
 	public void user_clicks_the_Activate_button_on_the_Activate_Alert_window() throws Exception {
 		activateAlertModal.waitAndClickElement(activateAlertModal.btn_Activate);
@@ -204,52 +274,7 @@ public class ManageAlertsSteps extends DriverFactory {
 		Assert.assertTrue(manageAlertsPage.searchForCellValue("Active").isDisplayed());
 	}
 
-//	 @SMSM-184 @Deactivate-existing-alert-in-the-list
-	@When("User searches for an active alert")
-	public void user_searches_for_an_active_alert() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
-		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-	}
-
-	@Then("the active alert is displayed on the Manage page")
-	public void the_active_alert_is_displayed_on_the_Manage_page() {
-		Assert.assertTrue(manageAlertsPage.searchAlertByAlertText(ALERT_TEXT2).isDisplayed());
-	}
-
-	@Then("the dropdown options for active alerts are displayed")
-	public void the_dropdown_options_for_active_alerts_are_displayed() {
-		Assert.assertTrue(manageAlertsPage.btn_Deactivate(ALERT_TEXT2).isDisplayed());
-		Assert.assertTrue(manageAlertsPage.btn_Delete(ALERT_TEXT2).isDisplayed());
-	}
-
-	@When("User clicks the Deactivate button")
-	public void user_clicks_the_Deactivate_button() throws Exception {
-		manageAlertsPage.waitAndClickElement(manageAlertsPage.btn_Deactivate(ALERT_TEXT2));
-	}
-
-	@When("User clicks the Deactivate button on the Deactivate Alert window")
-	public void user_clicks_the_Deactivate_button_on_the_Deactivate_Alert_window() throws Exception {
-		deactivateAlertModal.waitAndClickElement(deactivateAlertModal.btn_Deactivate);
-	}
-
-	@Then("the alert is deactivated and User is redirected to the Manage Alert page")
-	public void the_alert_is_deactivated_and_User_is_redirected_to_the_Manage_Alert_page() throws Exception {
-		Assert.assertEquals("Manage Alerts", commonElementLocator.getElementText(commonElementLocator.pag_Title));
-	}
-
-	@When("User search for the deactivated Alert")
-	public void user_search_for_the_deactivated_Alert() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
-		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-	}
-
-	@Then("the alert is displayed with an Inactive status")
-	public void the_alert_is_displayed_with_an_Inactive_status() {
-		Assert.assertTrue(manageAlertsPage.searchForCellValue("Inactive").isDisplayed());
-	}
-
-
-//	@SMSM-184 @Delete-existing-alert-in-the-list
+//   @SMSM-184 @Cancel-delete-existing-alert-in-the-list
 	@When("User searches for an alert to delete")
 	public void user_searches_for_an_alert_to_delete() throws Exception {
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
@@ -263,7 +288,7 @@ public class ManageAlertsSteps extends DriverFactory {
 
 	@Then("the dropdown options for the alert to be deleted are displayed")
 	public void the_dropdown_options_for_the_alert_to_be_deleted_are_displayed() {
-		Assert.assertTrue(manageAlertsPage.btn_Activate(ALERT_TEXT2).isDisplayed());
+		Assert.assertTrue(manageAlertsPage.btn_Deactivate(ALERT_TEXT2).isDisplayed());
 		Assert.assertTrue(manageAlertsPage.btn_Delete(ALERT_TEXT2).isDisplayed());
 	}
 
@@ -271,7 +296,17 @@ public class ManageAlertsSteps extends DriverFactory {
 	public void user_clicks_the_Delete_button() throws Exception {
 		manageAlertsPage.waitAndClickElement(manageAlertsPage.btn_Delete(ALERT_TEXT2));
 	}
+	@When("User clicks the close icon on the Delete Alert window")
+	public void user_clicks_the_close_icon_on_the_Delete_Alert_window() throws Exception {
+		deleteAlertModal.waitAndClickElement(deleteAlertModal.icon_Close);
+	}
 
+	@Then("User confirms that the Alert is not deleted")
+	public void user_confirms_that_the_Alert_is_not_deleted() {
+	Assert.assertTrue(manageAlertsPage.searchAlertByAlertText(ALERT_TEXT2).isDisplayed());
+	}
+
+//	@SMSM-184 @Delete-existing-alert-in-the-list
 	@When("User clicks the Delete button on the Delete Alert window")
 	public void user_clicks_the_Delete_button_on_the_Delete_Alert_window() throws Exception {
 		deleteAlertModal.waitAndClickElement(deleteAlertModal.btn_Delete);
@@ -312,13 +347,58 @@ public class ManageAlertsSteps extends DriverFactory {
 		dateSelectionModal.waitAndClickElement(dateSelectionModal.btn_Apply);
 		createAlertModal.waitAndClickElement(createAlertModal.lov_Roles);
 		createAlertModal.waitAndClickElement(createAlertModal.rolesOption("Admin"));
-		createAlertModal.waitAndClickElement(createAlertModal.txtF_Text);
 		createAlertModal.waitAndClickElement(createAlertModal.btn_ScheduleThisAlert);
 	}
 
 	@Then("the created and schedule successfully")
 	public void the_created_and_schedule_successfully() throws Exception {
-
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		Assert.assertTrue(manageAlertsPage.searchAlertByAlertText(ALERT_TEXT2).isDisplayed());
 	}
+	
+//	@SMSM-184 @Verify-Help-option-for-manage-alert-page
+	@When("User clicks on the Help button")
+	public void user_clicks_on_the_Help_button() throws InterruptedException {
+	 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the Alert Help popup is displayed")
+	public void the_Alert_Help_popup_is_displayed() throws Exception {
+	 Assert.assertEquals("Alerts", alertHelpModal.getElementText(alertHelpModal.mod_Title));
+	}
+
+	@When("User clicks the Next button from the Tour Guide")
+	public void user_clicks_the_Next_button_from_the_Tour_Guide() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the tour guide proceeds to the next window")
+	public void the_tour_guide_proceeds_to_the_next_window() throws Exception {
+	Assert.assertEquals("Add New Alerts", alertHelpModal.getElementText(alertHelpModal.mod_Title));
+	}
+
+	@When("User clicks on the previous button")
+	public void user_clicks_on_the_previous_button() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
+
+	@Then("the tour guide navigates back to the previous window")
+	public void the_tour_guide_navigates_back_to_the_previous_window() throws Exception {
+		Assert.assertEquals("Alerts", alertHelpModal.getElementText(alertHelpModal.mod_Title));
+	}
+
+	@When("User clicks the End Tout button")
+	public void user_clicks_the_End_Tout_button() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_EndTour);
+	}
+
+	@Then("the tours guide should end successfully")
+	public void the_tours_guide_should_end_successfully() {
+	 alertHelpModal.waitUntilElementDissapears(commonElementLocator.mod_Help_Title);
+	}
+
+
+
 
 }
