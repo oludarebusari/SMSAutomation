@@ -36,8 +36,6 @@ public class PagesConfigurationPage extends BasePage {
 	public @FindBy(xpath = "//div[@id=\"logo\"]") WebElement par_Imgae;
 	public List<WebElement> getNumberOfImage(String imgText) {
 		return par_Imgae.findElements(By.xpath("//h1[text()=\'"+ imgText +"']"));
-//		return par_Imgae.findElements(By.xpath("//h1[text()=\"Tagline for your business\"]"));
-//		return par_Imgae.findElements(By.xpath("//p[@id=\"header-hours\"]/i"));
 	}
 
 }

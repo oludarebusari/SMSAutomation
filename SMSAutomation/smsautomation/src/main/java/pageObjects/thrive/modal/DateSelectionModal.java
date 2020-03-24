@@ -37,8 +37,8 @@ public class DateSelectionModal extends BasePage {
 	public @FindBy(xpath = "//li[text()=\"This Month\"]") WebElement btn_DateThisMonth;
 	public @FindBy(xpath = "(//li[text()=\"Last Month\"])[2]") WebElement btn_DateLastMonth;
 	public @FindBy(xpath = "(//li[text()=\"Custom Range\"])[2]") WebElement btn_DateCustomRange;
-	public @FindBy(xpath = "(//input[@name=\"daterangepicker_start\"])[2]") WebElement txtF_From;
-	public @FindBy(xpath = "(//input[@name=\"daterangepicker_end\"])[2]") WebElement txtF_TO;
+	public @FindBy(xpath = "//input[@name=\"daterangepicker_start\"]") WebElement txtF_From;
+	public @FindBy(xpath = "//input[@name=\"daterangepicker_end\"]") WebElement txtF_To;
 	public @FindBy(xpath = "//button[contains(@class, \"applyBtn\")]") WebElement btn_Apply;
 	public @FindBy(xpath = "(//button[text()=\"Cancel\"])[2]") WebElement btn_Cancel;
 	

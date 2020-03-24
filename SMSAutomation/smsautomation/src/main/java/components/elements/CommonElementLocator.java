@@ -30,6 +30,7 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//li[@class=\"last\" and .//a[text()[normalize-space()=\"Support\"]]]") WebElement menu_Support;
 	public @FindBy(xpath = "//li[contains(@class, \"open\")]//ul[@class=\"dropdown-menu menu_level_1\"]") WebElement menu_dropdown;
 	public @FindBy(xpath = "//a[@id=\"start-tour\"]") WebElement btn_Help;
+	public @FindBy(xpath = "//a[@id=\"create-entity\" and text()[normalize-space()=\"New\"]]") WebElement btn_New;
 	
 	public @FindBy(xpath = "//h1[contains(@class, \"pull-left\")]") WebElement pag_Title;
 	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
