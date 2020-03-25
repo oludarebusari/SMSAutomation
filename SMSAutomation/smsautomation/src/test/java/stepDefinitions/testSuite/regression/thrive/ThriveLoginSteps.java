@@ -46,7 +46,7 @@ public class ThriveLoginSteps  extends DriverFactory {
 
 	@Then("Thrive Dashboard page is displayed")
 	public void thrive_Dashboard_page_is_displayed() throws Exception {
-	thrDashboardPage.WaitUntilWebElementIsVisible(thrDashboardPage.pag_Title);
+//	thrDashboardPage.WaitUntilWebElementIsVisible(thrDashboardPage.pag_Title);
 	 Assert.assertEquals(thrDashboardPage.getElementText(thrDashboardPage.pag_Title), "Dashboard");
 	}
 

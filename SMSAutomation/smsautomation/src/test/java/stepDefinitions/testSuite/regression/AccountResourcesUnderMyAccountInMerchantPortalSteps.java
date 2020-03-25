@@ -80,7 +80,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("CSV file is created and exported to the local machine")
 	public void csv_file_is_created_and_exported_to_the_local_machine() throws InterruptedException {
-
+		//TODO
 	}
 
     //@SMSM-138-Auto-Purchase @RegressionTest
@@ -225,6 +225,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	@Then("User confirms that the CSV file is exported to the local machine")
 	public void user_confirms_that_the_CSV_file_is_exported_to_the_local_machine() throws InterruptedException {
 		Thread.sleep(6000);
+		//TODO
 	}
 
 	@When("User enters an incorrect number in the search box")
@@ -347,7 +348,6 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("user confirms the number is deleted from the Blacklist table")
 	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() throws Exception {
-		Thread.sleep(4000);
 //		TODO
 		
 	}

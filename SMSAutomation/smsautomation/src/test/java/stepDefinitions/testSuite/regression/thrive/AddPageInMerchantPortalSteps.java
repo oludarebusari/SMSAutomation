@@ -153,7 +153,6 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 	@When("User clicks the plus icon at the left side of the snippet")
 	public void user_clicks_the_plus_icon_at_the_left_side_of_the_snippet() throws Exception {
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Plus);
-		System.out.println("Number = " + pagesConfigurationPage.getNumberOfImage("Tagline for your business").size());
 		Assert.assertEquals(3, pagesConfigurationPage.getNumberOfImage("Tagline for your business").size());
 	}
 	

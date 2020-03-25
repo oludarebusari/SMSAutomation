@@ -35,7 +35,7 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     When User clicks the date textfield, and specify a date and clicks the Apply button
     Then User get overall appointments set displayed
 
-  @[SMSM-224]-Verify-user-is-on-Work-Orders-page @RegressionTest 
+  @[SMSM-224]-Verify-user-is-on-Work-Orders-page @RegressionTest
   Scenario: Verify user is on Work Orders page
     When User clicks on the Orders option
     Then User is redirected to the Orders page
@@ -62,7 +62,7 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     And User verifies the Acquire Leads section is available
     And User verifies the Acquire button ia available
 
-  @[SMSM-224]-Verify-the-validation-messages @RegressionTest @OnlyMe
+  @[SMSM-224]-Verify-the-validation-messages @RegressionTest
   Scenario: Verify the Validation messages
     When User clicks on the Orders option
     Then User is redirected to the Orders page
@@ -70,13 +70,21 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     Then the Create Order page is opened
     When User clicks the Acquire Leads button while keeping blank all fields
     Then error message is displayed for mandatory fields
-    When User enters valid data onto the madatory fields
+    When User enters valid data onto the mandatory fields
     Then the error messages get hidden
     When Users leave a single mandatory field blank
     Then User verifies that the Acquire Leads button is disabled
-    
-    
-    
-    
-    
+
+  @[SMSM-224]-Verify-the-order-details-portion @RegressionTest
+  Scenario: Verify the Order Details Portion
+    When User clicks on the Orders option
+    Then User is redirected to the Orders page
+    When User clicks the New button on the Orders page
+    Then the Create Order page is opened
+    And User verifies the dropdown for Business Name
+    And User verifies the dropdown for Payment type
+    And User verifies the dropdown for Order Type
+    And User verifies the Appointment field
+    And User verifies the Start and Due dates
+    And User verifies the textarea field
     

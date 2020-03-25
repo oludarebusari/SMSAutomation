@@ -3,6 +3,7 @@ package stepDefinitions.testSuite.regression.thrive;
 import java.io.IOException;
 
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 
 import components.elements.CommonElementLocator;
@@ -63,6 +64,7 @@ public class ZeonTabOptionsSteps extends DriverFactory {
 		dateSelectionModal.sendKeysToWebElement(dateSelectionModal.txtF_From, "06/03/2019");
 		dateSelectionModal.sendKeysToWebElement(dateSelectionModal.txtF_To, "06/10/2019");
 		dateSelectionModal.waitAndClickElement(dateSelectionModal.btn_Apply);
+		Thread.sleep(6000);
 	}
 
 	@Then("User get overall appointments set displayed")
@@ -160,24 +162,101 @@ public class ZeonTabOptionsSteps extends DriverFactory {
 		Assert.assertTrue(createOrder.errorMsg_Verticals.isDisplayed());
 	}
 
-	@When("User enters valid data onto the madatory fields")
-	public void user_enters_valid_data_onto_the_madatory_fields() {
-	
+	@When("User enters valid data onto the mandatory fields")
+	public void user_enters_valid_data_onto_the_mandatory_fields() throws Exception {
+		createOrder.waitAndClickElement(createOrder.businessNameDDown);
+		createOrder.waitAndClickElement(createOrder.opt_BusinessName("204rewards"));
+		createOrder.waitAndClickElement(createOrder.orderTypeDDown);
+		createOrder.waitAndClickElement(createOrder.opt_OrderType("Zeon"));
+		createOrder.sendKeysToWebElement(createOrder.txtF_Appointments, "3");
+		createOrder.waitAndClickElement(createOrder.txtF_DueDate);
+		createOrder.waitAndClickElement(createOrder.calendarDay("26"));
+		createOrder.waitAndClickElement(createOrder.verticalsDDown);
+		createOrder.waitAndClickElement(createOrder.opt_Verticals("Arcades"));
 	}
 
 	@Then("the error messages get hidden")
-	public void the_error_messages_get_hidden() {
-
+	public void the_error_messages_get_hidden() {		
+		boolean result = false;
+		try {
+			Assert.assertFalse(createOrder.errorMsg_BusinessName.isDisplayed());
+			result = true;
+		} catch (NoSuchElementException NSE) {
+			Assert.assertFalse(result);
+		}
+		
+		try {
+			Assert.assertFalse(createOrder.errorMsg_Appointments.isDisplayed());
+			result = true;
+		} catch (NoSuchElementException NSE) {
+			Assert.assertFalse(result);
+		}
+		
+		try {
+			Assert.assertFalse(createOrder.errorMsg_OrderType.isDisplayed());
+			result = true;
+		} catch (NoSuchElementException NSE) {
+			Assert.assertFalse(result);
+		}
+		
+		try {
+			Assert.assertFalse(createOrder.errorMsg_DueDate.isDisplayed());
+			result = true;
+		} catch (NoSuchElementException NSE) {
+			Assert.assertFalse(result);
+		}
+		
+		try {
+			Assert.assertFalse(createOrder.errorMsg_Verticals.isDisplayed());
+			result = true;
+		} catch (NoSuchElementException NSE) {
+			Assert.assertFalse(result);
+		}
 	}
 
 	@When("Users leave a single mandatory field blank")
-	public void users_leave_a_single_mandatory_field_blank() {
-	
+	public void users_leave_a_single_mandatory_field_blank() throws InterruptedException {
+		createOrder.waitAndClickElement(createOrder.removeVerticalsOption("Arcades"));
+		createOrder.waitAndClickElement(createOrder.txtArea_Notes);
 	}
 
 	@Then("User verifies that the Acquire Leads button is disabled")
 	public void user_verifies_that_the_Acquire_Leads_button_is_disabled() {
+		Assert.assertEquals(false, createOrder.btn_AcquireLeads.isEnabled());
+	}
+	
+//  @[SMSM-224]-Verify-the-order-details-portion
+	@Then("User verifies the dropdown for Business Name")
+	public void user_verifies_the_dropdown_for_Business_Name() {
+
+	}
+
+	@Then("User verifies the dropdown for Payment type")
+	public void user_verifies_the_dropdown_for_Payment_type() {
 	
 	}
+
+	@Then("User verifies the dropdown for Order Type")
+	public void user_verifies_the_dropdown_for_Order_Type() {
+	
+	}
+
+	@Then("User verifies the Appointment field")
+	public void user_verifies_the_Appointment_field() {
+	
+	}
+
+	@Then("User verifies the Start and Due dates")
+	public void user_verifies_the_Start_and_Due_dates() {
+	
+	}
+
+	@Then("User verifies the textarea field")
+	public void user_verifies_the_textarea_field() {
+
+	}
+
+
+
 
 }
