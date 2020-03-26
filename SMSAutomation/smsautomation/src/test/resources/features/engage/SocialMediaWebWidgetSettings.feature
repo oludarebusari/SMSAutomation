@@ -16,11 +16,10 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's portal (Engage system)
- User should be able to view and edit Social Media and Web Widget settings
+  User should be able to view and edit Social Media and Web Widget settings
 
-   Background: User is logged in and navigates to the Merchant's Dashboard
+  Background: User is logged in and navigates to the Merchant's Dashboard
     Given User navigate to Engage url
     And User enters a valid username
     And User enters a valid password
@@ -36,20 +35,34 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And User clicks the Settings menu
     Then the Settings options are displayed
 
- 
   @SMSM-137-Verify-that-user-is-able-to-view-Account-Defaults-Social-Media-and-Web-Widget-options-in-settings-tab @RegressionTest
   Scenario: Verify that user is able to view Account Defaults,Social Media and Web Widget options in settings tab
-  		When User hovers over the Social Media option
-  		Then the color of the selected option changes to blue
-  
+    When User hovers over the Social Media option
+    Then the color of the selected option changes to blue
+
   @SMSM-137-Verify-that-user-is-able-to-connect-facebook-account-with-selected-campaign @RegressionTest
   Scenario: Verify that user is able to connect Facebook account with selected campaign
-  		When User selects a Campaign from Select a campaign dropdown
-  		Then the selected campaign is displayed on the dropdown text box
-  		When User clicks on Connect to Facebook button
-  		Then User should be navigated to the facebook login page
-  
-  
+    When User clicks the Social Media option
+    Then the Social Settings page is displayed
+    When User selects a Campaign from Select a campaign dropdown
+    Then the selected campaign is displayed on the dropdown text box
+    When User clicks on Connect to Facebook button
+    Then User should be navigated to the facebook login page
 
-  		
-  		
+  @SMSM-137-Verify-that-user-is-able-to-manually-configure-a-Facebook-account-with-selected-campaign @RegressionTest @OnlyMe
+  Scenario: Verify that user is able to manually configure a Facebook account with selected campaign
+    When User clicks the Social Media option
+    Then the Social Settings page is displayed
+    When User selects a Campaign from Select a campaign dropdown
+    Then the selected campaign is displayed on the dropdown text box
+    And user enters a name into the FB Name textfield
+    And User enters a userid into the FB UserID
+    And User clicks the Save Integration button
+    
+    
+    
+    
+    
+    
+    
+    

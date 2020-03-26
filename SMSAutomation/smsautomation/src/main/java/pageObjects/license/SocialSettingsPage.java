@@ -2,6 +2,7 @@ package pageObjects.license;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -28,6 +29,10 @@ public class SocialSettingsPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"Facebook URL\")]]//input[@id=\"facebook_url\"]") WebElement txtF_Facebook_URL;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"Yelp URL\")]]//input[@id=\"yelp_url\"]") WebElement txtF_Yelp_URL;
 	public @FindBy(xpath = "//button[@type=\"button\" and contains((.), \"Connect to Facebook\")]") WebElement btn_Save_Social_URLs;
+	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement opt_Container;
+	public WebElement campaignOption(String campaign) {
+		return opt_Container.findElement(By.xpath("//div[normalize-space()=" + campaign + "]"));
+	}
 	
 	
 	// Page Methods

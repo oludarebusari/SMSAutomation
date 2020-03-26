@@ -54,7 +54,7 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     Then the Subscribers page is opened
 		And User verifies the list of Subscribers
     
-  @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest @OnlyMe
+  @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
   Scenario: Verify that User is able to Send a message to reply subscriber
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller

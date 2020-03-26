@@ -95,15 +95,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	}
 
 	@When("User clicks the Subscribers menu")
-	public void user_clicks_the_Subscribers_menu() throws Exception {
-//		String color = driver.findElement(By.xpath("//a[@href='products/']")).getCssValue("color");
-		String color = merchantMenu.menu_Subscribers.getCssValue("color");
-		System.out.println(color);
-		Actions actions = new Actions(driver);
-		actions.moveToElement(merchantMenu.menu_Subscribers).perform();
-		String color1 = merchantMenu.menu_Subscribers.getCssValue("color");
-		System.out.println(color1);
-		System.out.println(merchantMenu.getColor(color1));		
+	public void user_clicks_the_Subscribers_menu() throws Exception {	
 		merchantMenu.waitAndClickElement(merchantMenu.menu_Subscribers);
 	}
 
