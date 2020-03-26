@@ -14,7 +14,7 @@ import pageObjects.license.menu.MerchantMenu;
 import utils.Constant;
 import utils.DriverFactory;
 
-public class ViewAndEditAccountAndPlanDetailsUnderMyAccount extends DriverFactory {
+public class ViewAndEditAccountAndPlanDetailsUnderMyAccountSteps extends DriverFactory {
 	
 	Actions action = new Actions(driver);
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);

@@ -13,10 +13,11 @@ import pageObjects.license.menu.MerchantMenu;
 import pageObjects.license.menu.SettingsSubMenu;
 import utils.DriverFactory;
 
-public class AccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
+public class AccountDefaultsSettingsInMerchantsPortalSteps extends DriverFactory {
 
-	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
+	
 	AccountDefaultsPage accountDefaultsPage = PageFactory.initElements(driver, AccountDefaultsPage.class);
+	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	SettingsSubMenu settingSubMenu = PageFactory.initElements(driver, SettingsSubMenu.class);
 	SocialSettingsPage socialSettingsPage = PageFactory.initElements(driver, SocialSettingsPage.class);
 	WebWidgetPage webWidgetPage = PageFactory.initElements(driver, WebWidgetPage.class);
@@ -28,7 +29,7 @@ public class AccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
 
 	@And("User clicks the Accounts Defaults menu")
 	public void user_clicks_the_Accounts_Defaults_menu() throws Exception {
-		settingSubMenu.clickAccountDefaults();
+		settingSubMenu.waitAndClickElement(settingSubMenu.menu_Account_Defaults);
 	}
 
 	@Then("AccountDefaults page is displayed")
@@ -38,7 +39,7 @@ public class AccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
 
 	@And("User clicks Social Media from the LHS")
 	public void user_clicks_Social_Media_from_the_LHS() throws Exception {
-		settingSubMenu.clickSocialMedia();
+		settingSubMenu.waitAndClickElement(settingSubMenu.menu_Social_Media);
 	}
 
 	@Then("user is redirected to the Social Settings and fields like FacebookIntegration,configuremanually and social properties are displayed")
@@ -49,7 +50,7 @@ public class AccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
 
 	@And("User clicks on Web Widget link from the LHS menu")
 	public void user_clicks_on_Web_Widget_link_from_the_LHS_menu() throws Exception {
-		settingSubMenu.clickWebWidget();
+		settingSubMenu.waitAndClickElement(settingSubMenu.menu_Web_Widget);
 	}
 
 	@Then("User is redirected to the Web Widget page, Configure your widget and preview fields are displayed")
@@ -60,7 +61,7 @@ public class AccountDefaultsSettingsInMerchantsPortal extends DriverFactory {
 
 	@Given("User clicks the Account Defaults")
 	public void user_clicks_the_Account_Defaults() throws Exception {
-		settingSubMenu.clickAccountDefaults();
+		settingSubMenu.waitAndClickElement(settingSubMenu.menu_Account_Defaults);
 	}
 
 	@Then("the Accounts Defaults page is displayed")

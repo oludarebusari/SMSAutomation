@@ -1,5 +1,6 @@
 package stepDefinitions.testSuite.regression;
 
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 import io.cucumber.java.en.And;
@@ -95,6 +96,14 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 
 	@When("User clicks the Subscribers menu")
 	public void user_clicks_the_Subscribers_menu() throws Exception {
+//		String color = driver.findElement(By.xpath("//a[@href='products/']")).getCssValue("color");
+		String color = merchantMenu.menu_Subscribers.getCssValue("color");
+		System.out.println(color);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(merchantMenu.menu_Subscribers).perform();
+		String color1 = merchantMenu.menu_Subscribers.getCssValue("color");
+		System.out.println(color1);
+		System.out.println(merchantMenu.getColor(color1));		
 		merchantMenu.waitAndClickElement(merchantMenu.menu_Subscribers);
 	}
 
@@ -112,7 +121,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 //	 @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
 	@When("user clicks the Reply button")
 	public void user_clicks_the_Reply_button() throws Exception {
-		subscribersPage.waitAndClickElement(subscribersPage.btn_Reply("111-152-5252"));
+		subscribersPage.waitAndClickElement(subscribersPage.btn_Reply("555-555-5549"));
 	}
 
 	@Then("The Send Message window is displayed")
