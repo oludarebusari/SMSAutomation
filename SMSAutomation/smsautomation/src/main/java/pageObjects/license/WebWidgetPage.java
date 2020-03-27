@@ -2,7 +2,7 @@ package pageObjects.license;
 
 import java.io.IOException;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,7 +17,7 @@ public class WebWidgetPage extends BasePage {
 
 	// Page Elements
 
-	public @FindBy(xpath = CommonElementLocator.ELEM_PAGE_TITLE) WebElement page_Title;
+	public @FindBy(xpath = "//h1[text()[normalize-space()]=\"Web Widget\"]") WebElement page_Title;
 	public @FindBy(xpath = "//h3[(.)=\"Configure Your Widget\"]") WebElement page_Configure_Your_Widget;
 	public @FindBy(xpath = "//input[@name=\"name\"]") WebElement page_Earn_Rewards;
 	
@@ -35,11 +35,26 @@ public class WebWidgetPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"form-group\" and .//label[contains((.), \"Choose a Theme\")]]//div[@class=\"toggle-group\" and .//label[contains((.), \"Light Theme\")]]") WebElement toggle_Choose_a_theme;
 	public @FindBy(xpath = "//div[contains(@class, \"form-group\")]//div[contains(@class, \"selectize-input\")]") WebElement LOV_Select_a_Campaign;
 	public @FindBy(xpath = "//a[@id=\"sms-widget-form-copy\"]") WebElement btn_Copy_to_Clipboard;
+	public @FindBy(xpath = "//label[@for=\"collect_lname\"]") WebElement Collect_Last_Name_toggleContainer;
+	public WebElement lbl_Collect_Last_Name(String toggleValue) {
+		return Collect_Last_Name_toggleContainer.findElement(By.xpath("//label[text()=\'" + toggleValue + "']"));
+	}
+	public @FindBy(xpath = "//label[@for=\"collect_email\"]") WebElement Collect_Email_Address_toggleContainer;
+	public WebElement lbl_Collect_Email_Address(String toggleValue) {
+		return Collect_Email_Address_toggleContainer.findElement(By.xpath("//label[text()=\'" + toggleValue + "']"));
+	}	
 	
-	public @FindBy(xpath = "//input[@id=\"x_sms_widget_fname\"]") WebElement txtF_First_Name;
-	public @FindBy(xpath = "//input[@id=\"x_sms_widget_phone\"]") WebElement txtF_Phone;
-	public @FindBy(xpath = "//input[@id=\"x_sms_widget_email\"]") WebElement txtF_Email_Address;
+	public final String txtF_Locator_Preview_Last_Name = "//input[@id=\"x_sms_widget_lname\"]";
+	public @FindBy(xpath = "//div[@id=\"x_sms_widget_title\"]") WebElement preview_Title;
+	public @FindBy(xpath = "//div[@id=\"x_sms_widget_desc\"]") WebElement preview_Description;
+	public @FindBy(xpath = "//input[@id=\"x_sms_widget_btn\"]") WebElement preview_ButtonText;
+	public @FindBy(xpath = "//input[@id=\"x_sms_widget_fname\"]") WebElement txtF_preview_First_Name;
+	public @FindBy(xpath = txtF_Locator_Preview_Last_Name) WebElement txtF_preview_Last_Name;
+	public @FindBy(xpath = "//input[@id=\"x_sms_widget_phone\"]") WebElement txtF_preview_Phone;
+	public @FindBy(xpath = "//input[@id=\"x_sms_widget_email\"]") WebElement txtF_preview_Email_Address;
 	public @FindBy(xpath = "//div[contains(@class, \"x_sms_widget_group_part\")]") WebElement btn_Sign_Up;
+	
+	
 	
 		
 	// Page Methods

@@ -28,7 +28,7 @@ public class SocialSettingsPage extends BasePage {
 	public @FindBy(xpath = "//h4[contains((.), \"Social Properties\")]") WebElement page_Social_Properties;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"Facebook URL\")]]//input[@id=\"facebook_url\"]") WebElement txtF_Facebook_URL;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[contains((.), \"Yelp URL\")]]//input[@id=\"yelp_url\"]") WebElement txtF_Yelp_URL;
-	public @FindBy(xpath = "//button[@type=\"button\" and contains((.), \"Connect to Facebook\")]") WebElement btn_Save_Social_URLs;
+	public @FindBy(xpath = "//button[normalize-space()=\"Save Social URLs\"]") WebElement btn_Save_Social_URLs;
 	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement opt_Container;
 	public WebElement campaignOption(String campaign) {
 		return opt_Container.findElement(By.xpath("//div[normalize-space()=" + campaign + "]"));
@@ -36,7 +36,6 @@ public class SocialSettingsPage extends BasePage {
 	
 	
 	// Page Methods
-
 	public String getPageTitle() throws Exception {
 		return getElementText(page_Title);
 	}

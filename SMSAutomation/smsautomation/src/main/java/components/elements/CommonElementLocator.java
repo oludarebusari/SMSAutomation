@@ -18,6 +18,8 @@ public class CommonElementLocator extends BasePage {
 	public final static String ELEM_PAGE_TITLE =  "//div[contains(@class, \"page-heading\")]";
 	public final static String ELEM_SEARCH_TEXTFIELD = "//input[contains(@class, \"table-search\")]";
 	
+	
+	
 	//menu options
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Dashboard\"]]") WebElement menu_Dashboard;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Experience\"]]") WebElement menu_Experience;
@@ -35,6 +37,9 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//h1[contains(@class, \"pull-left\")]") WebElement pag_Title;
 	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
 	public @FindBy(xpath = "//button[@id=\"search-text-submit\"]") WebElement btn_Search;
+	
+	public @FindBy(xpath = "//h3[@class=\"logo\" and ./a[@title=\"Dashboard\"]]") WebElement BackToDashboard;
+	
 	
 	//Pagination elements
 	public @FindBy(xpath = "//select[@id=\"pager-per-page\"]") WebElement lov_ShowEntries;

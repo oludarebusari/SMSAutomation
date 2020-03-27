@@ -49,7 +49,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks on Connect to Facebook button
     Then User should be navigated to the facebook login page
 
-  @SMSM-137-Verify-that-user-is-able-to-manually-configure-a-Facebook-account-with-selected-campaign @RegressionTest @OnlyMe
+  @SMSM-137-Verify-that-user-is-able-to-manually-configure-a-Facebook-account-with-selected-campaign @RegressionTest
   Scenario: Verify that user is able to manually configure a Facebook account with selected campaign
     When User clicks the Social Media option
     Then the Social Settings page is displayed
@@ -58,11 +58,41 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And user enters a name into the FB Name textfield
     And User enters a userid into the FB UserID
     And User clicks the Save Integration button
-    
-    
-    
-    
-    
-    
+
+  @SMSM-137-Verify-that-user-is-able-to-save-social-URL's-successfully @RegressionTest
+  Scenario: Verify that user is able to save social URL's successfully
+    When User clicks the Social Media option
+    Then the Social Settings page is displayed
+    And User enters the URL into Facebook URL textbox in Social Properties section
+    And User clicks Save Social URLs button
+    When User clicks the Back to Dashboard
+    Then the User is redirected to the Dashboatd page
+    When User clicks the Settings menu
+    Then the Settings options are displayed
+    When User clicks the Social Media option
+    Then User confirms that the URLs was saved correctly
+
+  @SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget @RegressionTest 
+  Scenario: Verify that user is able to edit details in various fields to configure web widget
+    When User clicks the Web Widget option in settings tab
+    Then User should be navigated to the Web widget page
+    And User Enters the Form Title
+    And User enters the Form Description
+    And User enters the button text
+    And User enters the Thnak You message
+    Then User verifies that all the text entered are reflected on the Preview section
+
+  @SMSM-137-Verify-that-user-is-able-to-add-remove-various-options-to-configure-web-widget @RegressionTest @OnlyMe
+  Scenario: Verify that user is able to add/remove various options to configure web widget
+    When User clicks the Web Widget option in settings tab
+    Then User should be navigated to the Web widget page
+    And User verifies that the state of the Collect Last name toggle button is No
+    And User verifies that Last Name textfield is not displayed on the preview section
+    When User clicks on the Collect Last name toggle button to changeit's state from No to Yes
+    Then User verifies that a Last Name text field is displayed on the preview section
+    And User verifies the state of Collect email address toggle on configure your widget section
+    And User verifies that email address textbox is displayed on the Preview section
+    When User clicks on the toggle for Collect email address
+    Then User verifies that Email address textbox is not displayed on the preview section
     
     

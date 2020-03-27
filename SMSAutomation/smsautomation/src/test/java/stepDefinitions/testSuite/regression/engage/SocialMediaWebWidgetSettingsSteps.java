@@ -1,30 +1,35 @@
 package stepDefinitions.testSuite.regression.engage;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.license.SocialSettingsPage;
+import pageObjects.license.WebWidgetPage;
 import pageObjects.license.menu.MerchantMenu;
 import pageObjects.license.menu.SettingsSubMenu;
 import utils.DriverFactory;
 
 public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
-	
+
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	SettingsSubMenu settingsSubMenu = PageFactory.initElements(driver, SettingsSubMenu.class);
 	SocialSettingsPage socialSettingsPage = PageFactory.initElements(driver, SocialSettingsPage.class);
+	WebWidgetPage webWidgetPage = PageFactory.initElements(driver, WebWidgetPage.class);
 	
-	
+	private final String FORM_TITLE = "Auto Test";
+	private final String FORM_DESCRIPTION = "This is for automation testing";
+	private final String BUTTON_TEXT = "Click Me";
+
 	@Then("the Settings options are displayed")
 	public void the_Settings_options_are_displayed() {
-	   Assert.assertTrue(settingsSubMenu.menu_Account_Defaults.isDisplayed());
-	   Assert.assertTrue(settingsSubMenu.menu_Social_Media.isDisplayed());
-	   Assert.assertTrue(settingsSubMenu.menu_Web_Widget.isDisplayed());
+		Assert.assertTrue(settingsSubMenu.menu_Account_Defaults.isDisplayed());
+		Assert.assertTrue(settingsSubMenu.menu_Social_Media.isDisplayed());
+		Assert.assertTrue(settingsSubMenu.menu_Web_Widget.isDisplayed());
 	}
 
 //	 @SMSM-137-Verify-that-user-is-able-to-view-Account-Defaults-Social-Media-and-Web-Widget-options-in-settings-tab
@@ -43,7 +48,7 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 //	@SMSM-137-Verify-that-user-is-able-to-connect-facebook-account-with-selected-campaign
 	@When("User clicks the Social Media option")
 	public void user_clicks_the_Social_Media_option() throws Exception {
-	  settingsSubMenu.waitAndClickElement(settingsSubMenu.menu_Social_Media);
+		settingsSubMenu.waitAndClickElement(settingsSubMenu.menu_Social_Media);
 	}
 
 	@Then("the Social Settings page is displayed")
@@ -59,7 +64,7 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 
 	@Then("the selected campaign is displayed on the dropdown text box")
 	public void the_selected_campaign_is_displayed_on_the_dropdown_text_box() {
-	  Assert.assertTrue(socialSettingsPage.lov_Select_A_Campaign.getText().contentEquals("Test1 (AG Disabled)"));
+		Assert.assertTrue(socialSettingsPage.lov_Select_A_Campaign.getText().contentEquals("Test1 (AG Disabled)"));
 	}
 
 	@When("User clicks on Connect to Facebook button")
@@ -72,23 +77,128 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 		socialSettingsPage.switchWindow();
 		Assert.assertEquals("Log into Facebook | Facebook", driver.getTitle());
 	}
-	
+
 //	@SMSM-137-Verify-that-user-is-able-to-manually-configure-a-Facebook-account-with-selected-campaign
 	@Then("user enters a name into the FB Name textfield")
 	public void user_enters_a_name_into_the_FB_Name_textfield() throws Exception {
-	 socialSettingsPage.sendKeysToWebElement(socialSettingsPage.txtF_FB_Name, "Auto");
+		socialSettingsPage.sendKeysToWebElement(socialSettingsPage.txtF_FB_Name, "Auto");
 	}
 
 	@Then("User enters a userid into the FB UserID")
 	public void user_enters_a_userid_into_the_FB_UserID() throws Exception {
-	 socialSettingsPage.sendKeysToWebElement(socialSettingsPage.txtF_FB_User_ID, "tommyLee");
+		socialSettingsPage.sendKeysToWebElement(socialSettingsPage.txtF_FB_User_ID, "tommyLee");
 	}
 
 	@Then("User clicks the Save Integration button")
 	public void user_clicks_the_Save_Integration_button() throws Exception {
-	    socialSettingsPage.waitAndClickElement(socialSettingsPage.btn_Save_Integration);
-	    Thread.sleep(19000);
+		socialSettingsPage.waitAndClickElement(socialSettingsPage.btn_Save_Integration);
 	}
 
+//	@SMSM-137-Verify-that-user-is-able-to-save-social-URL's-successfully
+	@Then("User enters the URL into Facebook URL textbox in Social Properties section")
+	public void user_enters_the_URL_into_Facebook_URL_textbox_in_Social_Properties_section() throws Exception {
+		socialSettingsPage.sendKeysToWebElement(socialSettingsPage.txtF_Facebook_URL, "https://www.facebook.com");
+	}
+
+	@Then("User clicks Save Social URLs button")
+	public void user_clicks_Save_Social_URLs_button() throws Exception {
+		socialSettingsPage.waitAndClickElement(socialSettingsPage.btn_Save_Social_URLs);
+	}
+
+	@When("User clicks the Back to Dashboard")
+	public void user_clicks_the_Back_to_Dashboard() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.BackToDashboard);
+		commonElementLocator.waitAndClickElement(commonElementLocator.BackToDashboard);
+	}
+
+	@Then("the User is redirected to the Dashboatd page")
+	public void the_User_is_redirected_to_the_Dashboatd_page() {
+		Assert.assertEquals("https://www.smsmmtest.com/advertisercpanel/", driver.getCurrentUrl());
+	}
+
+	@Then("User confirms that the URLs was saved correctly")
+	public void user_confirms_that_the_URLs_was_saved_correctly() throws Exception {
+		Assert.assertTrue(
+				socialSettingsPage.txtF_Facebook_URL.getAttribute("value").contentEquals("https://www.facebook.com"));
+	}
+
+//	@SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget
+	@When("User clicks the Web Widget option in settings tab")
+	public void user_clicks_the_Web_Widget_option_in_settings_tab() throws Exception {
+		settingsSubMenu.waitAndClickElement(settingsSubMenu.menu_Web_Widget);
+	}
+
+	@Then("User should be navigated to the Web widget page")
+	public void user_should_be_navigated_to_the_Web_widget_page() throws Exception {
+		Assert.assertEquals("Web Widget", webWidgetPage.getElementText(webWidgetPage.page_Title));
+	}
+
+	@Then("User Enters the Form Title")
+	public void user_Enters_the_Form_Title() throws Exception {
+		webWidgetPage.sendKeysToWebElement(webWidgetPage.txtF_Form_Title, FORM_TITLE);
+	}
+
+	@Then("User enters the Form Description")
+	public void user_enters_the_Form_Description() throws Exception {
+		webWidgetPage.sendKeysToWebElement(webWidgetPage.txtF_Form_Description, FORM_DESCRIPTION);
+	}
+
+	@Then("User enters the button text")
+	public void user_enters_the_button_text() throws Exception {
+		webWidgetPage.sendKeysToWebElement(webWidgetPage.txtF_Button_Text, BUTTON_TEXT);
+	}
+
+	@Then("User enters the Thnak You message")
+	public void user_enters_the_Thnak_You_message() throws Exception {
+		webWidgetPage.sendKeysToWebElement(webWidgetPage.txtF_ThankYou_Message, "Thanks for using QA Automation");
+	}
+
+	@Then("User verifies that all the text entered are reflected on the Preview section")
+	public void user_verifies_that_all_the_text_entered_are_reflected_on_the_Preview_section() throws Exception {
+		Assert.assertEquals(FORM_TITLE, webWidgetPage.getElementText(webWidgetPage.preview_Title));
+		Assert.assertEquals(FORM_DESCRIPTION, webWidgetPage.getElementText(webWidgetPage.preview_Description));
+		Assert.assertEquals(BUTTON_TEXT, webWidgetPage.preview_ButtonText.getAttribute("value"));
+	}
+	
+//	@SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget
+	@Then("User verifies that the state of the Collect Last name toggle button is No")
+	public void user_verifies_that_the_state_of_the_Collect_Last_name_toggle_button_is_No() throws Exception {
+		Assert.assertTrue(webWidgetPage.getElementText(webWidgetPage.lbl_Collect_Last_Name("No")).contentEquals("No"));
+	}
+
+	@Then("User verifies that Last Name textfield is not displayed on the preview section")
+	public void user_verifies_that_Last_Name_textfield_is_not_displayed_on_the_preview_section() {
+		Assert.assertFalse(webWidgetPage.txtF_preview_Last_Name.isDisplayed());
+	}
+
+	@When("User clicks on the Collect Last name toggle button to changeit's state from No to Yes")
+	public void user_clicks_on_the_Collect_Last_name_toggle_button_to_changeit_s_state_from_No_to_Yes() throws InterruptedException {
+		webWidgetPage.waitAndClickElement(webWidgetPage.toggle_Collect_last_name);
+	}
+
+	@Then("User verifies that a Last Name text field is displayed on the preview section")
+	public void user_verifies_that_a_Last_Name_text_field_is_displayed_on_the_preview_section() {
+		 Assert.assertTrue(webWidgetPage.txtF_preview_Last_Name.isDisplayed());
+	}
+
+	@Then("User verifies the state of Collect email address toggle on configure your widget section")
+	public void user_verifies_the_state_of_Collect_email_address_toggle_on_configure_your_widget_section() throws Exception {
+		Assert.assertTrue(webWidgetPage.getElementText(webWidgetPage.lbl_Collect_Email_Address("Yes")).contentEquals("Yes"));
+	}
+
+	@Then("User verifies that email address textbox is displayed on the Preview section")
+	public void user_verifies_that_email_address_textbox_is_displayed_on_the_Preview_section() {
+		Assert.assertTrue(webWidgetPage.txtF_preview_Email_Address.isDisplayed());
+	}
+
+	@When("User clicks on the toggle for Collect email address")
+	public void user_clicks_on_the_toggle_for_Collect_email_address() throws InterruptedException {
+		webWidgetPage.waitAndClickElement(webWidgetPage.toggle_Collect_email_address);
+	}
+
+	@Then("User verifies that Email address textbox is not displayed on the preview section")
+	public void user_verifies_that_Email_address_textbox_is_not_displayed_on_the_preview_section() {
+		Assert.assertFalse(webWidgetPage.txtF_preview_Email_Address.isDisplayed());
+	}
 
 }
