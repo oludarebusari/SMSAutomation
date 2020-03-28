@@ -72,7 +72,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks the Social Media option
     Then User confirms that the URLs was saved correctly
 
-  @SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget @RegressionTest 
+  @SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget @RegressionTest
   Scenario: Verify that user is able to edit details in various fields to configure web widget
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
@@ -82,7 +82,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And User enters the Thnak You message
     Then User verifies that all the text entered are reflected on the Preview section
 
-  @SMSM-137-Verify-that-user-is-able-to-add-remove-various-options-to-configure-web-widget @RegressionTest @OnlyMe
+  @SMSM-137-Verify-that-user-is-able-to-add-remove-various-options-to-configure-web-widget @RegressionTest
   Scenario: Verify that user is able to add/remove various options to configure web widget
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
@@ -94,5 +94,21 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And User verifies that email address textbox is displayed on the Preview section
     When User clicks on the toggle for Collect email address
     Then User verifies that Email address textbox is not displayed on the preview section
-    
-    
+
+  @SMSM-137-Verify-that-user-is-able-to-select-a-display-method-and-a-theme-to-configure-web-widget @RegressionTest 
+  Scenario: Verify that user is able to select a display method and a theme to configure web widget
+    When User clicks the Web Widget option in settings tab
+    Then User should be navigated to the Web widget page
+    When User clicks the Choose a Display Method button
+    Then the Preview section should display Join Our Mobile Rewards Club!
+    When User clicks on Choose a Theme button
+    Then the Preview section color should change to dark gray
+
+  @SMSM-137-Verify-that-user-is-able-to-copy-embed-code-successfully @RegressionTest @OnlyMe
+  Scenario: Verify that user is able to copy embed code successfully
+    When User clicks the Web Widget option in settings tab
+    Then User should be navigated to the Web widget page
+    When User clicks the Select a Campaign drop down and selects a campaign
+    Then the Campaign is displayed on the Select a Campaign textbox
+    When User Select the code and clicks copy embed code button
+    Then User then the code is copied to clipboard

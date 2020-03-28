@@ -33,8 +33,15 @@ public class WebWidgetPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"form-group\" and .//label[contains((.), \"Alert account admin about new submissions?\")]]//div[@class=\"toggle-group\"]") WebElement toggle_Alert_account_admin_about_new_submissions;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and .//label[contains((.), \"Choose a Display Method\")]]//label[contains((.), \"Inline Form\")]") WebElement toggle_Choose_a_Display_Method;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and .//label[contains((.), \"Choose a Theme\")]]//div[@class=\"toggle-group\" and .//label[contains((.), \"Light Theme\")]]") WebElement toggle_Choose_a_theme;
-	public @FindBy(xpath = "//div[contains(@class, \"form-group\")]//div[contains(@class, \"selectize-input\")]") WebElement LOV_Select_a_Campaign;
-	public @FindBy(xpath = "//a[@id=\"sms-widget-form-copy\"]") WebElement btn_Copy_to_Clipboard;
+	public @FindBy(xpath = "//div[contains(@class, \"form-group\")]//div[contains(@class, \"selectize-input\")]") WebElement lov_Select_a_Campaign;
+	public @FindBy(xpath = "//a[@id=\"sms-widget-form-copy\"]") WebElement btn_Copy_Embed_Code;
+	public @FindBy(xpath = "//textarea[@id=\"sms-widget-code\"]") WebElement embed_Code;
+	public final String locator = "//textarea[@id=\"sms-widget-code\"]";
+	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement opt_Container;
+	public WebElement campaignOption(String campaign) {
+		return opt_Container.findElement(By.xpath("//div[normalize-space()=" + campaign + "]"));
+	}
+	
 	public @FindBy(xpath = "//label[@for=\"collect_lname\"]") WebElement Collect_Last_Name_toggleContainer;
 	public WebElement lbl_Collect_Last_Name(String toggleValue) {
 		return Collect_Last_Name_toggleContainer.findElement(By.xpath("//label[text()=\'" + toggleValue + "']"));
@@ -53,10 +60,11 @@ public class WebWidgetPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"x_sms_widget_phone\"]") WebElement txtF_preview_Phone;
 	public @FindBy(xpath = "//input[@id=\"x_sms_widget_email\"]") WebElement txtF_preview_Email_Address;
 	public @FindBy(xpath = "//div[contains(@class, \"x_sms_widget_group_part\")]") WebElement btn_Sign_Up;
+	public @FindBy(xpath = "//div[@id=\"x_sms_button_widget_cta\"]") WebElement preview_Btn_Join_Our_Mobile_Rewards_Club;
+	public @FindBy(xpath = "//div[contains(@class, \"sms-widget-container\")]") WebElement preview_Container;
 	
 	
 	
-		
 	// Page Methods
 	
 	public String getPageTitle() throws Exception {

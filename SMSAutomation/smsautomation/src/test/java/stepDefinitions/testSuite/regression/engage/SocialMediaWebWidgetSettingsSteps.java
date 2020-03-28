@@ -1,6 +1,6 @@
 package stepDefinitions.testSuite.regression.engage;
 
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -21,6 +21,8 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 	SocialSettingsPage socialSettingsPage = PageFactory.initElements(driver, SocialSettingsPage.class);
 	WebWidgetPage webWidgetPage = PageFactory.initElements(driver, WebWidgetPage.class);
 	
+
+	
 	private final String FORM_TITLE = "Auto Test";
 	private final String FORM_DESCRIPTION = "This is for automation testing";
 	private final String BUTTON_TEXT = "Click Me";
@@ -32,9 +34,9 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 		Assert.assertTrue(settingsSubMenu.menu_Web_Widget.isDisplayed());
 	}
 
-//	 @SMSM-137-Verify-that-user-is-able-to-view-Account-Defaults-Social-Media-and-Web-Widget-options-in-settings-tab
+//	@SMSM-137-Verify-that-user-is-able-to-view-Account-Defaults-Social-Media-and-Web-Widget-options-in-settings-tab
 	@When("User hovers over the Social Media option")
-	public void user_hovers_over_the_Social_Media_option() {
+	public void user_hovers_over_the_Social_Media_option() {	
 		Actions actions = new Actions(driver);
 		actions.moveToElement(merchantMenu.menu_Subscribers).perform();
 	}
@@ -160,7 +162,7 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 		Assert.assertEquals(BUTTON_TEXT, webWidgetPage.preview_ButtonText.getAttribute("value"));
 	}
 	
-//	@SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget
+//	 @SMSM-137-Verify-that-user-is-able-to-add-remove-various-options-to-configure-web-widget
 	@Then("User verifies that the state of the Collect Last name toggle button is No")
 	public void user_verifies_that_the_state_of_the_Collect_Last_name_toggle_button_is_No() throws Exception {
 		Assert.assertTrue(webWidgetPage.getElementText(webWidgetPage.lbl_Collect_Last_Name("No")).contentEquals("No"));
@@ -200,5 +202,51 @@ public class SocialMediaWebWidgetSettingsSteps extends DriverFactory {
 	public void user_verifies_that_Email_address_textbox_is_not_displayed_on_the_preview_section() {
 		Assert.assertFalse(webWidgetPage.txtF_preview_Email_Address.isDisplayed());
 	}
+	
+	
+//	 @SMSM-137-Verify-that-user-is-able-to-select-a-display-method-and-a-theme-to-configure-web-widget
+	@When("User clicks the Choose a Display Method button")
+	public void user_clicks_the_Choose_a_Display_Method_button() throws Exception {
+	   webWidgetPage.waitAndClickElement(webWidgetPage.toggle_Choose_a_Display_Method);
+	}
+
+	@Then("the Preview section should display Join Our Mobile Rewards Club!")
+	public void the_Preview_section_should_display_Join_Our_Mobile_Rewards_Club() {
+	   Assert.assertTrue(webWidgetPage.preview_Btn_Join_Our_Mobile_Rewards_Club.isDisplayed());
+	}
+
+	@When("User clicks on Choose a Theme button")
+	public void user_clicks_on_Choose_a_Theme_button() throws Exception {
+	webWidgetPage.waitAndClickElement(webWidgetPage.toggle_Choose_a_theme);
+	}
+
+	@Then("the Preview section color should change to dark gray")
+	public void the_Preview_section_color_should_change_to_dark_gray() {
+		String color = webWidgetPage.preview_Container.getCssValue("color");
+		Assert.assertEquals("#bbbbbb", merchantMenu.getColor(color));
+	}
+
+//  @SMSM-137-Verify-that-user-is-able-to-copy-embed-code-successfully
+	@When("User clicks the Select a Campaign drop down and selects a campaign")
+	public void user_clicks_the_Select_a_Campaign_drop_down_and_selects_a_campaign() throws Exception {
+		webWidgetPage.waitAndClickElement(webWidgetPage.lov_Select_a_Campaign);
+		webWidgetPage.waitAndClickElement(webWidgetPage.campaignOption("\"Test 3 (Enabled)\""));
+	}
+
+	@Then("the Campaign is displayed on the Select a Campaign textbox")
+	public void the_Campaign_is_displayed_on_the_Select_a_Campaign_textbox() throws Exception {
+		Assert.assertTrue(webWidgetPage.getElementText(webWidgetPage.lov_Select_a_Campaign).contentEquals("Test 3 (Enabled)"));
+	}
+
+	@When("User Select the code and clicks copy embed code button")
+	public void user_Select_the_code_and_clicks_copy_embed_code_button() throws Exception {
+	   webWidgetPage.waitAndClickElement(webWidgetPage.btn_Copy_Embed_Code);
+	}
+
+	@Then("User then the code is copied to clipboard")
+	public void user_then_the_code_is_copied_to_clipboard() {
+	Assert.assertTrue(webWidgetPage.btn_Copy_Embed_Code.getText().contains("Copied to Clipboard!"));
+	}
+
 
 }
