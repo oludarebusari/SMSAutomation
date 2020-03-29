@@ -34,7 +34,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     And User clicks on My Accounts from the left hand side menu
     Then User is redirected to my account page
 
-  @SMSM-138-Purchase-History @RegressionTest
+  @SMSM-138-Purchase-History @RegressionTest 
   Scenario: Verify Purchase History option
     Then User verifies the Account Resources section options
     When User clicks on Purchase History option
@@ -98,7 +98,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     Then the number is deleted from the whitelist table
     And User click the toggle on button 
 
-  @SMSM-138-Blacklist @RegressionTest
+  @SMSM-138-Blacklist @RegressionTest @OnlyMe
   Scenario: Verify Blacklist option
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
@@ -109,7 +109,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     When user adds the number to blacklist and cliks Add Number button
     Then User verifies that the number is added to blacklist table
     And user verifies that both Copy and CSV buttons are present
-    When User clicks the copy buttonon the blacklist window
+    When User clicks the copy button on the blacklist window
     Then User confirms that the data is copied to clipboard
     When User clicks on the CSV tab on the Blacklist window
     Then User confirms data is exported successfully

@@ -1,8 +1,6 @@
 package stepDefinitions.testSuite.regression;
 
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -36,8 +34,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	SendMessageModal sendMessageModal = PageFactory.initElements(driver, SendMessageModal.class);
 
 	// @SMSM-131-Check-Manage-Page-Content, @RegressionTest
-	@Then("User checks the page content \\(Title, list of Resellers, search and Status)")
-	public void user_checks_the_page_content_Title_list_of_Resellers_search_and_Status() throws Exception {
+	@Then("User checks the page content Title, list of Resellers, search and Status")
+	public void user_checks_the_page_content_Title_list_of_Resellers_search_and_Status() {
 		Assert.assertTrue(driver.getTitle().contentEquals("Engage Dashboard"));
 		Assert.assertTrue(engDashboard.txtF_Search.isDisplayed());
 		Assert.assertTrue(engDashboard.table_Reseller.isDisplayed());
@@ -165,7 +163,6 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	public void user_clicks_Business_tabs_at_the_left_side() throws Exception {
 
 		if (reader.getConfigValue("DriverConfig", "environment").equals("localHub")) {
-//			licAdminPage.clickCloseUpdateStatusOfBusinesses();
 			licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
 			licAdminPage.waitForBusinessesDialogToDisappear();
 		}

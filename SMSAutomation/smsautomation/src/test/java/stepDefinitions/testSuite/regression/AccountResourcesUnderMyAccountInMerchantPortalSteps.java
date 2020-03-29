@@ -22,6 +22,10 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	BlackListPage blackListPage = PageFactory.initElements(driver, BlackListPage.class);
 	AddToBlacklistWhitelistModal addToBlackWhitelistModal = PageFactory.initElements(driver,
 			AddToBlacklistWhitelistModal.class);
+	
+	String downloadpath =  System.getProperty("user.home") + "//Downloads//";
+	String fileName = "Engage Admin Dashboard.csv";
+	
 
 	//@SMSM-138-Purchase-History @RegressionTest
 	@Then("User verifies the Account Resources section options")
@@ -80,7 +84,8 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("CSV file is created and exported to the local machine")
 	public void csv_file_is_created_and_exported_to_the_local_machine() throws InterruptedException {
-		//TODO
+		Assert.assertTrue(purchaseHistoryModal.isFileDownloaded(downloadpath, fileName));
+		
 	}
 
     //@SMSM-138-Auto-Purchase @RegressionTest
@@ -224,8 +229,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("User confirms that the CSV file is exported to the local machine")
 	public void user_confirms_that_the_CSV_file_is_exported_to_the_local_machine() throws InterruptedException {
-		Thread.sleep(6000);
-		//TODO
+		Assert.assertTrue(purchaseHistoryModal.isFileDownloaded(downloadpath, fileName));
 	}
 
 	@When("User enters an incorrect number in the search box")
@@ -295,11 +299,10 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	public void user_verifies_that_both_Copy_and_CSV_buttons_are_present() {
 	 Assert.assertTrue(blackListPage.btn_Copy_BL.isDisplayed());
 	 Assert.assertTrue(blackListPage.btn_CSV_BL.isDisplayed());
-
 	}
 	
-	@When("User clicks the copy buttonon the blacklist window")
-	public void user_clicks_the_copy_buttonon_the_blacklist_window() throws InterruptedException {
+	@When("User clicks the copy button on the blacklist window")
+	public void user_clicks_the_copy_button_on_the_blacklist_window() throws InterruptedException {
 		blackListPage.waitAndClickElement(blackListPage.btn_Copy_BL);
 	}
 
@@ -315,8 +318,8 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	}
 	
 	@Then("User confirms data is exported successfully")
-	public void user_confirms_data_is_exported_successfully() {
-//		TODO
+	public void user_confirms_data_is_exported_successfully() throws Exception {
+		Assert.assertTrue(purchaseHistoryModal.isFileDownloaded(downloadpath, fileName));
 	}
 
 	@When("User clicks on arrow icon on the side of the column heading")
@@ -343,12 +346,12 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	@When("User clicks on the icon under Actions column to delete added number")
 	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() throws Exception {
 		blackListPage.sendKeysToWebElement(blackListPage.txt_Blacklist_SearchField, " ");
-		blackListPage.waitAndClickElement(blackListPage.par_Remove);
+		blackListPage.waitAndClickElement(blackListPage.btn_Remove("525-252-5252"));
 	}
 
 	@Then("user confirms the number is deleted from the Blacklist table")
 	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() throws Exception {
-//		TODO
+//		TODO - This will be implemented when the slow response from the server after the delete command is issued is fixed
 		
 	}
 

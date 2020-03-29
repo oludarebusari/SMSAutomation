@@ -1,6 +1,8 @@
 package pageObjects.license;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,15 +36,23 @@ public class AdvertisersPage extends BasePage {
 	public @FindBy(xpath = "//tr[@role=\"row\"]//th[text()=\"Status\"]") WebElement col_Status;
 	public @FindBy(xpath = "//tr[@role=\"row\"]//th[text()=\"Text Number\"]") WebElement col_Text_Number;
 	public @FindBy(xpath = "//tr[@role=\"row\"]//th[text()=\"Action\"]") WebElement col_Action;
-		
 	public @FindBy(xpath = "//tbody") WebElement parentBtn;
-
 	public WebElement getLoginBtnByBusinessContact(String businessContact) {
 		return parentBtn.findElement(
 				By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + businessContact + "']]//a[(.)=\"Log In\"]"));
 	}
-
-	public @FindBy(xpath = "//tr[@role=\"row\" and .//td[text()=\"QA, Aclate\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_LOGIN_LOV;
+	public WebElement btn_ActionDDown(String businessContact) {
+		return parentBtn.findElement(
+				By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + businessContact + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	public WebElement opt_ActionDDown(String businessContact, String option) {
+		return parentBtn.findElement(
+				By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + businessContact + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
+	}
+	public List<WebElement> btn_LOGIN() {
+		return parentBtn.findElements(By.xpath("//a[contains(@class, \"btn-default\") and text()=\"Log In\"]"));
+	}
+    public @FindBy(xpath = "//div[@id=\"advertisers_info\"]") WebElement Advertisers_Info;
 
 	// Page Methods
 	public AdvertisersPage clickLoginBtnByBusinessContact() throws Exception {

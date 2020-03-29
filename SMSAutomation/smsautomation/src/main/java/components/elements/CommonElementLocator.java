@@ -90,6 +90,9 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Language Strings\"]]") WebElement opt_LanguageStrings;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Message Templates\"]]") WebElement opt_MessageTemplates;
 	
-
+	//Copy
+	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]") WebElement win_Copy_To_Clipboard_Title;
+	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]/h2") WebElement copy_To_Clipboard_Title;
+	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]//div") WebElement txt_Copied_To_Clipboard;
 	
 }

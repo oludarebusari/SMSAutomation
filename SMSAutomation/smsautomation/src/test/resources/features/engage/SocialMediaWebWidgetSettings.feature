@@ -104,7 +104,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks on Choose a Theme button
     Then the Preview section color should change to dark gray
 
-  @SMSM-137-Verify-that-user-is-able-to-copy-embed-code-successfully @RegressionTest @OnlyMe
+  @SMSM-137-Verify-that-user-is-able-to-copy-embed-code-successfully @RegressionTest
   Scenario: Verify that user is able to copy embed code successfully
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
