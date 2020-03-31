@@ -27,14 +27,26 @@ Feature: [SMSM-128] View all analytics data for offers, Message, Tablets, reward
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page
-    And User clicks Business tabs at the left side
-    Then the Businesses page is opened
 
-  @SMSM-139-Verify-that-user-is-able-to-check-the-Actions-dropdown-menu-copy-and-export-Businesses-to-csv @RegressionTest @OnlyMe
+  @SMSM-139-Verify-that-user-is-able-to-check-the-Actions-dropdown-menu-copy-and-export-Businesses-to-csv @RegressionTest
   Scenario: Verify that User is able to check the Actions dropdown menu, copy and export Businesses to CSV
+    When User clicks Business tabs at the left side
+    Then the Businesses page is opened
     And User verifies that all the records have LOG IN button
     And User verifies the content of the Action dropdown button
     When user clicks the copy button
     Then user confirms data rows are copied
     When User clicks the CSV tab
     Then User confirms that the CSV file for Business is exported to the local machine
+
+  @SMSM-139-Verify-that-user-is-able-to-open-Analytics-page-of-the-selected-merchant @RegressionTest @OnlyMe
+  Scenario: Verify that User is able to open Analytics Page of the selected merchant
+    When User clicks the Analytics tab option
+    Then the User is redirected to the Analytics page
+    And User verifies the Page Content sections
+    
+    
+    
+    
+    
+    

@@ -15,26 +15,10 @@ public class BroadCastSubMenu extends BasePage {
 
 	// Menu Elements 
 	
+	public @FindBy(xpath = "//h4[normalize-space()=\"Broadcasts\"]") WebElement menu_Title;
 	public @FindBy(xpath = "//a[text()=\"Create Broadcast\"]") WebElement menu_CreateBroadcast;
 	public @FindBy(xpath = "//a[text()=\"Manage Broadcasts\"]") WebElement menu_ManageBroadcasts;
-	public @FindBy(xpath = "//a[text()=\"Single Campaigns\"]") WebElement menu_BroadcastHistory;
+	public @FindBy(xpath = "//a[text()=\"Broadcast History\"]") WebElement menu_BroadcastHistory;
 
-	
-	// Menu Methods
-	
-	public CampaignsSubMenu clickCreateBroadcast() throws Exception {
-		waitAndClickElement(menu_CreateBroadcast);
-		return new CampaignsSubMenu();
-	}
-
-	public CampaignsSubMenu clickManageBroadcasts() throws Exception {
-		waitAndClickElement(menu_ManageBroadcasts);
-		return new CampaignsSubMenu();
-	}
-
-	public CampaignsSubMenu clickBroadcastHistory() throws Exception {
-		waitAndClickElement(menu_BroadcastHistory);
-		return new CampaignsSubMenu();
-	}
 
 }

@@ -7,9 +7,11 @@ import org.testng.Assert;
 
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
-
+import io.cucumber.java.en.When;
 import pageObjects.BasePage;
+import pageObjects.engage.AnalyticsPage;
 import pageObjects.license.AdvertisersPage;
+import pageObjects.license.LicAdminPage;
 
 public class AnalyticsDataInMerchantSteps extends BasePage {
 
@@ -18,7 +20,10 @@ public class AnalyticsDataInMerchantSteps extends BasePage {
 	}
 
 	AdvertisersPage advertisersPage = PageFactory.initElements(driver, AdvertisersPage.class);
+	AnalyticsPage analyticsPage = PageFactory.initElements(driver, AnalyticsPage.class);
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
+	LicAdminPage licAdminPage = PageFactory.initElements(driver, LicAdminPage.class);
+	
 	
 	String downloadpath =  System.getProperty("user.home") + "//Downloads//";
 	String fileName = "report_lonestarloyalty_com_businesses";
@@ -54,7 +59,33 @@ public class AnalyticsDataInMerchantSteps extends BasePage {
 	}
 
 
+//	 @SMSM-139-Verify-that-user-is-able-to-open-Analytics-page-of-the-selected-merchant
+	@When("User clicks the Analytics tab option")
+	public void user_clicks_the_Analytics_tab_option() throws Exception {
+		licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
+		licAdminPage.waitForBusinessesDialogToDisappear();
+		licAdminPage.waitAndClickElement(licAdminPage.menu_Analytics);
+	}
 
+	@Then("the User is redirected to the Analytics page")
+	public void the_User_is_redirected_to_the_Analytics_page() throws Exception {
+	  Assert.assertEquals("Analytics",  analyticsPage.getElementText(analyticsPage.pag_Title));
+	}
+
+	@Then("User verifies the Page Content sections")
+	public void user_verifies_the_Page_Content_sections() {
+		Assert.assertTrue(analyticsPage.lov_Advertiser.isDisplayed());
+		Assert.assertTrue(analyticsPage.lov_Campaigns.isDisplayed());
+		Assert.assertTrue(analyticsPage.lov_Location.isDisplayed());
+		Assert.assertTrue(analyticsPage.printButton.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_Offers.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_Subscribers.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_Messages.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_Tablet.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_RepeatVisitors.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_Rewards.isDisplayed());
+		Assert.assertTrue(analyticsPage.panel_RewardsOfferstable.isDisplayed());
+	}
 
 
 }

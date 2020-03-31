@@ -98,7 +98,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     Then the number is deleted from the whitelist table
     And User click the toggle on button 
 
-  @SMSM-138-Blacklist @RegressionTest @OnlyMe
+  @SMSM-138-Blacklist @RegressionTest 
   Scenario: Verify Blacklist option
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
