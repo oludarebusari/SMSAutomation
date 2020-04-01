@@ -33,7 +33,6 @@ public class AnalyticsDataInMerchantSteps extends BasePage {
 //	 @SMSM-139-Verify-that-user-is-able-to-check-the-Actions-dropdown-menu-copy-and-export-Businesses-to-csv
 	@Then("User verifies that all the records have LOG IN button")
 	public void user_verifies_that_all_the_records_have_LOG_IN_button() throws Exception {
-		System.out.println(advertisersPage.getElementText(advertisersPage.Advertisers_Info).substring(2, 4));
 		Assert.assertEquals(Integer.parseInt(advertisersPage.getElementText(advertisersPage.Advertisers_Info).substring(2, 4)), advertisersPage.btn_LOGIN().size());
 	}
 
@@ -48,7 +47,6 @@ public class AnalyticsDataInMerchantSteps extends BasePage {
 	
 	@Then("user confirms data rows are copied")
 	public void user_confirms_data_rows_are_copied() throws Exception {
-		System.out.println(commonElementLocator.getElementText(commonElementLocator.txt_Copied_To_Clipboard));
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.txt_Copied_To_Clipboard)
 				.contentEquals("Copied " + advertisersPage.getElementText(advertisersPage.Advertisers_Info).substring(8, 10) + " rows to clipboard"));
 	}

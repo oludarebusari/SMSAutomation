@@ -39,7 +39,7 @@ Feature: [SMSM-128] View all analytics data for offers, Message, Tablets, reward
     When User clicks the CSV tab
     Then User confirms that the CSV file for Business is exported to the local machine
 
-  @SMSM-139-Verify-that-user-is-able-to-open-Analytics-page-of-the-selected-merchant @RegressionTest @OnlyMe
+  @SMSM-139-Verify-that-user-is-able-to-open-Analytics-page-of-the-selected-merchant @RegressionTest
   Scenario: Verify that User is able to open Analytics Page of the selected merchant
     When User clicks the Analytics tab option
     Then the User is redirected to the Analytics page

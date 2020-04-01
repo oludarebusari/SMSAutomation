@@ -38,7 +38,7 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     Then the Broadcast menu is opened
     And User verifies the available option on the KHS of the page
 
-  @SMSM-125-Verify-that-user-is-able-to-see-all-existing-broadcast-messages-(send-or-scheduled)-according-to-Date-Selected-in-Broadcast-History @RegressionTest @OnlyMe
+  @SMSM-125-Verify-that-user-is-able-to-see-all-existing-broadcast-messages-(send-or-scheduled)-according-to-Date-Selected-in-Broadcast-History @RegressionTest
   Scenario: Verify that User is able to see all existing broadcast messages (send or scheduled) according to Date Selected in BroadCast History
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
@@ -48,8 +48,39 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     Then a list of Date options is displayed and verified by the user
     When User clicks on Date and Selects All Data and clicks apply button
     Then all existing broadcast messages were displayed
+
+  @SMSM-125-Verify-that-user-is-able-to-sort-and-move-across-pages-for-broadcast-History-table @RegressionTest
+  Scenario: Verify that User is able to Sort and move across pages for BroadCast History table
+    When User clicks the broadcast option tab
+    Then the Broadcast menu is opened
+    When User clicks on Broadcast History option
+    Then the User is redirected to the Broadcast History page
+    And User verifies the pagination options at the bottom of the page
+    And User verifies that both Copy and CSV buttons are present
+    And User verifies the Page Count options
+    And User verifies the records can be sorted through the column heading
+
+  @SMSM-125-Verify-that-user-is-able-to-Copy-and-Export-to-CSV-the-List-of-broadcast-messages @RegressionTest
+  Scenario: Verify that User is able to Copy and Export to CSV the List of broadcast messages
+    When User clicks the broadcast option tab
+    Then the Broadcast menu is opened
+    When User clicks on Broadcast History option
+    Then the User is redirected to the Broadcast History page
+    When user clicks the copy button
+    Then user confirms data rows on the broadcast page are copied
+    When User clicks the CSV tab
+    Then User confirms that the CSV file for Broadcast is exported to the local machine
+
+  @SMSM-125-Verify-that-user-is-able-to-view-details-for-the-broadcasts-message @RegressionTest @OnlyMe
+  Scenario: Verify that User is able to view details for the broadcasts message
+  	When User clicks the broadcast option tab
+    Then the Broadcast menu is opened
+    When User clicks on Broadcast History option
+    Then the User is redirected to the Broadcast History page
+    And User verifies that for every record, there is  Details under Action column
+    And User verifies the list of actions for a record
+    When User clicks the Details button for a record
+    Then the Broadcast Analytics window opens and shows the details of the selected record
     
     
-    
-    
-    
+
