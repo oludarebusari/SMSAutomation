@@ -71,9 +71,9 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks the CSV tab
     Then User confirms that the CSV file for Broadcast is exported to the local machine
 
-  @SMSM-125-Verify-that-user-is-able-to-view-details-for-the-broadcasts-message @RegressionTest @OnlyMe
+  @SMSM-125-Verify-that-user-is-able-to-view-details-for-the-broadcasts-message @RegressionTest
   Scenario: Verify that User is able to view details for the broadcasts message
-  	When User clicks the broadcast option tab
+    When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     When User clicks on Broadcast History option
     Then the User is redirected to the Broadcast History page
@@ -81,6 +81,33 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     And User verifies the list of actions for a record
     When User clicks the Details button for a record
     Then the Broadcast Analytics window opens and shows the details of the selected record
-    
-    
 
+  @SMSM-125-Verify-that-user-is-able-to-Resend-broadcast-message @RegressionTest @OnlyMe
+  Scenario: Verify that User is able to Resend broadcast message
+    When User clicks the broadcast option tab
+    Then the Broadcast menu is opened
+    When User clicks on Broadcast History option
+    Then the User is redirected to the Broadcast History page
+    When User clicks on the Resend button under Action dropdown button
+    Then User should be redirected to Create broadcast page
+    And User enters all the required data
+    When User clicks on Send broadcast
+    Then the Preview window is opened
+    When User clicks Send Broadcast on the Preview window
+    Then Broadcast Sent message is displayed.
+
+  @SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message @RegressionTest @OnlyMe
+  Scenario: Verify that User is able to Reschedule broadcast message
+    When User clicks the broadcast option tab
+    Then the Broadcast menu is opened
+    When User clicks on Broadcast History option
+    Then the User is redirected to the Broadcast History page
+    When User clicks on the Resend button under Action dropdown button
+    Then User should be redirected to Create broadcast page
+    And User enters all the required data with Schedule incliuded
+    When User clicks on Schedule broadcast
+    Then the Preview window is opened
+    When User clicks Schedule Broadcast on the Preview window
+    Then Broadcast Scheduled message is displayed.
+    
+    

@@ -6,7 +6,10 @@ import org.testng.Assert;
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageObjects.engage.BroadcastConfirmationPage;
 import pageObjects.engage.BroadcastHistoryPage;
+import pageObjects.engage.CreateBroadcastPage;
+import pageObjects.engage.modal.BroadcastPreviewModal;
 import pageObjects.license.menu.BroadCastSubMenu;
 import pageObjects.license.menu.MerchantMenu;
 import pageObjects.license.modal.BroadcastAnalyticsModal;
@@ -14,13 +17,15 @@ import utils.DriverFactory;
 
 public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 
-	
 	BroadcastAnalyticsModal broadcastAnalyticsModal = PageFactory.initElements(driver, BroadcastAnalyticsModal.class);
+	BroadcastConfirmationPage broadcastConfirmationPage = PageFactory.initElements(driver,
+			BroadcastConfirmationPage.class);
 	BroadcastHistoryPage broadcastHistoryPage = PageFactory.initElements(driver, BroadcastHistoryPage.class);
+	BroadcastPreviewModal broadcastPreviewModal = PageFactory.initElements(driver, BroadcastPreviewModal.class);
 	BroadCastSubMenu broadCastSubMenu = PageFactory.initElements(driver, BroadCastSubMenu.class);
-	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
-	
+	CreateBroadcastPage createBroadcastPage = PageFactory.initElements(driver, CreateBroadcastPage.class);
+	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 
 	String downloadpath = System.getProperty("user.home") + "//Downloads//";
 	String fileName = "Engage Admin Dashboard.csv";
@@ -149,6 +154,79 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 
 	@Then("the Broadcast Analytics window opens and shows the details of the selected record")
 	public void the_Broadcast_Analytics_window_opens_and_shows_the_details_of_the_selected_record() throws Exception {
-		Assert.assertEquals("Broadcast Analytics", broadcastAnalyticsModal.getElementText(broadcastAnalyticsModal.mod_Title));
+		Assert.assertEquals("Broadcast Analytics",
+				broadcastAnalyticsModal.getElementText(broadcastAnalyticsModal.mod_Title));
+	}
+
+//	@SMSM-125-Verify-that-user-is-able-to-Resend-broadcast-massage
+	@When("User clicks on the Resend button under Action dropdown button")
+	public void user_clicks_on_the_Resend_button_under_Action_dropdown_button() throws Exception {
+		broadcastHistoryPage
+				.waitAndClickElement(broadcastHistoryPage.btn_ActionDDownByCampaignName("\"Test 3 (Enabled)\""));
+		broadcastHistoryPage
+				.waitAndClickElement(broadcastHistoryPage.actionDDownOption("\"Test 3 (Enabled)\"", "Resend"));
+	}
+
+	@Then("User should be redirected to Create broadcast page")
+	public void user_should_be_redirected_to_Create_broadcast_page() throws Exception {
+		Assert.assertEquals("Create Broadcast", broadcastHistoryPage.getElementText(broadcastHistoryPage.pag_Title));
+	}
+
+	@Then("User enters all the required data")
+	public void user_enters_all_the_required_data() throws Exception {
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
+		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
+		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "This is for automation testing");
+	}
+
+	@When("User clicks on Send broadcast")
+	public void user_clicks_on_Send_broadcast() throws Exception {
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.btn_SendBroadcast);
+	}
+
+	@Then("the Preview window is opened")
+	public void the_Preview_window_is_opened() throws Exception {
+		Assert.assertEquals("Broadcast Preview", broadcastPreviewModal.getElementText(broadcastPreviewModal.mod_Title));
+	}
+
+	@When("User clicks Send Broadcast on the Preview window")
+	public void user_clicks_Send_Broadcast_on_the_Preview_window() throws InterruptedException {
+		broadcastPreviewModal.waitAndClickElement(broadcastPreviewModal.btn_SendBroadcast);
+	}
+
+	@Then("Broadcast Sent message is displayed.")
+	public void broadcast_Sent_message_is_displayed() throws Exception {
+		Assert.assertEquals("Broadcast Sent!",
+				broadcastConfirmationPage.getElementText(broadcastConfirmationPage.lbl_ConfirmationMessage));
+	}
+
+//	@SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message
+	@Then("User enters all the required data with Schedule incliuded")
+	public void user_enters_all_the_required_data_with_Schedule_incliuded() throws Exception {
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Schedule);
+		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
+		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "This is for automation testing");
+	}
+		
+	@When("User clicks on Schedule broadcast")
+	public void user_clicks_on_Schedule_broadcast() throws Exception {
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.btn_ScheduleBroadcast);
+	}
+	
+	@When("User clicks Schedule Broadcast on the Preview window")
+	public void user_clicks_Schedule_Broadcast_on_the_Preview_window() throws Exception {
+		broadcastPreviewModal.waitAndClickElement(broadcastPreviewModal.btn_ScheduleBroadcast);
+		
+	}
+
+	@Then("Broadcast Scheduled message is displayed.")
+	public void broadcast_Scheduled_message_is_displayed() throws Exception {
+		Assert.assertEquals("Broadcast Scheduled!",
+				broadcastConfirmationPage.getElementText(broadcastConfirmationPage.lbl_ConfirmationMessage));
 	}
 }

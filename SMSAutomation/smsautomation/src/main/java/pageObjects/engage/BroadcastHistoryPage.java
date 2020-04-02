@@ -27,13 +27,11 @@ public class BroadcastHistoryPage extends BasePage {
 	public @FindBy(xpath = "//button[text()=\"Apply\"]") WebElement btn_Apply;
 	public @FindBy(xpath = "//button[text()=\"Cancel\"]") WebElement btn_Cancel;
 	public @FindBy(xpath = "//div[@id=\"broadcast-table_info\"]") WebElement dataTableInfo;
-
 	public @FindBy(xpath = "//div[contains(@class, \"dataTables_paginate\")]//ul") WebElement paginationOptions;
 	public @FindBy(xpath = "//div[contains(@class, \"btn-group-sm\")]//span[text()=\"Copy\"]") WebElement btn_Copy;
 	public @FindBy(xpath = "//div[contains(@class, \"btn-group-sm\")]//span[text()=\"CSV\"]") WebElement btn_CSV;
 	public @FindBy(xpath = "//select[contains(@class, \"form-control\")]") WebElement pageCountDDown;
 	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement broadcast_Info;
-
 	public WebElement pageCountOptions(String option) {
 		return pageCountDDown.findElement(By.xpath("//option[text()=\'" + option + "']"));
 	}
@@ -42,7 +40,6 @@ public class BroadcastHistoryPage extends BasePage {
 	public @FindBy(xpath = "//tr[1]//td[contains(@class, \"no-export\")]") WebElement txt_FirstMessage;
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]//div") WebElement copyToClipboard;
 	public @FindBy(xpath = "//tbody") WebElement row_Parent_Element;
-
 	public WebElement selectRecordByCampaignName(String campaignName) {
 		return row_Parent_Element.findElement(By.xpath("//tr//td[text()=" + campaignName + "]"));
 	}
