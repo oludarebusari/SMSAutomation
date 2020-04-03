@@ -162,10 +162,12 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	@Then("User clicks Business tabs at the left side")
 	public void user_clicks_Business_tabs_at_the_left_side() throws Exception {
 
-		if (reader.getConfigValue("DriverConfig", "environment").equals("localHub")) {
-			licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
-			licAdminPage.waitForBusinessesDialogToDisappear();
-		}
+		/*
+		 * if (reader.getConfigValue("DriverConfig", "environment").equals("localHub"))
+		 * {
+		 * licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
+		 * licAdminPage.waitForBusinessesDialogToDisappear(); }
+		 */
 
 		licAdminPage.waitAndClickElement(licAdminPage.menu_Businesses);
 	}

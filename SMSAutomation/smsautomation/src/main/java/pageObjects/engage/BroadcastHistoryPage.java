@@ -18,6 +18,7 @@ public class BroadcastHistoryPage extends BasePage {
 	// Page Elements
 	public @FindBy(xpath = "//div[contains(@class, \"page-heading\") and ./h1]") WebElement pag_Title;
 	public @FindBy(xpath = "//div[@id=\"report-range\"]") WebElement lov_DatesDDown;
+	public @FindBy(xpath = "//input[contains(@class, \"table-search\")]") WebElement txtF_Search;
 	public @FindBy(xpath = "//ul") WebElement date_Element;
 
 	public WebElement dateOption(String option) {
@@ -31,7 +32,7 @@ public class BroadcastHistoryPage extends BasePage {
 	public @FindBy(xpath = "//div[contains(@class, \"btn-group-sm\")]//span[text()=\"Copy\"]") WebElement btn_Copy;
 	public @FindBy(xpath = "//div[contains(@class, \"btn-group-sm\")]//span[text()=\"CSV\"]") WebElement btn_CSV;
 	public @FindBy(xpath = "//select[contains(@class, \"form-control\")]") WebElement pageCountDDown;
-	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement broadcast_Info;
+	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement broadcast__Table_Info;
 	public WebElement pageCountOptions(String option) {
 		return pageCountDDown.findElement(By.xpath("//option[text()=\'" + option + "']"));
 	}
@@ -58,10 +59,15 @@ public class BroadcastHistoryPage extends BasePage {
 		return row_Parent_Element
 				.findElement(By.xpath("//tr[td[text()=" + campaignName + "]]//a[text()=\'" + option + "']"));
 	}
+	
+	public WebElement getAnyColumnValueForFirstRow(String value) {
+		return row_Parent_Element.findElement(By.xpath("//tr[1]//td[text()=" + value + "]"));
+	}
 
 	public List<WebElement> btn_DetailsSize() {
 		return row_Parent_Element
 				.findElements(By.xpath("//div[contains(@class, \"table-menu\")]//a[text()=\"Details\"]"));
 	}
 
+	
 }

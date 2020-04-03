@@ -96,7 +96,7 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks Send Broadcast on the Preview window
     Then Broadcast Sent message is displayed.
 
-  @SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message @RegressionTest @OnlyMe
+  @SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message @RegressionTest 
   Scenario: Verify that User is able to Reschedule broadcast message
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
@@ -109,5 +109,20 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     Then the Preview window is opened
     When User clicks Schedule Broadcast on the Preview window
     Then Broadcast Scheduled message is displayed.
+
+  @SMSM-125-Verify-that-user-is-able-to-Expire-Offer @RegressionTest
+  Scenario: Verify that User is able to Expire Offer
+    When User clicks the broadcast option tab
+    Then the Broadcast menu is opened
+    When User clicks on Broadcast History option
+    Then the User is redirected to the Broadcast History page
+    When User enters a text onto the Search text field
+    Then user results are displayed based on the search criteria
+    When User selects a broadcast message and clicks Expire Offer under Actions menu
+    Then User confirms that the broadcast is expired
+    
+    
+    
+    
     
     

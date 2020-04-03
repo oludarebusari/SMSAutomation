@@ -135,7 +135,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 			throws Exception, InterruptedException {
 		Assert.assertEquals(
 				Integer.parseInt(
-						broadcastHistoryPage.getElementText(broadcastHistoryPage.broadcast_Info).substring(2, 4)),
+						broadcastHistoryPage.getElementText(broadcastHistoryPage.broadcast__Table_Info).substring(2, 4)),
 				broadcastHistoryPage.btn_DetailsSize().size());
 	}
 
@@ -161,8 +161,8 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 //	@SMSM-125-Verify-that-user-is-able-to-Resend-broadcast-massage
 	@When("User clicks on the Resend button under Action dropdown button")
 	public void user_clicks_on_the_Resend_button_under_Action_dropdown_button() throws Exception {
-		broadcastHistoryPage
-				.waitAndClickElement(broadcastHistoryPage.btn_ActionDDownByCampaignName("\"Test 3 (Enabled)\""));
+	    broadcastHistoryPage.sendKeysToWebElement(broadcastHistoryPage.txtF_Search, "TestMe");
+		broadcastHistoryPage.waitAndClickElement(broadcastHistoryPage.btn_ActionDDownByCampaignName("\"Test 3 (Enabled)\""));
 		broadcastHistoryPage
 				.waitAndClickElement(broadcastHistoryPage.actionDDownOption("\"Test 3 (Enabled)\"", "Resend"));
 	}
@@ -176,9 +176,11 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 	public void user_enters_all_the_required_data() throws Exception {
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
-		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_LimitedTimeOffer);
+//		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
-		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "This is for automation testing");
+		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "This is for AutoTest");
+		
 	}
 
 	@When("User clicks on Send broadcast")
@@ -208,9 +210,10 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Schedule);
-		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
+//		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
-		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "This is for automation testing");
+		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "Aautomation testing");
+		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_LimitedTimeOffer);
 	}
 		
 	@When("User clicks on Schedule broadcast")
@@ -229,4 +232,28 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 		Assert.assertEquals("Broadcast Scheduled!",
 				broadcastConfirmationPage.getElementText(broadcastConfirmationPage.lbl_ConfirmationMessage));
 	}
+	
+//	 @SMSM-125-Verify-that-user-is-able-to-Expire-Offer
+	@When("User enters a text onto the Search text field")
+	public void user_enters_a_text_onto_the_Search_text_field() throws Exception {
+	   broadcastHistoryPage.sendKeysToWebElement(broadcastHistoryPage.txtF_Search, "TestMe");
+	}
+
+	@Then("user results are displayed based on the search criteria")
+	public void user_results_are_displayed_based_on_the_search_criteria() throws NumberFormatException, InterruptedException {
+	   Assert.assertTrue(Integer.parseInt(broadcastHistoryPage.getElementText(broadcastHistoryPage.broadcast__Table_Info).substring(7, 9).trim()) > 0 );
+	}
+
+	@When("User selects a broadcast message and clicks Expire Offer under Actions menu")
+	public void user_selects_a_broadcast_message_and_clicks_Expire_Offer_under_Actions_menu() throws Exception {
+	   broadcastHistoryPage.waitAndClickElement(broadcastHistoryPage.btn_ActionDDownByCampaignName("\"Test 3 (Enabled)\""));
+	   broadcastHistoryPage.waitAndClickElement(broadcastHistoryPage.actionDDownOption("\"Test 3 (Enabled)\"", "Expire Offer"));
+	}
+
+	@Then("User confirms that the broadcast is expired")
+	public void user_confirms_that_the_broadcast_is_expired() throws Exception {
+		Thread.sleep(1000);
+		Assert.assertTrue(broadcastHistoryPage.getAnyColumnValueForFirstRow("\"Manually Expired\"").isDisplayed());
+	}
+
 }
