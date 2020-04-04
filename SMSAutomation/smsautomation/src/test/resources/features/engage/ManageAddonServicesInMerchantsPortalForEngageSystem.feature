@@ -8,14 +8,16 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User clicks on the login button
     Then User should be taken to Engage SMS home page
 
-  @SMSM-131-Check-Manage-Page-Content, @RegressionTest
+  @SMSM-131-Check-Manage-Resellers-Page-Content, @RegressionTest 
   Scenario: Verify that User is able to check Manage Resellers page content
     And User checks the page content Title, list of Resellers, search and Status
     And User confirms the possibility to Copy to clipboard and export to csv
     When User clicks the Manage Resellers menubar option
     Then user is redirected to the manage site page
+    And User verifies the columns of the table of columns
+    And User verifiles the license logins are enabled
 
-  @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest
+  @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest  
   Scenario: Verify that User is able to review Businesses Page content
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -26,9 +28,8 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User confirms the Table Grid elements
     And User confirms the Table columns
     
-
-  @SMSM-131-Opening-Subscribers-Page, @RegressionTest
-  Scenario: Opening Subscribers Page
+  @SMSM-131-Opening-Subscribers-Page, @RegressionTest 
+  Scenario: Opening Subscribers Page 
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page

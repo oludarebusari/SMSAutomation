@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import pageObjects.engage.BroadcastConfirmationPage;
 import pageObjects.engage.BroadcastHistoryPage;
 import pageObjects.engage.CreateBroadcastPage;
+import pageObjects.engage.ManageBroadcastsPage;
 import pageObjects.engage.modal.BroadcastPreviewModal;
 import pageObjects.license.menu.BroadCastSubMenu;
 import pageObjects.license.menu.MerchantMenu;
@@ -47,7 +48,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 		Assert.assertTrue(broadCastSubMenu.menu_ManageBroadcasts.isDisplayed());
 		Assert.assertTrue(broadCastSubMenu.menu_BroadcastHistory.isDisplayed());
 	}
-
+	
 //	@SMSM-125-Verify-that-user-is-able-to-see-all-existing-broadcast-messages-(send-or-scheduled)-according-to-Date-Selected-in-Broadcast-History
 	@When("User clicks on Broadcast History option")
 	public void user_clicks_on_Broadcast_History_option() throws Exception {
@@ -84,7 +85,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 	@Then("all existing broadcast messages were displayed")
 	public void all_existing_broadcast_messages_were_displayed() throws Exception, Exception {
 		Assert.assertTrue(Integer.parseInt(
-				broadcastHistoryPage.getElementText(broadcastHistoryPage.dataTableInfo).substring(8, 10)) > 0);
+				commonElementLocator.getElementText(commonElementLocator.tableRecordsCount).substring(8, 10)) > 0);
 	}
 
 //	 @SMSM-125-Verify-that-user-is-able-to-sort-and-move-across-pages-for-broadcast-History-table
@@ -110,7 +111,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 	@Then("User verifies the records can be sorted through the column heading")
 	public void user_verifies_the_records_can_be_sorted_through_the_column_heading() throws Exception {
 		broadcastHistoryPage.waitAndClickElement(broadcastHistoryPage.col_Message);
-		Assert.assertTrue(broadcastHistoryPage.getElementText(broadcastHistoryPage.txt_FirstMessage).startsWith("a"));
+		Assert.assertTrue(broadcastHistoryPage.getElementText(broadcastHistoryPage.txt_FirstMessage).startsWith("a") || broadcastHistoryPage.getElementText(broadcastHistoryPage.txt_FirstMessage).startsWith("A"));
 		broadcastHistoryPage.waitAndClickElement(broadcastHistoryPage.col_Message);
 		Assert.assertTrue(broadcastHistoryPage.getElementText(broadcastHistoryPage.txt_FirstMessage).startsWith("T"));
 	}
@@ -212,7 +213,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Schedule);
 //		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
-		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "Aautomation testing");
+		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "Automation testing");
 		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_LimitedTimeOffer);
 	}
 		
@@ -252,7 +253,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 
 	@Then("User confirms that the broadcast is expired")
 	public void user_confirms_that_the_broadcast_is_expired() throws Exception {
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		Assert.assertTrue(broadcastHistoryPage.getAnyColumnValueForFirstRow("\"Manually Expired\"").isDisplayed());
 	}
 

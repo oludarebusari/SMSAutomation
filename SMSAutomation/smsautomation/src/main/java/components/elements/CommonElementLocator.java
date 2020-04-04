@@ -68,6 +68,7 @@ public class CommonElementLocator extends BasePage {
 	public WebElement recordCellValue(String row, String col) { 
 	   return parent_recordCell.findElement(By.xpath("//tr["+ row + "]/td["+ col + "]"));
 	}
+	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement tableRecordsCount;
 	
 	//Help
 	public @FindBy(xpath = "//h3[@class=\"popover-title\"]") WebElement mod_Help_Title;

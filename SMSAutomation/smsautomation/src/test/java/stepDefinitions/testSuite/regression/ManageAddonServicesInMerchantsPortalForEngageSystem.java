@@ -1,5 +1,8 @@
 package stepDefinitions.testSuite.regression;
 
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -32,6 +35,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	SubscribersPage subscribersPage = PageFactory.initElements(driver, SubscribersPage.class);
 	SubscriberViewPage subscriberViewPage = PageFactory.initElements(driver, SubscriberViewPage.class);
 	SendMessageModal sendMessageModal = PageFactory.initElements(driver, SendMessageModal.class);
+	
+	public List<WebElement> licenseLogin = driver.findElements(By.xpath(manageSitesPage.licenseLoginLocator));
 
 	// @SMSM-131-Check-Manage-Page-Content, @RegressionTest
 	@Then("User checks the page content Title, list of Resellers, search and Status")
@@ -55,8 +60,28 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertTrue(manageSitesPage.btn_Copy.isDisplayed());
 		Assert.assertTrue(manageSitesPage.btn_CSV.isDisplayed());
 	}
+	
+	@Then("User verifies the columns of the table of columns")
+	public void user_verifies_the_columns_of_the_table_of_columns() {
+	   Assert.assertTrue(manageSitesPage.colByName("Reseller").isDisplayed());
+	   Assert.assertTrue(manageSitesPage.colByName("Login").isDisplayed());
+	   Assert.assertTrue(manageSitesPage.colByName("Status").isDisplayed());
+	   Assert.assertTrue(manageSitesPage.colByName("Reseller ID").isDisplayed());
+	   Assert.assertTrue(manageSitesPage.colByName("Timezone").isDisplayed());
+	   Assert.assertTrue(manageSitesPage.colByName("Shortcode").isDisplayed());
+	   Assert.assertTrue(manageSitesPage.colByName("CC Process ").isDisplayed());
+	}
+	
+	@Then("User verifiles the license logins are enabled")
+	public void user_verifiles_the_license_logins_are_enabled() throws Exception {
+		for (int i = 0; i < driver.findElements(By.xpath(manageSitesPage.licenseLoginLocator)).size(); i++) {
+			Assert.assertTrue(driver.findElements(By.xpath(manageSitesPage.licenseLoginLocator)).get(i).isEnabled());
+		}
+		System.out.println("Loop over " + driver.findElements(By.xpath(manageSitesPage.licenseLoginLocator)).size() + " is done");
+	}
 
-	// @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest
+
+//  @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest
 	@Then("User verify the contents - Search textbox, New button, Show Terminated button and table grid")
 	public void user_verify_the_contents_Search_textbox_New_button_Show_Terminated_button_and_table_grid() {
 		Assert.assertTrue(advertisersPage.txt_SearchTxtF.isDisplayed());
@@ -105,7 +130,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	@Then("User verifies the list of Subscribers")
 	public void user_verifies_the_list_of_Subscribers() throws NumberFormatException, Exception {
 		Assert.assertTrue(
-				Integer.parseInt(subscribersPage.getElementText(subscribersPage.num_Subscribers).substring(7, 8)) > 0);
+				Integer.parseInt(subscribersPage.getElementText(subscribersPage.num_Subscribers).substring(7, 9).trim()) > 0);
 	}
 
 //	 @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
@@ -138,7 +163,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 				subscribersPage.getElementText(subscribersPage.txt_Notification).replaceAll("[\\n]", ""));
 	}
 
-//	 @SMSM-200-Verify-the-Giftbar-Profile,, @RegressionTest
+//	@SMSM-200-Verify-the-Giftbar-Profile,, @RegressionTest
 	@When("User clicks the Manage Resellers menubar option")
 	public void user_clicks_the_Manage_Resellers_menubar_option() throws Exception {
 		if (reader.getConfigValue("DriverConfig", "environment").equals("remoteHub")) {
