@@ -31,11 +31,28 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     Then the Businesses page is opened
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
-
-  @SMSM-124-User-can-see-all-existing-broadcast-messages @RegressionTest @OnlyMe
-  Scenario: User can see all existing broadcast messages
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     And User verifies the available option on the KHS of the page
     When User clicks on Manage Broadcasts option
     Then User is redirected to the Manage Broadcasts page
+
+  @SMSM-124-User-can-change-number-of-broadcast-messages-per-page @RegressionTest 
+  Scenario: User can change number of broadcast messages per page
+		And User verifies that the pagination count dropdown is available
+		When User clicks the pagination drop down
+		Then the drop down is opened and user verifies the number of records per page
+		When User selects a value from the drop down
+		Then User confirms the value was selected successfully.
+		 
+  @SMSM-124-User-can-search-the-broadcast-message @RegressionTest @OnlyMe
+  Scenario: User can search the broadcast message
+    And User verifies that Search textfield is available on Manage Broadcast page
+    When User enters some search string into the Search text box
+    Then User verifies the search results is displayed based on search string
+    When User enters some invalid search string
+    Then a message indicating no matching records found is displayed
+    
+    
+    
+    

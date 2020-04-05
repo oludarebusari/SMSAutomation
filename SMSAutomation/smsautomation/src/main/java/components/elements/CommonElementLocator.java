@@ -53,6 +53,13 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]") WebElement btn_PaginationNextDisabled;
 	public @FindBy(xpath = "//span[@id=\"pagination-end\"]") WebElement btn_PaginationEnd;
 	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement btn_PaginationTotal;
+	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement lbl_CurrentPageTotal;
+	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement tableRecordsCount;
+	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//select[@name=\"broadcast-table_length\"]") WebElement lov_PaginationTableLength;
+	public WebElement tableLengthOpt(String option) {
+		return lov_PaginationTableLength.findElement(By.xpath("//option[text()=\'" + option + "']"));
+	}
+	public @FindBy(xpath = "(//label)[2][//span[text()=\"/page\"]]") WebElement txt_TableLength;
 	
 	//Record elements
 	public @FindBy(xpath = "//") WebElement parent_Element;
@@ -68,7 +75,6 @@ public class CommonElementLocator extends BasePage {
 	public WebElement recordCellValue(String row, String col) { 
 	   return parent_recordCell.findElement(By.xpath("//tr["+ row + "]/td["+ col + "]"));
 	}
-	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement tableRecordsCount;
 	
 	//Help
 	public @FindBy(xpath = "//h3[@class=\"popover-title\"]") WebElement mod_Help_Title;
