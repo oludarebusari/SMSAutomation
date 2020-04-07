@@ -37,22 +37,55 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks on Manage Broadcasts option
     Then User is redirected to the Manage Broadcasts page
 
-  @SMSM-124-User-can-change-number-of-broadcast-messages-per-page @RegressionTest 
+  @SMSM-124-User-can-change-number-of-broadcast-messages-per-page @RegressionTest
   Scenario: User can change number of broadcast messages per page
-		And User verifies that the pagination count dropdown is available
-		When User clicks the pagination drop down
-		Then the drop down is opened and user verifies the number of records per page
-		When User selects a value from the drop down
-		Then User confirms the value was selected successfully.
-		 
-  @SMSM-124-User-can-search-the-broadcast-message @RegressionTest @OnlyMe
+    And User verifies that the pagination count dropdown is available
+    When User clicks the pagination drop down
+    Then the drop down is opened and user verifies the number of records per page
+    When User selects a value from the drop down
+    Then User confirms the value was selected successfully.
+
+  @SMSM-124-User-can-search-the-broadcast-message @RegressionTest
   Scenario: User can search the broadcast message
     And User verifies that Search textfield is available on Manage Broadcast page
     When User enters some search string into the Search text box
     Then User verifies the search results is displayed based on search string
     When User enters some invalid search string
     Then a message indicating no matching records found is displayed
-    
-    
-    
-    
+
+  @SMSM-124-User-can-export-broadcast-messages-in-csv-file @RegressionTest
+  Scenario: User can export broadcast messages in CSV file
+    And User verifies that CSV button is available on the page
+    When user clicks the CSV button
+    Then the Broadcast messages are exported to a CSV file
+
+  @SMSM-124-User-can-sort-the-broadcast-messages-wrt-respective-column-header @RegressionTest
+  Scenario: User can sort the broadcast messages w.r.t respective column header
+    And User verifies the sort icon along column header
+    When User clicks the sort icon for a column ie Message
+    Then the records are sorted in ascending order by message column
+    When User clicks the sort icon for message column again
+    Then the records sorted in descending order by messages
+
+  @SMSM-124-User-can-edit-existing-broadcast-message @RegressionTest
+  Scenario: User can edit existing broadcast message
+    When User clicks the Edit button corresponding to the broadcast to edit
+    Then User is redirected to the Edit broadcast page
+    And User edits a field from the page displayed
+    And User clicks the Schedule broadcast button
+    And User clicks the Schedule Broadcast button on Preview popup
+    Then the editted message should be broadcasted successfully
+
+  @Revert-changes-to-broadcast @RegressionTest 
+  Scenario: User can edit existing broadcast message
+    When User clicks the Edit button corresponding to the changed broadcast
+    Then User is redirected to the Edit broadcast page
+    And User revert changes made to broadcast
+
+  @SMSM-124-User-can-preview-broadcast-message-before-sending @RegressionTest @OnlyMe
+  Scenario: User can preview broadcast message before sending
+    When User clicks the Edit button corresponding to the broadcast to edit
+    Then User is redirected to the Edit broadcast page
+    And User verifies that Preview Broadcast button
+    When user clicks the Preview Broadcast button
+    Then the Broadcast Preview window is opened

@@ -8,7 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.engage.BroadcastConfirmationPage;
 import pageObjects.engage.BroadcastHistoryPage;
-import pageObjects.engage.CreateBroadcastPage;
+import pageObjects.engage.CreateEditBroadcastPage;
 import pageObjects.engage.ManageBroadcastsPage;
 import pageObjects.engage.modal.BroadcastPreviewModal;
 import pageObjects.license.menu.BroadCastSubMenu;
@@ -25,7 +25,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 	BroadcastPreviewModal broadcastPreviewModal = PageFactory.initElements(driver, BroadcastPreviewModal.class);
 	BroadCastSubMenu broadCastSubMenu = PageFactory.initElements(driver, BroadCastSubMenu.class);
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
-	CreateBroadcastPage createBroadcastPage = PageFactory.initElements(driver, CreateBroadcastPage.class);
+	CreateEditBroadcastPage createEditBroadcastPage = PageFactory.initElements(driver, CreateEditBroadcastPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
 
 	String downloadpath = System.getProperty("user.home") + "//Downloads//";
@@ -175,18 +175,17 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 
 	@Then("User enters all the required data")
 	public void user_enters_all_the_required_data() throws Exception {
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_LimitedTimeOffer);
-//		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
-		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "This is for AutoTest");
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Create_Redeemable_Offer);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Create_Redeemable_Offer);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_LimitedTimeOffer);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Apply_Filters_To_Subscribers);
+		broadcastHistoryPage.sendKeysToWebElement(createEditBroadcastPage.txtF_Message, "This is for AutoTest");
 		
 	}
 
 	@When("User clicks on Send broadcast")
 	public void user_clicks_on_Send_broadcast() throws Exception {
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.btn_SendBroadcast);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.btn_SendBroadcast);
 	}
 
 	@Then("the Preview window is opened")
@@ -208,18 +207,17 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 //	@SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message
 	@Then("User enters all the required data with Schedule incliuded")
 	public void user_enters_all_the_required_data_with_Schedule_incliuded() throws Exception {
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Create_Redeemable_Offer);
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Schedule);
-//		createBroadcastPage.sendKeysToWebElement(createBroadcastPage.txtF_OfferItem, "AutoTest");
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_Apply_Filters_To_Subscribers);
-		broadcastHistoryPage.sendKeysToWebElement(createBroadcastPage.txtF_Message, "Automation testing");
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.toggle_LimitedTimeOffer);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Create_Redeemable_Offer);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Create_Redeemable_Offer);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Schedule);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_Apply_Filters_To_Subscribers);
+		broadcastHistoryPage.sendKeysToWebElement(createEditBroadcastPage.txtF_Message, "Automation testing");
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.toggle_LimitedTimeOffer);
 	}
 		
 	@When("User clicks on Schedule broadcast")
 	public void user_clicks_on_Schedule_broadcast() throws Exception {
-		createBroadcastPage.waitAndClickElement(createBroadcastPage.btn_ScheduleBroadcast);
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.btn_ScheduleBroadcast);
 	}
 	
 	@When("User clicks Schedule Broadcast on the Preview window")
@@ -253,7 +251,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 
 	@Then("User confirms that the broadcast is expired")
 	public void user_confirms_that_the_broadcast_is_expired() throws Exception {
-		Thread.sleep(4000);
+//		Thread.sleep(4000);
 		Assert.assertTrue(broadcastHistoryPage.getAnyColumnValueForFirstRow("\"Manually Expired\"").isDisplayed());
 	}
 

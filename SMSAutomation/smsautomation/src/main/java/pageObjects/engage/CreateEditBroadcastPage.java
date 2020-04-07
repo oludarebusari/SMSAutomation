@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
-public class CreateBroadcastPage extends BasePage {
+public class CreateEditBroadcastPage extends BasePage {
 
-	public CreateBroadcastPage() throws IOException {
+	public CreateEditBroadcastPage() throws IOException {
 		super();
 	}
 

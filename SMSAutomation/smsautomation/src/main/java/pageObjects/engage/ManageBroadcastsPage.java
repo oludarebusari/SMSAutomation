@@ -20,6 +20,22 @@ public class ManageBroadcastsPage extends BasePage {
 	public WebElement rowByMessage(String message) {
 		return tableBody.findElement(By.xpath("//tr[td[text()=" + message + "]]"));
 	}
+	public WebElement EditRecord(String message) {
+//		return tableBody.findElement(By.xpath("//tr[td[text()=" + message + "]]//a[text()=\"Edit\"]"));
+		return tableBody.findElement(By.xpath("//tr[td[contains(@class, \"no-export\") and ./div[contains(text(), " + message + ")]]]//a[text()=\"Edit\"]"));
+	}
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\")]") WebElement btn_CSV;
+	public @FindBy(xpath = "'//a[contains(@class, \"buttons-csv\")]") WebElement btn_Copy;
 	
-	
+	// Column Icon
+	public @FindBy(xpath = "//th[contains(@aria-label, \"Campaign\") and text()=\"Campaign\"]") WebElement col_CampaignIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"Keyword\") and text()=\"Keyword\"]") WebElement col_KeywordIcon;
+	public @FindBy(xpath = "(//th[contains(@aria-label, \"Message\") and text()=\"Message\"])[2]") WebElement col_MessageIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"Type\") and text()=\"Type\"]") WebElement col_TypeIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"Frequency\") and text()=\"Frequency\"]") WebElement col_FrequencyIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"Start Date\") and text()=\"Start Date\"]") WebElement col_StartDateIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"Next Date\") and text()=\"Next Date\"]") WebElement col_NextDateIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"End Date\") and text()=\"End Date\"]") WebElement col_EndDateIcon;
+	public @FindBy(xpath = "//th[contains(@aria-label, \"End Date\") and text()=\"End Date\"]") WebElement col_ActionIcon;
+	public @FindBy(xpath = "//tr[1]//td[contains(@class, \"no-export\")]") WebElement txt_FirstMessage;
 }

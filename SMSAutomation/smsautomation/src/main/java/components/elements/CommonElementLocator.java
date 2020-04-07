@@ -17,6 +17,8 @@ public class CommonElementLocator extends BasePage {
 	// The following elements can be used in multiple sections of this project.
 	public final static String ELEM_PAGE_TITLE =  "//div[contains(@class, \"page-heading\")]";
 	public final static String ELEM_SEARCH_TEXTFIELD = "//input[contains(@class, \"table-search\")]";
+	public String downloadpath = System.getProperty("user.home") + "//Downloads//";
+	public String fileName = "Engage Admin Dashboard.csv";
 	
 	
 	
@@ -42,6 +44,8 @@ public class CommonElementLocator extends BasePage {
 	
 	
 	//Pagination elements
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\")]") WebElement btn_Copy;
+	public @FindBy(xpath = "//a[contains(@class, \"buttons-csv\")]") WebElement btn_CSV;
 	public @FindBy(xpath = "//select[@id=\"pager-per-page\"]") WebElement lov_ShowEntries;
 	public WebElement showEntriesOption(String option) {
 		return lov_ShowEntries.findElement(By.xpath("//option[text()[normalize-space()=\'" + option + "']]"));

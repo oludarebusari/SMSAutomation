@@ -16,7 +16,8 @@ public class MerchantMenu extends BasePage {
 
 	public @FindBy(xpath = "//div[contains(@class, \"side-menu-item\") and ./a[(.)= \" Inbox\"]]") WebElement menu_Inbox;
 	public @FindBy(xpath = "//div[contains(@class, \"side-menu-item\") and text()= \" Campaigns\"]") WebElement menu_Campaigns;
-	public @FindBy(xpath = "//div[@title=\"Broadcasts\"]") WebElement menu_Broadcasts;
+//	public @FindBy(xpath = "//div[@title=\"Broadcasts\"]") WebElement menu_Broadcasts;
+	public @FindBy(xpath = "//div[@title=\"Broadcasts\"]//i[contains(@class, \"fa small fa-caret-right\")]") WebElement menu_Broadcasts;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and ./a[contains(text(), \"Purchase Plans\")]]") WebElement menu_Analytics;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and contains((.),\"Subscribers\")]") WebElement menu_Subscribers;
 	public @FindBy(xpath = "//div[@class=\"side-menu-item\" and contains((.),\"Add-On Services\")]") WebElement menu_Add_On_Services;
