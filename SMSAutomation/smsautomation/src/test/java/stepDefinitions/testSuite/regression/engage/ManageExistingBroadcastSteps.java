@@ -1,12 +1,13 @@
 package stepDefinitions.testSuite.regression.engage;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.engage.BroadcastConfirmationPage;
+import pageObjects.engage.BroadcastHistoryPage;
 import pageObjects.engage.CreateEditBroadcastPage;
 import pageObjects.engage.ManageBroadcastsPage;
 import pageObjects.engage.modal.BroadcastPreviewModal;
@@ -16,11 +17,16 @@ import utils.DriverFactory;
 public class ManageExistingBroadcastSteps extends DriverFactory {
 
 	BroadcastConfirmationPage broadcastConfirmationPage = PageFactory.initElements(driver, BroadcastConfirmationPage.class);
+	BroadcastHistoryPage broadcastHistoryPage = PageFactory.initElements(driver, BroadcastHistoryPage.class);
 	BroadCastSubMenu broadCastSubMenu = PageFactory.initElements(driver, BroadCastSubMenu.class);
 	BroadcastPreviewModal broadcastPreviewModal = PageFactory.initElements(driver, BroadcastPreviewModal.class);
 	CreateEditBroadcastPage createEditBroadcastPage = PageFactory.initElements(driver, CreateEditBroadcastPage.class);
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	ManageBroadcastsPage manageBroadcastsPage = PageFactory.initElements(driver, ManageBroadcastsPage.class);
+	
+	private String deleteConfirmation = "Are you sure you want to cancel and permanently delete this scheduled broadcast?";
+	private int numRecords = 0;
+	
 
 //	 @SMSM-124-User-can-see-all-existing-broadcast-messages 
 	@When("User clicks on Manage Broadcasts option")
@@ -144,7 +150,7 @@ public class ManageExistingBroadcastSteps extends DriverFactory {
 //	 @SMSM-124-User-can-edit-existing-broadcast-message
 	@When("User clicks the Edit button corresponding to the broadcast to edit")
 	public void user_clicks_the_Edit_button_corresponding_to_the_broadcast_to_edit() throws Exception {
-		manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.EditRecord("\"Automation testing\""));
+		manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.editRecord("\"Automation testing\""));
 	}
 
 	@Then("User is redirected to the Edit broadcast page")
@@ -175,7 +181,7 @@ public class ManageExistingBroadcastSteps extends DriverFactory {
 //  #Revert changes to changes to Message
 	@When("User clicks the Edit button corresponding to the changed broadcast")
 	public void user_clicks_the_Edit_button_corresponding_to_the_changed_broadcast() throws Exception {
-		manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.EditRecord("\"Automation testing edited\""));
+		manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.editRecord("\"Automation testing edited\""));
 	}
 	
 	@Then("User revert changes made to broadcast")
@@ -200,7 +206,72 @@ public class ManageExistingBroadcastSteps extends DriverFactory {
 	public void the_Broadcast_Preview_window_is_opened() throws Exception {
 		Assert.assertEquals("Broadcast Preview", broadcastPreviewModal.getElementText(broadcastPreviewModal.mod_Title));
 	}
+	
+//	 @SMSM-124-Verify-valid-alert-is-been-shown-for-missing-record-while-editing-the-broadcast-message
+	@When("User clicks the Edit button corresponding to a broadcast")
+	public void user_clicks_the_Edit_button_corresponding_to_a_broadcast() throws Exception {
+		manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.editRecord("\"Automation testing\""));
+	}
+
+	@When("User removes the current campaign and clicks Schedule Broadcast button")
+	public void user_removes_the_current_campaign_and_clicks_Schedule_Broadcast_button() throws Exception {
+		createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.removeCampaign("\"Test 3 (Enabled)\""));
+	}
+	
+	@When("User clicks the Schedule Broadcast button")
+	public void user_clicks_the_Schedule_Broadcast_button() throws Exception {
+	 createEditBroadcastPage.waitAndClickElement(createEditBroadcastPage.btn_ScheduleBroadcast);
+	}
+	
+	@When("User closes the Broadcast Preview window")
+	public void user_closes_the_Broadcast_Preview_window() throws Exception {
+	  broadcastPreviewModal.waitAndClickElement(broadcastPreviewModal.btn_CloseBroadcastPreview);
+	}
+
+	@Then("User verifies missing record message is displayed")
+	public void user_verifies_missing_record_message_is_displayed() throws Exception {
+	Assert.assertEquals("This field is required.", createEditBroadcastPage.getElementText(createEditBroadcastPage.chooseCampaignsToSendToErrorMsg));
+	}
+	
+//	@SMSM-124-User-can-delete-a-broadcast-message
+	@When("User verifies number of records and clicks on the Action dropdown button for a broadcast")
+	public void user_verifies_number_of_records_and_clicks_on_the_Action_dropdown_button_for_a_broadcast() throws Exception {
+		numRecords = Integer.parseInt(broadcastHistoryPage.getElementText(broadcastHistoryPage.broadcast__Table_Info).substring(7, 9).trim());
+		manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.actionDDown("\"Automation testing\""));
+	}
+
+	@Then("User verifies that Delete option is displayed")
+	public void user_verifies_that_Delete_option_is_displayed() {
+		Assert.assertTrue(manageBroadcastsPage.deleteOption("\"Automation testing\"").isDisplayed());
+	}
+
+	@When("User clicks the Delete option for the broadcast")
+	public void user_clicks_the_Delete_option_for_the_broadcast() throws Exception {
+	  manageBroadcastsPage.waitAndClickElement(manageBroadcastsPage.deleteOption("\"Automation testing\""));
+	}
+
+	@When("an alert window to confirm delete action is opened and User clicks OK")
+	public void an_alert_window_to_confirm_delete_action_is_opened_and_User_clicks_OK() {
+//		Switching to and accept Alert
+		Alert alert = driver.switchTo().alert();
+		Assert.assertTrue(alert.getText().contentEquals(deleteConfirmation));
+		alert.accept();
+	}
+
+	@Then("the broadcast is deleted")
+	public void the_broadcast_is_deleted() throws NumberFormatException, InterruptedException {
+		if (numRecords > 1 || numRecords == 1) {
+			Assert.assertEquals(numRecords-1, Integer.parseInt(broadcastHistoryPage.getElementText(broadcastHistoryPage.broadcast__Table_Info).substring(7, 9).trim()));
+		} else {
+			Assert.assertTrue(manageBroadcastsPage.rowByMessage("\"No matching records found\"").isDisplayed());
+		}
+		
+	}
 
 	
 	
+
+
+
+
 }

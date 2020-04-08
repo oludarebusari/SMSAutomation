@@ -19,10 +19,15 @@ public class CreateEditBroadcastPage extends BasePage {
 
 	// Settings
 	public @FindBy(xpath = "//div[@class=\"panel-body\" and ./h2[text()=\"Settings\"]]//div[contains(@class, \"selectize-input\")]") WebElement chooseCampaignsToSendToDDown;
+	public @FindBy(xpath = "//label[@id=\"lists-selectized-error\"]") WebElement chooseCampaignsToSendToErrorMsg;
 	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement parentBtn;
-
+	
 	public WebElement campaignOption(String option) {
 		return parentBtn.findElement(By.xpath("//strong[text()=" + option + "]"));
+	}
+	
+	public WebElement removeCampaign(String campaignName) {
+		return chooseCampaignsToSendToDDown.findElement(By.xpath("//div[text()=" + campaignName + "]//a[@class=\"remove\"]"));
 	}
 
 	public @FindBy(xpath = "//label[@for=\"option-mms\" and .//span[contains(text(), \"MMS\")]]//div[@data-toggle=\"toggle\"]") WebElement toggle_Send_As_MMS;

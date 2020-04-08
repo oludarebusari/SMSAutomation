@@ -60,7 +60,7 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     And User verifies the Page Count options
     And User verifies the records can be sorted through the column heading
 
-  @SMSM-125-Verify-that-user-is-able-to-Copy-and-Export-to-CSV-the-List-of-broadcast-messages @RegressionTest
+  @SMSM-125-Verify-that-user-is-able-to-Copy-and-Export-to-CSV-the-List-of-broadcast-messages @RegressionTest 
   Scenario: Verify that User is able to Copy and Export to CSV the List of broadcast messages
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened

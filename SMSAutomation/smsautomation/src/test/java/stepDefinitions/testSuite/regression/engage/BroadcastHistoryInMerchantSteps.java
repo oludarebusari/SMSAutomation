@@ -121,7 +121,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 	public void user_confirms_data_rows_on_the_broadcast_page_are_copied() throws Exception {
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.txt_Copied_To_Clipboard)
 				.contentEquals("Copied "
-						+ broadcastHistoryPage.getElementText(broadcastHistoryPage.copyToClipboard).substring(7, 9)
+						+ broadcastHistoryPage.getElementText(broadcastHistoryPage.copyToClipboard).substring(7, 10)
 						+ " rows to clipboard"));
 	}
 
@@ -251,7 +251,7 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 
 	@Then("User confirms that the broadcast is expired")
 	public void user_confirms_that_the_broadcast_is_expired() throws Exception {
-//		Thread.sleep(4000);
+		Thread.sleep(4000);
 		Assert.assertTrue(broadcastHistoryPage.getAnyColumnValueForFirstRow("\"Manually Expired\"").isDisplayed());
 	}
 

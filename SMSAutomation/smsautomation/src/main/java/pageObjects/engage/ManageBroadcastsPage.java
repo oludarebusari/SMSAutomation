@@ -20,10 +20,16 @@ public class ManageBroadcastsPage extends BasePage {
 	public WebElement rowByMessage(String message) {
 		return tableBody.findElement(By.xpath("//tr[td[text()=" + message + "]]"));
 	}
-	public WebElement EditRecord(String message) {
-//		return tableBody.findElement(By.xpath("//tr[td[text()=" + message + "]]//a[text()=\"Edit\"]"));
-		return tableBody.findElement(By.xpath("//tr[td[contains(@class, \"no-export\") and ./div[contains(text(), " + message + ")]]]//a[text()=\"Edit\"]"));
+	public WebElement editRecord(String message) {
+		return tableBody.findElement(By.xpath("//tr[td[contains(@class, \"no-export\")]//div[contains(text(), " + message + ")]]//a[text()=\"Edit\"]"));
 	}
+	public WebElement actionDDown(String message) {
+		return tableBody.findElement(By.xpath("//tr[td[contains(@class, \"no-export\")]//div[contains(text(), " + message + ")]]//button[@data-toggle=\"dropdown\"]"));
+	}
+	public WebElement deleteOption(String message) {
+		return tableBody.findElement(By.xpath("//tr[td[contains(@class, \"no-export\")]//div[contains(text(), " + message + ")]]//a[text()=\"Delete\"]"));
+	}
+	
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\")]") WebElement btn_CSV;
 	public @FindBy(xpath = "'//a[contains(@class, \"buttons-csv\")]") WebElement btn_Copy;
 	

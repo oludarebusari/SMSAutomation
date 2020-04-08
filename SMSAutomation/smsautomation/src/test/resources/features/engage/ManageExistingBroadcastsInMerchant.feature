@@ -76,16 +76,33 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     And User clicks the Schedule Broadcast button on Preview popup
     Then the editted message should be broadcasted successfully
 
-  @Revert-changes-to-broadcast @RegressionTest 
+  @Revert-changes-to-broadcast @RegressionTest
   Scenario: User can edit existing broadcast message
     When User clicks the Edit button corresponding to the changed broadcast
     Then User is redirected to the Edit broadcast page
     And User revert changes made to broadcast
 
-  @SMSM-124-User-can-preview-broadcast-message-before-sending @RegressionTest @OnlyMe
+  @SMSM-124-User-can-preview-broadcast-message-before-sending @RegressionTest
   Scenario: User can preview broadcast message before sending
     When User clicks the Edit button corresponding to the broadcast to edit
     Then User is redirected to the Edit broadcast page
     And User verifies that Preview Broadcast button
     When user clicks the Preview Broadcast button
     Then the Broadcast Preview window is opened
+
+  @SMSM-124-Verify-valid-alert-is-been-shown-for-missing-record-while-editing-the-broadcast-message @RegressionTest @OnlyMe
+  Scenario: Verify valid alert is been shown for missing record while editing the broadcast message
+    When User clicks the Edit button corresponding to a broadcast
+    Then User is redirected to the Edit broadcast page
+    When User removes the current campaign and clicks Schedule Broadcast button
+    And User clicks the Schedule Broadcast button
+    And User closes the Broadcast Preview window
+    Then User verifies missing record message is displayed
+
+  @SMSM-124-User-can-delete-a-broadcast-message @RegressionTest
+  Scenario: User can delete a broadcast message
+    When User verifies number of records and clicks on the Action dropdown button for a broadcast
+    Then User verifies that Delete option is displayed
+    When User clicks the Delete option for the broadcast
+    And an alert window to confirm delete action is opened and User clicks OK
+    Then the broadcast is deleted

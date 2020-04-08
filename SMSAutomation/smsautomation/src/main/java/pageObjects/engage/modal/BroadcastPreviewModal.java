@@ -17,5 +17,6 @@ public class BroadcastPreviewModal extends BasePage {
 	public @FindBy(xpath = "//button[contains(@class, \"half-bottom\") and text()=\"Send Broadcast\"]") WebElement btn_SendBroadcast;
 	public @FindBy(xpath = "//button[contains(@class, \"half-bottom\") and text()=\"Schedule Broadcast\"]") WebElement btn_ScheduleBroadcast;
 	public @FindBy(xpath = "//button[@data-dismiss=\"modal\" and text()[normalize-space()=\"Edit Broadcast\"]]") WebElement mod_EditBroadcast;
+	public @FindBy(xpath = "//div[@class=\"modal-header\" and ./h3[text()=\"Broadcast Preview\"]]//button[@class=\"close\"]") WebElement btn_CloseBroadcastPreview;
 	
 }
