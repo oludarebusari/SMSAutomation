@@ -42,6 +42,9 @@ public class BlackListPage extends BasePage {
 	public WebElement txt_Black_WhiteList_Number(String num) {
 		return par_Whitelist_Number.findElement(By.xpath("//span[text()=\"" + num + "\"]"));
 	}
+	public String blackListElementLocator(String number) {
+		return "//tr[@role=\"row\"]//span[text()=\"" + number + "\"]";
+	}
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]") WebElement win_Copy_To_Clipboard_Title;
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]/h2") WebElement copy_To_Clipboard_Title;
 	
@@ -51,6 +54,5 @@ public class BlackListPage extends BasePage {
 	}
 	
 	public @FindBy(xpath = "//table[@id=\"blacklisted-numbers\"]/thead/tr[@role=\"row\"]/th[@class=\"sorting\"]") WebElement btn_Sort;
-	
 	
 }

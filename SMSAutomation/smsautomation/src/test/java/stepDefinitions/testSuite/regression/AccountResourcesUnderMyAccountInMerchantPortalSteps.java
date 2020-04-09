@@ -252,7 +252,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@Then("the number is deleted from the whitelist table")
 	public void the_number_is_deleted_from_the_whitelist_table() throws Exception {
-		Thread.sleep(500);
+		blackListPage.WaitUntilWebElementIsVisible(blackListPage.txt_No_Data_Message);
 		Assert.assertTrue((blackListPage.txt_No_Data_Message).isDisplayed());
 	}
 	
@@ -267,6 +267,17 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 		Assert.assertTrue(blackListPage.getElementText(blackListPage.tog_Off).contentEquals("Off"));
 	}
 
+	@When("User clicks on the icon under Actions column to delete added number")
+	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() throws Exception {
+		blackListPage.waitAndClickElement(blackListPage.btn_Remove("525-252-5252"));
+	}
+	
+	@Then("user confirms the number is deleted from the Blacklist table")
+	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() throws Exception {
+		blackListPage.waitUntilElementDissapears(blackListPage.txt_Black_WhiteList_Number("525-252-5252"));
+		Assert.assertFalse(blackListPage.isElementVisible(blackListPage.blackListElementLocator("525-252-5252")));
+	}
+	
 	@Then("User clicks the Blacklist New button")
 	public void user_clicks_the_Blacklist_New_button() throws Exception {
 		blackListPage.waitAndClickElement(blackListPage.btn_Blacklist_New);
@@ -324,7 +335,7 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 
 	@When("User clicks on arrow icon on the side of the column heading")
 	public void user_clicks_on_arrow_icon_on_the_side_of_the_column_heading() throws Exception {
-		Thread.sleep(500);
+	   blackListPage.WaitUntilWebElementIsVisible(blackListPage.btn_Sort);
 	   blackListPage.waitAndClickElement(blackListPage.btn_Sort);
 	}
 
@@ -339,19 +350,8 @@ public class AccountResourcesUnderMyAccountInMerchantPortalSteps extends DriverF
 	}
 
 	@Then("the table is filtered as per the search criteria")
-	public void the_table_is_filtered_as_per_the_search_criteria() {
+	public void the_table_is_filtered_as_per_the_search_criteria() throws Exception {
 		Assert.assertTrue(blackListPage.txt_Black_WhiteList_Number("111-152-5252").isDisplayed());
-	}
-
-	@When("User clicks on the icon under Actions column to delete added number")
-	public void user_clicks_on_the_icon_under_Actions_column_to_delete_added_number() throws Exception {
-		blackListPage.sendKeysToWebElement(blackListPage.txt_Blacklist_SearchField, " ");
-		blackListPage.waitAndClickElement(blackListPage.btn_Remove("525-252-5252"));
-	}
-
-	@Then("user confirms the number is deleted from the Blacklist table")
-	public void user_confirms_the_number_is_deleted_from_the_Blacklist_table() throws Exception {
-//		TODO - This will be implemented when the slow response from the server after the delete command is issued is fixed
 		
 	}
 

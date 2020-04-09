@@ -76,7 +76,7 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     When user adds the number to whitelist and cliks Add Number button
     Then the number is added to the whiteklist
     Then user confirms that both Copy and CSV buttons are present
-    When user clicks the copy button
+    When user clicks the copy button 
     Then user confirms row data is copied
     When User clicks the CSV tab
     Then User confirms that the CSV file is exported to the local machine
@@ -103,6 +103,8 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     When User clicks the Blacklist-whitelist option
     Then the Blacklist-Whitelist page is opened
     When User leaves the Private Campaign mode toggle as Off
+    When User clicks on the icon under Actions column to delete added number
+    Then user confirms the number is deleted from the Blacklist table
     Then User clicks the Blacklist New button
     Then the blacklist options appears
     Then the Add to blacklist window is opened
@@ -117,5 +119,4 @@ Feature: View and Edit account resources under My Account in Merchant's Portal
     Then User confirms the number is sorted successfully
     When User enters a number in the Search box
     Then the table is filtered as per the search criteria
-    When User clicks on the icon under Actions column to delete added number
-    Then user confirms the number is deleted from the Blacklist table
+    
