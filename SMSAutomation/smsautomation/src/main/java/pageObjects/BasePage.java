@@ -4,6 +4,9 @@ import java.awt.AWTException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
@@ -29,7 +32,7 @@ import utils.DriverFactory;
 public class BasePage extends DriverFactory {
 	protected WebDriverWait wait;
 	protected JavascriptExecutor jsExecutor;
-	
+
 	// Get the current window handle
 	String parentWinHandle = driver.getWindowHandle();
 
@@ -235,6 +238,7 @@ public class BasePage extends DriverFactory {
 		try {
 			this.wait.until(ExpectedConditions.visibilityOf(element));
 			System.out.println("WebElement is visible using locator: " + "<" + element.toString() + ">");
+			Thread.sleep(200);
 			return true;
 		} catch (Exception e) {
 			System.out.println("WebElement is NOT visible, using locator: " + "<" + element.toString() + ">");
@@ -267,11 +271,38 @@ public class BasePage extends DriverFactory {
 	}
 
 	public boolean waitUntilPreLoadElementDissapears(By element) {
-		return this.wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
+		try {
+			this.wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
+			System.out.println("WebElement is visible using locator: " + "<" + element.toString() + ">");
+			return true;
+		} catch (Exception e) {
+			System.out.println("WebElement is NOT visible using locator: " + "<" + element.toString() + ">");
+			return false;
+		}
 	}
 
 	public boolean waitUntilElementDissapears(WebElement element) {
-		return this.wait.until(ExpectedConditions.invisibilityOf(element));
+		try {
+			this.wait.until(ExpectedConditions.invisibilityOf(element));
+			System.out.println("WebElement is invisible using locator: " + "<" + element.toString() + ">");
+			return true;
+		} catch (Exception e) {
+			System.out.println("WebElement is NOT invisible using locator: " + "<" + element.toString() + ">");
+			return false;
+		}
+
+	}
+
+	public boolean waitForTextToBePresentInElement(WebElement element, String text) {
+		try {
+			this.wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+			System.out.println("Text is present in element using locator: " + "<" + element.toString() + ">");
+			return true;
+		} catch (Exception e) {
+			System.out.println("Text is not present in element using locator: " + "<" + element.toString() + ">");
+			return false;
+		}
+
 	}
 
 	/**********************************************************************************
@@ -305,9 +336,6 @@ public class BasePage extends DriverFactory {
 			return e.getMessage();
 		}
 	}
-
-	/**********************************************************************************/
-	/**********************************************************************************/
 
 	/**********************************************************************************
 	 ** ALERT & POPUPS METHODS
@@ -362,9 +390,6 @@ public class BasePage extends DriverFactory {
 		}
 	}
 
-	/**********************************************************************************/
-	/**********************************************************************************/
-
 	/**********************************************************************************
 	 ** GET ATTRIBUTE OF AN ELEMENT
 	 *********************************************************************************/
@@ -388,11 +413,12 @@ public class BasePage extends DriverFactory {
 	public int getNumberOfRowsInASpreadsheet(String path) throws IOException, CsvException {
 		// This will load csv file
 		CSVReader reader = new CSVReader(new FileReader(path));
+
 		// this will load content into list
 		List<String[]> li = reader.readAll();
 		return li.size();
 	}
-	
+
 	/**********************************************************************************
 	 ** SWITCH WINDOW
 	 *********************************************************************************/
@@ -401,4 +427,89 @@ public class BasePage extends DriverFactory {
 			driver.switchTo().window(winHandle);
 		}
 	}
+
+	/**********************************************************************************
+	 ** GET DATE (MM/DD/YYYY)
+	 *********************************************************************************/
+	public String currentDate() {
+
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		df.withZone(ZoneId.of("America/Anchorage"));
+		LocalDate now = LocalDate.now();
+		return df.format(now);
+
+	}
+
+	/**********************************************************************************
+	 ** Assert that an element is not Visible
+	 *********************************************************************************/
+	public boolean isElementVisible(String locator) {
+
+		try {
+			driver.findElement(By.xpath(locator));
+			return true;
+		} catch (NoSuchElementException NSE) {
+			return false;
+
+		}
+	}
+
+	/**********************************************************************************
+	 ** Assert that file download is successful
+	 * 
+	 * @throws InterruptedException
+	 *********************************************************************************/
+	public boolean isFileDownloaded(String downloadPath, String fileName) throws InterruptedException {
+
+		// Little wait to allow file to be fully downloaded
+		Thread.sleep(500);
+
+		// Specifies the download directory
+		File dir = new File(downloadPath);
+
+		// Specifies the directory contents as array
+		File[] dirContents = dir.listFiles();
+
+		for (int i = 0; i < dirContents.length; i++) {
+			if (dirContents[i].getName().equals(fileName)) {
+				System.out.println("File download successful");
+				dirContents[i].delete();
+				return true;
+			}
+		}
+		System.out.println("File download failedl");
+		return false;
+
+	}
+
+	/**********************************************************************************
+	 ** Assert that file download is successful - This is for Dynamic file
+	 * 
+	 * @throws InterruptedException
+	 *********************************************************************************/
+	public boolean isFileDownloadedWithDynamicFilename(String downloadPath, String fileName)
+			throws InterruptedException {
+
+		// Little wait to allow file to be fully downloaded
+		Thread.sleep(500);
+
+		// Specifies the download directory
+		File dir = new File(downloadPath);
+
+		// Specifies the directory contents as array
+		File[] dirContents = dir.listFiles();
+
+		for (int i = 0; i < dirContents.length; i++) {
+			if (dirContents[i].getName().contains(fileName)) {
+				System.out.println("File download successful");
+				dirContents[i].delete();
+				return true;
+			}
+		}
+		System.out.println("File download failedl");
+		return false;
+
+	}
+
+	
 }
