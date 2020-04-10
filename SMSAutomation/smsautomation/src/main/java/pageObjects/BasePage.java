@@ -455,7 +455,7 @@ public class BasePage extends DriverFactory {
 	}
 
 	/**********************************************************************************
-	 ** Assert that file download is successful
+	 ** Assert that file download is successful - This is for file download
 	 * 
 	 * @throws InterruptedException
 	 *********************************************************************************/
@@ -483,7 +483,7 @@ public class BasePage extends DriverFactory {
 	}
 
 	/**********************************************************************************
-	 ** Assert that file download is successful - This is for Dynamic file
+	 ** Assert that file download is successful - This is for Dynamic file download
 	 * 
 	 * @throws InterruptedException
 	 *********************************************************************************/
@@ -510,6 +510,5 @@ public class BasePage extends DriverFactory {
 		return false;
 
 	}
-
 	
 }

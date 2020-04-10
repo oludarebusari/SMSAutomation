@@ -21,7 +21,7 @@ import pageObjects.license.modal.SendMessageModal;
 import utils.DriverFactory;
 import utils.JsonConfigReader;
 
-public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverFactory {
+public class OptionsUnderSubscribersInMerchantsPortal extends DriverFactory {
 
 	JsonConfigReader reader = new JsonConfigReader();
 
@@ -38,7 +38,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	
 	public List<WebElement> licenseLogin = driver.findElements(By.xpath(manageSitesPage.licenseLoginLocator));
 
-	// @SMSM-131-Check-Manage-Page-Content, @RegressionTest
+//  @SMSM-131-Verify-that-user-is-able-to-check-Manage-Resellers-page-content, @RegressionTest
 	@Then("User checks the page content Title, list of Resellers, search and Status")
 	public void user_checks_the_page_content_Title_list_of_Resellers_search_and_Status() {
 		Assert.assertTrue(driver.getTitle().contentEquals("Engage Dashboard"));
@@ -81,7 +81,7 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	}
 
 
-//  @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest
+//  @SMSM-131-Verify-that-user-is-able-to-review-Businesses-page-content, @RegressionTest
 	@Then("User verify the contents - Search textbox, New button, Show Terminated button and table grid")
 	public void user_verify_the_contents_Search_textbox_New_button_Show_Terminated_button_and_table_grid() {
 		Assert.assertTrue(advertisersPage.txt_SearchTxtF.isDisplayed());
@@ -116,7 +116,8 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 	public void user_verifies_that_the_Subscribers_menu_is_present() {
 		Assert.assertTrue(merchantMenu.menu_Subscribers.isDisplayed());
 	}
-
+	
+//	@SMSM-131-Verify-that-user-is-able-to-view-list-of-Subscribers, @RegressionTest
 	@When("User clicks the Subscribers menu")
 	public void user_clicks_the_Subscribers_menu() throws Exception {	
 		merchantMenu.waitAndClickElement(merchantMenu.menu_Subscribers);
@@ -250,5 +251,63 @@ public class ManageAddonServicesInMerchantsPortalForEngageSystem extends DriverF
 		Assert.assertTrue(addOnGiftbarPage.getElementText(addOnGiftbarPage.msg_Giftbar_Notification)
 				.contentEquals("Thanks — a notification was sent about your interest!"));
 	}
+	
+//	@SMSM-200-Verify-that-user-is-able-to-Blacklist,-unsubscribe-with-text-and-without-text
+	@When("User clicks the dropdown under Action column of a subscriber")
+	public void user_clicks_the_dropdown_under_Action_column_of_a_subscriber() throws Exception {
+	   subscribersPage.waitAndClickElement(subscribersPage.btn_Reply_Dropdown("447-744-7785"));
+	}
+
+	@Then("User verifies that Blacklist option is available")
+	public void user_verifies_that_Blacklist_option_is_available() {
+	   Assert.assertTrue(subscribersPage.opt_ReplyDDown("447-744-7785", "Blacklist").isDisplayed());
+	}
+
+	@Then("User verifies that Unsubscribe with text is available")
+	public void user_verifies_that_Unsubscribe_with_text_is_available() {
+		Assert.assertTrue(subscribersPage.opt_ReplyDDown("447-744-7785", "Unsubscribe w/ Text").isDisplayed());
+	}
+
+	@Then("User verifies that Unsubscribe without Text is available")
+	public void user_verifies_that_Unsubscribe_without_Text_is_available() {
+		Assert.assertTrue(subscribersPage.opt_ReplyDDown("447-744-7785", "Unsubscribe w/o Text").isDisplayed());
+	}
+
+//	@SMSM-200-Verify-that-user-is-able-to-Bulk-edit
+	@Then("User selects one or more Subscribers")
+	public void user_selects_one_or_more_Subscribers() throws Exception {
+		subscribersPage.waitAndClickElement(subscribersPage.selectSubscriber("447-744-7785"));
+		subscribersPage.waitAndClickElement(subscribersPage.selectSubscriber("555-555-5569"));
+		Thread.sleep(9000);
+	}
+
+	@Then("the Bulk Edit button is enabled")
+	public void the_Bulk_Edit_button_is_enabled() {
+	 Assert.assertTrue(subscribersPage.btn_Bulk_Edit.isEnabled());
+	}
+
+	@When("User clicks the Bulk Edit button")
+	public void user_clicks_the_Bulk_Edit_button() throws Exception {
+		subscribersPage.waitAndClickElement(subscribersPage.btn_Bulk_Edit);
+	}
+
+	@Then("User verifies the options Under the Bulk Edit button")
+	public void user_verifies_the_options_Under_the_Bulk_Edit_button() {
+		Assert.assertTrue(subscribersPage.opt_BulkEdit("Reply to Selected").isDisplayed());
+		Assert.assertTrue(subscribersPage.opt_BulkEdit("Unsubscribe Selected w/ Text").isDisplayed());
+		Assert.assertTrue(subscribersPage.opt_BulkEdit("Unsubscribe Selected w/o Text").isDisplayed());
+		Assert.assertTrue(subscribersPage.opt_BulkEdit("Blacklist Selected").isDisplayed());
+	}
+
+	@When("User selects Reply to selected option")
+	public void user_selects_Reply_to_selected_option() {
+	  
+	}
+
+	@Then("a success notification message is displayed")
+	public void a_success_notification_message_is_displayed() {
+	 
+	}
+
 
 }

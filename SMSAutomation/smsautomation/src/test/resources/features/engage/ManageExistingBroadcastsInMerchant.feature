@@ -90,7 +90,7 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When user clicks the Preview Broadcast button
     Then the Broadcast Preview window is opened
 
-  @SMSM-124-Verify-valid-alert-is-been-shown-for-missing-record-while-editing-the-broadcast-message @RegressionTest @OnlyMe
+  @SMSM-124-Verify-valid-alert-is-been-shown-for-missing-record-while-editing-the-broadcast-message @RegressionTest
   Scenario: Verify valid alert is been shown for missing record while editing the broadcast message
     When User clicks the Edit button corresponding to a broadcast
     Then User is redirected to the Edit broadcast page

@@ -36,7 +36,19 @@ public class SubscribersPage extends BasePage {
 	public WebElement btn_Reply_Dropdown(String num) {
 		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//button[contains(@class, \"toggle-dropdown\")]//i[contains(@class, \"fa fa-caret-down\")]"));
 	}
+	public WebElement selectSubscriber(String num) {
+		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//td[contains(@class, \"select-checkbox\")]"));
+	}
 	public WebElement btn_Reply(String num) {
 		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//a[contains(@title, \"Reply\")]"));
 	}
+	public WebElement opt_ReplyDDown(String num, String optionName) {
+		return par_Subscribers.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + num + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + optionName + "']"));
+	}
+   
+	public WebElement opt_BulkEdit(String option) {
+		return par_Subscribers.findElement(By.xpath("//div[@id=\"bulk-edit-menu\"]//a[text()=\'" + option + "']"));
+	}
+   
+	
 }

@@ -1,5 +1,4 @@
-
-Feature: Manage Add On Services in Merchant's portal for Engage System
+Feature: View & access all option under subscriber list in Merchant's portal
 
   Background: User is logged in and navigates to the Merchant's Dashboard
     Given User navigate to Engage url
@@ -8,7 +7,7 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User clicks on the login button
     Then User should be taken to Engage SMS home page
 
-  @SMSM-131-Check-Manage-Resellers-Page-Content, @RegressionTest 
+  @SMSM-131-Verify-that-user-is-able-to-check-Manage-Resellers-page-content, @RegressionTest
   Scenario: Verify that User is able to check Manage Resellers page content
     And User checks the page content Title, list of Resellers, search and Status
     And User confirms the possibility to Copy to clipboard and export to csv
@@ -17,7 +16,7 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User verifies the columns of the table of columns
     And User verifiles the license logins are enabled
 
-  @SMSM-131-Review-Bussiness-Page-Content, @RegressionTest  
+  @SMSM-131-Verify-that-user-is-able-to-review-Businesses-page-content, @RegressionTest
   Scenario: Verify that User is able to review Businesses Page content
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -27,9 +26,9 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User verify the contents - Search textbox, New button, Show Terminated button and table grid
     And User confirms the Table Grid elements
     And User confirms the Table columns
-    
-  @SMSM-131-Opening-Subscribers-Page, @RegressionTest 
-  Scenario: Opening Subscribers Page 
+
+  @SMSM-131-Opening-Subscribers-Page, @RegressionTest
+  Scenario: Opening Subscribers Page
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
     Then User is redirected to the Engaged Admin Dashboard page
@@ -40,8 +39,8 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User verifies that the Subscribers menu is present
     When User clicks the Subscribers menu
     Then the Subscribers page is opened
-    
-  @SMSM-131-Open-And-View-Subscribers-list, @RegressionTest
+
+  @SMSM-131-Verify-that-user-is-able-to-view-list-of-Subscribers, @RegressionTest
   Scenario: Verify that User is able to view list of Subscribers
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -53,8 +52,8 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User verifies that the Subscribers menu is present
     When User clicks the Subscribers menu
     Then the Subscribers page is opened
-		And User verifies the list of Subscribers
-    
+    And User verifies the list of Subscribers
+
   @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
   Scenario: Verify that User is able to Send a message to reply subscriber
     When User clicks the Manage Resellers menubar option
@@ -67,14 +66,13 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     And User verifies that the Subscribers menu is present
     When User clicks the Subscribers menu
     Then the Subscribers page is opened
-  	And User verifies the list of Subscribers
+    And User verifies the list of Subscribers
     When user clicks the Reply button
     Then The Send Message window is displayed
     When User clicks the Send as MMS toggle and fill in the required fields
     And User clicks on the Send button
     Then a message sent notification is displayed.
-    
-    
+
   @SMSM-200-Verify-the-Giftbar-Profile, @RegressionTest
   Scenario: Verify the Giftbar Profile in Giftbar option on Add-on
     When User clicks the Manage Resellers menubar option
@@ -91,5 +89,39 @@ Feature: Manage Add On Services in Merchant's portal for Engage System
     Then the giftbar page is opened
     And User clicks the Interested button
     Then an interest notification is sent message is displayed
-    
-    
+
+  @SMSM-200-Verify-that-user-is-able-to-Blacklist,-unsubscribe-with-text-and-without-text @RegressionTest 
+  Scenario: Verify that User is able to Blacklist, Unsubscribe with text and without text
+    When User clicks the Manage Resellers menubar option
+    And User logs in to a reseller
+    Then User is redirected to the Engaged Admin Dashboard page
+    And User clicks Business tabs at the left side
+    Then the Businesses page is opened
+    And Users click Login tab for a merchant
+    Then the user is redirected to a new window of Merchant's Dashboard
+    And User verifies that the Subscribers menu is present
+    When User clicks the Subscribers menu
+    Then the Subscribers page is opened
+    When User clicks the dropdown under Action column of a subscriber
+    Then User verifies that Blacklist option is available
+    And User verifies that Unsubscribe with text is available
+    And User verifies that Unsubscribe without Text is available
+
+  @SMSM-200-Verify-that-user-is-able-to-Bulk-edit @RegressionTest @OnlyMe
+  Scenario: Verify that User is able to Bulk edit
+    When User clicks the Manage Resellers menubar option
+    And User logs in to a reseller
+    Then User is redirected to the Engaged Admin Dashboard page
+    And User clicks Business tabs at the left side
+    Then the Businesses page is opened
+    And Users click Login tab for a merchant
+    Then the user is redirected to a new window of Merchant's Dashboard
+    And User verifies that the Subscribers menu is present
+    When User clicks the Subscribers menu
+    Then the Subscribers page is opened
+    And User selects one or more Subscribers
+    Then the Bulk Edit button is enabled
+    When User clicks the Bulk Edit button
+    Then User verifies the options Under the Bulk Edit button
+    When User selects Reply to selected option
+    Then a success notification message is displayed
