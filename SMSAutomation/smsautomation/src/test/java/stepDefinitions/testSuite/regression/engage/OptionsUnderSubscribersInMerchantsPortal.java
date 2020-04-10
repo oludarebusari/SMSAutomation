@@ -1,4 +1,4 @@
-package stepDefinitions.testSuite.regression;
+package stepDefinitions.testSuite.regression.engage;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -278,7 +278,6 @@ public class OptionsUnderSubscribersInMerchantsPortal extends DriverFactory {
 	public void user_selects_one_or_more_Subscribers() throws Exception {
 		subscribersPage.waitAndClickElement(subscribersPage.selectSubscriber("447-744-7785"));
 		subscribersPage.waitAndClickElement(subscribersPage.selectSubscriber("555-555-5569"));
-		Thread.sleep(9000);
 	}
 
 	@Then("the Bulk Edit button is enabled")
@@ -300,14 +299,42 @@ public class OptionsUnderSubscribersInMerchantsPortal extends DriverFactory {
 	}
 
 	@When("User selects Reply to selected option")
-	public void user_selects_Reply_to_selected_option() {
-	  
+	public void user_selects_Reply_to_selected_option() throws Exception {
+	  subscribersPage.waitAndClickElement(subscribersPage.opt_BulkEdit("Reply to Selected"));
+	}
+	
+	@When("User types in a message into the Message textarea")
+	public void user_types_in_a_message_into_the_Message_textarea() throws Exception {
+		sendMessageModal.sendKeysToWebElement(sendMessageModal.txt_Message, "This is automation text");
+		sendMessageModal.waitAndClickElement(sendMessageModal.btn_Send);
 	}
 
 	@Then("a success notification message is displayed")
-	public void a_success_notification_message_is_displayed() {
+	public void a_success_notification_message_is_displayed() throws Exception {
+		Assert.assertEquals("×Message has been sent.",
+				subscribersPage.getElementText(subscribersPage.txt_Notification).replaceAll("[\\n]", ""));
+	}
+
+//	@SMSM-200-Verify-that-user-is-able-to-Search-for-any-subscriber
+	@When("User enters a string into the search box")
+	public void user_enters_a_string_into_the_search_box() {
 	 
 	}
 
+	@Then("user confirms the record is displayed")
+	public void user_confirms_the_record_is_displayed() {
+	    
+	}
 
+	@Then("User confirms the Table Header")
+	public void user_confirms_the_Table_Header() {
+	 
+	}
+
+	@Then("User confirms the Table content")
+	public void user_confirms_the_Table_content() {
+	
+	}
+
+	
 }

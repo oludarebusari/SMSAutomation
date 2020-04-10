@@ -90,7 +90,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User clicks the Interested button
     Then an interest notification is sent message is displayed
 
-  @SMSM-200-Verify-that-user-is-able-to-Blacklist,-unsubscribe-with-text-and-without-text @RegressionTest 
+  @SMSM-200-Verify-that-user-is-able-to-Blacklist,-unsubscribe-with-text-and-without-text @RegressionTest
   Scenario: Verify that User is able to Blacklist, Unsubscribe with text and without text
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -124,4 +124,23 @@ Feature: View & access all option under subscriber list in Merchant's portal
     When User clicks the Bulk Edit button
     Then User verifies the options Under the Bulk Edit button
     When User selects Reply to selected option
+    And User types in a message into the Message textarea
     Then a success notification message is displayed
+
+  @SMSM-200-Verify-that-user-is-able-to-Search-for-any-subscriber @RegressionTest @OnlyMe
+  Scenario: Verify that User is able to Search for any subscriber
+    When User clicks the Manage Resellers menubar option
+    And User logs in to a reseller
+    Then User is redirected to the Engaged Admin Dashboard page
+    And User clicks Business tabs at the left side
+    Then the Businesses page is opened
+    And Users click Login tab for a merchant
+    Then the user is redirected to a new window of Merchant's Dashboard
+    And User verifies that the Subscribers menu is present
+    When User clicks the Subscribers menu
+    Then the Subscribers page is opened
+    When User enters a string into the search box
+    Then user confirms the record is displayed
+    And User confirms the Table Header
+    And User confirms the Table content
+    
