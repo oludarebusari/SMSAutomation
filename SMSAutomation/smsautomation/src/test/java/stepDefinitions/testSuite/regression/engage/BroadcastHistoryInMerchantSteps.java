@@ -2,14 +2,12 @@ package stepDefinitions.testSuite.regression.engage;
 
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.engage.BroadcastConfirmationPage;
 import pageObjects.engage.BroadcastHistoryPage;
 import pageObjects.engage.CreateEditBroadcastPage;
-import pageObjects.engage.ManageBroadcastsPage;
 import pageObjects.engage.modal.BroadcastPreviewModal;
 import pageObjects.license.menu.BroadCastSubMenu;
 import pageObjects.license.menu.MerchantMenu;

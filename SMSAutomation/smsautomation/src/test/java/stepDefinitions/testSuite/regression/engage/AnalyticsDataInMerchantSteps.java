@@ -60,8 +60,8 @@ public class AnalyticsDataInMerchantSteps extends BasePage {
 //	 @SMSM-139-Verify-that-user-is-able-to-open-Analytics-page-of-the-selected-merchant
 	@When("User clicks the Analytics tab option")
 	public void user_clicks_the_Analytics_tab_option() throws Exception {
-		licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
-		licAdminPage.waitForBusinessesDialogToDisappear();
+//		licAdminPage.waitAndClickElement(licAdminPage.win_Update_Status_Of_Business);
+//		licAdminPage.waitForBusinessesDialogToDisappear();
 		licAdminPage.waitAndClickElement(licAdminPage.menu_Analytics);
 	}
 
