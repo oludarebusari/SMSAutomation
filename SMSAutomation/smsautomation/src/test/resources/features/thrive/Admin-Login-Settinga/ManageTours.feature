@@ -51,6 +51,18 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User clicks the Save Tour button
     Then the tour is saved successfuland user confirmed the changes
 
+  @SMSM-185-Cancel-Deactivate-existing-tour-in-the-list @RegressionTest
+  Scenario: Cancel Deactivate existing tour in the list [C22336766]
+    Given User types in a Tour name on the search textfield to open an active tour
+    And User clicks the Search button for the active tour
+    Then the searched Tour is displayed on the page
+    When User clicks the dropdown button near edit
+    Then a list of actions for activated tour were displayed
+    When User clicks the Deactivate
+    Then the Deactivate Tour pop up is opened
+    When User closes the Deactivate Confirmation window
+    Then User verifies that the tour is not deactivated
+
   @SMSM-185-Deactivate-existing-tour-in-the-edit @RegressionTest
   Scenario: Deactivate existing tour in the list [C22336713]
     Given User types in a Tour name on the search textfield to open an active tour
@@ -63,6 +75,18 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     When User clicks the Deactivate button on the Deactivate Tour popo up
     And User searches for the deactivated Tour
     Then the status of the Tour changes to Inactive
+
+  @SMSM-185-Cancel-Activate-the-existing-deactivate-tour-in-the-list @RegressionTest
+  Scenario: Cancel Activate the existing deactivate tour in the list [C22336767]
+    Given User types in a Tour name on the search textfield to open the deactivated tour
+    And User clicks the Search button to bring up the deactivated tour
+    Then the deactivated Tour is displayed on the page
+    When User clicks the dropdown button near edit button for the deactivated tour
+    Then a list of actions for deactivated tour is displayed
+    And User clicks the Activate
+    Then the Activate Tour pop up is opened
+    When User closes the Activate Confirmation window
+    Then User verifies that the tour is not acctivated
 
   @SMSM-185-Activate-existing-deactivated-tour-in-the-list @RegressionTest
   Scenario: Activate existing deactivated tour in the list [C22336715]
@@ -114,7 +138,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User enters the details of a new Tour
     And User clicks the Save Tour button
 
-  @SMSM-185-Edit-an-existing-tour-in-the-list-by-removing-the-role-assigned-to-the-tour @RegressionTest 
+  @SMSM-185-Edit-an-existing-tour-in-the-list-by-removing-the-role-assigned-to-the-tour @RegressionTest
   Scenario: Edit an existing tour in the list by removing the role assigned to the tour [C22336747]
     When User types the tour name to edit into the Search textField
     And User clicks the Search button
@@ -125,15 +149,44 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User clicks the Save Tour button
     Then user confirms the role is removed from the tour
 
-  @SMSM-185-Cancel-Delete-existing-tour-process @RegressionTest @OnlyMe
-  Scenario: Cancel Delete existing tour process [C22336765]
+  @SMSM-185-Verify-the-Help-Option-for-Edit-Tour-page @RegressionTest 
+  Scenario: Verify the Help option for Edit Tour page  [C22336770]
     When User types the tour name to edit into the Search textField
+    And User clicks the Search button
+    Then the tour is displayed on the tour page
+    When User clicks the tour's Edit button
+    Then the Edit Tour Page is opened
+    When User clicks on the Help button on top right of screen
+    Then the Editing Guided Tour window is opened.
+    When User clicks on Next button
+    Then Tour guide should proceed to the title window
+    When User clicks on Next button
+    Then Tour guide should proceed to the roles window
+    When User clicks on the previous button
+    Then Tour guide is navigated to previous window
+    When User clicks on End Tour button
+    Then Tour ends successfully
+
+  @SMSM-185-Cancel-Delete-existing-tour-process @RegressionTest
+  Scenario: Cancel Delete existing tour process [C22336765]
+    When User types the tour name to detele into the Search textField
     And User clicks the Search button
     Then the tour is displayed on the tour page
     When User clicks the tour's drop down button
     Then a list of actions that can be performed on the tour is displayed
-    When User clicks the Delete option
+    When User clicks the Delete option of the tour to delete
     Then the Delete confirmation window is opened
     When User closes the Delete Confirmation window
     Then User verifies that the tour is not deleted
-    
+
+  @SMSM-185-Delete-existing-tour-in-the-list @RegressionTest
+  Scenario: Delete existing tour in the list [C22336765]
+    When User types the tour name to detele into the Search textField
+    And User clicks the Search button
+    Then the tour is displayed on the tour page
+    When User clicks the tour's drop down button
+    Then a list of actions that can be performed on the tour is displayed
+    When User clicks the Delete option of the tour to delete
+    Then the Delete confirmation window is opened
+    When User clicks the Delete button on the confirmation window
+    Then User verifies that the tour is deleted

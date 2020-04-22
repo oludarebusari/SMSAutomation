@@ -21,23 +21,4 @@ public class AdminToursHelpModal extends BasePage {
 	public @FindBy(xpath = "//button[@data-role=\"end\"]") WebElement btn_Tours_Help_EndTour;
 	public @FindBy(xpath = "//div[contains(@class, \"tour-mmd-tour\")]") WebElement mod_Tours;
 	
-	// Modal methods
-	public String getToursHelpModalTitle() throws Exception {
-    	return getElementText(mod_Tours_Help_Title);
-    }
-    
-    public AdminToursPage clickToursHelpPrevBtn() throws Exception {
-		waitAndClickElement(btn_Tours_Help_Prev);
-		return new AdminToursPage();
-	}
-
-    public AdminToursPage clickToursHelpNextBtn() throws Exception {
-		waitAndClickElement(btn_Tours_Help_Next);
-		return new AdminToursPage();
-	}
-    
-    public AdminToursPage clickToursHelpEndTourBtn() throws Exception {
-		waitAndClickElement(btn_Tours_Help_EndTour);
-		return new AdminToursPage();
-	}
 }

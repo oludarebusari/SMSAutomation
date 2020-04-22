@@ -87,7 +87,7 @@ public class ZeonTabOptionsSteps extends DriverFactory {
 	@Then("User verifies that a list of orders are displayed")
 	public void user_verifies_that_a_list_of_orders_are_displayed() throws Exception {
 		Assert.assertTrue(
-				Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.btn_PaginationTotal)) > 0);
+				Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)) > 0);
 	}
 
 //	 @[SMSM-224]-Verify-the-available-menus-on-Work-Orders-page

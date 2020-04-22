@@ -16,6 +16,7 @@ public class AdminToursActivateModal extends BasePage {
 	// Modal elements
 		public @FindBy(xpath = "//h4[@class=\"modal-title\" and text()=\"Activate Tour\"]") WebElement mod_Title;
 		public @FindBy(xpath = "//button[text()=\"Activate\"]") WebElement btn_Activate;
+		public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[text()=\"Activate Tour\"]]//button[@class=\"close\"]") WebElement btn_Close;
 
 
 }

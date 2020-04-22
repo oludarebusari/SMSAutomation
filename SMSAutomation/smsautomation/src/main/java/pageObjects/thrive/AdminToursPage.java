@@ -24,9 +24,19 @@ public class AdminToursPage extends BasePage {
 	public @FindBy(xpath = "//ul[@class=\"dropdown-menu\"]//a[@data-action=\"delete\"]") WebElement btn_Delete;
 	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
 	public @FindBy(xpath = "//tbody") WebElement parentBtn;
+	
+	public WebElement getTourRecordByTourName(String TourName) {
+		return parentBtn.findElement(By.xpath("//tr[./td[(.)=\'" + TourName + "']]"));
+	}
+	
+	public WebElement getTourStatus(String TourName) {
+		return parentBtn.findElement(By.xpath("//tr[./td[(.)=\'" + TourName + "']]//td[3]"));
+	}
+	
 	public WebElement btn_EditByTourName(String TourName) {
 		return parentBtn.findElement(By.xpath("//tr[//td[(.)=\'" + TourName + "']][1]//a[(.)=\"Edit\"]"));
 	}
+	
 	public WebElement btn_EditDropdownByTourName(String TourName) {
 		return parentBtn.findElement(By.xpath("//tr[//td[(.)=\'" + TourName + "']][1]//button[@data-toggle=\"dropdown\"]"));
 	}

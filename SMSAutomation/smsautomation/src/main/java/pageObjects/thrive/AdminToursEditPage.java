@@ -43,14 +43,6 @@ public class AdminToursEditPage extends BasePage {
 	public WebElement removeRole(String role) {
 		return parentBtn.findElement(By.xpath("//div[text()=\'" + role + "']//a[@class=\"remove\"]"));
 	}
-
-	/*
-	 * public @FindBy(xpath = "//li[contains(@class, \"list-group-item\")]")
-	 * WebElement parentTourStep; public WebElement selectTourStep(String step) {
-	 * return parentBtn.findElement(By.
-	 * xpath("//li[contains(@class, \"list-group-item\")]//div[@class=\"row\" and ./div[text()[normalize-space()="
-	 * + step + "]]]")); }
-	 */
 	public WebElement btn_RemoveStep(String step) {
 		return listOfSteps.findElement(By.xpath("//button[@name=\"tour_type[tourSteps][" + step +"][delete]\"]"));
 	}

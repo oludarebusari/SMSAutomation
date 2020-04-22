@@ -112,7 +112,7 @@ public class ManageTourSteps extends DriverFactory {
 		Assert.assertTrue(adminToursPage.getElementText(adminToursPage.txt_TourName).contentEquals("QATest"));
 	}
 
-//	@SMSM-185-Deactivate-existing-tour-in-the-edit 
+//	 @SMSM-185-Cancel-Deactivate-existing-tour-in-the-list
 	@Given("User types in a Tour name on the search textfield to open an active tour")
 	public void user_types_in_a_Tour_name_on_the_search_textfield_to_open_an_active_tour() throws Exception {
 		adminToursPage.sendKeysToWebElement(adminToursPage.txtF_Search, "QATest");
@@ -150,6 +150,17 @@ public class ManageTourSteps extends DriverFactory {
 				.contentEquals("Deactivate Tour"));
 	}
 
+	@When("User closes the Deactivate Confirmation window")
+	public void user_closes_the_Deactivate_Confirmation_window() throws Exception {
+		adminToursDeactivateModal.waitAndClickElement(adminToursDeactivateModal.btn_Close);
+	}
+
+	@Then("User verifies that the tour is not deactivated")
+	public void user_verifies_that_the_tour_is_not_deactivated() throws Exception {
+		Assert.assertTrue(adminToursPage.getElementText(adminToursPage.getTourStatus("QATest")).contentEquals("Active"));
+	}
+
+//	@SMSM-185-Deactivate-existing-tour-in-the-edit 
 	@When("User clicks the Deactivate button on the Deactivate Tour popo up")
 	public void user_clicks_the_Deactivate_button_on_the_Deactivate_Tour_popo_up() throws Exception {
 		adminToursDeactivateModal.waitAndClickElement(adminToursDeactivateModal.btn_Deactivate);
@@ -166,6 +177,7 @@ public class ManageTourSteps extends DriverFactory {
 		Assert.assertTrue(adminToursPage.getElementText(adminToursPage.txt_Status).contains("inactive"));
 	}
 
+//	@SMSM-185-Cancel-Activate-the-existing-deactivate-tour-in-the-list
 	@Given("User types in a Tour name on the search textfield to open the deactivated tour")
 	public void user_types_in_a_Tour_name_on_the_search_textfield_to_open_the_deactivated_tour() throws Exception {
 		adminToursPage.sendKeysToWebElement(adminToursPage.txtF_Search, "QATest");
@@ -202,7 +214,18 @@ public class ManageTourSteps extends DriverFactory {
 		Assert.assertTrue(adminToursActivateModal.getElementText(adminToursActivateModal.mod_Title)
 				.contentEquals("Activate Tour"));
 	}
+	
+	@When("User closes the Activate Confirmation window")
+	public void user_closes_the_Activate_Confirmation_window() throws Exception {
+		adminToursActivateModal.waitAndClickElement(adminToursActivateModal.btn_Close);
+	}
 
+	@Then("User verifies that the tour is not acctivated")
+	public void user_verifies_that_the_tour_is_not_acctivated() throws Exception {
+		Assert.assertTrue(adminToursPage.getElementText(adminToursPage.getTourStatus("QATest")).contains("inactive"));
+	}
+
+//	 @SMSM-185-Activate-existing-deactivated-tour-in-the-list
 	@When("User clicks the Activate button on the Activate Tour popo up")
 	public void user_clicks_the_Activate_button_on_the_Activate_Tour_popo_up() throws Exception {
 		adminToursActivateModal.waitAndClickElement(adminToursActivateModal.btn_Activate);
@@ -215,6 +238,7 @@ public class ManageTourSteps extends DriverFactory {
 		Assert.assertTrue(adminToursPage.getElementText(adminToursPage.txt_Status).contentEquals("Active"));
 	}
 
+//	@SMSM-185-Verify-the-help-option-for-manage-tours-page
 	@Given("User clicks on the Help button on top right of screen")
 	public void user_clicks_on_the_Help_button_on_top_right_of_screen() throws Exception {
 		adminToursPage.waitAndClickElement(adminToursPage.btn_Help);
@@ -251,13 +275,12 @@ public class ManageTourSteps extends DriverFactory {
 	@When("User clicks on End Tour button")
 	public void user_clicks_on_End_Tour_button() throws Exception {
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_EndTour);
-		Thread.sleep(200);
+		Thread.sleep(150);
 	}
 
 	@Then("Tour ends successfully")
 	public void tour_ends_successfully() {
 		Assert.assertFalse(adminToursHelpModal.isElementClickable(adminToursHelpModal.btn_Tours_Help_EndTour));
-
 	}
 
 //	@SMSM-185-Edit-the-existing-tour-in-the-list-add-a-step
@@ -301,7 +324,7 @@ public class ManageTourSteps extends DriverFactory {
 		adminToursPage.waitAndClickElement(adminToursPage.btn_EditByTourName("AclateQA"));
 		Assert.assertEquals("Test1", adminToursEditPage.txtF_Selector("1").getAttribute("value"));
 	}
-	
+
 //	@SMSM-185-Edit-the-existing-tour-in-the-list-remove-a-step
 	@Given("User searches for a tour to edit")
 	public void user_searches_for_a_tour_to_edit() throws Exception {
@@ -350,7 +373,6 @@ public class ManageTourSteps extends DriverFactory {
 		adminToursEditPage.sendKeysToWebElement(adminToursEditPage.txtF_Title("1"), "Auto Test2");
 		adminToursEditPage.sendKeysToWebElement(adminToursEditPage.txtF_StepPath("1"), "/autotest2");
 		adminToursEditPage.sendKeysToWebElement(adminToursEditPage.txtF_Message("1"), "Automation Testing2");
-
 	}
 
 //	@SMSM-185-Edit-an-existing-tour-in-the-list-by-removing-the-role-assigned-to-the-tour
@@ -382,16 +404,56 @@ public class ManageTourSteps extends DriverFactory {
 		Assert.assertEquals("", adminToursPage.getElementText(adminToursPage.getCellValueByRowAndColumn("1", "2")));
 	}
 	
+//	 @SMSM-185-Verify-the-Help-Option-for-Edit-Tour-page
+	@Then("the Editing Guided Tour window is opened.")
+	public void the_Editing_Guided_Tour_window_is_opened() throws Exception {
+		Assert.assertEquals("Editing Guided Tours", adminToursHelpModal.getElementText(adminToursHelpModal.mod_Tours_Help_Title));
+	}
+
+	@Then("Tour guide should proceed to the title window")
+	public void tour_guide_should_proceed_to_the_title_window() throws Exception {
+		adminToursHelpModal.WaitUntilWebElementIsVisible(adminToursHelpModal.btn_Tours_Help_EndTour);
+		Assert.assertEquals("Title", adminToursHelpModal.getElementText(adminToursHelpModal.mod_Tours_Help_Title));
+	}
+	
+	@When("User clicks on Next button")
+	public void user_clicks_on_Next_button() throws Exception {
+	 adminToursHelpModal.waitAndClickElement(adminToursHelpModal.btn_Tours_Help_Next);
+	}
+
+	@Then("Tour guide should proceed to the roles window")
+	public void tour_guide_should_proceed_to_the_roles_window() throws Exception {
+		adminToursHelpModal.WaitUntilWebElementIsVisible(adminToursHelpModal.btn_Tours_Help_EndTour);
+		Assert.assertEquals("Roles", adminToursHelpModal.getElementText(adminToursHelpModal.mod_Tours_Help_Title));
+	}
+
+	@Then("Tour guide is navigated to previous window")
+	public void tour_guide_is_navigated_to_previous_window() throws Exception {
+		adminToursHelpModal.WaitUntilWebElementIsVisible(adminToursHelpModal.btn_Tours_Help_EndTour);
+		Assert.assertEquals("Title", adminToursHelpModal.getElementText(adminToursHelpModal.mod_Tours_Help_Title));
+	}
+
 //	@SMSM-185-Cancel-Delete-existing-tour-process
+	@When("User types the tour name to detele into the Search textField")
+	public void user_types_the_tour_name_to_detele_into_the_Search_textField() throws Exception {
+		adminToursPage.sendKeysToWebElement(adminToursPage.txtF_Search, "AclateQA1");
+		adminToursPage.waitAndClickElement(adminToursPage.btn_Search);
+	}
+
 	@When("User clicks the tour's drop down button")
 	public void user_clicks_the_tour_s_drop_down_button() throws Exception {
-	  adminToursPage.waitAndClickElement(adminToursPage.btn_EditDropdownByTourName("AclateQA1"));
+		adminToursPage.waitAndClickElement(adminToursPage.btn_EditDropdownByTourName("AclateQA1"));
 	}
 
 	@Then("a list of actions that can be performed on the tour is displayed")
 	public void a_list_of_actions_that_can_be_performed_on_the_tour_is_displayed() {
 		Assert.assertTrue(adminToursPage.btn_Deactivate.isDisplayed());
 		Assert.assertTrue(adminToursPage.btn_Delete.isDisplayed());
+	}
+
+	@When("User clicks the Delete option of the tour to delete")
+	public void user_clicks_the_Delete_option_of_the_tour_to_delete() throws Exception {
+		adminToursPage.waitAndClickElement(adminToursPage.btn_Delete);
 	}
 
 	@Then("the Delete confirmation window is opened")
@@ -406,6 +468,20 @@ public class ManageTourSteps extends DriverFactory {
 
 	@Then("User verifies that the tour is not deleted")
 	public void user_verifies_that_the_tour_is_not_deleted() {
-		
+		Assert.assertTrue(adminToursPage.getTourRecordByTourName("AclateQA1").isDisplayed());
 	}
+	
+//	@SMSM-185-Delete-existing-tour-in-the-list
+	@When("User clicks the Delete button on the confirmation window")
+	public void user_clicks_the_Delete_button_on_the_confirmation_window() throws Exception {
+		adminToursDeleteModal.waitAndClickElement(adminToursDeleteModal.btn_Delete);
+	}
+
+	@Then("User verifies that the tour is deleted")
+	public void user_verifies_that_the_tour_is_deleted() throws Exception {
+	adminToursPage.sendKeysToWebElement(adminToursPage.txtF_Search, "AclateQA1");
+	adminToursPage.waitAndClickElement(adminToursPage.btn_Search);
+	Assert.assertTrue(Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)) == 0);
+	}
+	
 }
