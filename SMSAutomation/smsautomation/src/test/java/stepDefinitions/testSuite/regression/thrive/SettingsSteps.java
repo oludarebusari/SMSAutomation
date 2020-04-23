@@ -137,7 +137,7 @@ public class SettingsSteps extends DriverFactory {
 	@And("User clicks a Setting option and clicks the Update Setting button")
 	public void user_clicks_a_Setting_option_and_clicks_the_Update_Setting_button() throws Exception {
 		editSettingsModal.waitAndClickElement(editSettingsModal.editSettingOption("Approved"));
-		editSettingsModal.waitAndClickElement(editSettingsModal.btn_SaveSetting);
+		editSettingsModal.waitAndClickElement(editSettingsModal.btn_SaveSettings);
 	}
 
 	@Then("User confirms that the changes is reflected on the settings page")
@@ -150,7 +150,7 @@ public class SettingsSteps extends DriverFactory {
 	public void user_changes_Settings_option_to_it_s_original_value_and_clicks_the_Update_Setting_button()
 			throws Exception {
 		editSettingsModal.waitAndClickElement(editSettingsModal.editSettingOption("Suppressed"));
-		editSettingsModal.waitAndClickElement(editSettingsModal.btn_SaveSetting);
+		editSettingsModal.waitAndClickElement(editSettingsModal.btn_SaveSettings);
 	}
 
 //	@SMSM-136 @Search-and-Edit-any-Language-String-option
@@ -614,7 +614,7 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Settings records are sorted by Updated colum")
 	public void the_Settings_records_are_sorted_by_Updated_colum() throws InterruptedException {
 		//Verify the value of the Updated cell after sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("03/06/2020"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("04/23/2020"));
 	}
 
 //	@SMSM-136 @Apply-Sort-in-Language-String-page
@@ -746,7 +746,6 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Message Templates records are sorted by Updated column")
 	public void the_Message_Templates_records_are_sorted_by_Updated_column() throws InterruptedException {
 		//Verify the current value of the Updated cell after sorting
-//		System.out.println(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.currentDate()));
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.currentDate()));
 	}
 

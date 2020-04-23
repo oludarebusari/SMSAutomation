@@ -32,14 +32,14 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
 
   @SMSM-185-Navigate-to-manage-tour-option @RegressionTest
   Scenario: Navigate to manage tour option under settings on thrive system [C22331428]
-    Given User clicks on settings on top menu bar
-    Then the settings options are displayed
-    Given User clicks on Tours under settings
+    #Given User clicks on settings on top menu bar
+    #Then the settings options are displayed
+    When User clicks on Tours under settings
     Then User is redirected to Tours page
 
   @SMSM-185-Search-and-edit-existing-tour-in-the-edit @RegressionTest
   Scenario: Search and Edit existing tour in the list [C22336695]
-    Given User types in a Tour name on the search textfield
+    When User types in a Tour name on the search textfield
     And User clicks the Search button
     Then the Tour is displayed on the page
     When User clicks the Edit button on the Tour
