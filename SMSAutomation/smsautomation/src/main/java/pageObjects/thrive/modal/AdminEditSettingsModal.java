@@ -12,7 +12,6 @@ public class AdminEditSettingsModal extends BasePage {
 		super();
 	}
 
-	
 	public @FindBy(xpath = "//h4[text()=\"Edit Setting\"]") WebElement mod_Title;
 	public @FindBy(xpath = "(//div[@class=\"form-group\"]//input[@id=\"admin_settings_type_title\"])[2]") WebElement txtF_Title;
 	public @FindBy(xpath = "(//div[@class=\"form-group\"]//input[@id=\"admin_settings_type_slug\"])[2]") WebElement txtF_Slug;

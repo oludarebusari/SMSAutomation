@@ -95,6 +95,7 @@ public class ManageAlertsSteps extends DriverFactory {
 
 	@Then("User confirms the changes are saved correctly")
 	public void user_confirms_the_changes_are_saved_correctly() throws Exception {
+		Thread.sleep(1000);
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT_EDITED);
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		Assert.assertEquals(ALERT_TEXT_EDITED,
@@ -108,6 +109,7 @@ public class ManageAlertsSteps extends DriverFactory {
 		editAlertModal.sendKeysToWebElement(editAlertModal.txtF_Date, "03/15/2020 04:00 pm to 12/31/2020 03:59 pm");
 		dateSelectionModal.waitAndClickElement(dateSelectionModal.btn_Apply);
 		editAlertModal.waitAndClickElement(editAlertModal.btn_SaveAlert);
+		Thread.sleep(1000);
 	}
 
 //	@SMSM-184 @Renew-existing-alert-in-the-list
@@ -185,7 +187,6 @@ public class ManageAlertsSteps extends DriverFactory {
 	public void user_confirms_that_the_Alert_is_not_deactivated() throws Exception {
 	Assert.assertEquals("Active", manageAlertsPage.getElementText(manageAlertsPage.searchForCellValue("Active")));
 	}
-	
 	
 //	 @SMSM-184 @Deactivate-existing-alert-in-the-list
 	@When("User clicks the Deactivate button on the Deactivate Alert window")
@@ -352,6 +353,7 @@ public class ManageAlertsSteps extends DriverFactory {
 
 	@Then("the created and schedule successfully")
 	public void the_created_and_schedule_successfully() throws Exception {
+		Thread.sleep(30000);
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, ALERT_TEXT2);
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		Assert.assertTrue(manageAlertsPage.searchAlertByAlertText(ALERT_TEXT2).isDisplayed());

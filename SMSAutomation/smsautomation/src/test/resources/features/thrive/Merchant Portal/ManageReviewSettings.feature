@@ -27,18 +27,20 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     Then Thrive Dashboard page is displayed
     When User navigates to Companies menu and clicks the Businesses option
     Then the user is redirected to the Manage Businesses page
-    When User navigates to the actions column of a Business and clicks Sign In button
+    When User types the business name in the search field and clicks Search
+    Then the Business is displayed
+    When User navigates to the actions column of the Business for stream testing and clicks Sign In button
     Then User is logged into the Business and the business dashboard is opened
 
   @SMSM-136 @Verify-that-user-is-able-to-navigate-to-streams-page @RegressionTest
-  Scenario Outline: Verify that user is able to navigate to streams page
+  Scenario: Verify that user is able to navigate to streams page
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
     When User clicks the Streams option
     Then the Stream page is opened
 
   @SMSM-136 @Verify-that-user-is-able-to-navigate-to-streams-configuration-windows-pop-up @RegressionTest
-  Scenario Outline: Verify that user is able to navigate to Streams Configuration windows pops-up
+  Scenario: Verify that user is able to navigate to Streams Configuration windows pops-up
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
     When User clicks the Streams option
@@ -46,7 +48,3 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     And User verifies that Settings button is displayed
     When User clicks the Settings button
     Then a Settings configuration pop is opened
-    
-
-    
-    
