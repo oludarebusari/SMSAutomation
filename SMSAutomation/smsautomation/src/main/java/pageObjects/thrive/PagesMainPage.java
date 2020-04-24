@@ -19,6 +19,9 @@ public class PagesMainPage extends BasePage {
 	public WebElement searchPageByPageName(String pageName) {
 		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName + "']]"));
 	}
+	public String searchPageByNameLocator(String pageName) {
+		return "//tr[td[text()=\'" + pageName + "']]";
+	}
 	public WebElement btn_EditPageByPageName(String pageName) {
 		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@title=\"Edit Page\"]"));
 	}

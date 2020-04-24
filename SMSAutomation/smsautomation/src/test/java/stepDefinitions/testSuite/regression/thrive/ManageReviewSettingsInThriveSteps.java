@@ -43,7 +43,6 @@ public class ManageReviewSettingsInThriveSteps  extends DriverFactory {
 	}
 	
 	
-	
 //	@SMSM-136 @Verify-that-user-is-able-to-navigate-to-streams-page
 	@Then("User verifies that Settings button is displayed")
 	public void user_verifies_that_Settings_button_is_displayed() {

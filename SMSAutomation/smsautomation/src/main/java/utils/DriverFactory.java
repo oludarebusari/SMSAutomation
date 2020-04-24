@@ -10,6 +10,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
 
 public class DriverFactory {
 
@@ -43,7 +44,7 @@ public class DriverFactory {
 					System.setProperty("webdriver.chrome.driver", Constant.CHROME_DRIVER_DIRECTORY);
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("start-maximized");
-//					options.addArguments("window-size=1280x1024");
+					options.addArguments("window-size=1280x1024");
 					driver = new ChromeDriver(options);
 				}
 				break;
@@ -66,6 +67,12 @@ public class DriverFactory {
 				if (null == driver) {
 					System.setProperty("webdriver.edge.driver", Constant.EDGE_DRIVER_DIRECTORY);
 					driver = new EdgeDriver();
+				}
+				break;
+			case "opera":
+				if (null == driver) {
+					System.setProperty("webdriver.opera.driver", Constant.OPERA_DRIVER_DIRECTORY);
+					driver = new OperaDriver();
 				}
 				break;
 			}

@@ -199,13 +199,14 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 
 	@Then("the page is deleted successfully")
 	public void the_page_is_deleted_successfully() throws Exception {
-		boolean result = true;
-		try {
-			Assert.assertTrue(pagesMainPage.waitUntilElementDissapears(pagesMainPage.searchPageByPageName("AclateQA")));
-		} catch (NoSuchElementException NSE) {
-			result = false;
-			Assert.assertFalse(result);
-		}
+		/*
+		 * boolean result = true; try {
+		 * Assert.assertTrue(pagesMainPage.waitUntilElementDissapears(pagesMainPage.
+		 * searchPageByPageName("AclateQA"))); } catch (NoSuchElementException NSE) {
+		 * result = false; Assert.assertFalse(result); }
+		 */
+		System.out.println(pagesMainPage.isElementVisible(pagesMainPage.searchPageByNameLocator("AclateQA")));
+		Assert.assertFalse(pagesMainPage.isElementVisible(pagesMainPage.searchPageByNameLocator("AclateQA")));
 	}
 
 }

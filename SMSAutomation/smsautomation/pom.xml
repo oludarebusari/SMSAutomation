@@ -14,7 +14,20 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
+	<!-- <repositories>
+		DevFactory Aurea Releases Repository
+		<repository>
+			<id>nexus-aurea-releases</id>
+			<url>https://nexus.devfactory.com/repository/testautomation-testrail-integration/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+ -->
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -167,5 +180,15 @@
 			<artifactId>opencsv</artifactId>
 			<version>5.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.codepine.api</groupId>
+			<artifactId>testrail-api-java-client</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>crossover.testrail.utils</groupId>
+			<artifactId>testrail-integration-java</artifactId>
+			<version>1.1.4</version>
+		</dependency> -->
 	</dependencies>
 </project>

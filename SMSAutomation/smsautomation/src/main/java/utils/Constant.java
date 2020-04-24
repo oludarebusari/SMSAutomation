@@ -13,6 +13,8 @@ public class Constant {
 	
 	public final static String EDGE_DRIVER_DIRECTORY =  "src/main/resources/MSEdgedriver.exe";
 	
+	public final static String OPERA_DRIVER_DIRECTORY =  "src/main/resources/operadriver.exe";
+	
 	public final static String THRIVE_FILE_PATH =  "src/main/resources/MSEdgedriver.exe";
 	
 	

@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-failed">Default suite</span>
+              <span class="suite-name border-passed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\Oyebode\AppData\Local\Temp\testng-eclipse-902545171\testng-customsuite.xml</span>
+                    <span>C:\Users\Oyebode\AppData\Local\Temp\testng-eclipse-1147138013\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
-                    </span>
-                    <div class="method-list-content failed suite-Default_suite">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="runner.RunSMSTest" class="method navigator-link" hash-for-method="runScenario(&quot;Log in, Access the License Portal and create a new campaign&quot;, &quot;To verify that the user is able to c...)">runScenario("Log in, Access the License Portal and create a new campaign", "To verify that the user is able to c...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Default_suite -->
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -116,12 +102,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="runner.RunSMSTest" class="method navigator-link" hash-for-method="runScenario(&quot;Log in, Access the License Portal and Log out of SMS Mastermind Portal&quot;, &quot;To verify that the user i...)">runScenario("Log in, Access the License Portal and Log out of SMS Mastermind Portal", "To verify that the user i...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="runner.RunSMSTest" class="method navigator-link" hash-for-method="runScenario(&quot;Login into Engage with correct credential&quot;, &quot;Login into Engage App&quot;)">runScenario("Login into Engage with correct credential", "Login into Engage App")</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="runner.RunSMSTest" class="method navigator-link" hash-for-method="runScenario(&quot;Edit existing alert in the list&quot;, &quot;[SMSM-184] Manage Alerts under settings in admin dashboard for T...)">runScenario("Edit existing alert in the list", "[SMSM-184] Manage Alerts under settings in admin dashboard for T...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -136,34 +117,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">runner.RunSMSTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="runScenario(&quot;Log in, Access the License Portal and create a new campaign&quot;, &quot;To verify that the user is able to c...)">
-                  </a> <!-- runScenario("Log in, Access the License Portal and create a new campaign", "To verify that the user is able to c...) -->
-                  <span class="method-name">runScenario</span>
-                  <span class="parameters">("Log in, Access the License Portal and create a new campaign", "To verify that the user is able to create a new campaign")</span>
-                  <div class="stack-trace">java.lang.AssertionError: expected [11] but found [12]
-	at org.testng.Assert.fail(Assert.java:97)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:136)
-	at org.testng.Assert.assertEquals(Assert.java:118)
-	at org.testng.Assert.assertEquals(Assert.java:839)
-	at org.testng.Assert.assertEquals(Assert.java:849)
-	at stepDefinitions.license.CEDCampaignGroup.user_exports_the_campaign_groups(CEDCampaignGroup.java:94)
-	at ✽.User exports the campaign groups(src/test/resources/features/license/CEDCampaignGroup.feature:16)
-
-</div> <!-- stack-trace -->
-                  <em>
-(Runs Cucumber Scenarios)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-failed -->
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -172,20 +125,10 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;Log in, Access the License Portal and Log out of SMS Mastermind Portal&quot;, &quot;To verify that the user i...)">
-                  </a> <!-- runScenario("Log in, Access the License Portal and Log out of SMS Mastermind Portal", "To verify that the user i...) -->
+                  <a name="runScenario(&quot;Edit existing alert in the list&quot;, &quot;[SMSM-184] Manage Alerts under settings in admin dashboard for T...)">
+                  </a> <!-- runScenario("Edit existing alert in the list", "[SMSM-184] Manage Alerts under settings in admin dashboard for T...) -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("Log in, Access the License Portal and Log out of SMS Mastermind Portal", "To verify that the user is able to log into the licensee portal, access the homepage and then log out")</span>
-                  <em>
-(Runs Cucumber Scenarios)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runScenario(&quot;Login into Engage with correct credential&quot;, &quot;Login into Engage App&quot;)">
-                  </a> <!-- runScenario("Login into Engage with correct credential", "Login into Engage App") -->
-                  <span class="method-name">runScenario</span>
-                  <span class="parameters">("Login into Engage with correct credential", "Login into Engage App")</span>
+                  <span class="parameters">("Edit existing alert in the list", "[SMSM-184] Manage Alerts under settings in admin dashboard for Thrive system")</span>
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
@@ -195,7 +138,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Oyebode\AppData\Local\Temp\testng-eclipse-902545171\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Oyebode\AppData\Local\Temp\testng-eclipse-1147138013\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -252,24 +195,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'runner.RunSMSTest')
-data.setCell(0, 3, 42919);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'runScenario')
-data.setCell(1, 2, 'runner.RunSMSTest')
-data.setCell(1, 3, 25200);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'runScenario')
-data.setCell(2, 2, 'runner.RunSMSTest')
-data.setCell(2, 3, 22224);
+data.setCell(0, 3, 42397);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 42 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -301,22 +236,12 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">runScenario("Login into Engage with correct credential", "Login into Engage App")</span>
-                <span class="method-start">485 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">runScenario("Log in, Access the License Portal and create a new campaign", "To verify that the user is able to c...)</span>
-                <span class="method-start">25825 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">runScenario("Log in, Access the License Portal and Log out of SMS Mastermind Portal", "To verify that the user i...)</span>
-                <span class="method-start">68807 ms</span>
+                <span class="method-name">runScenario("Edit existing alert in the list", "[SMSM-184] Manage Alerts under settings in admin dashboard for T...)</span>
+                <span class="method-start">399 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">91078 ms</span>
+                <span class="method-start">42877 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
