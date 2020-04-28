@@ -22,11 +22,13 @@ public class ManageBusinessPage extends BasePage {
 	public @FindBy(xpath = "//tbody") WebElement parent_SelectCompany;
 	public WebElement btn_SignIn(String companyName) {
 		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName + "']]//a[@title=\"Sign In\"]"));
-		
 	}
 	public WebElement btn_ActionDDown(String companyName) {
 		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//button[@data-toggle=\"dropdown\"]"));
-		
+	}
+	
+	public WebElement selectRecordByCompanyName(String companyName) {
+		return parent_SelectCompany.findElement(By.xpath("//tr[td[text()=\'" + companyName + "']]"));
 	}
 	
 	//Actions Dropdown elements
@@ -43,5 +45,7 @@ public class ManageBusinessPage extends BasePage {
 		return parent_SelectCompany.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + companyName +"']]//a[@class=\"company-delete-action\" and text()[normalize-space()=\"Cancel Services\"]]"));
 		
 	}
+	
+	
 	
 }

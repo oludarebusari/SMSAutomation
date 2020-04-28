@@ -36,11 +36,12 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 
 	@When("User clicks on Businesses menu item")
 	public void user_clicks_on_Businesses_menu_item() throws Exception {
-		/*
-		 * if (reader.getConfigValue("DriverConfig", "environment").equals("localHub"))
-		 * { licPortalPage.clickCloseUpdateStatusOfBusinesses();
-		 * licPortalPage.waitForBusinessesDialogToDisappear(); }
-		 */
+		
+		  if (reader.getConfigValue("DriverConfig", "environment").equals("localHub")) { 
+//			  licPortalPage.clickCloseUpdateStatusOfBusinesses();
+			  licPortalPage.waitAndClickElement(licPortalPage.win_Update_Status_Of_Business);
+		  licPortalPage.waitForBusinessesDialogToDisappear(); }
+		 
 		licPortalPage.clickOnElementUsingCustomTimeout(licPortalPage.menu_Businesses, driver, 20);
 	}
 

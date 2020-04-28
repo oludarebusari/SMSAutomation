@@ -11,7 +11,7 @@ import pageObjects.license.menu.CampaignsSubMenu;
 
 public class LicAdminPage extends BasePage {
 
-   CampaignsSubMenu campaignSubMenu = new CampaignsSubMenu();
+//   CampaignsSubMenu campaignSubMenu = new CampaignsSubMenu();
 
 	public LicAdminPage() throws IOException {
 		super();
@@ -95,6 +95,11 @@ public class LicAdminPage extends BasePage {
 	public LicAdminPage waitForBusinessesDialogToDisappear() throws IOException {
 		waitUntilPreLoadElementDissapears(By.xpath("//div[@class=\"modal-header\" and .//h4[@id=\"terminate_modal_label\"]]//button[@aria-label=\"Close\"]"));
 		return new LicAdminPage();
+		
+	}
+
+	public void clickCloseUpdateStatusOfBusinesses() {
+		// TODO Auto-generated method stub
 		
 	}
 }
