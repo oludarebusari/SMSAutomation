@@ -15,27 +15,27 @@ public class PagesMainPage extends BasePage {
 	}
 
 	public @FindBy(xpath = "//h1[@class=\"pull-left\"]") WebElement pag_title;
-	public @FindBy(xpath = "//tbody") WebElement parrent_RecordElement;
+	public @FindBy(xpath = "//table") WebElement parent_RecordElement;
 	public WebElement searchPageByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName + "']]"));
+		return parent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName + "']]"));
 	}
 	public String searchPageByNameLocator(String pageName) {
 		return "//tr[td[text()=\'" + pageName + "']]";
 	}
 	public WebElement btn_EditPageByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@title=\"Edit Page\"]"));
+		return parent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@title=\"Edit Page\"]"));
 	}
 	public WebElement btn_ActionDropdownByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//button[@data-toggle=\"dropdown\"]"));
+		return parent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//button[@data-toggle=\"dropdown\"]"));
 	}
 	public WebElement btn_ActivateActionOptByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@class=\"page-activate-action\"]"));
+		return parent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@class=\"page-activate-action\"]"));
 	}
 	public WebElement btn_DeleteActionOptByPageName(String pageName) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@class=\"page-delete-action\"]"));
+		return parent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//a[@class=\"page-delete-action\"]"));
 	}
 	public WebElement lbl_Status(String pageName, String status) {
-		return parrent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[text()=\'" + status + "']"));
+		return parent_RecordElement.findElement(By.xpath("//tr[td[text()=\'" + pageName +"']]//td[text()=\'" + status + "']"));
 	}
 
 }

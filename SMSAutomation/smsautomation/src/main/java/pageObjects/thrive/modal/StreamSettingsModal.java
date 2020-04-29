@@ -2,6 +2,7 @@ package pageObjects.thrive.modal;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,8 +18,10 @@ public class StreamSettingsModal extends BasePage {
 	
 	private final String REVIEWS_SYETEM_TOOLTIP_TEXT = "Reviews System\nWhen enabled it will be possible to capture reviews on Merchant sites.";
 	private final String SEND_REVIEWS_REQUEST_AFTER_X_CHECKINS = "Send Review Request after X check-ins\nWe will send a request for a review after this number of check-ins. This counter starts from the day the feature is enabled and not from the day the subscriber was added.";
-	private final String CHECKIN_REVIEW_REQUEST = "Check-in Review Request\\nChoose when the request for a review should be sent after a check-in. If the Next Day option is chosen, the review will be sent out at 9:00 A.M. the following morning.";
-	private final String REVIEW_SUBMISSIONS_AUTOMATIC_RESPONSE_METHOD = "Review Submissions Automatic Response Method\\nControl which method we use to reach out to a user after a review is written. If set to Email or SMS Response, the system will send and SMS to Engage Members and Emails to everyone else.";
+	private final String CHECKIN_REVIEW_REQUEST = "Check-in Review Request\nChoose when the request for a review should be sent after a check-in. If the Next Day option is chosen, the review will be sent out at 9:00 A.M. the following morning.";
+	private final String REVIEW_SUBMISSIONS_AUTOMATIC_RESPONSE_METHOD = "Review Submissions Automatic Response Method\nControl which method we use to reach out to a user after a review is written. If set to Email or SMS Response, the system will send and SMS to Engage Members and Emails to everyone else.";
+	private final String SOCIAL_SHARE_AUTOMATIC_RESPONSE = "Social Share Automatic Response\nIf Enabled, a message will be sent to a review author requesting that they share the review on social media.";
+	
 	
 	public String getREVIEWS_SYETEM_TOOLTIP_TEXT() {
 		return REVIEWS_SYETEM_TOOLTIP_TEXT;
@@ -35,6 +38,11 @@ public class StreamSettingsModal extends BasePage {
 	public String getREVIEW_SUBMISSIONS_AUTOMATIC_RESPONSE_METHOD() {
 		return REVIEW_SUBMISSIONS_AUTOMATIC_RESPONSE_METHOD;
 	}
+	
+	public String getSOCIAL_SHARE_AUTOMATIC_RESPONSE() {
+		return SOCIAL_SHARE_AUTOMATIC_RESPONSE;
+	}
+
 
 
 	public @FindBy(xpath = "(//h4[@class=\"modal-title\" and text()[normalize-space()=\"Settings\"]])[1]") WebElement mod_Title;
@@ -64,11 +72,22 @@ public class StreamSettingsModal extends BasePage {
 	public @FindBy(xpath = "//select[@id=\"review_settings_type_reviews-request-checkin-request_delay_value\"]") WebElement txtF_CheckInReviewRequestDDown;
 	public @FindBy(xpath = "//label[@data-original-title=\"Review Submissions Automatic Response Method\"]") WebElement title_ReviewSubmissionsAutoResponseMethod;
 	public @FindBy(xpath = "//select[@id=\"review_settings_type_reviews-response-method_value\"]") WebElement txtF_ReviewSubmissionsAutoResponseMethodDDown;
+	public @FindBy(xpath = "//label[@data-original-title=\"Social Share Automatic Response\"]") WebElement title_SocialShareAutoRespons;
 	public @FindBy(xpath = "//label[normalize-space()=\"Enabled\"]") WebElement btn_SocialShareAutoResponseEnabled;
 	public @FindBy(xpath = "//label[normalize-space()=\"Disabled\"]") WebElement btn_SocialShareAutoResponseDisabled;
 	public @FindBy(xpath = "//select[@id=\"review_settings_type_social_share-response-delay_value\"]") WebElement txtF_SocialShareAutoResponseDelayDDown;
-	
+	public WebElement CheckInReviewRequestOptions (String option) {
+		return txtF_CheckInReviewRequestDDown.findElement(By.xpath("//option[text()=\'" + option + "']"));
+	}
+	public WebElement ReviewSubmissionsAutoResponseMethod (String option) {
+		return txtF_ReviewSubmissionsAutoResponseMethodDDown.findElement(By.xpath("//option[text()=\'" + option + "']"));
+	}
+	public WebElement SocialShareAutoResponseDelay (String option) {
+		return txtF_SocialShareAutoResponseDelayDDown.findElement(By.xpath("//option[text()=\'" + option + "']"));
+	}	
+
 	//Review Templates Elements
+	public @FindBy(xpath = "//h3[text()=\"Templates\"]") WebElement title_ReviewTemplate;
 	public @FindBy(xpath = "//textArea[@id=\"review_settings_type_review-request\"]") WebElement txtArea_ReviewRequestSMS;
 	public @FindBy(xpath = "//textArea[@id=\"review_settings_type_review-request-emailBody\"]") WebElement txtArea_ReviewRequestEmail;
 	public @FindBy(xpath = "//textArea[@id=\"review_settings_type_review-positive-submission\"]") WebElement txtArea_ReviewPositiveFormSubmissionSMS;

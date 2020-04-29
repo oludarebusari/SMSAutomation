@@ -72,7 +72,7 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Experience);
 		experienceDDown.waitAndClickElement(experienceDDown.opt_Pages);
 		saveChangesToPageModal.waitAndClickElement(saveChangesToPageModal.btn_SaveChanges);
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Assert.assertTrue(pagesMainPage.searchPageByPageName("AclateQA").isDisplayed());
 	}
 

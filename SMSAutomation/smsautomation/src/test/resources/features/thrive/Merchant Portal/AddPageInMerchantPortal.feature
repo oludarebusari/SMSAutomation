@@ -30,7 +30,7 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     When User navigates to the actions column of a Business and clicks Sign In button
     Then User is logged into the Business and the business dashboard is opened
 
-  @SMSM-136 @Verify-the-user-is-able-to-create-a-new-page-in-merchant-portal @RegressionTest 
+  @SMSM-136 @Verify-the-user-is-able-to-create-a-new-page-in-merchant-portal @RegressionTest @OnlyMe
   Scenario: Verify the user is able to create a new page in merchants portal
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
