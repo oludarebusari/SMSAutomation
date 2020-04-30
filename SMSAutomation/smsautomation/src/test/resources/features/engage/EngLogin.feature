@@ -1,4 +1,5 @@
 
+#User is assumed to have Admin access unless stated Otherwise
 Feature: Login into Engage App
 	Existing user should be able to log into Engage SMS using correct credentials
 	

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -510,5 +511,59 @@ public class BasePage extends DriverFactory {
 		return false;
 
 	}
-	
+
+	/**********************************************************************************
+	 ** Get Last Month
+	 *********************************************************************************/
+	public String getLastMonthInRange() {
+		
+		LocalDate currentDate = LocalDate.now();
+		
+		String lastMonth = "";
+		Month currentMonth = currentDate.getMonth();
+		
+		switch (currentMonth.toString().toLowerCase()) {
+		
+				case "january" :
+				    lastMonth = "12/01/2019 to 12/31/2019";
+				    break;
+				case "february" :
+					lastMonth =  "01/01/2020 to 01/31/2020";
+					break;
+				case "march" :
+					lastMonth =  "02/01/2020 to 02/28/2020";
+					break;
+				case "april" :
+					lastMonth =  "03/01/2020 to 03/31/2020";
+					break;
+				case "may" :
+					lastMonth =  "04/01/2020 to 04/30/2020";
+					break;
+				case "june" :
+					lastMonth =  "05/01/2020 to 05/31/2020";
+					break;
+				case "july" :
+					lastMonth = "06/01/2020 to 06/30/2020";
+					break;
+				case "august" :
+					lastMonth =  "07/01/2020 to 07/31/2020";
+					break;
+				case "september" :
+					lastMonth =  "08/01/2020 to 08/31/2020";
+					break;
+				case "october" :
+					lastMonth =  "09/01/2020 to 09/30/2020";
+					break;
+				case "November" :
+					lastMonth = "10/01/2020 to 10/31/2020";
+					break;
+				case "December" :
+					lastMonth =  "11/01/2020 to 11/30/2020";
+					break;
+		}
+		
+		return lastMonth;
+
+	}
+
 }

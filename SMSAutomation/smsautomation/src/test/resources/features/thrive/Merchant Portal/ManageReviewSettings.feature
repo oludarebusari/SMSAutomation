@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: [SMSM-240] User is able to manage review settings in merchant portal for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard

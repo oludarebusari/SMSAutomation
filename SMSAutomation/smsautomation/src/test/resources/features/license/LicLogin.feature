@@ -1,4 +1,6 @@
 
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: To verify that the user is able to log into the licensee portal, access the homepage and then log out 
 	Existing user should be able to log into License SMS using correct credentials
 

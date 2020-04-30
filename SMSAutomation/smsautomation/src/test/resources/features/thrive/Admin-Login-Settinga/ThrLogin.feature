@@ -17,7 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 
-
+#User is assumed to have Admin access unless stated Otherwise
 Feature: Login to BeSpeak Application for Thrive System
 
 	@SMSM-133-Thrive-login @RegressionTest

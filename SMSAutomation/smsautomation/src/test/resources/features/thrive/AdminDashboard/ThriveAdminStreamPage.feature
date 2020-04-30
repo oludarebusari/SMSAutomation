@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: [SMSM-193] Verify the Stream page under Experience tab for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -26,7 +28,7 @@ Feature: [SMSM-193] Verify the Stream page under Experience tab for Thrive syste
     And User clicks the sign in button for thrve
     Then Thrive Dashboard page is displayed
 
-  @SMSM-193 @Verify-the-stream-page-is-opened-at-Experience-tab @RegressionTest @OnlyMe
+  @SMSM-193 @Verify-the-stream-page-is-opened-at-Experience-tab @RegressionTest
   Scenario: Verify the stream page is opened at Experience tab
     When User clicks on the Experience Menu option on the dashboard
     Then the Experience option is displayed

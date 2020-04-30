@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's portal (Engage system)
   User should be able to view and edit Social Media and Web Widget settings
 

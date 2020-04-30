@@ -16,7 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@SMSM-203
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: Verify all the components on the Admin Dashboard
 
   Background: User is logs in and Thrive Dashboard is displayed

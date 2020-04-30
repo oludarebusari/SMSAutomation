@@ -15,7 +15,7 @@ public class ThriveAdminStreamPageSteps extends DriverFactory {
 //	@Verify-the-stream-page-is-opened-at-Experience-tab
 	@When("User clicks on the Experience Menu option on the dashboard")
 	public void user_clicks_on_the_Experience_Menu_option_on_the_dashboard() {
-	
+		
 	}
 
 	@Then("the Experience option is displayed")

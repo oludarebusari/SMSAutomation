@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: [SMSM-76] Thrive - Zeon Tab Options
 
   Background: User logs in to Thrive and navigate to Manage Alert option under settings on Thrive System

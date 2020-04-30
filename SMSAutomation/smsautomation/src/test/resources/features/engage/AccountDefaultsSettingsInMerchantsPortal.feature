@@ -17,6 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 
+#User is assumed to have Admin access unless stated Otherwise
 Feature: View and Edit Account Default settings
   I want to be able to View & edit Account Defaults settings in Merchant's portal
 

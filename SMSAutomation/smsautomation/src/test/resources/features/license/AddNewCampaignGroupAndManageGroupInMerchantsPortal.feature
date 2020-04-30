@@ -1,4 +1,6 @@
 
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: To verify that the user is able to create a new campaign
 	Existing user should be able to create a new campaign
 @Create-a-campaign @RegressionTest

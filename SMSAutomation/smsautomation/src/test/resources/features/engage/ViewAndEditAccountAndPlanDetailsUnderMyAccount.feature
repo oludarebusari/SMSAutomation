@@ -17,6 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 
+#User is assumed to have Admin access unless stated Otherwise
 Feature: View and Edit account and plan details under my account
 
   Background: User is logged in and navigates to the Merchant's Dashboard

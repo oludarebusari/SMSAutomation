@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: [SMSM-135] View invoice, edit payment info & billing information in Merchant's portal for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard

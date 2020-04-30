@@ -55,11 +55,15 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//li[contains(@class, \"pagination-prev\")]") WebElement btn_PaginationPreviousDisabled;
 	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]/a") WebElement btn_PaginationNext;
 	public @FindBy(xpath = "//li[contains(@class, \"pagination-next\")]") WebElement btn_PaginationNextDisabled;
-	public @FindBy(xpath = "//span[@id=\"pagination-end\"]") WebElement btn_PaginationEnd;
+	public @FindBy(xpath = "//span[@id=\"pagination-end\"]") WebElement lbl_PaginationEnd;
 	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement lbl_PaginationTotal;
 	public @FindBy(xpath = "//span[@id=\"pagination-total\"]") WebElement lbl_CurrentPageTotal;
 	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement tableRecordsCount;
 	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//select[@name=\"broadcast-table_length\"]") WebElement lov_PaginationTableLength;
+	public @FindBy(xpath = "//ul[@class=\"pagination\"]") WebElement paginationBlock;
+	public WebElement pageButton(String pageNumber) {
+		return paginationBlock.findElement(By.xpath("//a[text()=\'" + pageNumber + "']"));
+	}
 	public WebElement tableLengthOpt(String option) {
 		return lov_PaginationTableLength.findElement(By.xpath("//option[text()=\'" + option + "']"));
 	}

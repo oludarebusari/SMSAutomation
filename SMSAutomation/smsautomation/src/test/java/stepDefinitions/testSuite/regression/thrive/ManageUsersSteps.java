@@ -86,7 +86,7 @@ public class ManageUsersSteps extends BasePage {
 
 	@Then("All option was selected successfully")
 	public void all_option_was_selected_successfully() throws Exception {
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.btn_PaginationEnd)
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd)
 				.equals(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)));
 		Assert.assertEquals(userManagementPage.all_Users().size(), Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)));
 		System.out.println("All Users Count: " + userManagementPage.all_Users().size());

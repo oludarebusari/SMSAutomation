@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: View & edit manage settings & Language strings in admin dashboard for Thrive system
 
   Background: User logs in and navigates to the Thrive's Dashboard

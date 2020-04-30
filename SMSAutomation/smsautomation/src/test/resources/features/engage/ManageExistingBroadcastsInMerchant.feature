@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
 Feature: [SMSM-125] View and access all options under Broadcast History in Merchant's portal (Engage system)
 
   Background: User is logged in and navigates to the Merchant's Dashboard
