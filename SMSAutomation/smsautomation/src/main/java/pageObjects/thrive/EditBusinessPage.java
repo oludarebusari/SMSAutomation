@@ -2,6 +2,7 @@ package pageObjects.thrive;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,4 +24,11 @@ public class EditBusinessPage extends BasePage {
 	public @FindBy(xpath = "//label[contains(@class, \"btn-default\") and ./input[@id=\"company_admin_merchant_type_status_0\"]]") WebElement btn_StatusLive;
 	public @FindBy(xpath = "//label[contains(@class, \"btn-default\") and ./input[@id=\"company_admin_merchant_type_status_1\"]]") WebElement btn_StatusInactive;
 	public @FindBy(xpath = "//button[@type=\"submit\" and text()[normalize-space()]]") WebElement btn_SaveBusiness;
+	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[text()[normalize-space()=\"Business Category\"]]]") WebElement par_BusinessCategory;
+	public WebElement businessCategoryOpt(String option) {
+		return par_BusinessCategory.findElement(By.xpath("//div[contains(@class, \"selectize-control\")]//div[text()=" + option + "]"));
+	}
+	
+	
+	
 }

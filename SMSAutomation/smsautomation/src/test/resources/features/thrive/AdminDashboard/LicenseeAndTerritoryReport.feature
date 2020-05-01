@@ -1,23 +1,7 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
-
+#Author: Aclate QA
 #User is assumed to have Admin access unless stated Otherwise
+#Step Definition File - AdminResellerAndTerritoryReportPageSteps.java
+
 Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -118,7 +102,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User enters an invalid search criteria into the search box on the Territory page and click search
     Then No record is displayed on the Territory page
 
-  @SMSM-178 @Verify-the-Help-on-"Territory-Reports"-page-by-clicking-the-Help-button @RegressionTest @OnlyMe
+  @SMSM-178 @Verify-the-Help-on-"Territory-Reports"-page-by-clicking-the-Help-button @RegressionTest 
   Scenario: Verify the Help on "Territory Reports" page by clicking the Help button [C22408976]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -130,3 +114,36 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     Then the tour guide is navigate back to the Licensee Territory Report window
     When User clicks on End Tour button
     Then Tour ends successfully
+    
+ @SMSM-178 @Verify-Admin-is-able-to-Allow/Disallow-a-Reseller-under-Territory-report @RegressionTest 
+ Scenario: Verify Admin is able to Allow/Disallow a Licensee under Territory report [C22408980]
+   When User clicks the Territory Report
+   Then the Territory Report page is displayed
+   When User clicks the Allow button under the Action column for Reseller
+   Then the Action column for the specified Reseller gets changed to Disallow
+   When User clicks the Disallow button under the Action column for Reseller
+   Then the Action column for the specified Reseller gets changed to Allow
+   
+ @SMSM-178 @Verify-Admin-can-edit-the-Reseller-details-from-Territory-report-page @RegressionTest 
+ Scenario: Verify Admin can edit the Licensee details from Territory report page [C22409002]
+   When User clicks the Territory Report
+   Then the Territory Report page is displayed
+	 When User clicks the drop down button under Action column and clicks Edit Reseller
+	 Then User is redirected to Edit Reseller page
+	 When User makes changes and clicks the Save Reseller 
+	 Then the Reseller is updated successfully
+	 And user confirms the changes made to Reseller were saved correctly
+	 #Revert Changes
+	 And User revert the changes made to Reseller.
+	 
+ @SMSM-178 @Verify-Admin-can-edit-the-Business-details-from-Territory-report-page @RegressionTest 
+ Scenario: Verify Admin can edit the Merchant details from Territory report page [C22409051]
+   When User clicks the Territory Report
+   Then the Territory Report page is displayed
+	 When User clicks the drop down button under Action column and clicks Edit Business 
+	 Then User is redirected to Edit Business page
+	 When User makes changes to Business and clicks the Save Business 
+	 Then the Business is updated successfully
+	 And user confirms the changes made to Business were saved correctly
+	 #Revert Changes
+   And User revert the changes made to Business.

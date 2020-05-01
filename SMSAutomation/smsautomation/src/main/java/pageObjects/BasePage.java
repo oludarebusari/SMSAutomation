@@ -565,5 +565,13 @@ public class BasePage extends DriverFactory {
 		return lastMonth;
 
 	}
+	
+	/**********************************************************************************
+	 ** GET NUMBER OF ELEMENTs
+	 *********************************************************************************/
+	public int getNumberOfElements(String element) throws InterruptedException {
+		return driver.findElements(By.xpath(element)).size();
+
+	}
 
 }
