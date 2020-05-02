@@ -44,7 +44,7 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
     When User enters an invalid search criteria into the search box of the Stream page and click search
     Then No record is displayed on the Stream page
 
-  @SMSM-179 @Verify-the-Help-on-Streams-Connection-Status-Reports-page-by-clicking-the-Help-button @RegressionTest 
+  @SMSM-179 @Verify-the-Help-on-Streams-Connection-Status-Reports-page-by-clicking-the-Help-button @RegressionTest
   Scenario: Verify functionality of Sorting and  Show entries dropdown  on "Streams Connection Status" report page [C22409457]
     When User clicks the Stream Status Report option
     Then the Streams Connection Status page is displayed for the Reseler
@@ -57,11 +57,94 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @SMSM-179 @Verify-the-Help-on-Streams-Connection-Status-Reports-page-by-clicking-the-Help-button @RegressionTest @OnlyMe
+  @SMSM-179 @Verify-the-Help-on-Streams-Connection-Status-Reports-page-by-clicking-the-Help-button @RegressionTest
   Scenario: Verify functionality of Sorting and  Show entries dropdown  on "Streams Connection Status" report page [C22409460]
     When User clicks the SSMBG Status Report option
-    Then the SSMBG Status Report page is displayed 
+    Then the SSMBG Status Report page is displayed
     And User verifies the column headers present on SSMBG Status Report page
     And User verifies that each record has a View Appointment buttom
-    
-    
+
+  @SMSM-179 @Verify-that-Admin-is-able-to-filter-the"SSMBG-Status-Report"-by-clicking-on-In-Progress,-Fulfilled-&-All-tab @RegressionTest
+  Scenario: Verify that Admin is able to filter the "SSMBG Status Report"  by clicking on In Progress, Fulfilled & All tab [C22409793]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+    And User verifies the three tabs for filtering SSMBG Status Reports
+    And User verifies the default filtering option
+    When User clicks on Fulfilled tab
+    Then all records with Status of Fulfilled are displayed
+    When User clicks the In Progress tab
+    Then all records with Status of In Progress are displayed
+    When User clicks on All tab
+    Then all the records on SSMBG Status report are displayed
+
+  @SMSM-179 @Verify-functionality-of-Sorting-and-Show-entries-dropdown-on-"SSMBG-Status-Report"-page @RegressionTest
+  Scenario: Verify functionality of Sorting and Show entries dropdown on "SSMBG Status Report" page [C22409811]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+    When User clicks on the Status column title to sort record in ascending order
+    Then the SSMBG Status Reports are sorted in ascending order
+    When User clicks on the Status column title to sort records in descending order
+    Then the SSMBG Status Reports are sorted in descending order
+    And User verifies the default number of records displayed on the SSMBG Status report page
+    And User navigates to anoother page on the SSMBG page
+    When User changes the show entries option to All
+    Then all records are displayed on a single page
+
+  @SMSM-179 @Verify-Admin-is-able-to-search-the-"SSMBG-Status-Report"-by-entering-a-search-criteria-in-Search-box-and-clicking-Search @RegressionTest 
+  Scenario: Verify Admin is able to search the "SSMBG Status Report" by entering a search criteria in Search box and clicking Search [C22409844]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+    When User enters a valid search criteria into the search box of the SSMBG Status page and click search
+    Then the reseller record is displayed on the SSMBG Status page
+    When User enters an invalid search criteria into the search box of the SSMBG Status page and click search
+    Then No record is displayed on the SSMBG Status page
+
+  @SMSM-179 @Verify-Admin-can-"View-Appointments"-for-a-specified-"SSMBG-Status-Report" @RegressionTest
+  Scenario: Verify Admin can "View Appointments" for a specified "SSMBG Status Report" [C22409851]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+		When User clicks View Appointments button for a record on the SSMBG Status report page
+		Then the Appointments Set page is opened
+		And User verifies that all appintment can be viewed
+		And User verifies the columns on the Appointmnents Set page 
+		
+  @SMSM-179 @Verify-admin-can-filter-the-data-on-"Appointments-Set"-page-by-entering-the-details-in-filter-fields" @RegressionTest 
+  Scenario: Verify admin can filter the data on "Appointments Set" page by entering the details in filter fields [C22412369]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+		When User clicks View Appointments button for a record on the SSMBG Status report page
+		Then the Appointments Set page is opened
+		And User verifies the filter option on the Appointment Set page
+		When User enters a value for the Vertical filter
+		Then Appointments records based on the vertical filter are displayed
+		When User clicks the Card view button
+		Then the records are presented in card view
+		And User enters a value for vertical filter
+		
+ @SMSM-179 @Verify-admin-can-toggle-the-view-of-"Appointments-Set"-page-to-show-as-Table-or-Tiles-view @RegressionTest @OnlyMe
+  Scenario: Verify admin can toggle the view of "Appointments Set" page to show as Table or Tiles view [C22412392]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+		When User clicks View Appointments button for a record on the SSMBG Status report page
+		Then the Appointments Set page is opened
+		And User verifies the toggle view buttons are displayed
+		And User verifies that the current view
+		When User clicks the Card view button
+		Then the records are displayed in card format
+		When User clicks the calender view button
+		Then the calendar view is displayed
+		
+ @SMSM-179 @Verify-admin-can-toggle-to-"View-all-Leads"-on-Appointments-Set-page @RegressionTest @OnlyMe
+  Scenario: Verify admin can toggle to "View all Leads" on Appointments Set page [C22412410]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+		When User clicks View Appointments button for a record on the SSMBG Status report page
+		Then the Appointments Set page is opened
+		And User verifies that the View all Lead button is available
+		And User verifies that all leads are displayed by default
+		When User clicks on the view all leads toggle
+		Then tthe toggle tooltip text changes and only leads with previous appts or Offers accepted are displayed
+		
+		
+		
+		

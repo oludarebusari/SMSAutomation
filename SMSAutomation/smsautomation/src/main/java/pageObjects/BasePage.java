@@ -447,7 +447,7 @@ public class BasePage extends DriverFactory {
 	public boolean isElementVisible(String locator) {
 
 		try {
-			driver.findElement(By.xpath(locator));
+			driver.findElement(By.xpath(locator)).isDisplayed();
 			return true;
 		} catch (NoSuchElementException NSE) {
 			return false;
@@ -574,4 +574,9 @@ public class BasePage extends DriverFactory {
 
 	}
 
+	
+	
+	public int getNumberOfElements(WebElement element) {
+		return driver.findElements(By.xpath(element.toString())).size();
+	}
 }

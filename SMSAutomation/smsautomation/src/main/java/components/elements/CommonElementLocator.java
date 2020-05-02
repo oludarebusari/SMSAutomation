@@ -61,6 +61,7 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"dataTables_info\"]") WebElement tableRecordsCount;
 	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//select[@name=\"broadcast-table_length\"]") WebElement lov_PaginationTableLength;
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]") WebElement paginationBlock;
+	public @FindBy(xpath = "//ul[@class=\"pagination\"]//li[contains(@class, \"active\")]") WebElement paginationActiveBtn;
 	public WebElement pageButton(String pageNumber) {
 		return paginationBlock.findElement(By.xpath("//a[text()=\'" + pageNumber + "']"));
 	}
