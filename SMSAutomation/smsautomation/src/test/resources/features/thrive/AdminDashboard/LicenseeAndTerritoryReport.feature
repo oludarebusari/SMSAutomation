@@ -12,7 +12,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     And User clicks the sign in button for thrve
     Then Thrive Dashboard page is displayed
     When User clicks on the Report Menu option on the dashboard
-    Then the Reports option is displayed
+    Then the Reports options are displayed
 
   @SMSM-178 @Verify-that-admin-can-view-all-Reseller-details-along-with-their-Businesses-count,-on-Reseller-Reports-page @RegressionTest
   Scenario: Verify that admin can view all Reseller details along with their Businesses count, on Reseller Reports page [C22406807]
@@ -136,7 +136,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
 	 #Revert Changes
 	 And User revert the changes made to Reseller.
 	 
- @SMSM-178 @Verify-Admin-can-edit-the-Business-details-from-Territory-report-page @RegressionTest 
+ @SMSM-178 @Verify-Admin-can-edit-the-Business-details-from-Territory-report-page @RegressionTest
  Scenario: Verify Admin can edit the Merchant details from Territory report page [C22409051]
    When User clicks the Territory Report
    Then the Territory Report page is displayed

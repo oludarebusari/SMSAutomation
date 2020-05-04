@@ -14,6 +14,12 @@ public class SalesLeadsPage extends BasePage {
 		super();
 	}
 	
+	
+	
+		private final String viewLeadsOn = "Disable to show all leads.";
+		private final String viewLeadsOff = "Enable to show only leads with previous appts set or offers accepted.";
+		private final String ExportTooltip = "Export to CSV";
+		
 	    private final String LISTVIEW = "//tr[@class=\"lead-item\"]";
 	    private final String CARDVIEW = "//div[@id=\"leads-stream\"]//div[contains(@class, \"lead-item\")]";
 	    private final String CALENDARVIEW = "//div[@class=\"fc-bg\"]";
@@ -25,6 +31,7 @@ public class SalesLeadsPage extends BasePage {
 		public @FindBy(xpath = "//input[@id=\"lead_filter_type_zip_codes-selectized\"]") WebElement txtF_ZipCodes;
 		public @FindBy(xpath = "//input[@id=\"lead_filter_type_status-selectized\"]") WebElement txtF_StatusDDown;
 		public @FindBy(xpath = "//label[contains(@class, \"toggle-off\")]") WebElement viewAllLeads;
+		public @FindBy(xpath = "//input[@id=\"lead_filter_type_filter_past_success\"]") WebElement viewAllLeadsTooltip;
 		public @FindBy(xpath = "//div[contains(@class, \"selectize-input\")]") WebElement parentVerticalElement;
 		public WebElement verticalOption (String option) {
 			return parentVerticalElement.findElement(By.xpath("//div[@data-value=\'" + option + "']"));
@@ -37,7 +44,8 @@ public class SalesLeadsPage extends BasePage {
 			return parentVerticalElement.findElement(By.xpath("//div[@data-value=\'" + option + "']//a"));
 		}
 		public @FindBy(xpath = "//label[contains(@class, \"toggle-off\")]") WebElement tog_ShowOnlyLeads;
-		public @FindBy(xpath = "//button[@id=\"lead_filter_type_export\"]") WebElement btn_Export;
+		public @FindBy(xpath = "//button[@id=\"lead_filter_type_export\"]") WebElement btn_ExportCSV;
+		public @FindBy(xpath = "//div[@data-title=\"Export to CSV\"]") WebElement ExportCSVTooltip;
 		public @FindBy(xpath = "//label[@for=\"lead_filter_type_view_as_1\"]") WebElement btn_ListView;
 		public @FindBy(xpath = "//tr[@class=\"lead-item\"]") WebElement ListView;
 		public @FindBy(xpath = "//label[@for=\"lead_filter_type_view_as_2\"]") WebElement btn_CardView;
@@ -72,5 +80,17 @@ public class SalesLeadsPage extends BasePage {
 
 		public String getCALENDARVIEW() {
 			return CALENDARVIEW;
+		}
+
+		public String getViewLeadsOn() {
+			return viewLeadsOn;
+		}
+
+		public String getViewLeadsOff() {
+			return viewLeadsOff;
+		}
+
+		public String getExportTooltip() {
+			return ExportTooltip;
 		}
 }

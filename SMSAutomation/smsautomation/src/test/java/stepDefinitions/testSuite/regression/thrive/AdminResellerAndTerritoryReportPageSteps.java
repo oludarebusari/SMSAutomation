@@ -40,14 +40,15 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 	public void user_clicks_on_the_Report_Menu_option_on_the_dashboard() throws Exception {
 		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Reports);
 	}
-
-	@Then("the Reports option is displayed")
-	public void the_Reports_option_is_displayed() {
+	
+	@Then("the Reports options are displayed")
+	public void the_Reports_options_are_displayed() {
 		Assert.assertTrue(reportsDDown.opt_Reseller_Report.isDisplayed());
 		Assert.assertTrue(reportsDDown.opt_Territory_Report.isDisplayed());
 		Assert.assertTrue(reportsDDown.opt_Streams_Status_Report.isDisplayed());
 		Assert.assertTrue(reportsDDown.opt_SSMBG_Status_Report.isDisplayed());
 	}
+
 
 	@When("User clicks the Reseller Report")
 	public void user_clicks_the_Reseller_Report() throws Exception {

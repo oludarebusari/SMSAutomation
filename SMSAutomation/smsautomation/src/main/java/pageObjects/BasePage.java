@@ -463,7 +463,7 @@ public class BasePage extends DriverFactory {
 	public boolean isFileDownloaded(String downloadPath, String fileName) throws InterruptedException {
 
 		// Little wait to allow file to be fully downloaded
-		Thread.sleep(500);
+		Thread.sleep(1000);
 
 		// Specifies the download directory
 		File dir = new File(downloadPath);
@@ -478,7 +478,7 @@ public class BasePage extends DriverFactory {
 				return true;
 			}
 		}
-		System.out.println("File download failedl");
+		System.out.println("File download failed");
 		return false;
 
 	}

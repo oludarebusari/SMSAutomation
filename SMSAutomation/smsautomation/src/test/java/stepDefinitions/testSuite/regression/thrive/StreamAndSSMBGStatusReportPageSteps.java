@@ -2,6 +2,7 @@ package stepDefinitions.testSuite.regression.thrive;
 
 import java.io.IOException;
 
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -32,6 +33,11 @@ public class StreamAndSSMBGStatusReportPageSteps  extends BasePage {
 	private int currentActivePage = 0;
 	private int newActivePage = 0;
 	private final String streamPageNumberText = "4";
+	
+	String downloadpath =  System.getProperty("user.home") + "//Downloads//";
+	String fileName = "leads_export.csv";
+	
+	
 	
 //	@Verify-the-details-on-Streams-Connection-Status-report-page-and-verify-the-columns 
 	@When("User clicks the Stream Status Report option")
@@ -425,6 +431,52 @@ public class StreamAndSSMBGStatusReportPageSteps  extends BasePage {
 		Assert.assertFalse(salesLeadsPage.isElementVisible((salesLeadsPage.getLISTVIEW())));
 		Assert.assertFalse(salesLeadsPage.isElementVisible(salesLeadsPage.getCARDVIEW()));
 		Assert.assertTrue(salesLeadsPage.isElementVisible((salesLeadsPage.getCALENDARVIEW())));
+	}
+	
+//	Verify-admin-can-toggle-to-"View-all-Leads"-on-Appointments-Set-page
+	@Then("User verifies that the View all Lead button is available")
+	public void user_verifies_that_the_View_all_Lead_button_is_available() {
+		Assert.assertTrue(salesLeadsPage.viewAllLeads.isDisplayed());
+	}
+
+	@Then("User verifies that all leads are displayed by default")
+	public void user_verifies_that_all_leads_are_displayed_by_default() {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(salesLeadsPage.viewAllLeads).perform();
+		Assert.assertEquals(salesLeadsPage.getViewLeadsOff(), salesLeadsPage.viewAllLeadsTooltip.getAttribute("tooltip"));
+	}
+
+	@When("User clicks on the view all leads toggle")
+	public void user_clicks_on_the_view_all_leads_toggle() throws Exception {
+		salesLeadsPage.waitAndClickElement(salesLeadsPage.viewAllLeads);
+	}
+
+	@Then("tthe toggle tooltip text changes and only leads with previous appts or Offers accepted are displayed")
+	public void tthe_toggle_tooltip_text_changes_and_only_leads_with_previous_appts_or_Offers_accepted_are_displayed() {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(salesLeadsPage.viewAllLeads).perform();
+		Assert.assertEquals(salesLeadsPage.getViewLeadsOn(), salesLeadsPage.viewAllLeadsTooltip.getAttribute("tooltip"));
+	}
+
+
+//	@Verify-that-Admin-can-export-the-data-to-CSV-for-"Appointments-Set"-page
+	@Then("User verifies the Export CSV button and tooltip")
+	public void user_verifies_the_Export_CSV_button_and_tooltip() {
+		Assert.assertTrue(salesLeadsPage.btn_ExportCSV.isDisplayed());
+		Actions actions = new Actions(driver);
+		actions.moveToElement(salesLeadsPage.viewAllLeads).perform();
+		Assert.assertEquals(salesLeadsPage.getExportTooltip(), salesLeadsPage.ExportCSVTooltip.getAttribute("data-title"));
+		
+	}
+
+	@When("User clicks the Export CSV button")
+	public void user_clicks_the_Export_CSV_button() throws Exception {
+		salesLeadsPage.waitAndClickElement(salesLeadsPage.btn_ExportCSV);
+	}
+
+	@Then("a CSV file is downloaded and user verifies the filename")
+	public void a_CSV_file_is_downloaded_and_user_verifies_the_filename() throws Exception {
+	  Assert.assertTrue(salesLeadsPage.isFileDownloaded(downloadpath, fileName));
 	}
 
 }

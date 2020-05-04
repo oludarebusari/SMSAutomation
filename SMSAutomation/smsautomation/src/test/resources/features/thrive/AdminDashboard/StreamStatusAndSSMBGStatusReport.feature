@@ -1,5 +1,6 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
+
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - StreamAndSSMBGStatusReportPageSteps.java
 Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin dashboard for Thrive system
@@ -12,7 +13,7 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
     And User clicks the sign in button for thrve
     Then Thrive Dashboard page is displayed
     When User clicks on the Report Menu option on the dashboard
-    Then the Reports option is displayed
+    Then the Reports options are displayed
 
   @SMSM-179 @Verify-the-details-on-Streams-Connection-Status-report-page-and-verify-the-columns @RegressionTest
   Scenario: Verify the details on "Streams Connection Status" report page and verify the sorting [C22409430]
@@ -121,7 +122,7 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
 		Then the records are presented in card view
 		And User enters a value for vertical filter
 		
- @SMSM-179 @Verify-admin-can-toggle-the-view-of-"Appointments-Set"-page-to-show-as-Table-or-Tiles-view @RegressionTest @OnlyMe
+ @SMSM-179 @Verify-admin-can-toggle-the-view-of-"Appointments-Set"-page-to-show-as-Table-or-Tiles-view @RegressionTest
   Scenario: Verify admin can toggle the view of "Appointments Set" page to show as Table or Tiles view [C22412392]
     When User clicks the SSMBG Status Report option
     Then the SSMBG Status Report page is displayed
@@ -134,7 +135,7 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
 		When User clicks the calender view button
 		Then the calendar view is displayed
 		
- @SMSM-179 @Verify-admin-can-toggle-to-"View-all-Leads"-on-Appointments-Set-page @RegressionTest @OnlyMe
+ @SMSM-179 @Verify-admin-can-toggle-to-"View-all-Leads"-on-Appointments-Set-page @RegressionTest 
   Scenario: Verify admin can toggle to "View all Leads" on Appointments Set page [C22412410]
     When User clicks the SSMBG Status Report option
     Then the SSMBG Status Report page is displayed
@@ -144,6 +145,16 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
 		And User verifies that all leads are displayed by default
 		When User clicks on the view all leads toggle
 		Then tthe toggle tooltip text changes and only leads with previous appts or Offers accepted are displayed
+		
+@SMSM-179 @Verify-that-Admin-can-export-the-data-to-CSV-for-"Appointments-Set"-page @RegressionTest
+  Scenario: Verify that Admin can export the data to CSV for "Appointments Set" page [C22412424]
+    When User clicks the SSMBG Status Report option
+    Then the SSMBG Status Report page is displayed
+		When User clicks View Appointments button for a record on the SSMBG Status report page
+		Then the Appointments Set page is opened
+		And User verifies the Export CSV button and tooltip
+		When User clicks the Export CSV button
+		Then a CSV file is downloaded and user verifies the filename
 		
 		
 		
