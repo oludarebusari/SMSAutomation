@@ -13,25 +13,45 @@ public class ModulesPage extends BasePage {
 	public ModulesPage() throws IOException {
 		super();
 	}
+
+	
+	private final String MODULELOCATOR = "//h4[text()=\"Automation Testing Module - Edited\"]";
 	
 	//menu options
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Web Essentials Setup\"]]//a[text()=\"Edit\"]") WebElement btn_WebEssentialsSetupEdit;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Web Essentials Setup\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_WebEssentialsSetupDDown;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Social Essentials Ongoing\"]]//a[text()=\"Edit\"]") WebElement btn_SocialEssentialsOngoingEdit;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Social Essentials Ongoing\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_SocialEssentialsOngoingDDown;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Package Discount\"]]//a[text()=\"Edit\"]") WebElement btn_PackageDiscountEdit;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Package Discount\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_PackageDiscountDDown;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Web Essentials Ongoing\"]]//a[text()=\"Edit\"]") WebElement btn_WebEssentialsOngoingEdit;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Web Essentials Ongoing\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_WebEssentialsOngoingDDown;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Web & Social Essentials Ongoing\"]]//a[text()=\"Edit\"]") WebElement btn_WWebSocialEssentialsOngoingEdit;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Web & Social Essentials Ongoing\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_WebSocialEssentialsOngoingDDown;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Social Essentials Setup\"]]//a[text()=\"Edit\"]") WebElement btn_SocialEssentialsSetupEdit;
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Social Essentials Setup\"]]//button[@data-toggle=\"dropdown\"]") WebElement btn_SocialEssentialsSetupDDOwn;
-	
-	public @FindBy(xpath = "//div[@class=\"panel panel-default\" and .//h4[text()=\"Package Discount\"]]//a[text()=\"Edit\"]") WebElement parentElement;
-	
-	public WebElement editModule(String module) {
-		return parentElement.findElement(By.xpath(""));
+	public @FindBy(xpath = "//div[@class=\"panel panel-default\"]") WebElement AllModules;
+	public @FindBy(xpath = "//div[@id=\"manage-modules\"]") WebElement parentModuleElement;
+	public WebElement modulePanel(String moduleName) {
+		return parentModuleElement.findElement(By.xpath("//div[@class=\"panel panel-default\" and .//h4[text()=\'" + moduleName + "']]"));
 	}
+	
+	public WebElement editModuleBtn(String moduleName) {
+		return parentModuleElement.findElement(By.xpath("//div[@class=\"panel panel-default\" and .//h4[text()=\'" + moduleName + "']]//a[text()=\"Edit\"]"));
+	}
+	
+	public WebElement moduleDDown(String moduleName) {
+		return parentModuleElement.findElement(By.xpath("//div[@class=\"panel panel-default\" and .//h4[text()=\'" + moduleName + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	
+	public WebElement deleteModuleBtn(String moduleName) {
+		return parentModuleElement.findElement(By.xpath("//div[@class=\"panel panel-default\" and .//h4[text()=\'" + moduleName + "']]//a[@data-action=\"delete\"]"));
+	}
+		
+	public @FindBy(xpath = "//div[@role=\"alert\"]//p") WebElement NotificationAlert;
+	public WebElement tile_ModuleName(String name) {
+		return AllModules.findElement(By.xpath("//h4[text()=\'" + name + "']"));
+	}
+    public WebElement tile_ModuleDescription(String description) {
+    	return AllModules.findElement(By.xpath("//p[text()=\'" + description + "']"));
+    }
+    public WebElement tile_Price(String price) {
+    	return AllModules.findElement(By.xpath("//span[contains(text(), \"" + "$" + price + ")]"));
+    }
+	public String getMODULELOCATOR() {
+		return MODULELOCATOR;
+	}
+
+
+	public @FindBy(xpath = "//div[@role=\"alert\"]//p") WebElement tile_ModuleDescription;
+	public @FindBy(xpath = "//div[@role=\"alert\"]//p") WebElement tile_Price;
 	
 }

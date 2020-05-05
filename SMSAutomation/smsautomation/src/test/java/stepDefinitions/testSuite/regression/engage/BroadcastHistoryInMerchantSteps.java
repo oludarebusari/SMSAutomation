@@ -117,9 +117,10 @@ public class BroadcastHistoryInMerchantSteps extends DriverFactory {
 //   @SMSM-125-Verify-that-user-is-able-to-Copy-and-Export-to-CSV-the-List-of-broadcast-messages
 	@Then("user confirms data rows on the broadcast page are copied")
 	public void user_confirms_data_rows_on_the_broadcast_page_are_copied() throws Exception {
+		System.out.println(broadcastHistoryPage.getElementText(broadcastHistoryPage.copyToClipboard).substring(7, 9));
 		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.txt_Copied_To_Clipboard)
 				.contentEquals("Copied "
-						+ broadcastHistoryPage.getElementText(broadcastHistoryPage.copyToClipboard).substring(7, 10)
+						+ broadcastHistoryPage.getElementText(broadcastHistoryPage.copyToClipboard).substring(7, 9)
 						+ " rows to clipboard"));
 	}
 
