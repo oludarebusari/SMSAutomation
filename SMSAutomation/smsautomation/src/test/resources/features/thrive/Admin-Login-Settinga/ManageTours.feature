@@ -1,23 +1,9 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+#Step Definition file - ManageTourSteps.java
+
 Feature: Manage tours under settings in admin dashboard for Thrive system
 
   Background: User logs in and navigates to the Thrive's Dashboard
@@ -34,10 +20,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
 
   @SMSM-185-Navigate-to-manage-tour-option @RegressionTest
   Scenario: Navigate to manage tour option under settings on thrive system [C22331428]
-    #Given User clicks on settings on top menu bar
-    #Then the settings options are displayed
-    When User clicks on Tours under settings
-    Then User is redirected to Tours page
+    And User verifies the URL of the Tours page
 
   @SMSM-185-Search-and-edit-existing-tour-in-the-edit @RegressionTest
   Scenario: Search and Edit existing tour in the list [C22336695]

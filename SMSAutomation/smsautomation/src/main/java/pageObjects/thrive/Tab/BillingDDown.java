@@ -15,8 +15,8 @@ public class BillingDDown extends BasePage {
 
 	
 	// Page elements
-	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Plans\"]]") WebElement opt_Plans;
-	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Add Plan\"]]") WebElement opt_Add_Plan;
+	public @FindBy(xpath = "//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Plans\"]]") WebElement opt_Plans;
+	public @FindBy(xpath = "//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Add Plan\"]]") WebElement opt_Add_Plan;
 	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Modules\"]]") WebElement opt_Modules;
 	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Add Module\"]]") WebElement opt_Add_Module;
 

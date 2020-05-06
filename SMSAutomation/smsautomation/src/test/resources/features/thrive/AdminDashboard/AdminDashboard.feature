@@ -179,6 +179,10 @@ Feature: Verify all the components on the Admin Dashboard
 		Then the Edit Business page is displayed
 		When User update some details and Click Save Business button
 		Then a notification for that Business is successfully saved is displayed
+		And User asserts that the changes were saved correctly
+		
+		#Revert Changes to Business
+		And User revert the changes made to Business
 		
 
 		

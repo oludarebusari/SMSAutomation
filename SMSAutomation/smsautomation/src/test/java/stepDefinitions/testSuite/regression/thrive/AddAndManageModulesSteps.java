@@ -18,7 +18,7 @@ public class AddAndManageModulesSteps extends DriverFactory {
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public CreateEditModulePage createEditModulePage = PageFactory.initElements(driver, CreateEditModulePage.class);
 	public DeleteModuleModal deleteModuleModal = PageFactory.initElements(driver, DeleteModuleModal.class);
-	
+
 	public ModulesPage modulesPage = PageFactory.initElements(driver, ModulesPage.class);
 
 	@When("User clicks on the Billing Menu option on the dashboard")
@@ -216,7 +216,8 @@ public class AddAndManageModulesSteps extends DriverFactory {
 
 	@Then("User edits the Module Name, Description, categories, icon and Feature Details")
 	public void user_edits_the_Module_Name_Description_categories_icon_and_Feature_Details() throws Exception {
-		createEditModulePage.sendKeysToWebElement(createEditModulePage.txtF_ModuleName, "Automation Testing Module - Edited");
+		createEditModulePage.sendKeysToWebElement(createEditModulePage.txtF_ModuleName,
+				"Automation Testing Module - Edited");
 		createEditModulePage.sendKeysToWebElement(createEditModulePage.txtA_ModuleDescription,
 				"Module for QA Automation - Edited");
 		createEditModulePage.waitAndClickElement(createEditModulePage.categoriesDDown);
@@ -232,7 +233,7 @@ public class AddAndManageModulesSteps extends DriverFactory {
 	public void user_clicks_Save_Module_button() throws Exception {
 		createEditModulePage.waitAndClickElement(createEditModulePage.btn_SaveModule);
 	}
-	
+
 	@Then("an updated notification is displayed on the module page")
 	public void an_updated_notification_is_displayed_on_the_module_page() throws Exception {
 		Assert.assertEquals("Item has been successfully updated.",
@@ -247,16 +248,16 @@ public class AddAndManageModulesSteps extends DriverFactory {
 		Assert.assertTrue(modulesPage.tile_ModuleDescription("Module for QA Automation - Edited").isDisplayed());
 		Assert.assertTrue(modulesPage.tile_Price("10.00\"").isDisplayed());
 	}
-	
+
 //  @Verify-that-Module-cannot-be-deleted-if-"x"-is-clicked-on-"Delete-Module"-confirmation-popup-for-"Delete-Module"-action
 	@When("User click the module action dropdown button on a Module tile")
 	public void user_click_the_module_action_dropdown_button_on_a_Module_tile() throws Exception {
-	  modulesPage.waitAndClickElement(modulesPage.moduleDDown("Automation Testing Module - Edited"));
+		modulesPage.waitAndClickElement(modulesPage.moduleDDown("Automation Testing Module - Edited"));
 	}
 
 	@Then("the module action option is displayed")
 	public void the_module_action_option_is_displayed() {
-	  Assert.assertTrue(modulesPage.deleteModuleBtn("Automation Testing Module - Edited").isDisplayed());
+		Assert.assertTrue(modulesPage.deleteModuleBtn("Automation Testing Module - Edited").isDisplayed());
 	}
 
 	@When("User clicks on the Delete Module option")
@@ -271,7 +272,7 @@ public class AddAndManageModulesSteps extends DriverFactory {
 
 	@When("User clicks on the X button on the Delete Module window pop up")
 	public void user_clicks_on_the_X_button_on_the_Delete_Module_window_pop_up() throws Exception {
-	  deleteModuleModal.waitAndClickElement(deleteModuleModal.btn_Close);
+		deleteModuleModal.waitAndClickElement(deleteModuleModal.btn_Close);
 	}
 
 	@Then("User verifies that the module is not deleted")
@@ -279,15 +280,78 @@ public class AddAndManageModulesSteps extends DriverFactory {
 		Assert.assertTrue(modulesPage.tile_ModuleName("Automation Testing Module - Edited").isDisplayed());
 	}
 
-	
 //	@Verify-that-Module-is-deleted-if-"Delete"-is-clicked-on-"Delete-Module"-confirmation-popup-for-"Delete-Module"-action
 	@When("User clicks on the Delete button on the Delete Module window pop up")
 	public void user_clicks_on_the_Delete_button_on_the_Delete_Module_window_pop_up() throws Exception {
-	  deleteModuleModal.waitAndClickElement(deleteModuleModal.btn_Delete);
+		deleteModuleModal.waitAndClickElement(deleteModuleModal.btn_Delete);
 	}
 
 	@Then("User verifies that the module is deleted")
 	public void user_verifies_that_the_module_is_deleted() {
 		Assert.assertFalse(modulesPage.isElementVisible(modulesPage.getMODULELOCATOR()));
+	}
+
+//	@Verify-the-"Help"-on-Modules-page-by-clicking-the-Help-button
+	@When("User clicks the Help button on the Modules page")
+	public void user_clicks_the_Help_button_on_the_Modules_page() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the tour guide for the modules page is opened")
+	public void the_tour_guide_for_the_modules_page_is_opened() throws Exception {
+		Assert.assertEquals("Modules", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the Next button on the Modules window pop")
+	public void user_clicks_the_Next_button_on_the_Modules_window_pop() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Add A Module help window is opened")
+	public void the_Add_A_Module_help_window_is_opened() throws Exception {
+		Assert.assertEquals("Add A Module", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the previous button on Add A Module window")
+	public void user_clicks_the_previous_button_on_Add_A_Module_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
+
+	@Then("the help guide navigates back to Modules help window")
+	public void the_help_guide_navigates_back_to_Modules_help_window() throws Exception {
+		Assert.assertEquals("Modules", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+//	@Verify-the-"Help"-on-"Module-Details"-page-by-clicking-the-Help-button
+	@When("User clicks the Help button on the Create Modules page")
+	public void user_clicks_the_Help_button_on_the_Create_Modules_page() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the tour guide for the Create Modules page is opened")
+	public void the_tour_guide_for_the_Create_Modules_page_is_opened() throws Exception {
+		Assert.assertEquals("Name", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the Next button on the Name window pop")
+	public void user_clicks_the_Next_button_on_the_Name_window_pop() throws InterruptedException {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Description help window is opened")
+	public void the_Description_help_window_is_opened() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Description", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the previous button on Description window")
+	public void user_clicks_the_previous_button_on_Description_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
+
+	@Then("the help guide navigates back to Name help window")
+	public void the_help_guide_navigates_back_to_Name_help_window() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Name", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
 	}
 }

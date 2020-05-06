@@ -492,7 +492,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("User verifies the message displayed about the post")
 	public void user_verifies_the_message_displayed_about_the_post() throws Exception {
-		Assert.assertEquals("We stream posts for 480 Business",
+		Assert.assertEquals("We stream posts for 481 Business",
 				thrDashboardPage.getElementText(thrDashboardPage.socialPost_Message));
 	}
 
@@ -504,7 +504,7 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("User verifies the message displayed about the revenue")
 	public void user_verifies_the_message_displayed_about_the_revenue() throws Exception {
-		Assert.assertEquals("From 480 Business", thrDashboardPage.getElementText(thrDashboardPage.revenue_Message));
+		Assert.assertEquals("From 481 Business", thrDashboardPage.getElementText(thrDashboardPage.revenue_Message));
 	}
 
 //  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
@@ -545,8 +545,9 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@When("User update some details and Click Save Business button")
 	public void user_update_some_details_and_Click_Save_Business_button() throws Exception {
-		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_SupportEmail, "testAclate@test.com");
 		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_BusinessPhone, "555-223-1717");
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txt_City, "Bloomington");
+		editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "Minnesota");
 		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}
 
@@ -555,4 +556,26 @@ public class AdminDashboardSteps extends DriverFactory {
 		Assert.assertEquals("This company has been successfully updated.", editBusinessPage.getElementText(editBusinessPage.txt_SentNotification).replace("Close", "")
 				.replaceAll("[×\\n]", ""));
 	}
+	
+	@Then("User asserts that the changes were saved correctly")
+	public void user_asserts_that_the_changes_were_saved_correctly() throws Exception {
+	  commonElementLocator.waitAndClickElement(commonElementLocator.menu_Companies);
+	  companiesDDown.waitAndClickElement(companiesDDown.opt_Businesses);
+	  commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AclateQA");
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	  Assert.assertTrue(manageBusinessPage.selectCellValue("555-223-1717").isDisplayed());
+	  Assert.assertTrue(manageBusinessPage.selectCellValue("Bloomington, Minnesota").isDisplayed());
+	  
+	}
+	
+	@Then("User revert the changes made to Business")
+	public void user_revert_the_changes_made_to_Business() throws Exception {
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_ActionDDown("AclateQA"));
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Edit("AclateQA"));
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_BusinessPhone, "555-305-4455");
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txt_City, "Ames");
+		editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "Iowa");
+		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
+	}
+
 }

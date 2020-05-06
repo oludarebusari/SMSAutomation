@@ -31,6 +31,10 @@ public class ManageBusinessPage extends BasePage {
 		return parent_SelectCompany.findElement(By.xpath("//tr[td[text()=\'" + companyName + "']]"));
 	}
 	
+	public WebElement selectCellValue(String value) {
+		return parent_SelectCompany.findElement(By.xpath("//tr//td[normalize-space()=\'" + value + "']"));
+	}
+	
 	//Actions Dropdown elements
 	
 	public WebElement btn_Edit(String companyName) {

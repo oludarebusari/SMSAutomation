@@ -177,14 +177,16 @@ public class ManageUsersSteps extends BasePage {
 //	@SMSM-134 @verify-the-user-record-by-sorting-updated-column
 	@When("User clicks the updated column")
 	public void user_clicks_the_updated_column() throws Exception {
+		Thread.sleep(30000);
 		userManagementPage.waitAndClickElement(userManagementPage.col_Updated);
 	}
 
 	@Then("the user records should be sorted in ascending order by updated column")
 	public void the_user_records_should_be_sorted_in_ascending_order_by_updated_column() throws Exception {
+		Thread.sleep(30000);
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("asc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("02/20/2020"));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("01/30/2018"));
 	}
 
 	@When("User clicks the updated column again")
@@ -194,6 +196,7 @@ public class ManageUsersSteps extends BasePage {
 
 	@Then("the user records should be sorted in descending order by updated column")
 	public void the_user_records_should_be_sorted_in_descending_order_by_updated_column() throws Exception {
+		Thread.sleep(30000);
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("desc"));
 		Assert.assertTrue(
 				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals(commonElementLocator.currentDate()));

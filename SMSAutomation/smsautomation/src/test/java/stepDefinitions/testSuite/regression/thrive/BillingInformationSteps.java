@@ -87,7 +87,7 @@ public class BillingInformationSteps extends DriverFactory {
 	public void user_verifies_the_Current_Balance_on_the_Invoice_page() throws Exception {
 		System.out
 				.println(viewInvoicePage.getElementText(viewInvoicePage.InvoiceBalance).substring(7).replace(")", ""));
-		Assert.assertEquals("495.00",
+		Assert.assertEquals("844.00",
 				viewInvoicePage.getElementText(viewInvoicePage.InvoiceBalance).substring(7).replace(")", ""));
 	}
 
@@ -371,7 +371,7 @@ public class BillingInformationSteps extends DriverFactory {
 //	@SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History
 	@When("User clicks the View button for an Invoice")
 	public void user_clicks_the_View_button_for_an_Invoice() throws Exception {
-		billingPage.waitAndClickElement(billingPage.btn_ViewButtonByAmount("495"));
+		billingPage.waitAndClickElement(billingPage.btn_ViewButtonByAmount("844"));
 	}
 
 	@Then("the details of the Invoice clicked is displayed on the Invoice page")

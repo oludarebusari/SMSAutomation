@@ -53,7 +53,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     When User enters a valid value for Module name, description, clicks the add feature button and clicks save module
     Then verify that validation error is displayed for the feature text field.
 
-  @SMSM-147 @Verify-the-creation-of-a-new-Module-from-"Module-Details"-page @RegressionTest 
+  @SMSM-147 @Verify-the-creation-of-a-new-Module-from-"Module-Details"-page @RegressionTest
   Scenario: Verify the creation of a new Module from "Module Details" page  [C22393352]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -75,7 +75,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     And User verifies the details on a Module tile
     And User verifies the action available on a Module Tile
 
-  @SMSM-147 @Verify-Modules-can-be-edited-from-"Modules"-page-by-clicking-the-Edit-button-against-the-specified-Module-tile @RegressionTest 
+  @SMSM-147 @Verify-Modules-can-be-edited-from-"Modules"-page-by-clicking-the-Edit-button-against-the-specified-Module-tile @RegressionTest
   Scenario: Verify Modules can be edited from "Modules" page by clicking the Edit button against the specified Module tile [C22393360]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -107,3 +107,31 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     Then a Delete Module confirmation window is opened
     When User clicks on the Delete button on the Delete Module window pop up
     Then User verifies that the module is deleted
+
+  @SMSM-147 @Verify-the-"Help"-on-Modules-page-by-clicking-the-Help-button @RegressionTest 
+  Scenario: Verify the "Help" on Modules page by clicking the Help button [C22393378]
+    When User clicks on the Modules option
+    Then user is redirected to the Modules page
+    When User clicks the Help button on the Modules page
+    Then the tour guide for the modules page is opened
+    When User clicks the Next button on the Modules window pop
+    Then the Add A Module help window is opened
+    When User clicks the previous button on Add A Module window
+    Then the help guide navigates back to Modules help window
+    When User clicks on End Tour button
+    Then the tour guide closes successfully
+
+  @SMSM-147 @Verify-the-"Help"-on-"Module-Details"-page-by-clicking-the-Help-button @RegressionTest
+  Scenario: Verify the "Help" on "Module Details" page by clicking the Help button [C22393379]
+    When User clicks on the Modules option
+    Then user is redirected to the Modules page
+    When User clicks on the New button on the Modules page
+    Then the Create Module page is displayed
+    When User clicks the Help button on the Create Modules page
+    Then the tour guide for the Create Modules page is opened
+    When User clicks the Next button on the Name window pop
+    Then the Description help window is opened
+    When User clicks the previous button on Description window
+    Then the help guide navigates back to Name help window
+    When User clicks on End Tour button
+    Then the tour guide closes successfully

@@ -34,7 +34,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When User clicks the Users menu option
     Then User is redirected to User Management page
 
-  @SMSM-134 @View-User--On-user-Management-page,-Confirm-all-existing-Users-are-visible @RegressionTest
+  @SMSM-134 @View-User--On-user-Management-page,-Confirm-all-existing-Users-are-visible @RegressionTest 
   Scenario: On user Management page, Confirm all existing Users are visible
     And User verifies that existing users are displayed on the page
 
@@ -46,7 +46,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     Then All option was selected successfully
     And User verifies that all the records are displayed
 
-  @SMSM-134 @verify-the-user-record-by-sorting-first-name-column @RegressionTest
+  @SMSM-134 @verify-the-user-record-by-sorting-first-name-column @RegressionTest 
   Scenario: View the user record by sorting "First Name" column
     When User clicks the first name column
     Then the user records should be sorted in ascending order by firstname column
@@ -60,14 +60,14 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When User clicks the last name column again
     Then the user records should be sorted in descending order by lastname column
 
-  @SMSM-134 @verify-the-user-record-by-sorting-status-column @RegressionTest
+  @SMSM-134 @verify-the-user-record-by-sorting-status-column @RegressionTest 
   Scenario: View the user record by sorting "Status" column
     When User clicks the status column
     Then the user records should be sorted in ascending order by status column
     When User clicks the status column again
     Then the user records should be sorted in descending order by status column
 
-  @SMSM-134 @verify-the-user-record-by-sorting-updated-column @RegressionTest
+  @SMSM-134 @verify-the-user-record-by-sorting-updated-column @RegressionTest 
   Scenario: View the user record by sorting "Updated" column
     When User clicks the updated column
     Then the user records should be sorted in ascending order by updated column

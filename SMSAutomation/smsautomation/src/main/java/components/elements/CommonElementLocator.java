@@ -77,7 +77,7 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "(//tr/td[text()])[1]") WebElement sort_FirstName;
 	public @FindBy(xpath = "(//tr/td[text()])[2]") WebElement sort_LastName;
 	public @FindBy(xpath = "(//tr/td[text()])[3]") WebElement sort_Status;
-	public @FindBy(xpath = "(//tr/td[text()])[4]") WebElement sort_Updated;
+	public @FindBy(xpath = "//tr[1]//td[4]") WebElement sort_Updated;
 	public @FindBy(xpath = "//tbody") WebElement parent_recordCell;
 	
 	public WebElement recordCellValue(String row, String col) { 

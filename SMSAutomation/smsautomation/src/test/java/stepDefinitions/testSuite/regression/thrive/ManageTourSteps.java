@@ -31,7 +31,6 @@ public class ManageTourSteps extends DriverFactory {
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
 
-//	@SMSM-185-Navigate-to-manage-tour-option
 	@Given("User clicks on settings on top menu bar")
 	public void user_clicks_on_settings_on_top_menu_bar() throws Exception {
 		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Settings);
@@ -51,6 +50,14 @@ public class ManageTourSteps extends DriverFactory {
 	public void user_is_redirected_to_Tours_page() throws Exception {
 		Assert.assertEquals("Tours", adminToursPage.getElementText(adminToursPage.pag_Title));
 	}
+	
+//	@SMSM-185-Navigate-to-manage-tour-option - 
+	@Then("User verifies the URL of the Tours page")
+	public void user_verifies_the_URL_of_the_Tours_page() {
+		//This test us added so as to be able to account for this scenario which is covered under Background in the corresponding Cucumber file
+	    Assert.assertEquals("Tours - Masterminds Digital", driver.getTitle());
+	}
+	
 
 //	@SMSM-185-Search-and-edit-existing-tour-in-the-edit
 	@Given("User types in a Tour name on the search textfield")

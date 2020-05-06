@@ -30,20 +30,20 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     When User clicks Zeon from the top menu bar
     Then the Zeon menu is expanded and Zeon options are displayed
 
-  @[SMSM-224]-Verify-Sales-Appointment-List-Option-under-Zeon-tab-at-Thrive-system @RegressionTest
+  @[SMSM-224]-Verify-Sales-Appointment-List-Option-under-Zeon-tab-at-Thrive-system 
   Scenario: Verify Overall Appointments Set page through zeon option
     When User clicks on the Sales Appointment List option
     Then User is redirected to the Overall Appointments Set page
     When User clicks the date textfield, and specify a date and clicks the Apply button
     Then User get overall appointments set displayed
 
-  @[SMSM-224]-Verify-user-is-on-Work-Orders-page @RegressionTest
+  @[SMSM-224]-Verify-user-is-on-Work-Orders-page 
   Scenario: Verify user is on Work Orders page
     When User clicks on the Orders option
     Then User is redirected to the Orders page
     And User verifies that a list of orders are displayed
 
-  @[SMSM-224]-Verify-the-available-menus-on-Work-Orders-page @RegressionTest
+  @[SMSM-224]-Verify-the-available-menus-on-Work-Orders-page
   Scenario: Verify the available menus on Work Order page
     When User clicks on the Orders option
     Then User is redirected to the Orders page
@@ -54,7 +54,7 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     And User verifies Next-Previous options are available
     And User verifies the show n Entries ia available
 
-  @[SMSM-224]-Verify-the-edit-page-to-add-new-order @RegressionTest
+  @[SMSM-224]-Verify-the-edit-page-to-add-new-order 
   Scenario: Verify the edit page to add new order
     When User clicks on the Orders option
     Then User is redirected to the Orders page
@@ -64,7 +64,7 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     And User verifies the Acquire Leads section is available
     And User verifies the Acquire button ia available
 
-  @[SMSM-224]-Verify-the-validation-messages @RegressionTest
+  @[SMSM-224]-Verify-the-validation-messages 
   Scenario: Verify the Validation messages
     When User clicks on the Orders option
     Then User is redirected to the Orders page
@@ -77,7 +77,7 @@ Feature: [SMSM-76] Thrive - Zeon Tab Options
     When Users leave a single mandatory field blank
     Then User verifies that the Acquire Leads button is disabled
 
-  @[SMSM-224]-Verify-the-order-details-portion @RegressionTest
+  @[SMSM-224]-Verify-the-order-details-portion 
   Scenario: Verify the Order Details Portion
     When User clicks on the Orders option
     Then User is redirected to the Orders page
