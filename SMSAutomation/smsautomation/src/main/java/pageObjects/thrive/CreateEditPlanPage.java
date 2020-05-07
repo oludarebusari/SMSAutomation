@@ -24,12 +24,18 @@ public class CreateEditPlanPage extends BasePage {
 		return par_OptionElement.findElement(By.xpath("//div[text()=\'" + option + "']"));
 	}
 	public @FindBy(xpath = "//div[contains(@class, \"panel-default\") and .//div[normalize-space()=\"Feature\"]]") WebElement panel_Feature;
+	public WebElement featureOption(String option) {
+		return par_OptionElement.findElement(By.xpath("//div[text()=\'" + option + "']"));
+	}
 	public @FindBy(xpath = "//div[contains(@class, \"panel-heading\")]//button[contains(@class, \"add-module-item\")]") WebElement btn_AddSubModuleFromHeadingPanel;
 	public @FindBy(xpath = "//div[contains(@class, \"panel-footer\")]//button[contains(@class, \"add-module-item\")]") WebElement btn_AddSubModuleFromFooterPanel;
 	public @FindBy(xpath = "//div[@class=\"form-group\"]//div[contains(@class, \"selectize-input\")]") WebElement featureDDown;
 	public @FindBy(xpath = "//input[@id=\"plan_type_planModules_0_setupFee\"]") WebElement txtF_OneTimePrice;
 	public @FindBy(xpath = "//input[@id=\"plan_type_planModules_0_monthlyFee\"]") WebElement txtF_RecurringPrice;
 	public @FindBy(xpath = "//input[@id=\"plan_type_planModules_0_startDate\"]") WebElement txtF_Date;
-	public @FindBy(xpath = "//input[@id=\"plan_type_planModules_0_startDate\"]") WebElement btn_SavePlan;
+	public @FindBy(xpath = "(//tr//td[@class=\"available\" and text()=\"9\"])[1]") WebElement btn_Day;
+	public @FindBy(xpath = "//button[text()=\"Save Plan\"]") WebElement btn_SavePlan;
+	public @FindBy(xpath = "//div[@role=\"alert\"]//p") WebElement NotificationAlert;
+	
 	
 }

@@ -1,5 +1,9 @@
 package stepDefinitions.testSuite.regression.thrive;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -614,7 +618,7 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Settings records are sorted by Updated colum")
 	public void the_Settings_records_are_sorted_by_Updated_colum() throws InterruptedException {
 		//Verify the value of the Updated cell after sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contentEquals("04/23/2020"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "5")).contains("2020"));
 	}
 
 //	@SMSM-136 @Apply-Sort-in-Language-String-page
@@ -693,7 +697,7 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Language Strings records are sorted by Updated column")
 	public void the_Language_Strings_records_are_sorted_by_Updated_column() throws Exception {
 		//Verify the current value of the Updated cell after sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("01/16/2018"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("05/06/2020"));
 	}
 
 //	@SMSM-136 @Apply-Sort-in-Email-Template-page
@@ -713,7 +717,7 @@ public class SettingsSteps extends DriverFactory {
 	@When("User clicks the Subject column name on Message Templates page")
 	public void user_clicks_the_Subject_column_name_on_Message_Templates_page() throws Exception {
 		//Verify the current value of the Subject cell before sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("Ageless in SLO Website Submission"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "2")).contentEquals("EasyConnect Submission"));
 		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Subject);
 	}
 
@@ -739,14 +743,14 @@ public class SettingsSteps extends DriverFactory {
 	@When("User clicks the Updated column name on Message Templates page")
 	public void user_clicks_the_Updated_column_name_on_Message_Templates_page() throws Exception {
 		//Verify the current value of the Updated cell before sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("12/06/2017"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals("02/18/2015"));
 		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Updated);
 	}
 
 	@Then("the Message Templates records are sorted by Updated column")
 	public void the_Message_Templates_records_are_sorted_by_Updated_column() throws InterruptedException {
-		//Verify the current value of the Updated cell after sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.currentDate()));
+		//Verify the current value of the Updated cell after sorting;
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "4")).contentEquals(commonElementLocator.getGMTDate()));
 	}
 
 }

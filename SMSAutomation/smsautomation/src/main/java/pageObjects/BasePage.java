@@ -4,11 +4,16 @@ import java.awt.AWTException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
+
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -574,9 +579,20 @@ public class BasePage extends DriverFactory {
 
 	}
 
-	
-	
 	public int getNumberOfElements(WebElement element) {
 		return driver.findElements(By.xpath(element.toString())).size();
+	}
+	
+	
+	
+	public String getGMTDate() {
+		//capturing today's date
+        Date today = new Date();
+    
+        //dispalying date on CDT timezone
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        df.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen"));
+        String GMT = df.format(today);
+        return GMT;	
 	}
 }

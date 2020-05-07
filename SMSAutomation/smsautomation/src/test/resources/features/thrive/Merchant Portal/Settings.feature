@@ -167,7 +167,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the End Tour button on the Action pop up window
     Then the pop up window is closed
 
-  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest 
+  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest
   Scenario: Apply Sort in Manage Settings page
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
@@ -182,7 +182,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Updated column name
     Then the Settings records are sorted by Updated colum
 
-  @SMSM-136 @Apply-Sort-in-Language-String-page @RegressionTest
+  @SMSM-136 @Apply-Sort-in-Language-String-page @RegressionTest 
   Scenario: Apply Sort in Language Strings page
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
@@ -199,7 +199,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Updated column name on Language String page
     Then the Language Strings records are sorted by Updated column
 
-  @SMSM-136 @Apply-Sort-in-Email-Template-page @RegressionTest
+  @SMSM-136 @Apply-Sort-in-Email-Template-page @RegressionTest 
   Scenario: Apply sort in Email Template page
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
