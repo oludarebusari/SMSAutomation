@@ -10,7 +10,6 @@ import pageObjects.thrive.AdminReportPage;
 import pageObjects.thrive.AdminTerritoryReportsPage;
 import pageObjects.thrive.EditBusinessPage;
 import pageObjects.thrive.EditResellerPage;
-import pageObjects.thrive.EditUserPage;
 import pageObjects.thrive.Tab.ExperienceDDown;
 import pageObjects.thrive.Tab.ReportsDDown;
 import utils.DriverFactory;
@@ -140,7 +139,7 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 
 	@Then("User navigates to anoother page")
 	public void user_navigates_to_anoother_page() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.pageButton(resellerPageNumberText));
+		commonElementLocator.waitAndClickElement(commonElementLocator.pageButtonNumber(resellerPageNumberText));
 		Assert.assertEquals(Integer.parseInt(resellerPageNumberText) * defaultPageSize,
 				Integer.parseInt((commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd))));
 	}
@@ -300,7 +299,7 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 
 	@Then("User navigates to anoother page on the territory page")
 	public void user_navigates_to_anoother_page_on_the_territory_page() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.pageButton(territoryPageNumberText));
+		commonElementLocator.waitAndClickElement(commonElementLocator.pageButtonNumber(territoryPageNumberText));
 		Assert.assertEquals(Integer.parseInt(territoryPageNumberText) * defaultPageSize,
 				Integer.parseInt((commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd))));
 
@@ -455,8 +454,6 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 		editResellerPage.waitAndClickElement(editResellerPage.btn_Save_Reseller);
 	}
 	
-	
-	
 //	@Verify-Admin-can-edit-the-Business-details-from-Territory-report-page
 	@When("User clicks the drop down button under Action column and clicks Edit Business")
 	public void user_clicks_the_drop_down_button_under_Action_column_and_clicks_Edit_Business() throws Exception {
@@ -498,7 +495,6 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 		Assert.assertTrue(editBusinessPage.getElementText(editBusinessPage.lov_BusinessCategory).contentEquals("Mexican"));
 	}
 
-	
 	@Then("User revert the changes made to Business.")
 	public void user_revert_the_changes_made_to_Business() throws Exception {
 		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_BusinessName, BUSINESS);

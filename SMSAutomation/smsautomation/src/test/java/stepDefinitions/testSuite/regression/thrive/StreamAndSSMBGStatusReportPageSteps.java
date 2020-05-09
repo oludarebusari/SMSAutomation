@@ -110,7 +110,7 @@ public class StreamAndSSMBGStatusReportPageSteps  extends BasePage {
 
 	@Then("User navigates to anoother page on the Stream page")
 	public void user_navigates_to_anoother_page_on_the_Stream_page() throws Exception {
-		commonElementLocator.waitAndClickElement(commonElementLocator.pageButton(streamPageNumberText));
+		commonElementLocator.waitAndClickElement(commonElementLocator.pageButtonNumber(streamPageNumberText));
 		Assert.assertEquals(Integer.parseInt(streamPageNumberText) * defaultPageSize,
 				Integer.parseInt((commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd))));
 	}

@@ -19,5 +19,5 @@ public class ExperienceDDown extends BasePage {
 		public @FindBy(xpath = "//a[text()[normalize-space()=\"SmartCode\"]]") WebElement opt_SmartCode;
 		public @FindBy(xpath = "//a[text()[normalize-space()=\"Captivate\"]]") WebElement opt_Captivate;
 		public @FindBy(xpath = "//a[text()[normalize-space()=\"Easy Connect\"]]") WebElement opt_EasyConnect;
-		public @FindBy(xpath = "//li[@class=\"last\"]//a[text()[normalize-space()=\"Streams\"]]") WebElement opt_Streams;
+		public @FindBy(xpath = "//li[contains(@class, \"last\")]//a[text()[normalize-space()=\"Streams\"]]") WebElement opt_Streams;
 }

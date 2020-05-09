@@ -49,6 +49,7 @@ public class CommonElementLocator extends BasePage {
 	public WebElement showEntriesOption(String option) {
 		return lov_ShowEntries.findElement(By.xpath("//option[text()[normalize-space()=\'" + option + "']]"));
 	}
+	public @FindBy(xpath = "//div[@id=\"pagination-bar\"]") WebElement PaginationBar;
 	public @FindBy(xpath = "//div[@id=\"data-table_length\"]") WebElement lbl_ShowEntries;
 	public @FindBy(xpath = "//li[contains(@class, \"pagination-prev\")]/a") WebElement btn_PaginationPrevious;
 	public @FindBy(xpath = "//li[contains(@class, \"pagination-prev\")]") WebElement btn_PaginationPreviousDisabled;
@@ -61,7 +62,7 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//select[@name=\"broadcast-table_length\"]") WebElement lov_PaginationTableLength;
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]") WebElement paginationBlock;
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]//li[contains(@class, \"active\")]") WebElement paginationActiveBtn;
-	public WebElement pageButton(String pageNumber) {
+	public WebElement pageButtonNumber(String pageNumber) {
 		return paginationBlock.findElement(By.xpath("//a[text()=\'" + pageNumber + "']"));
 	}
 	public WebElement tableLengthOpt(String option) {
