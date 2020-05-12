@@ -583,7 +583,9 @@ public class BasePage extends DriverFactory {
 		return driver.findElements(By.xpath(element.toString())).size();
 	}
 	
-	
+	/**********************************************************************************
+	 ** GET GMT DATE
+	 *********************************************************************************/	
 	
 	public String getGMTDate() {
 		//capturing today's date
@@ -595,4 +597,19 @@ public class BasePage extends DriverFactory {
         String GMT = df.format(today);
         return GMT;	
 	}
+	
+	/**********************************************************************************
+	 ** GET ElEMENT LOCATOR FROM WEBELEMENT
+	 *********************************************************************************/	
+	
+	public String getElementLocator(WebElement element) {
+		int firstLocatorCharInIdex = element.toString().indexOf("/");
+		int lastLocatorCharIndex = element.toString().lastIndexOf("]");
+		
+		return element.toString().substring(firstLocatorCharInIdex, lastLocatorCharIndex+1);
+		
+	}
+
+       
+	
 }

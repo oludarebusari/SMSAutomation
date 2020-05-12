@@ -1,7 +1,6 @@
 package pageObjects.thrive;
 
 import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,11 +13,6 @@ public class AdminStreamPage extends BasePage {
 		super();
 	}
 
-	private final String FIVESTARLOCATOR = "//div[@data-rating=\"5\"]";
-	private final String FOURSTARLOCATOR = "//div[@data-rating=\"4\"]";
-	private final String THREESTARLOCATOR = "//div[@data-rating=\"3\"]";
-	private final String TWOSTARLOCATOR = "//div[@data-rating=\"2\"]";
-	private final String ONESTARLOCATOR = "//div[@data-rating=\"1\"]";
 	private final String APPROVEDICON = "//label[contains(@class, \"toggle-on\")]";
 	private final String SUPPRESSEDICON = "//label[contains(@class, \"toggle-off\")]";
 
@@ -38,24 +32,8 @@ public class AdminStreamPage extends BasePage {
 	public WebElement removeActiveResellerOrBusinessOption(String option) {
 		return parentActiveResellerAndBusinessOptions.findElement(By.xpath("//div[contains(@class, \"item\") and text()=\'" + option + "']//a[@title=\"Remove\"]"));
 	}
-	public String getFIVESTARLOCATOR() {
-		return FIVESTARLOCATOR;
-	}
-
-	public String getFOURSTARLOCATOR() {
-		return FOURSTARLOCATOR;
-	}
-
-	public String getTHREESTARLOCATOR() {
-		return THREESTARLOCATOR;
-	}
-
-	public String getTWOSTARLOCATOR() {
-		return TWOSTARLOCATOR;
-	}
-
-	public String getONESTARLOCATOR() {
-		return ONESTARLOCATOR;
+	public String displayedResellerOrBusinessLocator (String option) {
+		return "//a[normalize-space()=\'" + option + "']";
 	}
 
 	public String getAPPROVEDICON() {
@@ -85,7 +63,7 @@ public class AdminStreamPage extends BasePage {
 	
 	public @FindBy(xpath = "//div[@data-rating=\"5\"]") WebElement fiveStars;
 	public @FindBy(xpath = "//div[@data-rating=\"4\"]") WebElement fourStars;
-	public @FindBy(xpath = "//div[@data-rating=\"3\"]") WebElement threetars;
+	public @FindBy(xpath = "//div[@data-rating=\"3\"]") WebElement threeStars;
 	public @FindBy(xpath = "//div[@data-rating=\"2\"]") WebElement twoStars;
 	public @FindBy(xpath = "//div[@data-rating=\"1\"]") WebElement oneStar;
 	
@@ -103,5 +81,11 @@ public class AdminStreamPage extends BasePage {
 	public @FindBy(xpath = "//p[@class=\"rating\"]/../div[@class=\"stream_type\"]") WebElement icon_Platform;
 	public @FindBy(xpath = "//div[@class=\"toggle-group\"]") WebElement streamsStatus;
 	public @FindBy(xpath = "//p[@class=\"rating\"]") WebElement ratingBlock;
+	public @FindBy(xpath = "//a[@title=\"Reply\"]") WebElement btn_Reply;
+
+	public WebElement replyToStream(String streamName) {
+		return panel_Streams.findElement(By.xpath("//a[@data-title=\"Respond to " +  streamName +  "\"]"));
+	}
+	
 	
 }

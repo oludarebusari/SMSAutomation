@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import pageObjects.BasePage;
 import pageObjects.thrive.AdminStreamPage;
 import pageObjects.thrive.Tab.ExperienceDDown;
+import pageObjects.thrive.modal.RespondToStreamModal;
 
 public class StreamsPageUnderExperienceSteps extends BasePage {
 
@@ -21,6 +22,11 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	public AdminStreamPage adminStreamPage = PageFactory.initElements(driver, AdminStreamPage.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public ExperienceDDown experienceDDown = PageFactory.initElements(driver, ExperienceDDown.class);
+	public RespondToStreamModal respondToStreamModal = PageFactory.initElements(driver, RespondToStreamModal.class);
+
+	
+	
+	private int totalNumberOfRecords = 0;
 
 	@When("User clicks on the Experience Menu option on the admin dashboard")
 	public void user_clicks_on_the_Experience_Menu_option_on_the_admin_dashboard() throws Exception {
@@ -69,6 +75,7 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	@When("User selects Business or Reseller")
 	public void user_selects_Business_or_Reseller() throws Exception {
 		adminStreamPage.waitAndClickElement(adminStreamPage.selectResellerOrBusiness("AcadianaRewards"));
+		
 	}
 
 	@Then("the selected Business or Reseller is displayed on the drop down text field")
@@ -87,6 +94,23 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 		Assert.assertTrue(adminStreamPage.getElementText(adminStreamPage.txtF_ResellerAndBusiness).isBlank());
 	}
 
+	@When("User selects an existing Reseller and Business")
+	public void user_selects_an_existing_Reseller_and_Business() throws Exception {
+		adminStreamPage.waitAndClickElement(adminStreamPage.txtF_ResellerAndBusiness);
+		adminStreamPage.waitAndClickElement(adminStreamPage.selectResellerOrBusiness("Benchmark Soundworks"));
+		adminStreamPage.waitAndClickElement(adminStreamPage.txtF_ResellerAndBusiness);
+		adminStreamPage.waitAndClickElement(adminStreamPage.selectResellerOrBusiness("IowaLoyal"));
+		commonElementLocator.waitAndClickElement(commonElementLocator.pag_Title);
+	}
+
+	@Then("User confirms that both the Reseller and Business are selected and displayed")
+	public void user_confirms_that_both_the_Reseller_and_Business_are_selected_and_displayed() throws Exception {
+		int ResellerOrBusiness1 = adminStreamPage.getNumberOfElements(adminStreamPage.displayedResellerOrBusinessLocator("Benchmark Soundworks"));
+		int ResellerOrBusiness2 = adminStreamPage.getNumberOfElements(adminStreamPage.displayedResellerOrBusinessLocator("IowaLoyal"));
+		Assert.assertEquals(ResellerOrBusiness1+ResellerOrBusiness2, Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)));
+	}
+
+	
 //  @Verify-the-"Platforms"-filter 
 	@Then("User verifies that the Platform filter is available")
 	public void user_verifies_that_the_Platform_filter_is_available() {
@@ -95,12 +119,15 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 
 	@When("User clicks the close button beside a selected platform")
 	public void user_clicks_the_close_button_beside_a_selected_platform() throws Exception {
-		adminStreamPage.waitAndClickElement(adminStreamPage.removeActiveResellerOrBusinessOption("Facebook"));
+		totalNumberOfRecords = Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
+		adminStreamPage.waitAndClickElement(adminStreamPage.removeActiveResellerOrBusinessOption("Zomato"));
+		commonElementLocator.waitAndClickElement(commonElementLocator.pag_Title);
 	}
 
 	@Then("the Platform option is deselected")
 	public void the_Platform_option_is_deselected() throws Exception {
-		Assert.assertFalse(adminStreamPage.getElementText(adminStreamPage.txtF_Platform).contains("Facebook"));
+		Assert.assertFalse(adminStreamPage.getElementText(adminStreamPage.txtF_Platform).contains("Zomato"));
+		Assert.assertTrue(totalNumberOfRecords >= Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)));
 	}
 
 //	@Verify-the-"Read"-filter
@@ -132,11 +159,11 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 
 	@When("User clicks the Filter by Read button again")
 	public void user_clicks_the_Filter_by_Read_button_again() throws Exception {
-		adminStreamPage.waitAndClickElement(adminStreamPage.btn_Unread);
+		adminStreamPage.waitAndClickElement(adminStreamPage.btn_FilterByRead);
 	}
 
 	@Then("User is able to see all unread streams")
-	public void user_is_able_to_see_all_unread_streams() {
+	public void user_is_able_to_see_all_unread_streams() throws Exception {
 		Assert.assertTrue(adminStreamPage.btn_UnreadEnvelope.isDisplayed());
 		Assert.assertFalse(adminStreamPage.btn_UnreadEnvelope.getAttribute("class").contains("hidden"));
 		Assert.assertTrue(adminStreamPage.btn_ReadEnvelope.getAttribute("class").contains("hidden"));
@@ -154,13 +181,12 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	}
 
 	@Then("all streamns  with five stars are displayed")
-	public void all_streamns_with_five_stars_are_displayed() {
+	public void all_streamns_with_five_stars_are_displayed() throws InterruptedException {
 		Assert.assertTrue(adminStreamPage.fiveStars.isDisplayed());
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getFOURSTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getFOURSTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getTHREESTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getTWOSTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getONESTARLOCATOR()));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.fourStars)));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.threeStars)));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.twoStars)));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.oneStar)));
 	}
 
 	@When("User clicks on the one star rates button")
@@ -171,11 +197,10 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	@Then("all streamns  with one star are displayed")
 	public void all_streamns_with_one_star_are_displayed() {
 		Assert.assertTrue(adminStreamPage.oneStar.isDisplayed());
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getFOURSTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getFOURSTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getTHREESTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getTWOSTARLOCATOR()));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getFIVESTARLOCATOR()));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.fourStars)));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.threeStars)));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.twoStars)));
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.oneStar)));
 	}
 
 //	@Verify-the-"Status"-filter
@@ -334,5 +359,54 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	@Then("User verifies that 'Unread streams are available")
 	public void user_verifies_that_Unread_streams_are_available() {
 	  Assert.assertTrue(adminStreamPage.btn_UnreadEnvelope.isDisplayed());
+	}
+	
+//	@Verify-the-popup-by-clicking-on-"reply" 
+	@Then("User verifies that Reply option is available for the Streams")
+	public void user_verifies_that_Reply_option_is_available_for_the_Streams() {
+		Assert.assertTrue(adminStreamPage.btn_Reply.isDisplayed());
+	}
+
+	@When("User clicks on the Reply button of a stream")
+	public void user_clicks_on_the_Reply_button_of_a_stream() throws Exception {
+		adminStreamPage.waitAndClickElement(adminStreamPage.replyToStream("Rob M."));	
+	}
+
+	@Then("a popup window to respond to the Stream is opened")
+	public void a_popup_window_to_respond_to_the_Stream_is_opened() throws Exception {
+		System.out.println( respondToStreamModal.getElementText(respondToStreamModal.mod_Title));
+		Assert.assertEquals("Respond to Rob M.", respondToStreamModal.getElementText(respondToStreamModal.mod_Title));
+	}
+
+	@When("User leaves the response text area empty and clicks Reply button")
+	public void user_leaves_the_response_text_area_empty_and_clicks_Reply_button() throws Exception {
+		respondToStreamModal.waitAndClickElement(respondToStreamModal.btn_Reply);
+	}
+
+	@Then("validation message for the textarea is displayed")
+	public void validation_message_for_the_textarea_is_displayed() throws Exception {
+		Assert.assertEquals("Please enter a value", respondToStreamModal.getElementText(respondToStreamModal.lbl_YourResponseMsg));
+	}
+	
+	@When("User clicks on the Create a template from this response checkbox")
+	public void user_clicks_on_the_Create_a_template_from_this_response_checkbox() throws Exception {
+		respondToStreamModal.sendKeysToWebElement(respondToStreamModal.txtA_YourResponse, "A");
+	   respondToStreamModal.waitAndClickElement(respondToStreamModal.chk_CreateATemplateFromThisResponse);
+	}
+
+	@Then("the Template Title textbox is displayed")
+	public void the_Template_Title_textbox_is_displayed() {
+	  Assert.assertTrue(respondToStreamModal.txtF_TemplateTitle.isDisplayed());
+	}
+
+	@When("User types in a response and a Template Title and clicks Reply button")
+	public void user_types_in_a_response_and_a_Template_Title_and_clicks_Reply_button() throws Exception {
+	 respondToStreamModal.sendKeysToWebElement(respondToStreamModal.txtA_YourResponse, "This is automation testing");
+	 respondToStreamModal.sendKeysToWebElement(respondToStreamModal.txtF_TemplateTitle, "Automation Test");
+	}
+
+	@Then("Response is sent and a yelp window is opened")
+	public void response_is_sent_and_a_yelp_window_is_opened() {
+		
 	}
 }
