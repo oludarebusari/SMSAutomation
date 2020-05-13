@@ -335,7 +335,7 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 		Assert.assertEquals("Streams", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
 	}
 	
-//	
+//	@Verify-the-Contents-of-Streams
 	@Then("User verifies that Streams are available")
 	public void user_verifies_that_Streams_are_available() {
 		Assert.assertTrue(adminStreamPage.panel_Streams.isDisplayed());
@@ -369,13 +369,13 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 
 	@When("User clicks on the Reply button of a stream")
 	public void user_clicks_on_the_Reply_button_of_a_stream() throws Exception {
-		adminStreamPage.waitAndClickElement(adminStreamPage.replyToStream("Rob M."));	
+		adminStreamPage.waitAndClickElement(adminStreamPage.replyToStream("Ryan F."));	
 	}
 
 	@Then("a popup window to respond to the Stream is opened")
 	public void a_popup_window_to_respond_to_the_Stream_is_opened() throws Exception {
 		System.out.println( respondToStreamModal.getElementText(respondToStreamModal.mod_Title));
-		Assert.assertEquals("Respond to Rob M.", respondToStreamModal.getElementText(respondToStreamModal.mod_Title));
+		Assert.assertEquals("Respond to Ryan F.", respondToStreamModal.getElementText(respondToStreamModal.mod_Title));
 	}
 
 	@When("User leaves the response text area empty and clicks Reply button")
@@ -405,8 +405,4 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	 respondToStreamModal.sendKeysToWebElement(respondToStreamModal.txtF_TemplateTitle, "Automation Test");
 	}
 
-	@Then("Response is sent and a yelp window is opened")
-	public void response_is_sent_and_a_yelp_window_is_opened() {
-		
-	}
 }

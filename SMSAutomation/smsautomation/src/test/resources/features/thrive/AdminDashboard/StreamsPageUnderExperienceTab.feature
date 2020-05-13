@@ -2,6 +2,7 @@
 #Keywords Summary :
 
 #User is assumed to have Admin access unless stated Otherwise
+#Step Definition File - StreamsPageUnderExperienceSteps.java
 Feature: [SMSM-193] Verify the Stream page under Experience tab for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -101,7 +102,7 @@ Feature: [SMSM-193] Verify the Stream page under Experience tab for Thrive syste
      And User verifies that ratings are available
      And User verifies that 'Unread streams are available
      
- @SMSM-193 @Verify-the-popup-by-clicking-on-"reply" @RegressionTest @OnlyMe
+ @SMSM-193 @Verify-the-popup-by-clicking-on-"reply" @RegressionTest 
   Scenario: Verify the popup by clicking on "reply"
   And User verifies that Reply option is available for the Streams
   When User clicks on the Reply button of a stream
@@ -111,7 +112,6 @@ Feature: [SMSM-193] Verify the Stream page under Experience tab for Thrive syste
   When User clicks on the Create a template from this response checkbox
   Then the Template Title textbox is displayed
   When User types in a response and a Template Title and clicks Reply button
-  Then Response is sent and a yelp window is opened
-  
+
   
 

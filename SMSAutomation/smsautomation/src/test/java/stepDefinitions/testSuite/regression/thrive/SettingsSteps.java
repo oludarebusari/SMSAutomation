@@ -1,12 +1,7 @@
 package stepDefinitions.testSuite.regression.thrive;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -72,7 +67,7 @@ public class SettingsSteps extends DriverFactory {
 //	 @SMSM-136 @View-Language-String-Under-Settings-option
 	@When("User clicks on Language Strings from the dropdown")
 	public void user_clicks_on_Language_Strings_from_the_dropdown() throws InterruptedException {
-		settingsDDown.waitAndClickElement(settingsDDown.opt_LanguageStrings);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_Language_Strings);
 	}
 
 	@Then("the Language Strings page is opened")
@@ -94,7 +89,7 @@ public class SettingsSteps extends DriverFactory {
 //	 @SMSM-136 @View-Email-Templates-Under-Settings-option
 	@When("User clicks on Message Templates from the dropdown")
 	public void user_clicks_on_Message_Templates_from_the_dropdown() throws Exception {
-		settingsDDown.waitAndClickElement(settingsDDown.opt_MessageTemplates);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_Message_Templates);
 	}
 
 	@Then("the Message Templates page is opened")
@@ -160,7 +155,7 @@ public class SettingsSteps extends DriverFactory {
 //	@SMSM-136 @Search-and-Edit-any-Language-String-option
 	@When("User clicks on Language Strings option from the dropdown")
 	public void user_clicks_on_Language_Strings_option_from_the_dropdown() throws Exception {
-		settingsDDown.waitAndClickElement(settingsDDown.opt_LanguageStrings);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_Language_Strings);
 	}
 
 	@When("User types the Language String title in the Search box and click Search button")
