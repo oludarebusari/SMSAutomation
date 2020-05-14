@@ -1,23 +1,8 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+#Step Definition file - ManageAlertsSteps.java
 Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Manage Alert option under settings on Thrive System
@@ -33,7 +18,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then the Manage Alert page is displayed
 
   @SMSM-184 @Edit-existing-alert-in-the-list @RegressionTest
-  Scenario: Edit existing alert in the list
+  Scenario: Edit existing alert in the list [C23176240]
     When User types in an Alert text on the search box and clicks search
     Then the Alert is displayed on the Manage Alert paage
     When User clicks the Edit button beside the displayed Alert
@@ -44,7 +29,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then User revert the changes made to the Alert record
 
   @SMSM-184 @Renew-existing-alert-in-the-list @RegressionTest
-  Scenario: Renew Existing alert in the list
+  Scenario: Renew Existing alert in the list [C23176243]
     When User types in an Alert text on the search box for alert to renew and clicks search
     Then the Alert to be renewed is displayed on the Manage Alert paage
     When User clicks the Edit button besides the Alert
@@ -56,7 +41,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then user confirms that the status of the alert is now Active
 
   @SMSM-184 @Cancel-deactivation-of-existing-alert-in-the-list @RegressionTest 
-  Scenario: Cancel deactivation of existing Alert in the list
+  Scenario: Cancel deactivation of existing Alert in the list [C23176253]
     When User searches for an active alert
     Then the active alert is displayed on the Manage page
     When User clicks the action dropdown button
@@ -66,7 +51,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then User confirms that the Alert is not deactivated
 
   @SMSM-184 @Deactivate-existing-alert-in-the-list @RegressionTest 
-  Scenario: Deactivate Existing alert in the list
+  Scenario: Deactivate Existing alert in the list [C23176245]
     When User searches for an active alert
     Then the active alert is displayed on the Manage page
     When User clicks the action dropdown button
@@ -78,7 +63,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then the alert is displayed with an Inactive status
 
   @SMSM-184 @Cancel-activation-of-existing-alert-in-the-list @RegressionTest 
-  Scenario: Cancel activation of existing Alert in the list
+  Scenario: Cancel activation of existing Alert in the list [C23176254]
     When User types in an Alert text on the search box for a renewed alert and clicks search
     Then the renewed Alert is displayed on the Manage Alert paage
     When User clicks the action dropdown button
@@ -88,7 +73,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then User confirms that the Alert is not activated
 
   @SMSM-184 @Activate-existing-alert-in-the-list @RegressionTest 
-  Scenario: Activate existing alert in the list
+  Scenario: Activate existing alert in the list [C23176246]
     When User types in an Alert text on the search box for a renewed alert and clicks search
     Then the renewed Alert is displayed on the Manage Alert paage
     When User clicks the action dropdown button
@@ -101,7 +86,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then the alert is displayed with an Active status.
 
   @SMSM-184 @Cancel-delete-existing-alert-in-the-list @RegressionTest
-  Scenario: Cancel delete existing Alert in the list
+  Scenario: Cancel delete existing Alert in the list [C23176251]
     When User searches for an alert to delete
     Then the alert to be deleted is displayed on the manage page
     When User clicks the action dropdown button
@@ -111,7 +96,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then User confirms that the Alert is not deleted
 
   @SMSM-184 @Delete-existing-alert-in-the-list @RegressionTest 
-  Scenario: Delete existing alert in the list
+  Scenario: Delete existing alert in the list [C23176244]
     When User searches for an alert to delete
     Then the alert to be deleted is displayed on the manage page
     When User clicks the action dropdown button
@@ -131,7 +116,7 @@ Feature: [SMSM-184] Manage Alerts under settings in admin dashboard for Thrive s
     Then the created and schedule successfully
 
   @SMSM-184 @Verify-Help-option-for-manage-alert-page @RegressionTest
-  Scenario: Verify Help option for manage alert page
+  Scenario: Verify Help option for manage alert page [C23176249]
     When User clicks on the Help button
     Then the Alert Help popup is displayed
     When User clicks the Next button from the Tour Guide

@@ -33,12 +33,12 @@ public class ManageUsersSteps extends BasePage {
 	public ManageBusinessPage manageBusinessPage = PageFactory.initElements(driver, ManageBusinessPage.class);
 	public UserManagementPage userManagementPage = PageFactory.initElements(driver, UserManagementPage.class);
 
-//	 @SMSM-134 @View-User--On-user-Management-page,-Confirm-all-existing-Users-are-visible
+//	 @SMSM-134 @View-User-On-user-Management-page,-Confirm-all-existing-Users-are-visible
 	@When("User navigates to the actions column of a Business and clicks Sign In button")
 	public void user_navigates_to_the_actions_column_of_a_Business_and_clicks_Sign_In_button() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AclateQA");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "YesssNo");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("AclateQA"));
+		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_SignIn("YesssNo"));
 	}
 
 	@Then("User is logged into the Business and the business dashboard is opened")
@@ -177,16 +177,14 @@ public class ManageUsersSteps extends BasePage {
 //	@SMSM-134 @verify-the-user-record-by-sorting-updated-column
 	@When("User clicks the updated column")
 	public void user_clicks_the_updated_column() throws Exception {
-		Thread.sleep(30000);
 		userManagementPage.waitAndClickElement(userManagementPage.col_Updated);
 	}
 
 	@Then("the user records should be sorted in ascending order by updated column")
 	public void the_user_records_should_be_sorted_in_ascending_order_by_updated_column() throws Exception {
-		Thread.sleep(30000);
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("asc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("01/30/2018"));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("05/14/2020"));
 	}
 
 	@When("User clicks the updated column again")
@@ -196,16 +194,15 @@ public class ManageUsersSteps extends BasePage {
 
 	@Then("the user records should be sorted in descending order by updated column")
 	public void the_user_records_should_be_sorted_in_descending_order_by_updated_column() throws Exception {
-		Thread.sleep(30000);
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("desc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals(commonElementLocator.currentDate()));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals(commonElementLocator.getGMTDate()));
 	}
 
 //	@SMSM-134 @Edit-a-user-from-user-management
 	@When("user clicks on a User's Edit button under the Action column")
 	public void user_clicks_on_a_User_s_Edit_button_under_the_Action_column() throws Exception {
-		userManagementPage.waitAndClickElement(userManagementPage.btn_UserEdit("AutoEdit"));
+		userManagementPage.waitAndClickElement(userManagementPage.btn_UserEdit("Azure"));
 	}
 
 	@Then("the Edit User page is displayed")
@@ -215,8 +212,8 @@ public class ManageUsersSteps extends BasePage {
 
 	@When("user enters the information on the fields to be edited")
 	public void user_enters_the_information_on_the_fields_to_be_edited() throws Exception {
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "fonade");
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "jane@fonade.com");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "fonad");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "jane@fonad.com");
 		editUserPage.waitAndClickElement(editUserPage.btn_Status_Inactive);
 	}
 
@@ -250,14 +247,14 @@ public class ManageUsersSteps extends BasePage {
 
 	@When("User searched for the editted record")
 	public void user_searched_for_the_editted_record() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoEdit");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Azure");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 	}
 
 	@Then("User confirms the changes were saved correctly.")
 	public void user_confirms_the_changes_were_saved_correctly() throws Exception {
-		Assert.assertEquals("fonade",
-				userManagementPage.getElementText(userManagementPage.selectColumnByName("fonade")));
+		Assert.assertEquals("fonad",
+				userManagementPage.getElementText(userManagementPage.selectColumnByName("fonad")));
 		Assert.assertEquals("Disabled",
 				userManagementPage.getElementText(userManagementPage.selectColumnByName("Disabled")));
 	}
@@ -373,7 +370,7 @@ public class ManageUsersSteps extends BasePage {
 //	@SMSM-134 @User-search-by-different-search-parameters @RegressionTest
 	@When("User enters first name of any user in the search field")
 	public void user_enters_first_name_of_any_user_in_the_search_field() throws Exception {
-		userManagementPage.sendKeysToWebElement(userManagementPage.txtF_Search, "AutoEdit");
+		userManagementPage.sendKeysToWebElement(userManagementPage.txtF_Search, "Azure");
 	}
 
 	@When("User clicks the search button")
@@ -383,7 +380,7 @@ public class ManageUsersSteps extends BasePage {
 
 	@Then("the search result record with the typed in first name is displayed successfully")
 	public void the_search_result_record_with_the_typed_in_first_name_is_displayed_successfully() {
-	   Assert.assertTrue(userManagementPage.selectColumnByName("AutoEdit").isDisplayed());
+	   Assert.assertTrue(userManagementPage.selectColumnByName("Azure").isDisplayed());
 	}
 
 	@When("User enters last name of the user in the search field")

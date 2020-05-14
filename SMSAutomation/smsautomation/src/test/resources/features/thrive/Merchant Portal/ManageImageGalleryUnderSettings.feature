@@ -40,14 +40,38 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
     When User selects a gallery with a count greater than zero
     Then user confirms that the images displayed equals the count
     
-  @[SMSM-174] @Verify-a-new-Image-can-be-added-under-Image--Gallery-by-clicking-New-button @OnlyMe
+  @[SMSM-174] @Verify-a-new-Image-can-be-added-under-Image--Gallery-by-clicking-New-button 
   Scenario: Verify a new Image can be added under Image Gallery by clicking New button
-    When User clicks the Manage button for a gallery with zero count of images
-    Then user is redirected to the specified gallery page and no image notification is displayed  
+    When User clicks the Manage button for a gallery to add image to
+    Then user is redirected to the specified gallery page of the  gallery to add image to
 		When User clicks the New button on the Gallery page
 		Then Upload Images section is displayed
 		When User attach the file to upload and click the upload button
 		Then User verifies that the file is uploaded successfully
+		
+ @[SMSM-174] @Verify-Admin-can-update-the-Image-by-clicking-"Update"-option-for-that-Image 
+  Scenario: Verify Admin can update the Image by clicking "Update" option for that Image [C22324778]
+    When User clicks the Manage button for a gallery to add image to
+    Then user is redirected to the specified gallery page of the  gallery to add image to
+		When User hoever over the image and clicks on the Update option 
+		Then the Update Media window is opened
+		When User selects a Vertical and clicks  Update button
+		Then User confirms that the image is updated successfully
+	
+	@[SMSM-174] @Verify-Admin-can-Delete-the-Image-by-clicking-"Delete"-for-that-Image 
+  Scenario: Verify Admin can Delete the Image by clicking "Delete" for that Image [C22324758]
+    When User clicks the Manage button for a gallery to add image to
+    Then user is redirected to the specified gallery page of the  gallery to add image to
+		When User hoever over the image and clicks on the Delete option 
+		Then User confirms that the image is deleted
+	
+  @[SMSM-174] @Verify-that-Filter-Options-available-on-Image-Gallery-page @OnlyMe
+  Scenario: Verify that Filter Options available on Image Gallery page.
+    When User clicks the Manage button under actions column on the Manage Galeery page
+    Then user is redirected to the  specified gallery page
+    When User clicks the Filter By Vertical drop down
+    Then the drop down options are displayed.
+    
 		
 		
 		

@@ -19,26 +19,26 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Settings menu item
     Then a dropdown apears with the Settings options
 
-  @SMSM-136 @View-Settings-Under-Settings-option @RegressionTest 
-  Scenario: View Settings under Settings option
+  @SMSM-136 @View-Manage-Settings-Under-Settings-option @RegressionTest 
+  Scenario: View Manage Settings under Settings option [C22283116]
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
     And User confirms the columns on the Settings page
 
   @SMSM-136 @View-Language-String-Under-Settings-option @RegressionTest
-  Scenario: View Language String under Settings option
+  Scenario: View Language String under Settings option [C22283119]
     When User clicks on Language Strings from the dropdown
     Then the Language Strings page is opened
     And User confirms the columns on the Language Strings page
 
   @SMSM-136 @View-Email-Templates-Under-Settings-option @RegressionTest
-  Scenario: View Email Templates under Settings option
+  Scenario: View Email Templates under Settings option [C22283120]
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
     And User confirms the columns on the Message Templates page
 
   @SMSM-136 @Search-and-Edit-any-Manage-Settings-option @RegressionTest
-  Scenario: Search and Edit any Settings option
+  Scenario: Search and Edit any Manage Settings option [C22283125]
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
     When User types the Settings title in the Search box and click Search button
@@ -54,7 +54,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User changes Settings option to it's original value and clicks the Update Setting button
 
   @SMSM-136 @Search-and-Edit-any-Language-String-option @RegressionTest
-  Scenario: Search and Edit any Language String option
+  Scenario: Search and Edit any Language String option [C22283129]
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
     When User types the Language String title in the Search box and click Search button
@@ -69,7 +69,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User changed the Language String to it's original value and clicks the Update Setting button
 
   @SMSM-136 @Search-and-Edit-any-Email-Template @RegressionTest
-  Scenario: Edit any Email Template
+  Scenario: Edit any Email Template [C22283133]
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
     When User types a Message Templates title in the Search box and click Search button
@@ -84,7 +84,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User changed the Message Template fields to it's original value and clicks the Save Settings button
 
   @SMSM-136 @Help-Guide-for-Manage-Settings-page @RegressionTest
-  Scenario: Help Guide for Manage Settings page
+  Scenario: Help Guide for Manage Settings page [C22288636]
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
     When User clicks the Help button on the Setting
@@ -107,7 +107,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the pop up window is closed
 
   @SMSM-136 @Help-Guide-for-Language-String-page @RegressionTest
-  Scenario: Help Guide for Language Strings page
+  Scenario: Help Guide for Language Strings page [C22288637]
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
     When User clicks the Help button on the Setting
@@ -132,7 +132,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the pop up window is closed
 
   @SMSM-136 @Help-Guide-for-Email-Templates-page @RegressionTest
-  Scenario: Help Guide for Email Templates page
+  Scenario: Help Guide for Email Templates page [C22288638]
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
     When User clicks the Help button on the Setting
@@ -152,8 +152,8 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the End Tour button on the Action pop up window
     Then the pop up window is closed
 
-  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest
-  Scenario: Apply Sort in Manage Settings page
+  @SMSM-136 @Apply-Sort-in-Manage-Settings-page @RegressionTest 
+  Scenario: Apply Sort in Manage Settings page [C22288649]
     When User clicks on Settings option from the dropdown
     Then the Settings page is opened
     When User clicks the Title column name
@@ -168,7 +168,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the Settings records are sorted by Updated colum
 
   @SMSM-136 @Apply-Sort-in-Language-String-page @RegressionTest 
-  Scenario: Apply Sort in Language Strings page
+  Scenario: Apply Sort in Language Strings page [C22288650]
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
     When User clicks the Title column name on Language Strings page
@@ -185,7 +185,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     Then the Language Strings records are sorted by Updated column
 
   @SMSM-136 @Apply-Sort-in-Email-Template-page @RegressionTest 
-  Scenario: Apply sort in Email Template page
+  Scenario: Apply sort in Email Template page [C22288652]
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened
     When User clicks the Title column name on Message Template page
