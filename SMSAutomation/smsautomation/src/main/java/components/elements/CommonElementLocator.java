@@ -111,4 +111,9 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]/h2") WebElement copy_To_Clipboard_Title;
 	public @FindBy(xpath = "//div[@id=\"datatables_buttons_info\"]//div") WebElement txt_Copied_To_Clipboard;
 	
+	// Signout
+	public @FindBy(xpath = "//li[contains(@class, \"first\")]//a[@class=\"dropdown-toggle\"]") WebElement loginAccountDDown;
+	public @FindBy(xpath = "//a[normalize-space()=\"My Account\"]") WebElement btn_MyAccount;
+	public @FindBy(xpath = "//a[normalize-space()=\"Sign Out\"]") WebElement btn_SignOut;
+	public @FindBy(xpath = "//h1[text()=\"Error 403\"]") WebElement lbl_Error403;
 }

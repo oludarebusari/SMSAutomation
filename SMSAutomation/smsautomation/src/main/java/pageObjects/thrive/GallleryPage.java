@@ -17,6 +17,7 @@ public class GallleryPage extends BasePage {
 	
 	private final String ALLIMAGESLOCATOR = "//img[contains(@class, \"responsive\")]";
 	private final String TestIMAGE2LOCATOR = "//img[contains(@class, \"responsive\")]";
+	private final String TESTVIDEOLOCATOR = "//img[@data-full-duration=\"5\"]";
 	
 	public String getALLIMAGESLOCATOR() {
 		return ALLIMAGESLOCATOR;
@@ -43,12 +44,23 @@ public class GallleryPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"image-option\" and ./img[@data-full-width=\"500\"]]//a[normalize-space()=\"Delete\"]") WebElement btn_DeleteTestImage;
 	public @FindBy(xpath = "//input[@placeholder=\"Filter by Vertical\"]") WebElement txtF_VerticalDDown;
 	public @FindBy(xpath = "(//div[@class=\"form-group\" and ./label[normalize-space()=\"Vertical\"]]//div[@class=\"selectize-dropdown-content\"])[2]") WebElement verticalOptions;
+	public @FindBy(xpath = "(//div[@class=\"form-group\" and ./label[normalize-space()=\"Tagged with\"]]//div[@class=\"selectize-dropdown-content\"])[2]") WebElement taggedWithOptions;
 	public @FindBy(xpath = "//input[@placeholder=\"Filter by Tag\"]") WebElement txtF_TaggedWithDDown;
 	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement parentElement;
-	public WebElement selectVertical(String option) {
+	public WebElement selectVerticalOrTaggedWith(String option) {
 		return parentElement.findElement(By.xpath("//div[text()=\'" + option + "']"));
 	}
 	
+	// Videos
+	
+	public String getTESTVIDEOLOCATOR() {
+		return TESTVIDEOLOCATOR;
+	}
+
+
+	public @FindBy(xpath = "//img[contains(@src, \"/thumb_164858_video_gallery_small.png\")]") WebElement TestVideo1;
+	public @FindBy(xpath = "//img[@data-full-width=\"500\"]") WebElement TestVideo2;
+    
 }
 
 
