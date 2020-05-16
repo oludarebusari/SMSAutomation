@@ -21,7 +21,7 @@ Feature: [SMSM-175] Manage Video Gallery under settings in admin dashboard for T
   Scenario: Verify Admin can see all existing Video Galleries on Manage Video Gallery [C22326097]
     And User verifies the columns on the Manage Video Gallery page
     
-  @[SMSM-175] @Verify-number-of-Videos-on-Video-Gallery-is-as-per-the-"Count"-column-of-that-specified-gallery-on-Manage-Video-Gallery-page @OnlyMe
+  @[SMSM-175] @Verify-number-of-Videos-on-Video-Gallery-is-as-per-the-"Count"-column-of-that-specified-gallery-on-Manage-Video-Gallery-page 
   Scenario: Verify number of Videos on Video Gallery is as per the "Count" column of that specified gallery on Manage Video Gallery page [C22344199]
   	When User clicks managae button of a video gallery with zero count
   	Then a notification indicating no videos arre available is displayed

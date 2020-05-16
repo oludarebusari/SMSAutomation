@@ -15,9 +15,12 @@ public class PagesConfigurationPage extends BasePage {
 		super();
 	}
 
+	
+	
 	public @FindBy(xpath = "//a[@id=\"edit-settings\"]") WebElement btn_Settings;
-	public @FindBy(xpath = "//a[@href=\"/merchant/pages/\" and text()=\"Pages\"]") WebElement lnk_Pages;
+	public @FindBy(xpath = "//a[(@href=\"/merchant/pages/\" or @href=\"/admin/pages-templates/\") and text()=\"Pages\"]") WebElement lnk_Pages;
 	public @FindBy(xpath = "//div[@class=\"btn-group\"]//button[contains(@class, \"ladda-button\")]") WebElement btn_Save;
+	public @FindBy(xpath = "//small[span]") WebElement txt_SaveNotification;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Header\"]]") WebElement sideMenu_Header;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Footer\"]]") WebElement sideMenu_Footer;
 	public @FindBy(xpath = "//h3[text()[normalize-space()=\"Content\"]]") WebElement sideMenu_Content;
@@ -38,4 +41,8 @@ public class PagesConfigurationPage extends BasePage {
 		return par_Imgae.findElements(By.xpath("//h1[text()=\'"+ imgText +"']"));
 	}
 
+	public @FindBy(xpath = "//div[contains(@class, \"col-xs-12\") and ./h1[@id=\"aboutus\"]]//p[1]") WebElement textAreaForEdit;
+	
+	
+	
 }
