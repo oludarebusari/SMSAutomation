@@ -22,5 +22,6 @@ public class CreatePageTemplatePage extends BasePage {
 			return parentElement.findElement(By.xpath("//div[text()=\'" + option + "']"));
 		}
 	 public @FindBy(xpath = "//button[@type=\"submit\" and normalize-space()=\"Create Page Template\"]") WebElement btn_CreatePageTemplate;
+	 public @FindBy(xpath = "//small[@data-fv-result=\"INVALID\"]") WebElement nameFieldErrorMsg;
 	 
 }

@@ -16,8 +16,7 @@ import pageObjects.thrive.modal.DeletePageModal;
 import utils.DriverFactory;
 
 public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
-	
-	
+		
 	public ActivatePageModal activatePageModal = PageFactory.initElements(driver, ActivatePageModal.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public CreatePageTemplatePage createPageTemplatePage = PageFactory.initElements(driver, CreatePageTemplatePage.class);
@@ -28,6 +27,7 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
 	
 	private String timeBeforeSave = "";
+	private String URLAddress = "";
 	
 	@When("User clicks the Page Templates option")
 	public void user_clicks_the_Page_Templates_option() throws Exception {
@@ -224,8 +224,8 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 	}
 	
 //	@Verify-Admin-can-Activate-a-Deactivate-"Page-Template" 
-	@When("User clicks the Activate buttonon the window")
-	public void user_clicks_the_Activate_buttonon_the_window() throws Exception {
+	@When("User clicks the Activate button on the Activate page title modal")
+	public void user_clicks_the_Activate_button_on_the_Activate_page_title_modal() throws InterruptedException {
 		activatePageModal.waitAndClickElement(activatePageModal.btn_Activate);
 	}
 
@@ -303,7 +303,6 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("User confirms that the page template is deleted")
 	public void user_confirms_that_the_page_template_is_deleted() {
-//		Assert.assertFalse(pageTemplatesPage.isElementVisible(pageTemplatesPage.getElementLocator(pageTemplatesPage.CellValue("AutoTest"))));
 		Assert.assertFalse(pageTemplatesPage.isElementVisible(pageTemplatesPage.CELLVALUELOCATOR("AutoTest")));
 	}
 
@@ -337,4 +336,49 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 		Assert.assertEquals("32", commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
 		
 	}
+	
+//	@Verify-the-Help-on-"Page-Templates"-page-by-clicking-the-Help-button
+	@When("User clicks the Help button on the page Template")
+	public void user_clicks_the_Help_button_on_the_page_Template() throws Exception {
+	   commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the Page Templates help tour window appears")
+	public void the_Page_Templates_help_tour_window_appears() throws Exception {
+		Assert.assertEquals("Page Templates", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the Next button on the Page Templates help window")
+	public void user_clicks_the_Next_button_on_the_Page_Templates_help_window() throws Exception {
+	commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Create New Page Template window is displayed")
+	public void the_Create_New_Page_Template_window_is_displayed() throws Exception {
+		Assert.assertEquals("Create New Page Template", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the previous button on the Create New Page Template")
+	public void user_clicks_the_previous_button_on_the_Create_New_Page_Template() throws Exception {
+	commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
+
+	@Then("User is navigated to the Page Templates window")
+	public void user_is_navigated_to_the_Page_Templates_window() throws Exception {
+		Assert.assertEquals("Page Templates", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+	
+//	@Verify-that-a-non-admin-user-cannot-access-Settings-Page-Templates-via-menu-as-well-as-via-direct-URL-access
+	@Then("User copies the current url for Page Templates and sign out")
+	public void user_copies_the_current_url_for_Page_Templates_and_sign_out() throws Exception {
+		URLAddress = driver.getCurrentUrl();
+		commonElementLocator.waitAndClickElement(commonElementLocator.loginAccountDDown);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_SignOut);
+	}
+
+	@When("User navigates to the url of Page Templates copied earlier")
+	public void user_navigates_to_the_url_of_Page_Templates_copied_earlier() {
+		 driver.navigate().to(URLAddress);
+	}
+
 }

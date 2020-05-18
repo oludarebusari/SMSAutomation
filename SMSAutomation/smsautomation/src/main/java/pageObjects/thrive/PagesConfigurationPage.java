@@ -15,8 +15,6 @@ public class PagesConfigurationPage extends BasePage {
 		super();
 	}
 
-	
-	
 	public @FindBy(xpath = "//a[@id=\"edit-settings\"]") WebElement btn_Settings;
 	public @FindBy(xpath = "//a[(@href=\"/merchant/pages/\" or @href=\"/admin/pages-templates/\") and text()=\"Pages\"]") WebElement lnk_Pages;
 	public @FindBy(xpath = "//div[@class=\"btn-group\"]//button[contains(@class, \"ladda-button\")]") WebElement btn_Save;
@@ -34,8 +32,11 @@ public class PagesConfigurationPage extends BasePage {
 	public @FindBy(xpath = "(//div[@class=\"row-copy\"]//i[contains(@class, \"fa-plus\")])[1]") WebElement snip_Plus;
 	public @FindBy(xpath = "(//div[@class=\"row-remove\"]//i[contains(@class, \"fa-trash\")])[1]") WebElement snip_Delete;
 	public @FindBy(xpath = "//h1[text()=\"Tagline for your business\"]") WebElement img_Text;
-	public @FindBy(xpath = "//img[@src=\"/bundles/mastermindsdigitalplatform/images/contentbuilder/thumbnails/47.png\"]") WebElement imgToDrag;
-	public @FindBy(xpath = "//div[@id=\"header-content\"]//div[contains(@class, \"row content-block-row container clearfix\")]") WebElement emptyHeaderBox;
+	public @FindBy(xpath = "//div[@class=\"filter-group active\"]") WebElement OptionDDown;
+//	public @FindBy(xpath = "//img[@src=\"/bundles/mastermindsdigitalplatform/images/contentbuilder/thumbnails/47.png\"]") WebElement imgToDrag;
+	public @FindBy(xpath = "//img[contains(@src, \"/thumbnails/47.png\")]") WebElement imgToDrag;
+//	public @FindBy(xpath = "//div[@id=\"header-content\"]//div[contains(@class, \"row content-block-row container clearfix\")]") WebElement emptyHeaderBox;
+	public @FindBy(xpath = "//div[@id=\"content-to-edit\"]") WebElement emptyHeaderBox;
 	public @FindBy(xpath = "//div[@id=\"logo\"]") WebElement par_Imgae;
 	public List<WebElement> getNumberOfImage(String imgText) {
 		return par_Imgae.findElements(By.xpath("//h1[text()=\'"+ imgText +"']"));
