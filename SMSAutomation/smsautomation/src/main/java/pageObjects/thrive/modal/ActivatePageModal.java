@@ -13,8 +13,9 @@ public class ActivatePageModal extends BasePage {
 		super();
 	}
 
-	public @FindBy(xpath = "//h4[@class=\"modal-title\" and text()[normalize-space()=\"Activate this page\"]]") WebElement mod_Title;
-	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[@class=\"modal-title\" and text()[normalize-space()=\"Activate this page\"]]]//button[text()=\"Activate\"]") WebElement btn_Activate;
-	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[@class=\"modal-title\" and text()[normalize-space()=\"Activate this page\"]]]//button[text()=\"Cancel\"]") WebElement btn_Cancel;
+	public @FindBy(xpath = "//h4[@class=\"modal-title\" and text()[normalize-space()=\"activate.page.title\"] or text()[normalize-space()=\"Activate this page\"]]") WebElement mod_Title;
+	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[@class=\"modal-title\" and text()[normalize-space()=\"activate.page.title\"] or text()[normalize-space()=\"Activate this page\"]]]//button[text()=\"Activate\"]") WebElement btn_Activate;
+	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[@class=\"modal-title\" and text()[normalize-space()=\"activate.page.title\"] or text()[normalize-space()=\"Activate this page\"]]]//button[text()=\"Cancel\"]") WebElement btn_Cancel;
+	public @FindBy(xpath = "//div[@class=\"modal-content\" and .//h4[@class=\"modal-title\" and text()[normalize-space()=\"activate.page.title\"] or text()[normalize-space()=\"Activate this page\"]]]//button[@class=\"close\"]") WebElement btn_Close;
 	
 }

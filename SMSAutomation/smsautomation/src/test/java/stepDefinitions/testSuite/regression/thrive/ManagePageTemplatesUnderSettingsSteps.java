@@ -10,13 +10,19 @@ import pageObjects.thrive.CreatePageTemplatePage;
 import pageObjects.thrive.PageTemplatesPage;
 import pageObjects.thrive.PagesConfigurationPage;
 import pageObjects.thrive.Tab.SettingsDDown;
+import pageObjects.thrive.modal.ActivatePageModal;
+import pageObjects.thrive.modal.DeactivatePageModal;
+import pageObjects.thrive.modal.DeletePageModal;
 import utils.DriverFactory;
 
 public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 	
 	
+	public ActivatePageModal activatePageModal = PageFactory.initElements(driver, ActivatePageModal.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	public CreatePageTemplatePage createPageTemplatePage = PageFactory.initElements(driver, CreatePageTemplatePage.class);
+	public DeactivatePageModal deactivatePageModal = PageFactory.initElements(driver, DeactivatePageModal.class);
+	public DeletePageModal deletePageModal = PageFactory.initElements(driver, DeletePageModal.class);
 	public PagesConfigurationPage pagesConfigurationPage = PageFactory.initElements(driver, PagesConfigurationPage.class);
 	public PageTemplatesPage pageTemplatesPage = PageFactory.initElements(driver, PageTemplatesPage.class);
 	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
@@ -193,4 +199,142 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	}
 	
+//	@Verify-clicking-"Cancel"-or-"X"-on-Activate-page-popup-does-not-Activate-the-template
+	@When("User clicks on the Edit button drop down for a Template to activate")
+	public void user_clicks_on_the_Edit_button_drop_down_for_a_Template_to_activate() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_MakeActive("AutoTest"));
+	}
+
+	@Then("the Activate popup window is displayed")
+	public void the_Activate_popup_window_is_displayed() throws Exception {
+		Assert.assertEquals("activate.page.title", activatePageModal.getElementText(activatePageModal.mod_Title));
+	}
+
+	@When("User clicks the Close button on the Activate popup window")
+	public void user_clicks_the_Close_button_on_the_Activate_popup_window() throws Exception {
+		activatePageModal.waitAndClickElement(activatePageModal.btn_Close);
+	}
+
+	@Then("User confirms that the page template was not activated")
+	public void user_confirms_that_the_page_template_was_not_activated() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("Inactive, Hidden").isDisplayed());
+	}
+	
+//	@Verify-Admin-can-Activate-a-Deactivate-"Page-Template" 
+	@When("User clicks the Activate buttonon the window")
+	public void user_clicks_the_Activate_buttonon_the_window() throws Exception {
+		activatePageModal.waitAndClickElement(activatePageModal.btn_Activate);
+	}
+
+	@Then("User confirms that the page template is activated")
+	public void user_confirms_that_the_page_template_is_activated() {
+	   Assert.assertTrue(pageTemplatesPage.CellValue("Active").isDisplayed());
+	}
+	
+//	@Verify-clicking-"Cancel"-or-"X"-on-Inactivate-page-popup-does-not-Inactivate-the-template 
+	@When("User clicks on the Edit button drop down for a Template to make Inactive")
+	public void user_clicks_on_the_Edit_button_drop_down_for_a_Template_to_make_Inactive() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_MakeInactive("AutoTest"));
+	}
+
+	@Then("the Deactivate popup window is displayed")
+	public void the_Deactivate_popup_window_is_displayed() throws Exception {
+		Assert.assertEquals("deactivate.page.title", deactivatePageModal.getElementText(deactivatePageModal.mod_Title));
+	}
+
+	@When("User clicks the Close button on the Deactivate popup window")
+	public void user_clicks_the_Close_button_on_the_Deactivate_popup_window() throws Exception {
+		deactivatePageModal.waitAndClickElement(deactivatePageModal.btn_Close);
+	}
+
+	@Then("User confirms that the page template was not deactivated")
+	public void user_confirms_that_the_page_template_was_not_deactivated() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("Active").isDisplayed());
+	}
+	
+//	@Verify-Admin-can-Deactivate-an-Active-"Page-Template"
+	@When("User clicks the Deactivate button the window")
+	public void user_clicks_the_Deactivate_button_the_window() throws Exception {
+		deactivatePageModal.waitAndClickElement(deactivatePageModal.btn_Deactivate);
+	}
+
+	@Then("User confirms that the page template is deactivated")
+	public void user_confirms_that_the_page_template_is_deactivated() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("Inactive, Hidden").isDisplayed());
+	}
+
+
+//	@Verify-clicking-"Cancel"-or-"X"-on-Delete-Page-popup-does-not-delete-the-Page-Template
+	@When("User clicks on the Edit button drop down for a Template to delete")
+	public void user_clicks_on_the_Edit_button_drop_down_for_a_Template_to_delete() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Delete("AutoTest"));
+	}
+
+	@Then("the Delete popup window is displayed")
+	public void the_Delete_popup_window_is_displayed() throws Exception {
+		Assert.assertEquals("Delete Page", deletePageModal.getElementText(deletePageModal.mod_Title));
+	}
+
+	@When("User clicks the Close button on the Delete popup window")
+	public void user_clicks_the_Close_button_on_the_Delete_popup_window() throws Exception {
+		deletePageModal.waitAndClickElement(deletePageModal.btn_Close);
+	}
+
+	@Then("User confirms that the page template was not deleted")
+	public void user_confirms_that_the_page_template_was_not_deleted() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("AutoTest").isDisplayed());
+	}
+	
+	
+//	@Verify-Admin-can-delete-an-existing-Page-Template
+	@When("User clicks the Delete button on the window")
+	public void user_clicks_the_Delete_button_on_the_window() throws Exception {
+		deletePageModal.waitAndClickElement(deletePageModal.btn_Delete);
+	}
+
+	@Then("User confirms that the page template is deleted")
+	public void user_confirms_that_the_page_template_is_deleted() {
+//		Assert.assertFalse(pageTemplatesPage.isElementVisible(pageTemplatesPage.getElementLocator(pageTemplatesPage.CellValue("AutoTest"))));
+		Assert.assertFalse(pageTemplatesPage.isElementVisible(pageTemplatesPage.CELLVALUELOCATOR("AutoTest")));
+	}
+
+	
+//	@Verify-Admin-is-able-to-search-the-Page-Templates-by-entering-a-search-criteria-in-Search-box-and-clicking-Search
+	@Then("User verifies that both Search textbox and Search button are present on the page")
+	public void user_verifies_that_both_Search_textbox_and_Search_button_are_present_on_the_page() {
+		Assert.assertTrue(commonElementLocator.txtF_Search.isDisplayed());
+		Assert.assertTrue(commonElementLocator.btn_Search.isDisplayed());
+	}
+
+	@When("User enters a text into the Search textbox and clicks Search button")
+	public void user_enters_a_text_into_the_Search_textbox_and_clicks_Search_button() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Carwash");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the result of the search is displayed")
+	public void the_result_of_the_search_is_displayed() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("Carwash").isDisplayed());
+	}
+
+	@When("User leaves the search textbox empty and clicks the Search button")
+	public void user_leaves_the_search_textbox_empty_and_clicks_the_Search_button() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("all the template records are displayed")
+	public void all_the_template_records_are_displayed() throws InterruptedException {
+		Assert.assertEquals("32", commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
+		
+	}
 }

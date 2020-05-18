@@ -19,6 +19,10 @@ public class PageTemplatesPage extends BasePage {
 		return EDITBUTTONLOCATOR;
 	}
 	
+	public String CELLVALUELOCATOR(String value) {
+		return "//tr//td[text()=\'" +  value + "']";
+	}
+	
 	
 	// Column options
     public @FindBy(xpath = "//a[@class=\"sorting\" and text()[normalize-space()=\"Page\"]]") WebElement col_Page;
@@ -32,9 +36,25 @@ public class PageTemplatesPage extends BasePage {
     public WebElement btn_Edit(String name) {
     	return par_PageElement.findElement(By.xpath("//tr[td[text()=\'" + name + "']]//a[text()=\"Edit\"]"));
     }
+    public WebElement btn_EditDDown(String name) {
+    	return par_PageElement.findElement(By.xpath("//tr[td[text()=\'" + name + "']]//button[@data-toggle=\"dropdown\"]"));
+    }
+    public WebElement btn_MakeActive(String name) {
+    	return par_PageElement.findElement(By.xpath("//tr[td[text()=\'" + name + "']]//ul[@class=\"dropdown-menu\"]//a[normalize-space()=\"Make Active\"]"));
+    }
+    public WebElement btn_MakeInactive(String name) {
+    	return par_PageElement.findElement(By.xpath("//tr[td[text()=\'" + name + "']]//ul[@class=\"dropdown-menu\"]//a[normalize-space()=\"Make Inactive\"]"));
+    }
+    public WebElement btn_Delete(String name) {
+    	return par_PageElement.findElement(By.xpath("//tr[td[text()=\'" + name + "']]//ul[@class=\"dropdown-menu\"]//a[normalize-space()=\"Delete\"]"));
+    }
     
     public WebElement SortedCellValue(String value) {
     	return par_PageElement.findElement(By.xpath("//tr[1][td[text()=\'" +  value + "']]"));
+    }
+
+    public WebElement CellValue(String value) {
+    	return par_PageElement.findElement(By.xpath("//tr//td[text()=\'" +  value + "']"));
     }
 
 
