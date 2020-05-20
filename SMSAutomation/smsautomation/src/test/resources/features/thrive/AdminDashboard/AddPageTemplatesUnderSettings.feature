@@ -35,7 +35,7 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
 #	When User selects a snippet and drag to the right pane
 #	Then the Header, Body content and Footer are displayed
 
- @[SMSM-172] @Verify-the-validations-on-"Add-page-template"-page-on-clicking-"+New"-button @OnlyMe
+ @[SMSM-172] @Verify-the-validations-on-"Add-page-template"-page-on-clicking-"+New"-button 
   Scenario: Verify the validations on "Add page template" page on clicking "+New" button
     When User Clicks on the New button on the Page Templates page
     Then the Create Page Template window is opened
@@ -43,5 +43,18 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     Then the validation message is displayed
     And User verifies the state of the Create Page Template button
     And User enters a name into the name field and verifies the state of the Create Page Template button
+  
+  @[SMSM-172] @Verify-admin-can-view/change-the-source-code-of-the-snippet @OnlyMe
+  Scenario: Verify admin can view/change the source code of the snippet
+    When User clicks the edit button on a page
+    Then the page template edit window is opened
+    When User clicks on an Image and clicks on the html snippet
+    Then the html text window is opened
+    And User enters html and clicks OK button
+    And User clicks the Save button on the page
+    And User confirms the change was saved correctly
     
+    
+    
+
   

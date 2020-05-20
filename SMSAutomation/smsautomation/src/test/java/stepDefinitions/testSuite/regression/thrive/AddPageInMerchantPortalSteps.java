@@ -130,10 +130,10 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 
 	@Then("the four action options for the image is displayed")
 	public void the_four_action_options_for_the_image_is_displayed() throws Exception {
-		Assert.assertTrue(pagesConfigurationPage.snip_Pointer.isDisplayed());
-		Assert.assertTrue(pagesConfigurationPage.snip_Html.isDisplayed());
-		Assert.assertTrue(pagesConfigurationPage.snip_Plus.isDisplayed());
-		Assert.assertTrue(pagesConfigurationPage.snip_Delete.isDisplayed());
+		Assert.assertTrue(pagesConfigurationPage.isElementVisible(pagesConfigurationPage.getElementLocator(pagesConfigurationPage.snip_Pointer)));
+		Assert.assertTrue(pagesConfigurationPage.isElementVisible(pagesConfigurationPage.getElementLocator(pagesConfigurationPage.snip_Html)));
+		Assert.assertTrue(pagesConfigurationPage.isElementVisible(pagesConfigurationPage.getElementLocator(pagesConfigurationPage.snip_Plus)));
+		Assert.assertTrue(pagesConfigurationPage.isElementVisible(pagesConfigurationPage.getElementLocator(pagesConfigurationPage.snip_Delete)));
 	}
 	
 	
@@ -152,7 +152,8 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 	@When("User clicks the plus icon at the left side of the snippet")
 	public void user_clicks_the_plus_icon_at_the_left_side_of_the_snippet() throws Exception {
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Plus);
-		Assert.assertEquals(3, pagesConfigurationPage.getNumberOfImage("Tagline for your business").size());
+//		Thread.sleep(20000);
+		Assert.assertEquals(3, pagesConfigurationPage.getNumberOfImage("Join Our Loyalty Program, Get a ").size());
 	}
 	
 //	@SMSM-136 @Verify-the-user-is-able-to-delete-the-snippet-on-the-page-by-clicking-on-delete-icon

@@ -62,14 +62,21 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//div[contains(@class, \"input-group-sm\")]//select[@name=\"broadcast-table_length\"]") WebElement lov_PaginationTableLength;
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]") WebElement paginationBlock;
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]//li[contains(@class, \"active\")]") WebElement paginationActiveBtn;
-	/*
-	 * public WebElement pageButtonNumber(String pageNumber) { return
-	 * paginationBlock.findElement(By.xpath("//a[text()=\'" + pageNumber + "']")); }
-	 */
 	
-	public WebElement pageButtonNumber(String pageNumber) {
-		return paginationBlock.findElement(By.xpath("//li[contains(@class, \"page-away\") and (.//span[contains(text(), \'" + pageNumber + "')] or .//a[contains(text(), \'" + pageNumber + "')])]"));
-	}
+	
+	  public WebElement pageButtonNumber(String pageNumber) { 
+		return  paginationBlock.findElement(By.xpath("//a[text()=\'" + pageNumber + "']")); 
+	  }
+	
+    /*
+	 * public WebElement pageButtonNumber(String pageNumber) { return
+	 * paginationBlock.findElement(By.
+	 * xpath("//li[contains(@class, \"page-away\") and (.//span[contains(text(), \'"
+	 * + pageNumber + "')] or .//a[contains(text(), \'" + pageNumber + "')])]"));
+	 * 
+	 * }
+	 */
+	 
 	
 	public WebElement tableLengthOpt(String option) {
 		return lov_PaginationTableLength.findElement(By.xpath("//option[text()=\'" + option + "']"));

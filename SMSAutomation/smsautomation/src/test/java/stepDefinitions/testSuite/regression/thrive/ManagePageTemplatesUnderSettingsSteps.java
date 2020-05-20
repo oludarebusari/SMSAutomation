@@ -81,8 +81,8 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 	}
 
 	@Then("the next page on the pagination buttons is highlighted")
-	public void the_next_page_on_the_pagination_buttons_is_highlighted() {
-		Assert.assertTrue(commonElementLocator.pageButtonNumber("2").getAttribute("class").contains("active"));
+	public void the_next_page_on_the_pagination_buttons_is_highlighted() throws InterruptedException {
+		Assert.assertTrue(pageTemplatesPage.pageButtonNumber("2").getAttribute("class").contains("active"));
 	}
 
 	@When("User Selects All from the drop down list")
@@ -94,8 +94,8 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 	public void user_verifies_all_the_records_are_displayed_on_one_page() {
 		Assert.assertTrue(commonElementLocator.btn_PaginationNextDisabled.isDisplayed());
 		Assert.assertTrue(commonElementLocator.btn_PaginationPreviousDisabled.isDisplayed());
-		Assert.assertTrue(commonElementLocator.pageButtonNumber("1").isDisplayed());
-		Assert.assertFalse(commonElementLocator.isElementVisible(commonElementLocator.getElementLocator(commonElementLocator.pageButtonNumber("2"))));
+		Assert.assertTrue(pageTemplatesPage.pageButtonNumber("1").isDisplayed());
+		Assert.assertFalse(pageTemplatesPage.isElementVisible(pageTemplatesPage.getElementLocator(pageTemplatesPage.pageButtonNumber("2"))));
 	}
 
 //	@Verify-Templates-can-be-sorted-by-clicking-on-arrows-icon-on-side-of-each-column-heading-on-"Page-Templates"-page
@@ -333,7 +333,7 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("all the template records are displayed")
 	public void all_the_template_records_are_displayed() throws InterruptedException {
-		Assert.assertEquals("32", commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
+		Assert.assertEquals("33", commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
 		
 	}
 	

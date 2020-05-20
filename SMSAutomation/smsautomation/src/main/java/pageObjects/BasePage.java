@@ -606,7 +606,7 @@ public class BasePage extends DriverFactory {
 		int firstLocatorCharInIdex = element.toString().indexOf("/");
 		int lastLocatorCharIndex = element.toString().lastIndexOf("]");
 		
-		return element.toString().substring(firstLocatorCharInIdex, lastLocatorCharIndex+1);
+		return element.toString().substring(firstLocatorCharInIdex, lastLocatorCharIndex);
 		
 	}
 

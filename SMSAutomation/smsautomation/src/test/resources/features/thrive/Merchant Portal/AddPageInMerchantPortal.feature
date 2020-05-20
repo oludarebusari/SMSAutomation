@@ -17,7 +17,7 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     When User navigates to the actions column of a Business and clicks Sign In button
     Then User is logged into the Business and the business dashboard is opened
 
-  @SMSM-136 @Verify-the-user-is-able-to-create-a-new-page-in-merchant-portal @RegressionTest 
+  @SMSM-136 @Verify-the-user-is-able-to-create-a-new-page-in-merchant-portal @RegressionTest
   Scenario: Verify the user is able to create a new page in merchants portal
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -44,7 +44,7 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     And User confirms that the Streams option is available
     And User confirms that the Parallax option is available
 
-  @SMSM-136 @Verify-the-4-options-appear-on-the-left-top-side-of-the-snippet @RegressionTest 
+  @SMSM-136 @Verify-the-4-options-appear-on-the-left-top-side-of-the-snippet @RegressionTest
   Scenario: Verify the 4 option appears on left top side of snippet
     When User clicks on the Experience Menu option
     Then the Experience options are displayed

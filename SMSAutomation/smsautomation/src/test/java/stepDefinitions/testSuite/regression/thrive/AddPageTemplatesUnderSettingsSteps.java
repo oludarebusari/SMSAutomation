@@ -28,6 +28,28 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 			PagesConfigurationPage.class);
 	public PageTemplatesPage pageTemplatesPage = PageFactory.initElements(driver, PageTemplatesPage.class);
 
+	public String HTMLTextModified = "<div class=\"col-xs-12 col-sm-6\">\r\n" + 
+			"            <figure class=\"text-center\">\r\n" + 
+			"                <img src=\"/bundles/mastermindsdigitalplatform/images/contentbuilder/07.jpg\" class=\"img-circle\" alt=\"\">\r\n" + 
+			"                <figcaption>\r\n" + 
+			"                    <h3>Printing</h3>\r\n" + 
+			"                    <p>\r\n" + 
+			"                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.\r\n" + 
+			"                    </p>\r\n" + 
+			"                </figcaption>\r\n" + 
+			"            </figure>\r\n" + 
+			"        </div>\r\n" + 
+			"        <div class=\"col-xs-12 col-sm-6\">\r\n" + 
+			"            <figure class=\"text-center\">\r\n" + 
+			"                <img src=\"/bundles/mastermindsdigitalplatform/images/contentbuilder/08.jpg\" class=\"img-circle\" alt=\"\">\r\n" + 
+			"                <figcaption>\r\n" + 
+			"                    <h3>Typesetting</h3>\r\n" + 
+			"                    <p>\r\n" + 
+			"                        Lorem Ipsum is simply dummy text of the printing and typesetting industry Edited.\r\n" + 
+			"                    </p>\r\n" + 
+			"                </figcaption>\r\n" + 
+			"            </figure>\r\n" +  
+			"        </div>";
 	Actions actions = new Actions(driver);
 
 //	@Verify-admin-can-add-a-page-template-and-page-is-added-under-Page-Templates-page
@@ -93,7 +115,7 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@When("User selects a snippet and drag to the right pane")
 	public void user_selects_a_snippet_and_drag_to_the_right_pane() throws Exception {
-		
+
 		Action dragAndDrop = actions.clickAndHold(pagesConfigurationPage.imgToDrag)
 				.moveToElement(pagesConfigurationPage.emptyHeaderBox).release(pagesConfigurationPage.emptyHeaderBox)
 				.build();
@@ -105,16 +127,16 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 	public void the_Header_Body_content_and_Footer_are_displayed() throws Exception {
 
 	}
-	
+
 //	@Verify-the-validations-on-"Add-page-template"-page-on-clicking-"+New"-button
 	@When("User leaves all the fields blank and clicks Create Page Template button")
 	public void user_leaves_all_the_fields_blank_and_clicks_Create_Page_Template_button() throws Exception {
-	   createPageTemplatePage.waitAndClickElement(createPageTemplatePage.btn_CreatePageTemplate);
+		createPageTemplatePage.waitAndClickElement(createPageTemplatePage.btn_CreatePageTemplate);
 	}
 
 	@Then("the validation message is displayed")
 	public void the_validation_message_is_displayed() {
-	  Assert.assertTrue(createPageTemplatePage.nameFieldErrorMsg.isDisplayed());
+		Assert.assertTrue(createPageTemplatePage.nameFieldErrorMsg.isDisplayed());
 	}
 
 	@Then("User verifies the state of the Create Page Template button")
@@ -123,9 +145,57 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 	}
 
 	@Then("User enters a name into the name field and verifies the state of the Create Page Template button")
-	public void user_enters_a_name_into_the_name_field_and_verifies_the_state_of_the_Create_Page_Template_button() throws Exception {
-	   createPageTemplatePage.sendKeysToWebElement(createPageTemplatePage.txtF_Name, "AutoTest");
-	   Assert.assertFalse(createPageTemplatePage.btn_CreatePageTemplate.getAttribute("class").contains("disabled"));
+	public void user_enters_a_name_into_the_name_field_and_verifies_the_state_of_the_Create_Page_Template_button()
+			throws Exception {
+		createPageTemplatePage.sendKeysToWebElement(createPageTemplatePage.txtF_Name, "AutoTest");
+		Assert.assertFalse(createPageTemplatePage.btn_CreatePageTemplate.getAttribute("class").contains("disabled"));
 	}
 
+//
+	@When("User clicks the edit button on a page")
+	public void user_clicks_the_edit_button_on_a_page() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA"));
+	}
+
+	@Then("the page template edit window is opened")
+	public void the_page_template_edit_window_is_opened() throws Exception {
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.pag_Title).contains("AutomationQA"));
+	}
+
+	@When("User clicks on an Image and clicks on the html snippet")
+	public void user_clicks_on_an_Image_and_clicks_on_the_html_snippet() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.image);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Html);
+	}
+
+	@Then("the html text window is opened")
+	public void the_html_text_window_is_opened() throws Exception {
+		Assert.assertTrue(pagesConfigurationPage.snip_HtmlTextArea.isDisplayed());
+	}
+
+	@Then("User enters html and clicks OK button")
+	public void user_enters_html_and_clicks_OK_button() throws Exception {
+		pagesConfigurationPage.sendKeysToWebElement(pagesConfigurationPage.snip_HtmlTextArea,
+				pagesConfigurationPage.getHTMLTextEdited());
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_HtmlTextAreaOK);
+	}
+
+	@Then("User clicks the Save button on the page")
+	public void user_clicks_the_Save_button_on_the_page() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Save);
+		Thread.sleep(3000);
+	
+	}
+
+	@Then("User confirms the change was saved correctly")
+	public void user_confirms_the_change_was_saved_correctly() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.lnk_Pages);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA"));
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.image);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Html);
+	}
 }
