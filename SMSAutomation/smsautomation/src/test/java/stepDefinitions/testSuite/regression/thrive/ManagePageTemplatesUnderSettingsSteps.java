@@ -333,7 +333,7 @@ public class ManagePageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("all the template records are displayed")
 	public void all_the_template_records_are_displayed() throws InterruptedException {
-		Assert.assertEquals("33", commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
+		Assert.assertEquals("35", commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal));
 		
 	}
 	

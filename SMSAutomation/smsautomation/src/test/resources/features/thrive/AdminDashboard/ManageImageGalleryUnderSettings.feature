@@ -2,6 +2,7 @@
 #Keywords Summary :
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - ManageImageGalleryUnderSettingsSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -21,19 +22,19 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
   Scenario: Verify Admin can see all existing Image Galleries on Manage Image Gallery [C22324334]
     And User verifies the columns on the Manage Image Gallery page
 
-  @[SMSM-174] @Verify-Admin-is-directed-to-a-specified-Image-Gallery-by-clicking-"Manage"-under-Action-column-for-any-Gallery-on-"Manage-Image-Gallery"-page
+  @[SMSM-174] @Verify-Admin-is-directed-to-a-specified-Image-Gallery-by-clicking-"Manage"-under-Action-column-for-any-Gallery-on-"Manage-Image-Gallery"-page 
   Scenario: Verify Admin is directed to a specified Image Gallery by clicking "Manage" under Action column for any Gallery on "Manage Image Gallery" page [C22324657]
     When User clicks the Manage button under actions column on the Manage Galeery page
     Then user is redirected to the  specified gallery page
 
-  @[SMSM-174] @Verify-the-options-available-on-hovering-over-an-image-in-an-Image-Gallery
+  @[SMSM-174] @Verify-the-options-available-on-hovering-over-an-image-in-an-Image-Gallery 
   Scenario: Verify the options available on hovering over an image in an Image Gallery [C22324663]
     When User clicks the Manage button under actions column on the Manage Galeery page
     Then user is redirected to the  specified gallery page
     When User hoever over an image
     Then the action options on the image are displayed
 
-  @[SMSM-174] @Verify-number-of-Images-in-an-Image-Gallery-is-as-per-the-"Count"-column-of-that-specified-gallery-on-Manage-Image-Gallery-page
+  @[SMSM-174] @Verify-number-of-Images-in-an-Image-Gallery-is-as-per-the-"Count"-column-of-that-specified-gallery-on-Manage-Image-Gallery-page 
   Scenario: Verify number of Images in an Image Gallery is as per the "Count" column of that specified gallery on Manage Image Gallery page [C22324670]
     When User clicks the Manage button for a gallery with zero count of images
     Then user is redirected to the specified gallery page and no image notification is displayed
@@ -49,7 +50,7 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
     When User attach the file to upload and click the upload button
     Then User verifies that the file is uploaded successfully
 
-  @[SMSM-174] @Verify-Admin-can-update-the-Image-by-clicking-"Update"-option-for-that-Image
+  @[SMSM-174] @Verify-Admin-can-update-the-Image-by-clicking-"Update"-option-for-that-Image 
   Scenario: Verify Admin can update the Image by clicking "Update" option for that Image [C22324778]
     When User clicks the Manage button for a gallery to add image to
     Then user is redirected to the specified gallery page of the  gallery to add image to
@@ -58,20 +59,20 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
     When User selects a Vertical and clicks  Update button
     Then User confirms that the image is updated successfully
 
-  @[SMSM-174] @Verify-Admin-can-Delete-the-Image-by-clicking-"Delete"-for-that-Image
+  @[SMSM-174] @Verify-Admin-can-Delete-the-Image-by-clicking-"Delete"-for-that-Image 
   Scenario: Verify Admin can Delete the Image by clicking "Delete" for that Image [C22324758]
     When User clicks the Manage button for a gallery to add image to
     Then user is redirected to the specified gallery page of the  gallery to add image to
     When User hoever over the image and clicks on the Delete option
     Then User confirms that the image is deleted
 
-  @[SMSM-174] @Verify-that-Filter-Options-available-on-Image-Gallery-page
+  @[SMSM-174] @Verify-that-Filter-Options-available-on-Image-Gallery-page 
   Scenario: Verify that Filter Options available on Image Gallery page [C22324791]
     When User clicks the Manage button under actions column on the Manage Galeery page
 		 Then user is redirected to the  specified gallery page
 		 And User verifies the filter options available on the select image Gallery page
 
-  @[SMSM-174] @Verify-that-the-Data-is-filtered-for-images-as-per-the-Verticals-added
+  @[SMSM-174] @Verify-that-the-Data-is-filtered-for-images-as-per-the-Verticals-added 
   Scenario: Verify that the Data is filtered for images as per the Verticals added [C22324804]
     When User clicks the Manage button under actions column on the Manage Galeery page
     Then user is redirected to the  specified gallery page
@@ -80,7 +81,7 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
     When User selects one or more Verticals
     Then data is filtered as per the vertical selected
 
-  @[SMSM-174] @Verify-that-the-Data-is-filtered-for-images-as-per-the-Tags-added
+  @[SMSM-174] @Verify-that-the-Data-is-filtered-for-images-as-per-the-Tags-added 
   Scenario: Verify that the Data is filtered for images as per the Tags added [C22324827]
     When User clicks the Manage button under actions column on the Manage Galeery page
     Then user is redirected to the  specified gallery page
@@ -89,7 +90,7 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
     When User selects one or more Tags
     Then data is filtered as per the Tags selected
 
-  @[SMSM-174] @Verify-the-Count-for-that-Image-Gallery-on-"Manage-Image-Gallery"-page-for-that-specified-gallery-is-increased-by-1-when-an-Image-is-added-to-a-Gallery
+  @[SMSM-174] @Verify-the-Count-for-that-Image-Gallery-on-"Manage-Image-Gallery"-page-for-that-specified-gallery-is-increased-by-1-when-an-Image-is-added-to-a-Gallery 
   Scenario: Verify the Count for that Image Gallery on "Manage Image Gallery" page for that specified gallery is increased by 1 when an Image is added to a Gallery [C22324860]
     And User selects an Image Gallery and take notes of the count
     When User clicks the Manage option for the selected gallery
@@ -108,7 +109,7 @@ Feature: [SMSM-174] Manage Image Gallery under settings in admin dashboard for T
     And User navigates back to the Image Gallery page and verifies the new count after deletion
     
      
-  @[SMSM-174] @Verify-that-a-user-which-is-not-admin-cannot-access-Settings-Image-Gallery-page-via-menu-as-well-as-via-direct-URL-access
+  @[SMSM-174] @Verify-that-a-user-which-is-not-admin-cannot-access-Settings-Image-Gallery-page-via-menu-as-well-as-via-direct-URL-access 
   Scenario: Verify that a user which is not admin cannot access Settings Image Gallery page via menu as well as via direct URL access [C22324933]
     And User copies the current url and sign out
     When User signs in with a user that has Business role

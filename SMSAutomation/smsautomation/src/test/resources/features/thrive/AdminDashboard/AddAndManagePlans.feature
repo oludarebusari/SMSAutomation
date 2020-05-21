@@ -1,6 +1,7 @@
 #Author: Aclate QA
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - AdminResellerAndTerritoryReportPageSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -13,13 +14,13 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     When User clicks on the Billing Menu option on the dashboard
     Then the Billing options are displayed
 
-  @SMSM-146 @Verify-the-navigation-to-"Manage-Plans"-page-under-Billing-menu @RegressionTest
+  @SMSM-146 @Verify-the-navigation-to-"Manage-Plans"-page-under-Billing-menu 
   Scenario: Verify the navigation to "Manage Plans" page under Billing menu  [C22397797]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
     And User verifies the columns on the Manage Plans page
 
-  @SMSM-146 @Verify-the-navigation-to-Plan-Details"-page-by-clicking-New-button-on-"Manage-Plans"-page-or-clicking-Add-Plan-directly-from-Billing-menu @RegressionTest
+  @SMSM-146 @Verify-the-navigation-to-Plan-Details"-page-by-clicking-New-button-on-"Manage-Plans"-page-or-clicking-Add-Plan-directly-from-Billing-menu
   Scenario: Verify the navigation to Plan Details" page by clicking New button on "Manage Plans"  page or clicking Add Plan directly from Billing menu  [C22397826]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -29,7 +30,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     Then user is redirected to the Manage Plans page
     When User clicks Billing menu and click Add Plan option
 
-  @SMSM-146 @Verify-the-UI-and-fields-available-on-"Plan-Details"-page @RegressionTest
+  @SMSM-146 @Verify-the-UI-and-fields-available-on-"Plan-Details"-page 
   Scenario: Verify the UI and fields available on "Plan Details" page  [C22397859]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -37,7 +38,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     Then the Create Plan page is opened
     And User verifies the fields available on the Create Plan page
 
-  @SMSM-146 @Verify-the-creation-of-a-new-Plan-from-"Plan-Details"-page @RegressionTest
+  @SMSM-146 @Verify-the-creation-of-a-new-Plan-from-"Plan-Details"-page 
   Scenario: Verify the creation of a new Plan from "Plan Details" page  [C22398128]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -46,7 +47,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     When User enters the details on a new plan and click the Save plan button
     Then a new plan with the entered details is created
 
-  @SMSM-146 @Verify-Plan-can-be-edited-from-"Manage-Plans"-page-by-clicking-the-Edit-button-against-the-specified-Plan @RegressionTest
+  @SMSM-146 @Verify-Plan-can-be-edited-from-"Manage-Plans"-page-by-clicking-the-Edit-button-against-the-specified-Plan 
   Scenario: Verify Plan can be edited from "Manage Plans" page by clicking the Edit button against the specified Plan  [C22398311]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -57,7 +58,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     Then an update alert notification is displayed
     And User confirms the modifications were saved correctly.
 
-  @SMSM-146 @Verify-that-an-"Active"-plan-can-be-deactivated-by-clicking-on-Deactivate-in-the-Edit-dropdown @RegressionTest
+  @SMSM-146 @Verify-that-an-"Active"-plan-can-be-deactivated-by-clicking-on-Deactivate-in-the-Edit-dropdown 
   Scenario: Verify that an "Active" plan can be deactivated by clicking on Deactivate in the Edit dropdown [C22398323]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -68,7 +69,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     When User clicks the drop down action button for the plan again
     Then Activate and Delete action options for the plan are displayed
 
-  @SMSM-146 @Verify-that-an-"Inactive"-plan-can-be-activated-by-clicking-on-Activate-in-the-Edit-drop-down @RegressionTest
+  @SMSM-146 @Verify-that-an-"Inactive"-plan-can-be-activated-by-clicking-on-Activate-in-the-Edit-drop-down
   Scenario: Verify that an "Inactive" plan can be activated by clicking on Activate in the Edit drop down [C22398337]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -78,7 +79,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     When User clicks the Activate button for the plan
     Then the plan is activated and the plan status has changed to Activate
 
-  @SMSM-146 @Verify-clicking-'x'-icon-on-confirm-Delete-Plan-popup-closes-the-popup-and-does-not-delete-the-Plan @RegressionTest
+  @SMSM-146 @Verify-clicking-'x'-icon-on-confirm-Delete-Plan-popup-closes-the-popup-and-does-not-delete-the-Plan 
   Scenario: Verify clicking 'x' icon on confirm Delete Plan popup closes the popup and does not delete the Plan [C22398360]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
@@ -89,7 +90,7 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     When User clicks the Close button on the Delete Plan modal
     Then User verifies that the Plan is not delete
 
-  @SMSM-146 @Verify-Deletion-of-an-existing-Plan-on-"Manage-Plans"-dashboard @RegressionTest 
+  @SMSM-146 @Verify-Deletion-of-an-existing-Plan-on-"Manage-Plans"-dashboard 
   Scenario: Verify Deletion of an existing Plan on "Manage Plans" dashboard [C22398343]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page

@@ -87,7 +87,7 @@ public class BillingInformationSteps extends DriverFactory {
 	public void user_verifies_the_Current_Balance_on_the_Invoice_page() throws Exception {
 		System.out
 				.println(viewInvoicePage.getElementText(viewInvoicePage.InvoiceBalance).substring(7).replace(")", ""));
-		Assert.assertEquals("844.00",
+		Assert.assertEquals("348.00",
 				viewInvoicePage.getElementText(viewInvoicePage.InvoiceBalance).substring(7).replace(")", ""));
 	}
 
@@ -115,7 +115,8 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@When("User navigates to a desired user object and click the Edit icon beside it")
 	public void user_navigates_to_a_desired_user_object_and_click_the_Edit_icon_beside_it() throws InterruptedException {
-		viewInvoicePage.waitAndClickElement(viewInvoicePage.editUserByName("Zella Holmes"));
+		
+		viewInvoicePage.waitAndClickElement(viewInvoicePage.editUserByName("AutoEdit Test"));
 	}
 
 	@Then("User edits the first name")
@@ -130,7 +131,7 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@Then("user edits the primary email")
 	public void user_edits_the_primary_email() throws Exception {
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "testAcl@test.com");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "testAcl@general" +  editUserPage.getRandomNumber() + ".com");
 	}
 
 	@Then("user edits the password")
@@ -161,9 +162,9 @@ public class BillingInformationSteps extends DriverFactory {
 //	Revert-changes-to-User
 	@When("User changes first name, last name email amd Cell phone to their original values")
 	public void user_changes_first_name_last_name_email_amd_Cell_phone_to_their_original_values() throws Exception {
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_FirstName, "Zella");
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "Holmes");
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "test@test.com");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_FirstName, "AutoEdit");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "Test");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "test@Aoll"  + editUserPage.getRandomNumber() + ".com");
 		editUserPage.sendKeysToWebElement(editUserPage.txtF_Password, "QA@vnet2"); 
 		editUserPage.sendKeysToWebElement(editUserPage.txtF_CellPhone, "555-023-1718");
 	}
@@ -192,7 +193,7 @@ public class BillingInformationSteps extends DriverFactory {
 
 	@Then("User edits the Support email")
 	public void user_edits_the_Support_email() throws Exception {
-		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_SupportEmail, "test@aclate.com");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_SupportEmail, "test@aclatevv.com");
 	}
 
 	@Then("User edits the Business phone")
@@ -232,8 +233,8 @@ public class BillingInformationSteps extends DriverFactory {
 //	Revert-changes-to-Company 
 	@When("User changes Business name, support email and business phone to their original value")
 	public void user_changes_Business_name_support_email_and_business_phone_to_their_original_value() throws Exception {
-		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_BusinessName, "AclateQA");
-		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_SupportEmail, "testAclate@test.com");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_BusinessName, "YesssNo");
+		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_SupportEmail, "johndoe" + editCompanyPage.getRandomNumber() +  "@doeenterprizes.com.com");
 		editCompanyPage.sendKeysToWebElement(editCompanyPage.txtF_BusinessPhone, "555-223-1718");
 	}
 
@@ -263,6 +264,7 @@ public class BillingInformationSteps extends DriverFactory {
 		editCompanyPage.waitAndClickElement(editCompanyPage.lov_Country);
 		editCompanyPage.waitAndClickElement(editCompanyPage.opt_Country("Canada"));
 		editCompanyPage.waitAndClickElement(editCompanyPage.lov_State);
+		editCompanyPage.WaitUntilWebElementIsVisible(editCompanyPage.opt_State("Quebec"));
 		editCompanyPage.waitAndClickElement(editCompanyPage.opt_State("Quebec"));
 	}
 
@@ -280,6 +282,7 @@ public class BillingInformationSteps extends DriverFactory {
 		editCompanyPage.waitAndClickElement(editCompanyPage.lov_Country);
 		editCompanyPage.waitAndClickElement(editCompanyPage.opt_Country("USA"));
 		editCompanyPage.waitAndClickElement(editCompanyPage.lov_State);
+		Thread.sleep(500);
 		editCompanyPage.waitAndClickElement(editCompanyPage.opt_State("Alabama"));
 	}
 
@@ -371,7 +374,7 @@ public class BillingInformationSteps extends DriverFactory {
 //	@SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History
 	@When("User clicks the View button for an Invoice")
 	public void user_clicks_the_View_button_for_an_Invoice() throws Exception {
-		billingPage.waitAndClickElement(billingPage.btn_ViewButtonByAmount("844"));
+		billingPage.waitAndClickElement(billingPage.btn_ViewButtonByAmount("348"));
 	}
 
 	@Then("the details of the Invoice clicked is displayed on the Invoice page")

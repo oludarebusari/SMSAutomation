@@ -197,10 +197,10 @@ public class StreamsPageUnderExperienceSteps extends BasePage {
 	@Then("all streamns  with one star are displayed")
 	public void all_streamns_with_one_star_are_displayed() {
 		Assert.assertTrue(adminStreamPage.oneStar.isDisplayed());
+		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.fiveStars)));
 		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.fourStars)));
 		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.threeStars)));
 		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.twoStars)));
-		Assert.assertFalse(adminStreamPage.isElementVisible(adminStreamPage.getElementLocator(adminStreamPage.oneStar)));
 	}
 
 //	@Verify-the-"Status"-filter

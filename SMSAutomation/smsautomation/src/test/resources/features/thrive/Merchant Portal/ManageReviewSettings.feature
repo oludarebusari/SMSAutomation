@@ -3,6 +3,7 @@
 
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition file - ManageReviewSettingsInThriveSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-240] User is able to manage review settings in merchant portal for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -19,14 +20,14 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User navigates to the actions column of the Business for stream testing and clicks Sign In button
     Then User is logged into the Business and the business dashboard is opened
 
-  @SMSM-240 @Verify-that-user-is-able-to-navigate-to-streams-page @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-navigate-to-streams-page 
   Scenario: Verify that user is able to navigate to streams page [C22431840]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
     When User clicks the Streams option
     Then the Stream page is opened
 
-  @SMSM-240 @Verify-that-user-is-able-to-navigate-to-streams-configuration-windows-pop-up @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-navigate-to-streams-configuration-windows-pop-up 
   Scenario: Verify that user is able to navigate to Streams Configuration windows pops-up [C22431852]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -37,7 +38,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     Then a Settings configuration pop is opened
     And User verifies the three tabs on the settings window
 
-  @SMSM-240 @Verify-that-user-is-able-to-set-Reviews-System-value-under-Review-Settings-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-set-Reviews-System-value-under-Review-Settings-tab 
   Scenario: Verify that user is able to set Reviews System value under Review Settings tab [C22431860]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -56,7 +57,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User clicks the Review Enabled button
     Then the Review is Enabled
 
-  @SMSM-240 @Verify-that-user-is-able-to-set-send-review-request-after-x-checkins @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-set-send-review-request-after-x-checkins  
   Scenario: Verify that user is able to set Send Review Request after X checkins value under Review Settings tab [C22434562]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -72,7 +73,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User hovers over the Send Review Requestafter x checkins title
     Then the help description for Send Review Requestafter x checkins is displayed
 
-  @SMSM-240 @Verify-that-user-is-able-to-set-checkin-review-request-value-under-Review-settings-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-set-checkin-review-request-value-under-Review-settings-tab 
   Scenario: Verify that user is able to set Checkin Review Request value under Review Settings tab [C22434551]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -88,7 +89,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User hovers over the Checkin Review Request title
     Then the help description for Checkin Review Request is displayed
 
-  @SMSM-240 @Verify-that-user-is-able-to-set-review-submissions-automatic-response-method-value-under-Review-settings-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-set-review-submissions-automatic-response-method-value-under-Review-settings-tab 
   Scenario: Verify that user is able to set Review Submissions Automatic Response Method value under Review Settings tab [C22434554]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -104,7 +105,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User hovers over the Review Submissions Automatic Response Method dropdown title
     Then the help description for Review Submissions Automatic Response Method dropdown is displayed
 
-  @SMSM-240 @Verify-that-user-is-able-to-set-social-share-automatic-response-value-under-Review-settings-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-set-social-share-automatic-response-value-under-Review-settings-tab 
   Scenario: Verify that user is able to set Social Share Automatic Response value under Review Settings tab [C22434558]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -123,7 +124,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User hovers over the Social Share Automatic Response title
     Then the help description for Social Share Automatic Response is displayed
 
-  @SMSM-240 @Verify-that-user-is-able-to-set-social-share-automatic-response-delay-value-under-Review-Settings-tab-and-save-the-stream-setting @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-set-social-share-automatic-response-delay-value-under-Review-Settings-tab-and-save-the-stream-setting  
   Scenario: Verify that user is able to set Social Share Automatic Response Delay value under Review Settings tab and save the stream settings [C22434559]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -139,7 +140,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     When User clicks the Save Settings button on the Stream Configuration modal
     Then User confirms the selected value for Social Share Auto Resp Delay was saved correctly
 
-  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Request-Template-for-Review-Templates-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Request-Template-for-Review-Templates-tab 
   Scenario: Verify that user is able to edit Review Request template for Review Templates tab [C22431875]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -153,7 +154,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     And User verifies there are SMS and Email sections for each Review Templates subsection
     And User is able to send text to all the SMS and Email textboxes
 
-  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Positive-form-submission-templates-for-Review-Templates-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Positive-form-submission-templates-for-Review-Templates-tab 
   Scenario: Verify that user is able to edit Review Positive form Submission template for Review Templates tab [C22431911]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -168,7 +169,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     And User edits the text in SMS textbox for Review Positive Form Submission
     And User edits the text in the Email textbox for Review Positive Form Submission
 
-  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Negative-form-submission-templates-for-Review-Templates-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Negative-form-submission-templates-for-Review-Templates-tab
   Scenario: Verify that user is able to edit Review Negative form Submission template for Review Templates tab [C22431911]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -183,7 +184,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     And User edits the text in SMS textbox for Review Negative Form Submission
     And User edits the text in the Email textbox for Review Negative Form Submission
 
-  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Request-to-share-template-for-Review-Templates-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-edit-Review-Request-to-share-template-for-Review-Templates-tab 
   Scenario: Verify that user is able to edit Review Request to Share Template template for Review Templates tab [C22431915]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -198,7 +199,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     And User edits the text in SMS textbox Review Request to Share Template section
     And User edits the text in the Email textbox Review Request to Share Template section
 
-  @SMSM-240 @Verify-that-user-is-able-to-save-stream-configuration-for-Review-Settings-tab @RegressionTest
+  @SMSM-240 @Verify-that-user-is-able-to-save-stream-configuration-for-Review-Settings-tab 
   Scenario: Verify that user is able to save Streams Configuration for Review Settings tab [C22431920]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed
@@ -215,7 +216,7 @@ Feature: [SMSM-240] User is able to manage review settings in merchant portal fo
     And User selects a value from the dropdown for Review Submissions Automatic Response
     When User clicks the Stream Settings tab
  
-   @SMSM-240 @Verify-that-user-is-able-to-edit-data-under-verify-Review-Language-Strings-for-Review-Templates-tab @RegressionTest
+   @SMSM-240 @Verify-that-user-is-able-to-edit-data-under-verify-Review-Language-Strings-for-Review-Templates-tab 
   Scenario: Verify that user is able to edit data under Verify Review Language Strings for Review Templates tab [C22431923]
     When User clicks on the Experience Menu option
     Then the Experience options are displayed

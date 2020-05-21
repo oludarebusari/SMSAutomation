@@ -1,6 +1,7 @@
 #Author: Aclate QA
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - AdminResellerAndTerritoryReportPageSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -13,13 +14,13 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User clicks on the Report Menu option on the dashboard
     Then the Reports options are displayed
 
-  @SMSM-178 @Verify-that-admin-can-view-all-Reseller-details-along-with-their-Businesses-count,-on-Reseller-Reports-page @RegressionTest
+  @SMSM-178 @Verify-that-admin-can-view-all-Reseller-details-along-with-their-Businesses-count,-on-Reseller-Reports-page 
   Scenario: Verify that admin can view all Reseller details along with their Businesses count, on Reseller Reports page [C22406807]
     When User clicks the Reseller Report
     Then the Reseller Report page is displayed
     And User verifies the columns on the Report Page
 
-  @SMSM-178 @Verify-that-Admin-is-able-to-filter-the-Reports-with-Date-Range-for-Resellers @RegressionTest
+  @SMSM-178 @Verify-that-Admin-is-able-to-filter-the-Reports-with-Date-Range-for-Resellers 
   Scenario: Verify that Admin is able to filter the Reports with Date Range for Resellers
     When User clicks the Reseller Report
     Then the Reseller Report page is displayed
@@ -30,7 +31,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User enters a custom range and clicks the Apply button
     Then the Date Range and records are updated as per the date specified
 
-  @SMSM-178 @Verify-functionality-of-Show-entries-drop-down-and-sorting-on-"Reports"-page-for-Licensees @RegressionTest
+  @SMSM-178 @Verify-functionality-of-Show-entries-drop-down-and-sorting-on-"Reports"-page-for-Licensees 
   Scenario: Verify functionality of Show entries drop down and sorting on "Reports" page for Licensees
     When User clicks the Reseller Report
     Then the Reseller Report page is displayed
@@ -41,7 +42,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     And User verifies the default number of records displayed
     And User navigates to anoother page
 
-  @SMSM-178 @Verify-Admin-is-able-to-search-the-Licensee-Reports-by-entering-a-search-criteria-in-Search-box-and-clicking-Search @RegressionTest
+  @SMSM-178 @Verify-Admin-is-able-to-search-the-Licensee-Reports-by-entering-a-search-criteria-in-Search-box-and-clicking-Search 
   Scenario: Verify Admin is able to search the Licensee Reports by entering a search criteria in Search box and clicking Search [C22406872]
     When User clicks the Reseller Report
     Then the Reseller Report page is displayed
@@ -50,7 +51,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User enters an invalid search criteria into the search box and click search
     Then No record is displayed
 
-  @SMSM-178 @Verify-the-Help-on-"Reports"-page-for-Licensees-by-clicking-the-Help-button @RegressionTest
+  @SMSM-178 @Verify-the-Help-on-"Reports"-page-for-Licensees-by-clicking-the-Help-button 
   Scenario: Verify the Help on "Reports" page for Licensees by clicking the Help button [C22406877]
     When User clicks the Reseller Report
     Then the Reseller Report page is displayed
@@ -63,13 +64,13 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @SMSM-178 @Verify-that-admin-can-view-all-Reseller-details-along-with-Business,-City,-State,-Postal-Code,-Country,-Action,-on-"Territory-Report"-page @RegressionTest
+  @SMSM-178 @Verify-that-admin-can-view-all-Reseller-details-along-with-Business,-City,-State,-Postal-Code,-Country,-Action,-on-"Territory-Report"-page  
   Scenario: Verify that admin can view all Reseller details along with Business, City, State, Postal Code, Country, Action, on "Territory Report" page [C22406897]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
     And User verifies the column headers on the Territory Report page
 
-  @SMSM-178 @Verify-that-Admin-is-able-to-filter-the-Territory-reports-by-clicking-on-Allowed,-Disallowed-&-All-tab @RegressionTest
+  @SMSM-178 @Verify-that-Admin-is-able-to-filter-the-Territory-reports-by-clicking-on-Allowed,-Disallowed-&-All-tab
   Scenario: Verify that Admin is able to filter the Territory reports by clicking on Allowed, Disallowed & All tab [C22406902]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -81,7 +82,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User clicks All report filter
     Then user verifies that the All button is active
 
-  @SMSM-178 @Verify-functionality-of-sorting-and-Show-entries-dropdown-and-pagination-on-"Territory-Report"-page @RegressionTest
+  @SMSM-178 @Verify-functionality-of-sorting-and-Show-entries-dropdown-and-pagination-on-"Territory-Report"-page
   Scenario: Verify functionality of sorting and Show entries dropdown and pagination on "Territory Report" page [C22408965]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -92,7 +93,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     And User verifies the default number of records is displayed for Territory reports
     And User navigates to anoother page on the territory page
 
-  @SMSM-178 @Verify-Admin-is-able-to-search-the-"Territory-Reports"-by-entering-a-search-criteria-in-Search-box-and-clicking-Search @RegressionTest
+  @SMSM-178 @Verify-Admin-is-able-to-search-the-"Territory-Reports"-by-entering-a-search-criteria-in-Search-box-and-clicking-Search 
   Scenario: Verify Admin is able to search the "Territory Reports" by entering a search criteria in Search box and clicking Search [C22408971]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -101,7 +102,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User enters an invalid search criteria into the search box on the Territory page and click search
     Then No record is displayed on the Territory page
 
-  @SMSM-178 @Verify-the-Help-on-"Territory-Reports"-page-by-clicking-the-Help-button @RegressionTest
+  @SMSM-178 @Verify-the-Help-on-"Territory-Reports"-page-by-clicking-the-Help-button 
   Scenario: Verify the Help on "Territory Reports" page by clicking the Help button [C22408976]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -114,7 +115,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @SMSM-178 @Verify-Admin-is-able-to-Allow/Disallow-a-Reseller-under-Territory-report @RegressionTest
+  @SMSM-178 @Verify-Admin-is-able-to-Allow/Disallow-a-Reseller-under-Territory-report 
   Scenario: Verify Admin is able to Allow/Disallow a Licensee under Territory report [C22408980]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -123,7 +124,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     When User clicks the Disallow button under the Action column for Reseller
     Then the Action column for the specified Reseller gets changed to Allow
 
-  @SMSM-178 @Verify-Admin-can-edit-the-Reseller-details-from-Territory-report-page @RegressionTest 
+  @SMSM-178 @Verify-Admin-can-edit-the-Reseller-details-from-Territory-report-page 
   Scenario: Verify Admin can edit the Licensee details from Territory report page [C22409002]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -133,15 +134,7 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     Then the Reseller is updated successfully
     And user confirms the changes made to Reseller were saved correctly
 
-  @SMSM-178 @Revert-Chnages-to-Reseller @RegressionTest
-  Scenario: Verify Admin can edit the Licensee details from Territory report page [C22409002]
-    When User clicks the Territory Report
-    Then the Territory Report page is displayed
-    When User clicks the drop down button under Action column for the edited Reseller and clicks Edit Reseller
-    Then the Edit page for the modified Reseller is displayed
-    And User revert the changes made to the Reseller
-    
-  @SMSM-178 @Verify-Admin-can-edit-the-Business-details-from-Territory-report-page @RegressionTest
+  @SMSM-178 @Verify-Admin-can-edit-the-Business-details-from-Territory-report-page
   Scenario: Verify Admin can edit the Merchant details from Territory report page [C22409051]
     When User clicks the Territory Report
     Then the Territory Report page is displayed
@@ -152,3 +145,5 @@ Feature: [SMSM-178] View Licensee Report & Territory report in admin dashboard f
     And user confirms the changes made to Business were saved correctly
     #Revert Changes
     And User revert the changes made to Business.
+    And User revert changes made to Reseller
+    

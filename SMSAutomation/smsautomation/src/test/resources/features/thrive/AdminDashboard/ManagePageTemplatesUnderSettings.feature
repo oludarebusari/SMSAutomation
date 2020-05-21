@@ -3,6 +3,7 @@
 
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - ManageImageGalleryUnderSettingsSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -18,7 +19,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Page Templates option
     Then the Page Templates screen is displayed
 
-  @[SMSM-173] @Verify-Admin-can-see-all-existing-Page-Templates-under-Settings>-Page-Templates-page
+  @[SMSM-173] @Verify-Admin-can-see-all-existing-Page-Templates-under-Settings>-Page-Templates-page 
   Scenario: Verify Admin can see all existing Page Templates under Settings> Page Templates page [C22415217]
     And User verifies the Column headers on Page Templates page
 
@@ -57,7 +58,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User enter the required information on the modal and click Create Page Template button
     Then the page template is created successfully
 
-  @[SMSM-173] @Verify-clicking-"Cancel"-or-"X"-on-Activate-page-popup-does-not-Activate-the-template
+  @[SMSM-173] @Verify-clicking-"Cancel"-or-"X"-on-Activate-page-popup-does-not-Activate-the-template 
   Scenario: Verify clicking "Cancel" or "X" on Activate page popup does not Activate the template [C22415426]
     And User verifies that Edit button exist for each of the records
     When User clicks on the Edit button drop down for a Template to activate
@@ -65,7 +66,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Close button on the Activate popup window
     Then User confirms that the page template was not activated
 
-  @[SMSM-173] @Verify-Admin-can-Activate-a-Dectivate-"Page-Template"
+  @[SMSM-173] @Verify-Admin-can-Activate-a-Dectivate-"Page-Template" 
   Scenario: Verify Admin can Activate a Deactivate "Page Template" [C22415410]
     And User verifies that Edit button exist for each of the records
     When User clicks on the Edit button drop down for a Template to activate
@@ -73,7 +74,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Activate button on the Activate page title modal
     Then User confirms that the page template is activated
 
-  @[SMSM-173] @Verify-clicking-"Cancel"-or-"X"-on-Inactivate-page-popup-does-not-Inactivate-the-template
+  @[SMSM-173] @Verify-clicking-"Cancel"-or-"X"-on-Inactivate-page-popup-does-not-Inactivate-the-template 
   Scenario: Verify clicking "Cancel" or "X" on Activate page popup does not Activate the template [C22415413]
     And User verifies that Edit button exist for each of the records
     When User clicks on the Edit button drop down for a Template to make Inactive
@@ -81,7 +82,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Close button on the Deactivate popup window
     Then User confirms that the page template was not deactivated
 
-  @[SMSM-173] @Verify-Admin-can-Deactivate-an-Active-"Page-Template"
+  @[SMSM-173] @Verify-Admin-can-Deactivate-an-Active-"Page-Template" 
   Scenario: Verify Admin can Deactivate an Active "Page Template" [C22415402]
     And User verifies that Edit button exist for each of the records
     When User clicks on the Edit button drop down for a Template to make Inactive
@@ -89,7 +90,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Deactivate button the window
     Then User confirms that the page template is deactivated
 
-  @[SMSM-173] @Verify-clicking-"Cancel"-or-"X"-on-Delete-Page-popup-does-not-delete-the-Page-Template
+  @[SMSM-173] @Verify-clicking-"Cancel"-or-"X"-on-Delete-Page-popup-does-not-delete-the-Page-Template 
   Scenario: Verify clicking "Cancel" or "X" on Delete Page popup does not delete the Page Template [C22415380]
     And User verifies that Edit button exist for each of the records
     When User clicks on the Edit button drop down for a Template to delete
@@ -97,7 +98,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Close button on the Delete popup window
     Then User confirms that the page template was not deleted
 
-  @[SMSM-173] @Verify-Admin-can-delete-an-existing-Page-Template
+  @[SMSM-173] @Verify-Admin-can-delete-an-existing-Page-Template 
   Scenario: Verify Admin can delete an existing Page Template [C22415370]
     And User verifies that Edit button exist for each of the records
     When User clicks on the Edit button drop down for a Template to delete
@@ -105,7 +106,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks the Delete button on the window
     Then User confirms that the page template is deleted
 
-  @[SMSM-173] @Verify-Admin-is-able-to-search-the-Page-Templates-by-entering-a-search-criteria-in-Search-box-and-clicking-Search
+  @[SMSM-173] @Verify-Admin-is-able-to-search-the-Page-Templates-by-entering-a-search-criteria-in-Search-box-and-clicking-Search 
   Scenario: Verify Admin is able to search the Page Templates by entering a search criteria in Search box and clicking Search [C22415436]
     And User verifies that Edit button exist for each of the records
     And User verifies that both Search textbox and Search button are present on the page
@@ -125,7 +126,7 @@ Feature: [SMSM-173] Manage Page Templates under settings in admin dashboard for 
     When User clicks on End Tour button
     Then Tour ends successfully
     
-  @[SMSM-173] @Verify-that-a-non-admin-user-cannot-access-Settings-Page-Templates-via-menu-as-well-as-via-direct-URL-access
+  @[SMSM-173] @Verify-that-a-non-admin-user-cannot-access-Settings-Page-Templates-via-menu-as-well-as-via-direct-URL-access 
   Scenario: Verify that a non admin user cannot access Settings Page Templates via menu as well as via direct URL access [C22415446]
     And User copies the current url for Page Templates and sign out
     When User signs in with a user that has Business role

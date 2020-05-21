@@ -2,6 +2,7 @@
 #Keywords Summary :
 
 #User is assumed to have Admin access unless stated Otherwise
+@thrive @RegressionTest 
 Feature: [SMSM-135] View invoice, edit payment info & billing information in Merchant's portal for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -18,14 +19,14 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the Billing menu option
     Then User is redirected to Billing page
 
-  @SMSM-135 @Validate-the-options-in-Billing-page @RegressionTest
+  @SMSM-135 @Validate-the-options-in-Billing-page 
   Scenario: Validate the options in Billing page
     And User verifies the Current Balance Tile
     And User verifies the Invoice Method Payment Tile
     And User verifies the Billing information Tile
     And User verifies that the Invoice History section is present
 
-  @SMSM-135 @View-the-Invoice-and-Current-Balance @RegressionTest 
+  @SMSM-135 @View-the-Invoice-and-Current-Balance 
   Scenario: View the Invoice and Current Balance
     And User verifies that the View Invoice link is present
     When User clicks on View Invoice link
@@ -33,14 +34,14 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And User verifies One TimePrice, Recurring price and Date is present on the page
     And User verifies the Current Balance on the Invoice page
 
-  @SMSM-135 @Print-the-Invoice @RegressionTest
+  @SMSM-135 @Print-the-Invoice
   Scenario: Print the Invoice
     When User clicks on View Invoice link
     Then the View Invoice page is opened
     When User clicks the Print Invoice
     Then the windows print dialog is opened
 
-  @SMSM-135 @Edit-User-Information-from-Invoice-page @RegressionTest
+  @SMSM-135 @Edit-User-Information-from-Invoice-page  
   Scenario: Edit User Information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -60,7 +61,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button on the edit User page
     Then a success message about the update is displayed
 
-  @SMSM-135 @Edit-Company-information-from-Invoice-page @RegressionTest 
+  @SMSM-135 @Edit-Company-information-from-Invoice-page
   Scenario: Edit Company information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -78,7 +79,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Edit-Billing-information-from-Invoice-page @RegressionTest 
+  @SMSM-135 @Edit-Billing-information-from-Invoice-page 
   Scenario: Edit Billing information from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -99,7 +100,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Check-for-transaction-history-from-Invoice-page @RegressionTest 
+  @SMSM-135 @Check-for-transaction-history-from-Invoice-page 
   Scenario: Check for Transaction History from Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -108,7 +109,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And USer verifies that Status columnr is present under Transaction history
     And User verifies that Amount Due column is present under Transaction history
 
-  @SMSM-135 @Edit-Payment-Information-from-Billing-page @RegressionTest 
+  @SMSM-135 @Edit-Payment-Information-from-Billing-page 
   Scenario: Edit Payment information from Billing page
     When User clicks the Edit Payment link from the Billing page
     Then the Edit Company page is opened
@@ -125,7 +126,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @Edit-Billing-Information-from-Billing-page @RegressionTest 
+  @SMSM-135 @Edit-Billing-Information-from-Billing-page 
   Scenario: Edit Billing Information from Billing page
     When User clicks the Edit Billing Information link
     Then the Edit Company page is opened
@@ -144,7 +145,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks on Save button
     Then a success message is displayed
 
-  @SMSM-135 @check-for-Invoice-History-from-Billing-page @RegressionTest 
+  @SMSM-135 @check-for-Invoice-History-from-Billing-page 
   Scenario: Check for Invoice History from Billing page
     And User verifies that the Invoice History section is present
     And User verifies that Due Column is present
@@ -152,13 +153,13 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     And User verifies Status column is present
     And User verifies Action Column is present
 
-  @SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History @RegressionTest
+  @SMSM-135 @View-the-selected-Invoice-details-from-Invoice-History  
   Scenario: View the selected Invoice details from Invoice History
     And User verifies that the Invoice History section is present
     When User clicks the View button for an Invoice
     Then the details of the Invoice clicked is displayed on the Invoice page
 
-  @SMSM-135 @Verify-Help-option-for-Billing-page @RegressionTest 
+  @SMSM-135 @Verify-Help-option-for-Billing-page 
   Scenario: Verify Help option for Billing page
     And User verifies that Help button is present on the page
     When User clicks the Help button
@@ -170,7 +171,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the End Tour button
     Then the Tour ends successfully
 
-  @SMSM-135 @Verify-Help-option-for-Invoice-page @RegressionTest 
+  @SMSM-135 @Verify-Help-option-for-Invoice-page  
   Scenario: Verify Help option for Invoice page
     When User clicks on View Invoice link
     Then the View Invoice page is opened
@@ -184,7 +185,7 @@ Feature: [SMSM-135] View invoice, edit payment info & billing information in Mer
     When User clicks the End Tour button
     Then the Tour ends successfully
     
-  @SMSM-135 @Change-the-Show-Entry-Count-for-Invoice-History-in-Billing-Page @RegressionTest
+  @SMSM-135 @Change-the-Show-Entry-Count-for-Invoice-History-in-Billing-Page 
   Scenario: Change the Show Entry count for Invoice History in Billing page
    #ToDO - There is not sufficient data to complete this test.
     

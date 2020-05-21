@@ -12,6 +12,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.TimeZone;
 
 import org.junit.Assert;
@@ -603,10 +604,29 @@ public class BasePage extends DriverFactory {
 	 *********************************************************************************/	
 	
 	public String getElementLocator(WebElement element) {
+		
+		// First character of an xpath
 		int firstLocatorCharInIdex = element.toString().indexOf("/");
+		
+		// last character of an xpath
 		int lastLocatorCharIndex = element.toString().lastIndexOf("]");
 		
 		return element.toString().substring(firstLocatorCharInIdex, lastLocatorCharIndex);
+		
+	}
+
+	/**********************************************************************************
+	 ** GENERATE RANDOM NUMBER
+	 *********************************************************************************/	
+	
+	public int getRandomNumber() {
+		// Create an instance of Random Class 
+		Random rand = new Random();
+		
+		// Generate Random integers in range 8 to 999
+		int randNumber = rand.nextInt(1000);
+		
+	  return randNumber;
 		
 	}
 

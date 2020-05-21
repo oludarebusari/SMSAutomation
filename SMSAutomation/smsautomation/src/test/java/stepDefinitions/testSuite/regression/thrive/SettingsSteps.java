@@ -692,7 +692,8 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Language Strings records are sorted by Updated column")
 	public void the_Language_Strings_records_are_sorted_by_Updated_column() throws Exception {
 		//Verify the current value of the Updated cell after sorting
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("05/13/2020"));
+//		Thread.sleep(30000);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("01/16/2018"));
 	}
 
 //	@SMSM-136 @Apply-Sort-in-Email-Template-page

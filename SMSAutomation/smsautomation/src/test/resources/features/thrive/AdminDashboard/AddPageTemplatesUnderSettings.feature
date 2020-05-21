@@ -2,6 +2,7 @@
 #Keywords Summary :
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - AddPageTemplatesUnderSettingsSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -17,7 +18,7 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     When User clicks the Page Templates option
     Then the Page Templates screen is displayed
 
-  @[SMSM-172] @Verify-admin-can-add-a-page-template-and-page-is-added-under-Page-Templates-page
+  @[SMSM-172] @Verify-admin-can-add-a-page-template-and-page-is-added-under-Page-Templates-page 
   Scenario: Verify admin can add a page template and page is added under Page Templates page
     When User Clicks on the New button on the Page Templates page
     Then the Create Page Template window is opened
@@ -44,7 +45,7 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     And User verifies the state of the Create Page Template button
     And User enters a name into the name field and verifies the state of the Create Page Template button
   
-  @[SMSM-172] @Verify-admin-can-view/change-the-source-code-of-the-snippet @OnlyMe
+  @[SMSM-172] @Verify-admin-can-view/change-the-source-code-of-the-snippet 
   Scenario: Verify admin can view/change the source code of the snippet
     When User clicks the edit button on a page
     Then the page template edit window is opened

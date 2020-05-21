@@ -28,7 +28,7 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 	private final String CUSTOMDATE_START = "04/05/2020";
 	private final String CUSTOMDATE_END = "04/10/2020";
 	private final String RESELLER = "TNTextRewards";
-	private final String BUSINESS ="AclateQA";
+	private final String BUSINESS ="AclateEdit";
 	private final String CUSTOMDATERANGE = CUSTOMDATE_START + " to " + CUSTOMDATE_END;
 	private final String resellerPageNumberText = "3";
 	private final String territoryPageNumberText = "3";
@@ -432,34 +432,12 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 		Assert.assertTrue(editResellerPage.txtF_SubdomainBase.getAttribute("value").contentEquals(RESELLER.toLowerCase() + "1" + ".com"));
 	}
 	
-//	
-	@When("User clicks the drop down button under Action column for the edited Reseller and clicks Edit Reseller")
-	public void user_clicks_the_drop_down_button_under_Action_column_for_the_edited_Reseller_and_clicks_Edit_Reseller() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER + "_Edited");
-		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickActionDDown(RESELLER + "_Edited"));
-		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickResellerAction(RESELLER + "_Edited"));
-	}
-
-	@Then("the Edit page for the modified Reseller is displayed")
-	public void the_Edit_page_for_the_modified_Reseller_is_displayed() throws Exception {
-		Assert.assertEquals("Edit Reseller", commonElementLocator.getElementText(commonElementLocator.pag_Title));
-	}
-
-	@Then("User revert the changes made to the Reseller")
-	public void user_revert_the_changes_made_to_the_Reseller() throws Exception {
-		editResellerPage.sendKeysToWebElement(editResellerPage.txtF_BusinessName, RESELLER);
-		editResellerPage.sendKeysToWebElement(editResellerPage.txtF_SubdomainBase, RESELLER.toLowerCase() + ".com");
-		Thread.sleep(1000);
-		editResellerPage.waitAndClickElement(editResellerPage.btn_Save_Reseller);
-	}
-	
 //	@Verify-Admin-can-edit-the-Business-details-from-Territory-report-page
 	@When("User clicks the drop down button under Action column and clicks Edit Business")
 	public void user_clicks_the_drop_down_button_under_Action_column_and_clicks_Edit_Business() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER + "_Edited");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickActionDDown(RESELLER));
+		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickActionDDown(RESELLER + "_Edited"));
 		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickResellerAction(BUSINESS));
 	}
 
@@ -486,9 +464,9 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 	public void user_confirms_the_changes_made_to_Business_were_saved_correctly() throws Exception {
 		driver.navigate().back();
 		driver.navigate().back();
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER + "_Edited");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickActionDDown(RESELLER));
+		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickActionDDown(RESELLER + "_Edited"));
 		adminTerritoryReportsPage
 				.waitAndClickElement(adminTerritoryReportsPage.clickResellerAction(BUSINESS + "_Edited"));
 		Assert.assertTrue(editBusinessPage.txtF_BusinessName.getAttribute("value").contentEquals(BUSINESS + "_Edited"));
@@ -503,4 +481,16 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}
 
+	@Then("User revert changes made to Reseller")
+	public void user_revert_changes_made_to_Reseller() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Reports);
+		reportsDDown.waitAndClickElement(reportsDDown.opt_Territory_Report);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER + "_Edited");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickActionDDown(RESELLER + "_Edited"));
+		adminTerritoryReportsPage.waitAndClickElement(adminTerritoryReportsPage.clickResellerAction(RESELLER + "_Edited"));
+		editResellerPage.sendKeysToWebElement(editResellerPage.txtF_BusinessName, RESELLER);
+		editResellerPage.sendKeysToWebElement(editResellerPage.txtF_SubdomainBase, RESELLER.toLowerCase() + ".com");
+		editResellerPage.waitAndClickElement(editResellerPage.btn_Save_Reseller);
+	}
 }

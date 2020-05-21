@@ -184,7 +184,7 @@ public class ManageUsersSteps extends BasePage {
 	public void the_user_records_should_be_sorted_in_ascending_order_by_updated_column() throws Exception {
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("asc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("05/14/2020"));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals("05/20/2020"));
 	}
 
 	@When("User clicks the updated column again")
@@ -213,7 +213,7 @@ public class ManageUsersSteps extends BasePage {
 	@When("user enters the information on the fields to be edited")
 	public void user_enters_the_information_on_the_fields_to_be_edited() throws Exception {
 		editUserPage.sendKeysToWebElement(editUserPage.txtF_LastName, "fonad");
-		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "jane@fonad.com");
+		editUserPage.sendKeysToWebElement(editUserPage.txtF_PrimaryEmail, "jane@fonada"  + editUserPage.getRandomNumber() + ".com");
 		editUserPage.waitAndClickElement(editUserPage.btn_Status_Inactive);
 	}
 
@@ -282,15 +282,9 @@ public class ManageUsersSteps extends BasePage {
 
 	@When("user types in the information for a test user and clicks the Save User button")
 	public void user_types_in_the_information_for_a_test_user_and_clicks_the_Save_User_button() throws Exception {
-		//Create instance of Random class
-		Random rand = new Random();
-		
-		//Generate random integers within 0 t0 999
-		int randNum = rand.nextInt(1000);
-		
 		createUserPage.sendKeysToWebElement(createUserPage.txtF_FirstName, "AutoDelete");
 		createUserPage.sendKeysToWebElement(createUserPage.txtF_LastName, "Test");
-		createUserPage.sendKeysToWebElement(createUserPage.txtF_PrimaryEmail, "test@Aclate" + randNum + ".com");
+		createUserPage.sendKeysToWebElement(createUserPage.txtF_PrimaryEmail, "test@Aclate" + createUserPage.getRandomNumber() + ".com");
 		createUserPage.sendKeysToWebElement(createUserPage.txtF_Password, "QA@vnet1");
 		createUserPage.sendKeysToWebElement(createUserPage.txtF_CellPhone, "555-101-2020");
 		createUserPage.waitAndClickElement(createUserPage.btn_Status_Active);

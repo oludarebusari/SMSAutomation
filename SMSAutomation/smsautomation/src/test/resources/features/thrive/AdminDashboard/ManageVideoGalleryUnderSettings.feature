@@ -2,6 +2,7 @@
 #Keywords Summary :
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - ManageImageGalleryUnderSettingsSteps.java
+@thrive @RegressionTest
 Feature: [SMSM-175] Manage Video Gallery under settings in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -17,7 +18,7 @@ Feature: [SMSM-175] Manage Video Gallery under settings in admin dashboard for T
     When User clicks the Video Gallery option
     Then the Manage Video Gallery page is displayed
     
-  @[SMSM-175] @Verify-Admin-can-see-all-existing-Video-Galleries-on-Manage-Video-Gallery
+  @[SMSM-175] @Verify-Admin-can-see-all-existing-Video-Galleries-on-Manage-Video-Gallery 
   Scenario: Verify Admin can see all existing Video Galleries on Manage Video Gallery [C22326097]
     And User verifies the columns on the Manage Video Gallery page
     

@@ -18,6 +18,7 @@
 #Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+@thrive @RegressionTest
 Feature: Verify all the components on the Admin Dashboard
 
   Background: User is logs in and Thrive Dashboard is displayed
@@ -28,7 +29,7 @@ Feature: Verify all the components on the Admin Dashboard
     And User clicks the sign in button for thrve
     Then Thrive Dashboard page is displayed
 
-  @SMSM-203 @Verify-User-is-landed-on-AdminDashboard-page @RegressionTest
+  @SMSM-203 @Verify-User-is-landed-on-AdminDashboard-page 
   Scenario: Verify the user is landed to admin dashboard page
     And User verifies the Dashboard title is available
     And user verifies the Reseller list is available
@@ -38,7 +39,7 @@ Feature: Verify all the components on the Admin Dashboard
     And User verifies the Revenue tab is available
     And User verifies the Help button is available
 
-  @SMSM-203 @Verify-all-reseller-data @RegressionTest
+  @SMSM-203 @Verify-all-reseller-data 
   Scenario: Verify the user is landed to admin dashboard page
     And User verifies company column is available
     And user verifies Location column is available
@@ -47,7 +48,7 @@ Feature: Verify all the components on the Admin Dashboard
     And User verifies Created date column is available
     And User verifies Action column is available
 
-  @SMSM-203 @Verify-the-user-is-on-Licensee-Dashboard @RegressionTest
+  @SMSM-203 @Verify-the-user-is-on-Licensee-Dashboard 
   Scenario: Verify the user is on "Licensee Dashboard"
     When User clicks the SignIn button on a Reseller
     Then the Business page is opened
@@ -57,7 +58,7 @@ Feature: Verify all the components on the Admin Dashboard
     And User verifies the Payment Received tab
     And User verifies the Revenue tab
 
-  @SMSM-203 @Verify-the-user-is-able-to-log-out-from-Resellee @RegressionTest
+  @SMSM-203 @Verify-the-user-is-able-to-log-out-from-Resellee 
   Scenario: Verify the user is able to logged out from Reseller.
     When User clicks the SignIn button on a Reseller
     Then the Business page is opened
@@ -68,7 +69,7 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on the Sign Out option
     Then user is redirected to the Admin Dashboard page
 
-  @SMSM-203 @Verify-the-options-and-link-from-the-Action-dropdown @RegressionTest
+  @SMSM-203 @Verify-the-options-and-link-from-the-Action-dropdown 
   Scenario: Verify the options and link from the Action dropdown.
     When User clicks a Reseller action dropdown
     Then User verifies two Action options are displayed
@@ -78,7 +79,7 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on Cancel Services options
     Then the Cancel services window is displayed
 
-  @SMSM-203 @Verify-the-user-can-edit-the-Reseller-details @RegressionTest
+  @SMSM-203 @Verify-the-user-can-edit-the-Reseller-details 
   Scenario: Verify the User can edit the Reseller details.
     When User clicks a Reseller action dropdown
     Then User verifies two Action options are displayed
@@ -91,7 +92,7 @@ Feature: Verify all the components on the Admin Dashboard
     Then User is redirected to the Dashboard and and confirms changes to Reseller
     And User revert changes
 
-  @SMSM-203 @Verify-the-admin-can-cancel-service @RegressionTest
+  @SMSM-203 @Verify-the-admin-can-cancel-service 
   Scenario: Verify the admin can cancel service.
     When User selects a reseller to cancel and clicks the action dropdown button
     And user clicks the Cancel services option
@@ -104,13 +105,13 @@ Feature: Verify all the components on the Admin Dashboard
     Then User verifies that the cancelled reseller services is not displayed
     Then Revert Changes
 
-  @SMSM-203 @Verify-the-pagination-on-the-dashboard @RegressionTest
+  @SMSM-203 @Verify-the-pagination-on-the-dashboard 
   Scenario: Verify the pagination on the dashboard.
     And User verifies Show n Entries is available
     And User verifies the number of results displayed
     And User verifies the number of pages available
 
-  @SMSM-203 @Verify-the-previous-and-next-pagination-option @RegressionTest
+  @SMSM-203 @Verify-the-previous-and-next-pagination-option
   Scenario: Verify the 'Previous' and 'Next' options are working.
     And User verifies that the Previous and Next buttons are available
     And user verifies the Previous button is disabled when on first page
@@ -122,13 +123,13 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on the Next button
     Then User is navigated to the Next page
 
-  @SMSM-294 @Verify-admin-can-be-redirected-to-Manage-Resellers-page-from-View-Resellers-link @RegressionTest
+  @SMSM-294 @Verify-admin-can-be-redirected-to-Manage-Resellers-page-from-View-Resellers-link 
   Scenario: Verify admin can be redirected to the Manage Resellers page from View Reseller link.
     And admin user verifies the View Resellers link is available
     When admin User clicks the View Resellers link
     Then User is redirected to the Manage Resellers page
 
-  @SMSM-294 @Verify-user-is-able-to-access-the-buttons-on-Manage-Reseller-page @RegressionTest
+  @SMSM-294 @Verify-user-is-able-to-access-the-buttons-on-Manage-Reseller-page  
   Scenario: Verify user is able to access the buttons on Manage Reseller page.
     And admin user verifies the View Resellers link is available
     When admin User clicks the View Resellers link
@@ -139,13 +140,13 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks back on the browser
     Then User verifies all the buttons on the page are available
 
-  @SMSM-294 @Verify-Admin-redirects-to-the-manage-Business-page @RegressionTest
+  @SMSM-294 @Verify-Admin-redirects-to-the-manage-Business-page  
   Scenario: Verify Admin redirects to the Manage Merchants page.
     And Admin User verifies the View Business link is available
     When admin User clicks the View Business link
     Then User is redirected to the Manage Businesses page
 
-  @SMSM-294 @Verify-Admin-user-is-able-to-Sign-into-a-Business-Dashboard @RegressionTest
+  @SMSM-294 @Verify-Admin-user-is-able-to-Sign-into-a-Business-Dashboard 
   Scenario: Verify Admin user is able to sign into a Business Dashboard
     And Admin User verifies the View Business link is available
     When admin User clicks the View Business link
@@ -157,19 +158,19 @@ Feature: Verify all the components on the Admin Dashboard
     When User clicks on SignIn button
     Then user is redirected to the dashboard
 
-  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest
+  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page 
   Scenario: Verify that Admin can see count of social Posts and count businesses on the dashboard page.
 		And User verifies the Social Post is available
 		And User verifies the social post count is available
 		And User verifies the message displayed about the post
 		
-  @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest
+  @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page 
   Scenario: Verify that Admin can see Resellers revenue on the dashboard page.
      And User verifies the Revenue tab is available
      And User verifies revenue amount is available
      And User verifies the message displayed about the revenue
      
-  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
+  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details 
   Scenario: Verify user is able to edit the Business's Details
 		When User navigates to Companies menu and clicks the Businesses option
 		Then the user is redirected to the Manage Businesses page

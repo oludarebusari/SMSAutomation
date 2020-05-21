@@ -18,9 +18,10 @@
 #Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+@thrive @RegressionTest
 Feature: Login to BeSpeak Application for Thrive System
 
-	@SMSM-133-Thrive-login @RegressionTest
+	@SMSM-133-Thrive-login 
   Scenario: Exisiting User should be able to login to Thrive System
     Given User Navigates to Thrive URL
     Then Thrive login page is displayed

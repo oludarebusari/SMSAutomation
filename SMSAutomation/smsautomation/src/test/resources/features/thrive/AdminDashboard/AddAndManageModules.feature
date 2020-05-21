@@ -2,6 +2,7 @@
 #Keywords Summary :
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition File - AddAndManageModulesSteps.java
+@thrive @RegressionTest 
 Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Thrive system
 
   Background: User logs in to Thrive and navigate to Business Dashboard
@@ -14,12 +15,12 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     When User clicks on the Billing Menu option on the dashboard
     Then the Billing options are displayed
 
-  @SMSM-147 @Verify-the-navigation-to-Modules-page-under-Billing-menu @RegressionTest
+  @SMSM-147 @Verify-the-navigation-to-Modules-page-under-Billing-menu 
   Scenario: Verify the navigation to Modules page under Billing menu  [C22389071]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
 
-  @SMSM-147 @Verify-the-navigation-to-"Module-Details"-page-by-clicking-New-button-on-Modules-page-or-clicking-Add-Modules-directly-from-Billing-menu @RegressionTest
+  @SMSM-147 @Verify-the-navigation-to-"Module-Details"-page-by-clicking-New-button-on-Modules-page-or-clicking-Add-Modules-directly-from-Billing-menu 
   Scenario: Verify the navigation to "Module Details" page by clicking New button on Modules page or clicking Add Modules directly from Billing menu  [C22393349]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -30,7 +31,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     And User clicks the Add Module option
     Then the Create Module page is displayed
 
-  @SMSM-147 @Verify-the-UI-and-fields-available-on-"Module-Details"-page @RegressionTest
+  @SMSM-147 @Verify-the-UI-and-fields-available-on-"Module-Details"-page 
   Scenario: Verify the UI and fields available on "Module Details" page  [C22393350]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -40,7 +41,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     And User verifies the details in the Feature panel
     And User verifies that a Save Module button is present on the page
 
-  @SMSM-147 @Verify-the-validation-messages-on-"Module-Details"-page-when-required-information-is-missing-or-invalid @RegressionTest
+  @SMSM-147 @Verify-the-validation-messages-on-"Module-Details"-page-when-required-information-is-missing-or-invalid 
   Scenario: Verify the validation messages on "Module Details" page when required information is missing or invalid  [C22393350]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -53,7 +54,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     When User enters a valid value for Module name, description, clicks the add feature button and clicks save module
     Then verify that validation error is displayed for the feature text field.
 
-  @SMSM-147 @Verify-the-creation-of-a-new-Module-from-"Module-Details"-page @RegressionTest
+  @SMSM-147 @Verify-the-creation-of-a-new-Module-from-"Module-Details"-page  
   Scenario: Verify the creation of a new Module from "Module Details" page  [C22393352]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -67,7 +68,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     Then a success notification is displayed on the module page
     And user confirms that the module is created
 
-  @SMSM-147 @Verify-the-"Module-Details"-added-on-Modules-page-once-a-Module-is-created @RegressionTest
+  @SMSM-147 @Verify-the-"Module-Details"-added-on-Modules-page-once-a-Module-is-created 
   Scenario: Verify the "Module Details" added on Modules page once a Module is created  [C22393353]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -75,7 +76,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     And User verifies the details on a Module tile
     And User verifies the action available on a Module Tile
 
-  @SMSM-147 @Verify-Modules-can-be-edited-from-"Modules"-page-by-clicking-the-Edit-button-against-the-specified-Module-tile @RegressionTest
+  @SMSM-147 @Verify-Modules-can-be-edited-from-"Modules"-page-by-clicking-the-Edit-button-against-the-specified-Module-tile  
   Scenario: Verify Modules can be edited from "Modules" page by clicking the Edit button against the specified Module tile [C22393360]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -86,7 +87,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     Then an updated notification is displayed on the module page
     And user confirms that the module is updated
 
-  @SMSM-147 @Verify-that-Module-cannot-be-deleted-if-"x"-is-clicked-on-"Delete-Module"-confirmation-popup-for-"Delete-Module"-action @RegressionTest
+  @SMSM-147 @Verify-that-Module-cannot-be-deleted-if-"x"-is-clicked-on-"Delete-Module"-confirmation-popup-for-"Delete-Module"-action 
   Scenario: Verify that Module cannot be deleted if "x" is clicked on "Delete Module" confirmation popup for "Delete Module" action [C22393368]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -97,7 +98,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     When User clicks on the X button on the Delete Module window pop up
     Then User verifies that the module is not deleted
 
-  @SMSM-147 @Verify-that-Module-is-deleted-if-"Delete"-is-clicked-on-"Delete-Module"-confirmation-popup-for-"Delete-Module"-action @RegressionTest
+  @SMSM-147 @Verify-that-Module-is-deleted-if-"Delete"-is-clicked-on-"Delete-Module"-confirmation-popup-for-"Delete-Module"-action  
   Scenario: Verify that Module is deleted if "Delete" is clicked on "Delete Module" confirmation popup for "Delete Module" action [C22393375]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -108,7 +109,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     When User clicks on the Delete button on the Delete Module window pop up
     Then User verifies that the module is deleted
 
-  @SMSM-147 @Verify-the-"Help"-on-Modules-page-by-clicking-the-Help-button @RegressionTest 
+  @SMSM-147 @Verify-the-"Help"-on-Modules-page-by-clicking-the-Help-button  
   Scenario: Verify the "Help" on Modules page by clicking the Help button [C22393378]
     When User clicks on the Modules option
     Then user is redirected to the Modules page
@@ -121,7 +122,7 @@ Feature: [SMSM-147] Add & manage Modules under billing in admin dashboard for Th
     When User clicks on End Tour button
     Then the tour guide closes successfully
 
-  @SMSM-147 @Verify-the-"Help"-on-"Module-Details"-page-by-clicking-the-Help-button @RegressionTest
+  @SMSM-147 @Verify-the-"Help"-on-"Module-Details"-page-by-clicking-the-Help-button  
   Scenario: Verify the "Help" on "Module Details" page by clicking the Help button [C22393379]
     When User clicks on the Modules option
     Then user is redirected to the Modules page

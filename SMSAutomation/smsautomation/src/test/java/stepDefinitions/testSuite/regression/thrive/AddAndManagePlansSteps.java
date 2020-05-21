@@ -97,7 +97,7 @@ public class AddAndManagePlansSteps extends BasePage {
 	  createEditPlanPage.waitAndClickElement(createEditPlanPage.featureOption("Social Essentials Setup"));
 	  createEditPlanPage.sendKeysToWebElement(createEditPlanPage.txtF_OneTimePrice, "5.00");
 	  createEditPlanPage.sendKeysToWebElement(createEditPlanPage.txtF_RecurringPrice, "10.00");
-	  createEditPlanPage.waitAndClickElement(createEditPlanPage.txtF_Date);
+      createEditPlanPage.waitAndClickElement(createEditPlanPage.txtF_Date);
 	  createEditPlanPage.waitAndClickElement(createEditPlanPage.btn_Day);
 	  createEditPlanPage.waitAndClickElement(createEditPlanPage.btn_SavePlan);	  
 	}
