@@ -1,23 +1,8 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+@engage @RegressionTest
 Feature: View and Edit account and plan details under my account
 
   Background: User is logged in and navigates to the Merchant's Dashboard
@@ -36,14 +21,14 @@ Feature: View and Edit account and plan details under my account
     And User clicks on My Accounts from the left hand side menu
     Then User is redirected to my account page
 
-  @SMSM-137-Verify-Plan-Details @RegressionTest
+  @SMSM-137-Verify-Plan-Details 
   Scenario: My Plan details section is present on "My Accounts" screen in Merchant portal
     And User verifies the sections on my account page
     And User verifies My Plan section on my account page
     And User clicks on the Plan Details link
     Then details of the plan is displayed within the Plan Details popup window
 
-  @SMSM-137-Change-Plan @RegressionTest
+  @SMSM-137-Change-Plan
   Scenario: Verify the plan can be changed by clicking "Change Plan" button under "My Plan"
     And User clicks on the Change Plan button
     Then User confirms a new window popup to select a plan
@@ -55,7 +40,7 @@ Feature: View and Edit account and plan details under my account
     And User clicks on the Change Plan button agaian
     And User selects a different plan and clicks and clicks the Change plan button
 
-  @SMSM-137-Edit-Account-Contact-And-Billing @RegressionTest
+  @SMSM-137-Edit-Account-Contact-And-Billing
   Scenario: Verify the user can edit the "Contact" Details by clicking "Edit" button under Contacts section in "Account Details"
     And User clicks the edit button under Contact Details
     Then the Account Contact details screen appears
@@ -74,7 +59,7 @@ Feature: View and Edit account and plan details under my account
     And User enter valid details on credit card window and click on Update Credit Card button
     Then the details is saved successfully and a successful message is displayed
 
-  @SMSM-137-Change-Password-Account-Contact @RegressionTest
+  @SMSM-137-Change-Password-Account-Contact
   Scenario: Verify the user can Change the Password by clicking "Change Password" button under Contacts section
     And User clicks the change password button
     Then the change password window is opened

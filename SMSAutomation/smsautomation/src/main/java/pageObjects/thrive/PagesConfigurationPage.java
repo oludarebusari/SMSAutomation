@@ -33,12 +33,13 @@ public class PagesConfigurationPage extends BasePage {
 	public @FindBy(xpath = "//div[contains(@class, \"ui-dragbox-outlined\")]//i[contains(@class, \"fa-plus\")]") WebElement snip_Plus;
 	public @FindBy(xpath = "//div[contains(@class, \"ui-dragbox-outlined\")]//i[contains(@class, \"fa-trash\")]") WebElement snip_Delete;
 	public @FindBy(xpath = "//h1[@id=\"joinourloyaltyprogramgetamassage\"]") WebElement img_Text;
+	public @FindBy(xpath = "//h2[@id=\"loremipsumissimplydummytext\"]") WebElement img_Text2;
 	public @FindBy(xpath = "//div[@class=\"filter-group active\"]") WebElement OptionDDown;
 	public @FindBy(xpath = "//img[contains(@src, \"/thumbnails/47.png\")]") WebElement imgToDrag;
 	public @FindBy(xpath = "//div[@id=\"content-to-edit\"]") WebElement emptyHeaderBox;
-	public @FindBy(xpath = "//div[@id=\"promotions\"]") WebElement par_Imgae;
+	public @FindBy(xpath = "//*[@id=\"promotions\" or @id=\"body-content\"]") WebElement par_Imgae;
 	public List<WebElement> getNumberOfImage(String imgText) {
-		return par_Imgae.findElements(By.xpath("//h1[text()=\'"+ imgText +"']"));
+		return par_Imgae.findElements(By.xpath("//*[text()=\'"+ imgText +"']"));
 	}
 
 	public @FindBy(xpath = "//div[contains(@class, \"col-xs-12\") and ./h1[@id=\"aboutus\"]]//p[1]") WebElement textAreaForEdit;

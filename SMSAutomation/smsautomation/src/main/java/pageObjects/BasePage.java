@@ -630,6 +630,21 @@ public class BasePage extends DriverFactory {
 		
 	}
 
+	/**********************************************************************************
+	 ** CLICK ELEMENT AT A PARTICULAR OFFSET
+	 * @return 
+	 *********************************************************************************/	
+	//The value of the divisor is used to divide the width of the element to get the point to click
+	public void clickElementAtOffSet(WebElement element) {
+		
+		int width = element.getSize().width;
+		
+		Actions action = new Actions(driver);
+		
+		action.moveToElement(element).moveByOffset((width/2)-2, 0).click().perform();
+		
+	}
+
        
 	
 }

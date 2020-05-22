@@ -3,7 +3,7 @@
 
 #User is assumed to have Admin access unless stated Otherwise
 #Step Definition file - ManageTourSteps.java
-@thrive @RegressionTest @OnlyMe
+@thrive @RegressionTest
 Feature: Manage tours under settings in admin dashboard for Thrive system 
 
   Background: User logs in and navigates to the Thrive's Dashboard

@@ -68,7 +68,7 @@ Feature: [SMSM-228] Add page in merchant portal for Thrive system
     And User clicks the html icon at the left side of the snippet
     Then a new pop-up window with a textarea and snippet code is displayed
    
- @SMSM-136 @Verify-the-same-snippet-is-added-on-the-page-by-clicking-on-plus-icon  
+ @SMSM-136 @Verify-the-same-snippet-is-added-on-the-page-by-clicking-on-plus-icon 
   Scenario: Verify the same snippet is added on the page by clicking on Plus icon
     When User clicks on the Experience Menu option
     Then the Experience options are displayed

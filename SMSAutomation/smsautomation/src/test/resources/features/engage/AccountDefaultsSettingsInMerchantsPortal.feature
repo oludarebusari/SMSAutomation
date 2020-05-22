@@ -1,23 +1,9 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+#Step Definition File - 
+@engage @RegressionTest
 Feature: View and Edit Account Default settings
   I want to be able to View & edit Account Defaults settings in Merchant's portal
 
@@ -36,7 +22,7 @@ Feature: View and Edit Account Default settings
     Then the user is redirected to a new window of Merchant's Dashboard
     And User clicks the Settings menu
 
-  @SMSM-139-View-Settings-page @RegressionTest
+  @SMSM-139-View-Settings-page 
   Scenario: View Settings page
     And User clicks the Accounts Defaults menu
     Then AccountDefaults page is displayed
@@ -45,7 +31,7 @@ Feature: View and Edit Account Default settings
     And User clicks on Web Widget link from the LHS menu
     Then User is redirected to the Web Widget page, Configure your widget and preview fields are displayed
 
-  @SMSM-139-View-Settings-Account-Defaults @RegressionTest
+  @SMSM-139-View-Settings-Account-Defaults
   Scenario: View Settings-Account Defaults
     And User clicks the Account Defaults
     Then the Accounts Defaults page is displayed

@@ -1,3 +1,7 @@
+
+#User is assumed to have Admin access unless stated Otherwise
+##Step Definition File - OptionsUnderSubscribersInMerchantsPortal.java
+@engage @RegressionTest
 Feature: View & access all option under subscriber list in Merchant's portal
 
   Background: User is logged in and navigates to the Merchant's Dashboard
@@ -7,7 +11,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User clicks on the login button
     Then User should be taken to Engage SMS home page
 
-  @SMSM-131-Verify-that-user-is-able-to-check-Manage-Resellers-page-content, @RegressionTest
+  @SMSM-131-Verify-that-user-is-able-to-check-Manage-Resellers-page-content
   Scenario: Verify that User is able to check Manage Resellers page content
     And User checks the page content Title, list of Resellers, search and Status
     And User confirms the possibility to Copy to clipboard and export to csv
@@ -16,7 +20,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User verifies the columns of the table of columns
     And User verifiles the license logins are enabled
 
-  @SMSM-131-Verify-that-user-is-able-to-review-Businesses-page-content, @RegressionTest
+  @SMSM-131-Verify-that-user-is-able-to-review-Businesses-page-content
   Scenario: Verify that User is able to review Businesses Page content
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -27,7 +31,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User confirms the Table Grid elements
     And User confirms the Table columns
 
-  @SMSM-131-Opening-Subscribers-Page, @RegressionTest
+  @SMSM-131-Opening-Subscribers-Page, 
   Scenario: Opening Subscribers Page
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -40,7 +44,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     When User clicks the Subscribers menu
     Then the Subscribers page is opened
 
-  @SMSM-131-Verify-that-user-is-able-to-view-list-of-Subscribers, @RegressionTest
+  @SMSM-131-Verify-that-user-is-able-to-view-list-of-Subscribers
   Scenario: Verify that User is able to view list of Subscribers
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -54,7 +58,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     Then the Subscribers page is opened
     And User verifies the list of Subscribers
 
-  @SMSM-131-Send-Meesage-To-Reply-Subscriber, @RegressionTest
+  @SMSM-131-Send-Meesage-To-Reply-Subscriber
   Scenario: Verify that User is able to Send a message to reply subscriber
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -73,7 +77,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User clicks on the Send button
     Then a message sent notification is displayed.
 
-  @SMSM-200-Verify-the-Giftbar-Profile, @RegressionTest
+  @SMSM-200-Verify-the-Giftbar-Profile
   Scenario: Verify the Giftbar Profile in Giftbar option on Add-on
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -90,7 +94,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User clicks the Interested button
     Then an interest notification is sent message is displayed
 
-  @SMSM-200-Verify-that-user-is-able-to-Blacklist,-unsubscribe-with-text-and-without-text @RegressionTest
+  @SMSM-200-Verify-that-user-is-able-to-Blacklist,-unsubscribe-with-text-and-without-text 
   Scenario: Verify that User is able to Blacklist, Unsubscribe with text and without text
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -107,7 +111,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User verifies that Unsubscribe with text is available
     And User verifies that Unsubscribe without Text is available
 
-  @SMSM-200-Verify-that-user-is-able-to-Bulk-edit @RegressionTest @OnlyMe
+  @SMSM-200-Verify-that-user-is-able-to-Bulk-edit 
   Scenario: Verify that User is able to Bulk edit
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller
@@ -127,7 +131,7 @@ Feature: View & access all option under subscriber list in Merchant's portal
     And User types in a message into the Message textarea
     Then a success notification message is displayed
 
-  @SMSM-200-Verify-that-user-is-able-to-Search-for-any-subscriber @RegressionTest @OnlyMe
+  @SMSM-200-Verify-that-user-is-able-to-Search-for-any-subscriber 
   Scenario: Verify that User is able to Search for any subscriber
     When User clicks the Manage Resellers menubar option
     And User logs in to a reseller

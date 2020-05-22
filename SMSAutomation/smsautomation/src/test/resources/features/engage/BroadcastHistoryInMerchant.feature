@@ -1,21 +1,9 @@
-	#Author: your.email@your.domain.com
+#Author: your.email@your.domain.com
 #Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
+
+#User is assumed to have Admin access unless stated Otherwise
+#Step Definition File - BroadcastHistoryInMerchantSteps.java
+@engage @RegressionTest
 Feature: [SMSM-125] View and access all options under Broadcast History in Merchant's portal (Engage system)
 
   Background: User is logged in and navigates to the Merchant's Dashboard
@@ -32,13 +20,13 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     And Users click Login tab for a merchant
     Then the user is redirected to a new window of Merchant's Dashboard
 
-  @SMSM-125-Verify-that-user-is-redirected-to-new-windows-of-merchant's-dashboard-and-locate-the-Broadcast-menu @RegressionTest
-  Scenario: Verify that User is redirected to new windows of merchant's dashboard and locate the "Boradcasts" menu
+  @SMSM-125-Verify-that-user-is-redirected-to-new-windows-of-merchant's-dashboard-and-locate-the-Broadcast-menu 
+  Scenario: Verify that User is redirected to new windows of merchant's dashboard and locate the "Broadcasts" menu
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     And User verifies the available option on the KHS of the page
 
-  @SMSM-125-Verify-that-user-is-able-to-see-all-existing-broadcast-messages-(send-or-scheduled)-according-to-Date-Selected-in-Broadcast-History @RegressionTest
+  @SMSM-125-Verify-that-user-is-able-to-see-all-existing-broadcast-messages-(send-or-scheduled)-according-to-Date-Selected-in-Broadcast-History 
   Scenario: Verify that User is able to see all existing broadcast messages (send or scheduled) according to Date Selected in BroadCast History
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
@@ -49,7 +37,7 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks on Date and Selects All Data and clicks apply button
     Then all existing broadcast messages were displayed
 
-  @SMSM-125-Verify-that-user-is-able-to-sort-and-move-across-pages-for-broadcast-History-table @RegressionTest
+  @SMSM-125-Verify-that-user-is-able-to-sort-and-move-across-pages-for-broadcast-History-table 
   Scenario: Verify that User is able to Sort and move across pages for BroadCast History table
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
@@ -60,8 +48,8 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     And User verifies the Page Count options
     And User verifies the records can be sorted through the column heading
 
-  @SMSM-125-Verify-that-user-is-able-to-Copy-and-Export-to-CSV-the-List-of-broadcast-messages @RegressionTest 
-  Scenario: Verify that User is able to Copy and Export to CSV the List of broadcast messages
+  @SMSM-125-Verify-that-user-is-able-to-Copy-and-Export-to-CSV-the-List-of-broadcast-messages 
+  Scenario: Verify that User is able to Copy and Export to CSV the List of Broadcast messages
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     When User clicks on Broadcast History option
@@ -71,8 +59,8 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks the CSV tab
     Then User confirms that the CSV file for Broadcast is exported to the local machine
 
-  @SMSM-125-Verify-that-user-is-able-to-view-details-for-the-broadcasts-message @RegressionTest
-  Scenario: Verify that User is able to view details for the broadcasts message
+  @SMSM-125-Verify-that-user-is-able-to-view-details-for-the-broadcasts-message 
+  Scenario: Verify that User is able to view details for the Broadcasts message
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     When User clicks on Broadcast History option
@@ -82,8 +70,8 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks the Details button for a record
     Then the Broadcast Analytics window opens and shows the details of the selected record
 
-  @SMSM-125-Verify-that-user-is-able-to-Resend-broadcast-message @RegressionTest
-  Scenario: Verify that User is able to Resend broadcast message
+  @SMSM-125-Verify-that-user-is-able-to-Resend-broadcast-message 
+  Scenario: Verify that User is able to Resend Broadcast message
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     When User clicks on Broadcast History option
@@ -96,8 +84,8 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks Send Broadcast on the Preview window
     Then Broadcast Sent message is displayed.
 
-  @SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message @RegressionTest
-  Scenario: Verify that User is able to Reschedule broadcast message
+  @SMSM-125-Verify-that-user-is-able-to-Reschedule-broadcast-message 
+  Scenario: Verify that User is able to Reschedule Broadcast message
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened
     When User clicks on Broadcast History option
@@ -110,7 +98,7 @@ Feature: [SMSM-125] View and access all options under Broadcast History in Merch
     When User clicks Schedule Broadcast on the Preview window
     Then Broadcast Scheduled message is displayed.
 
-  @SMSM-125-Verify-that-user-is-able-to-Expire-Offer @RegressionTest
+  @SMSM-125-Verify-that-user-is-able-to-Expire-Offer
   Scenario: Verify that User is able to Expire Offer
     When User clicks the broadcast option tab
     Then the Broadcast menu is opened

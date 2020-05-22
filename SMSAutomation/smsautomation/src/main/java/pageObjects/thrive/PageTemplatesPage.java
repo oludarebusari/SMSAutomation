@@ -73,5 +73,8 @@ public class PageTemplatesPage extends BasePage {
 	  
 	  }
 	 
+	// Edit dropdown options
+	  public @FindBy(xpath = "//a[@class=\"page-activate-action\"]") WebElement opt_MakeActive;
+	  
 
 }

@@ -27,29 +27,6 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 	public PagesConfigurationPage pagesConfigurationPage = PageFactory.initElements(driver,
 			PagesConfigurationPage.class);
 	public PageTemplatesPage pageTemplatesPage = PageFactory.initElements(driver, PageTemplatesPage.class);
-
-	public String HTMLTextModified = "<div class=\"col-xs-12 col-sm-6\">\r\n" + 
-			"            <figure class=\"text-center\">\r\n" + 
-			"                <img src=\"/bundles/mastermindsdigitalplatform/images/contentbuilder/07.jpg\" class=\"img-circle\" alt=\"\">\r\n" + 
-			"                <figcaption>\r\n" + 
-			"                    <h3>Printing</h3>\r\n" + 
-			"                    <p>\r\n" + 
-			"                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.\r\n" + 
-			"                    </p>\r\n" + 
-			"                </figcaption>\r\n" + 
-			"            </figure>\r\n" + 
-			"        </div>\r\n" + 
-			"        <div class=\"col-xs-12 col-sm-6\">\r\n" + 
-			"            <figure class=\"text-center\">\r\n" + 
-			"                <img src=\"/bundles/mastermindsdigitalplatform/images/contentbuilder/08.jpg\" class=\"img-circle\" alt=\"\">\r\n" + 
-			"                <figcaption>\r\n" + 
-			"                    <h3>Typesetting</h3>\r\n" + 
-			"                    <p>\r\n" + 
-			"                        Lorem Ipsum is simply dummy text of the printing and typesetting industry Edited.\r\n" + 
-			"                    </p>\r\n" + 
-			"                </figcaption>\r\n" + 
-			"            </figure>\r\n" +  
-			"        </div>";
 	Actions actions = new Actions(driver);
 
 //	@Verify-admin-can-add-a-page-template-and-page-is-added-under-Page-Templates-page
@@ -66,7 +43,7 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("User enters name into the Name field")
 	public void user_enters_name_into_the_Name_field() throws Exception {
-		createPageTemplatePage.sendKeysToWebElement(createPageTemplatePage.txtF_Name, "AutomationQA");
+		createPageTemplatePage.sendKeysToWebElement(createPageTemplatePage.txtF_Name, "AutoTest");
 	}
 
 	@Then("User selects single or multiple categories")
@@ -84,15 +61,15 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("User confirms that the Page Template is created successfully")
 	public void user_confirms_that_the_Page_Template_is_created_successfully() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		Assert.assertTrue(pageTemplatesPage.CellValue("AutomationQA").isDisplayed());
+		Assert.assertTrue(pageTemplatesPage.CellValue("AutoTest").isDisplayed());
 	}
 
 //	@Verify-Admin-is-able-to-Add-Content-on-template-page
 	@When("User verifies the options on the left menu bar of the newly created page")
 	public void user_verifies_the_options_on_the_left_menu_bar_of_the_newly_created_page() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit);
 		Assert.assertTrue(pagesConfigurationPage.sideMenu_Header.isDisplayed());
@@ -151,17 +128,18 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 		Assert.assertFalse(createPageTemplatePage.btn_CreatePageTemplate.getAttribute("class").contains("disabled"));
 	}
 
-//
+//	@Verify-admin-can-view/change-the-source-code-of-the-snippet
 	@When("User clicks the edit button on a page")
 	public void user_clicks_the_edit_button_on_a_page() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA1");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA1"));
 	}
 
 	@Then("the page template edit window is opened")
 	public void the_page_template_edit_window_is_opened() throws Exception {
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.pag_Title).contains("AutomationQA"));
+		Assert.assertTrue(
+				commonElementLocator.getElementText(commonElementLocator.pag_Title).contains("AutomationQA1"));
 	}
 
 	@When("User clicks on an Image and clicks on the html snippet")
@@ -186,16 +164,164 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 	public void user_clicks_the_Save_button_on_the_page() throws Exception {
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Save);
 		Thread.sleep(3000);
-	
+
 	}
 
 	@Then("User confirms the change was saved correctly")
 	public void user_confirms_the_change_was_saved_correctly() throws Exception {
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.lnk_Pages);
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA1");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA1"));
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.image);
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Html);
 	}
+
+//	@Verify-admin-can-create-a-copy-of-snippet-on-clicking-"+'-on-snippet
+	@When("User clicks the edit button on a page to modify")
+	public void user_clicks_the_edit_button_on_a_page_to_modify() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutomationQA2");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutomationQA2"));
+	}
+
+	@Then("the page template edit window is displayed")
+	public void the_page_template_edit_window_is_displayed() throws Exception {
+		Assert.assertTrue(
+				commonElementLocator.getElementText(commonElementLocator.pag_Title).contains("AutomationQA2"));
+	}
+
+	@When("User clicks on an Image, clicks on the plus snippet and clicks the Save button")
+	public void user_clicks_on_an_Image_clicks_on_the_plus_snippet_and_clicks_the_Save_button()
+			throws InterruptedException {
+		pagesConfigurationPage.clickElementAtOffSet(pagesConfigurationPage.image);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Plus);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Save);
+		Thread.sleep(2500);
+	}
+
+	@Then("the snippet is duplicated")
+	public void the_snippet_is_duplicated() throws Exception {
+		Assert.assertEquals(2, pagesConfigurationPage.getNumberOfImage("Lorem Ipsum is simply dummy text").size());
+	}
+
+//	@Verify-admin-can-delete-an-existing-snippet
+	@When("User clicks on an Image, clicks on the delete snippet and clicks the Save button")
+	public void user_clicks_on_an_Image_clicks_on_the_delete_snippet_and_clicks_the_Save_button()
+			throws InterruptedException {
+		pagesConfigurationPage.clickElementAtOffSet(pagesConfigurationPage.image);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Delete);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Save);
+		Thread.sleep(2500);
+	}
+
+	@Then("the snippet is successfully removed")
+	public void the_snippet_is_successfully_removed() {
+		Assert.assertEquals(1, pagesConfigurationPage.getNumberOfImage("Lorem Ipsum is simply dummy text").size());
+	}
+
+//	@Verify-a-Page-Template-can-be-Activated-from-its-content-page
+	@When("User clicks the action drop down for the page to Activate")
+	public void user_clicks_the_action_drop_down_for_the_page_to_Activate() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+	}
+
+	@Then("the actions options are displayed")
+	public void the_actions_options_are_displayed() {
+		Assert.assertTrue(pageTemplatesPage.btn_MakeInactive("AutoTest").isDisplayed());
+		Assert.assertTrue(pageTemplatesPage.btn_Delete("AutoTest").isDisplayed());
+	}
+
+	@When("User clicks the Make Active Option")
+	public void user_clicks_the_Make_Active_Option() throws Exception {
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_MakeActive("AutoTest"));
+	}
+
+	@Then("the Activate page window is opened")
+	public void the_Activate_page_window_is_opened() throws InterruptedException {
+		Assert.assertEquals("activate.page.title", activatePageModal.getElementText(activatePageModal.mod_Title));
+	}
+
+	@When("User clicks the Activate button on the modal")
+	public void user_clicks_the_Activate_button_on_the_modal() throws Exception {
+		activatePageModal.waitAndClickElement(activatePageModal.btn_Activate);
+	}
+
+	@Then("the selected page is Activate")
+	public void the_selected_page_is_Activate() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("Active").isDisplayed());
+	}
+
+//	@Verify-a-Page-Template-can-be-deactivate-from-its-content-page
+	@When("User clicks the action drop down for the page to Deactivate")
+	public void user_clicks_the_action_drop_down_for_the_page_to_Deactivate() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+	}
+
+	@When("User clicks the Make Inactive Option")
+	public void user_clicks_the_Make_Inactive_Option() throws Exception {
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_MakeInactive("AutoTest"));
+	}
+
+	@Then("the Deactivate page window is opened")
+	public void the_Deactivate_page_window_is_opened() throws Exception {
+		Assert.assertEquals("Deactivate", deactivatePageModal.getElementText(deactivatePageModal.btn_Deactivate));
+	}
+
+	@When("User clicks the Deactivate button on the modal")
+	public void user_clicks_the_Deactivate_button_on_the_modal() throws Exception {
+		deactivatePageModal.waitAndClickElement(deactivatePageModal.btn_Deactivate);
+	}
+
+	@Then("the selected page is Deactivated")
+	public void the_selected_page_is_Deactivated() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("Inactive, Hidden").isDisplayed());
+	}
+
+//	@Verify-clicking-Cancel-or-'X'-on-"Delete-this-page"-does-not-delete-a-page-template-from-its-content-page
+	@When("User clicks the action drop down for the page to delete")
+	public void user_clicks_the_action_drop_down_for_the_page_to_delete() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+	}
+
+	@When("User clicks the Delete Option")
+	public void user_clicks_the_Delete_Option() throws Exception {
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Delete("AutoTest"));
+	}
+
+	@Then("the Delete page window is opened")
+	public void the_Delete_page_window_is_opened() throws Exception {
+		Assert.assertEquals("Delete Page", deletePageModal.getElementText(deletePageModal.mod_Title));
+	}
+
+	@When("User clicks the close button on the modal")
+	public void user_clicks_the_close_button_on_the_modal() throws Exception {
+		deletePageModal.waitAndClickElement(deletePageModal.btn_Close);
+	}
+
+	@Then("the selected page is not deleted and available in the list")
+	public void the_selected_page_is_not_deleted_and_available_in_the_list() {
+		Assert.assertTrue(pageTemplatesPage.CellValue("AutoTest").isDisplayed());
+	}
+
+//	@Verify-admin-can-delete-a-page-template-from-its-content-page
+	@When("User clicks the Delete button on the modal")
+	public void user_clicks_the_Delete_button_on_the_modal() throws Exception {
+		deletePageModal.waitAndClickElement(deletePageModal.btn_Delete);
+	}
+
+	@Then("the selected page is deleted and not available in the list again")
+	public void the_selected_page_is_deleted_and_not_available_in_the_list_again() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		Assert.assertTrue(
+				Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)) == 0);
+	}
+
 }

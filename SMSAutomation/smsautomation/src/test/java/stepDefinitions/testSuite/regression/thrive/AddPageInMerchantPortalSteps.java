@@ -152,7 +152,6 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 	@When("User clicks the plus icon at the left side of the snippet")
 	public void user_clicks_the_plus_icon_at_the_left_side_of_the_snippet() throws Exception {
 		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.snip_Plus);
-//		Thread.sleep(20000);
 		Assert.assertEquals(3, pagesConfigurationPage.getNumberOfImage("Join Our Loyalty Program, Get a ").size());
 	}
 	
@@ -199,13 +198,6 @@ public class AddPageInMerchantPortalSteps extends DriverFactory {
 
 	@Then("the page is deleted successfully")
 	public void the_page_is_deleted_successfully() throws Exception {
-		/*
-		 * boolean result = true; try {
-		 * Assert.assertTrue(pagesMainPage.waitUntilElementDissapears(pagesMainPage.
-		 * searchPageByPageName("AclateQA"))); } catch (NoSuchElementException NSE) {
-		 * result = false; Assert.assertFalse(result); }
-		 */
-		System.out.println(pagesMainPage.isElementVisible(pagesMainPage.searchPageByNameLocator("AclateQA")));
 		Assert.assertFalse(pagesMainPage.isElementVisible(pagesMainPage.searchPageByNameLocator("AclateQA")));
 	}
 

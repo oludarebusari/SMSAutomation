@@ -1,23 +1,9 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 
 #User is assumed to have Admin access unless stated Otherwise
+#Step Definition File - SocialMediaWebWidgetSettingsSteps.java
+@engage @RegressionTest
 Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's portal (Engage system)
   User should be able to view and edit Social Media and Web Widget settings
 
@@ -37,12 +23,12 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And User clicks the Settings menu
     Then the Settings options are displayed
 
-  @SMSM-137-Verify-that-user-is-able-to-view-Account-Defaults-Social-Media-and-Web-Widget-options-in-settings-tab @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-view-Account-Defaults-Social-Media-and-Web-Widget-options-in-settings-tab 
   Scenario: Verify that user is able to view Account Defaults,Social Media and Web Widget options in settings tab
     When User hovers over the Social Media option
     Then the color of the selected option changes to blue
 
-  @SMSM-137-Verify-that-user-is-able-to-connect-facebook-account-with-selected-campaign @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-connect-facebook-account-with-selected-campaign
   Scenario: Verify that user is able to connect Facebook account with selected campaign
     When User clicks the Social Media option
     Then the Social Settings page is displayed
@@ -51,7 +37,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks on Connect to Facebook button
     Then User should be navigated to the facebook login page
 
-  @SMSM-137-Verify-that-user-is-able-to-manually-configure-a-Facebook-account-with-selected-campaign @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-manually-configure-a-Facebook-account-with-selected-campaign
   Scenario: Verify that user is able to manually configure a Facebook account with selected campaign
     When User clicks the Social Media option
     Then the Social Settings page is displayed
@@ -61,7 +47,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And User enters a userid into the FB UserID
     And User clicks the Save Integration button
 
-  @SMSM-137-Verify-that-user-is-able-to-save-social-URL's-successfully @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-save-social-URL's-successfully 
   Scenario: Verify that user is able to save social URL's successfully
     When User clicks the Social Media option
     Then the Social Settings page is displayed
@@ -74,7 +60,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks the Social Media option
     Then User confirms that the URLs was saved correctly
 
-  @SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-edit-details-in-various-fields-to-configure-web-widget 
   Scenario: Verify that user is able to edit details in various fields to configure web widget
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
@@ -84,7 +70,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     And User enters the Thnak You message
     Then User verifies that all the text entered are reflected on the Preview section
 
-  @SMSM-137-Verify-that-user-is-able-to-add-remove-various-options-to-configure-web-widget @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-add-remove-various-options-to-configure-web-widget 
   Scenario: Verify that user is able to add/remove various options to configure web widget
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
@@ -97,7 +83,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks on the toggle for Collect email address
     Then User verifies that Email address textbox is not displayed on the preview section
 
-  @SMSM-137-Verify-that-user-is-able-to-select-a-display-method-and-a-theme-to-configure-web-widget @RegressionTest 
+  @SMSM-137-Verify-that-user-is-able-to-select-a-display-method-and-a-theme-to-configure-web-widget 
   Scenario: Verify that user is able to select a display method and a theme to configure web widget
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
@@ -106,7 +92,7 @@ Feature: Feature:  [SMSM-140] Social media & web widget settings in Merchant's p
     When User clicks on Choose a Theme button
     Then the Preview section color should change to dark gray
 
-  @SMSM-137-Verify-that-user-is-able-to-copy-embed-code-successfully @RegressionTest
+  @SMSM-137-Verify-that-user-is-able-to-copy-embed-code-successfully 
   Scenario: Verify that user is able to copy embed code successfully
     When User clicks the Web Widget option in settings tab
     Then User should be navigated to the Web widget page
