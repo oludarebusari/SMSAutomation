@@ -10,7 +10,7 @@ import pageObjects.thrive.LanguageStringsPage;
 import pageObjects.thrive.MessageTemplatesPage;
 import pageObjects.thrive.SettingsPage;
 import pageObjects.thrive.Tab.SettingsDDown;
-import pageObjects.thrive.modal.EditEmailTemplateModal;
+import pageObjects.thrive.modal.EditMessageTemplateModal;
 import pageObjects.thrive.modal.EditSettingsModal;
 import pageObjects.thrive.modal.EditStringModal;
 import pageObjects.thrive.modal.LanguagePageHelpModal;
@@ -21,8 +21,8 @@ import utils.DriverFactory;
 public class SettingsSteps extends DriverFactory {
 
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
-	public EditEmailTemplateModal editEmailTemplateModal = PageFactory.initElements(driver,
-			EditEmailTemplateModal.class);
+	public EditMessageTemplateModal editEmailTemplateModal = PageFactory.initElements(driver,
+			EditMessageTemplateModal.class);
 	public EditSettingsModal editSettingsModal = PageFactory.initElements(driver, EditSettingsModal.class);
 	public EditStringModal editStringModal = PageFactory.initElements(driver, EditStringModal.class);
 	public LanguageStringsPage languageStringsPage = PageFactory.initElements(driver, LanguageStringsPage.class);
@@ -247,6 +247,7 @@ public class SettingsSteps extends DriverFactory {
 	public void user_confirms_the_change_is_reflected_on_the_Message_Templates_page() {
 		driver.navigate().refresh();
 		Assert.assertTrue(messageTemplatesPage.colValueOption("Response to Automation").isDisplayed());
+
 	}
 
 	@Then("User clicks the Edit button for the Message Template")

@@ -72,9 +72,4 @@ public class PageTemplatesPage extends BasePage {
 		  return paginationBlock.findElement(By.xpath("//li[contains(@class, \"page-away\") and (.//span[contains(text(), \'" + pageNumber + "')] or .//a[contains(text(), \'" + pageNumber + "')])]"));
 	  
 	  }
-	 
-	// Edit dropdown options
-	  public @FindBy(xpath = "//a[@class=\"page-activate-action\"]") WebElement opt_MakeActive;
-	  
-
 }

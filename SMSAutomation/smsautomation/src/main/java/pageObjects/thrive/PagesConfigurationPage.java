@@ -37,6 +37,10 @@ public class PagesConfigurationPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"filter-group active\"]") WebElement OptionDDown;
 	public @FindBy(xpath = "//img[contains(@src, \"/thumbnails/47.png\")]") WebElement imgToDrag;
 	public @FindBy(xpath = "//div[@id=\"content-to-edit\"]") WebElement emptyHeaderBox;
+	public @FindBy(xpath = "//span[@data-name=\"name\"]") WebElement lbl_ageTemplatesTitle;
+	public @FindBy(xpath = "//div[@class=\"editable-input\"]//input[@type=\"text\"]") WebElement txtF_PageTemplatesTitle;
+	public @FindBy(xpath = "//div[@class=\"editable-buttons\"]//button[@type=\"submit\"]") WebElement btn_Editable;
+	public @FindBy(xpath = "//div[@class=\"editable-buttons\"]//button[@type=\"button\"]") WebElement btn_Remove;
 	public @FindBy(xpath = "//*[@id=\"promotions\" or @id=\"body-content\"]") WebElement par_Imgae;
 	public List<WebElement> getNumberOfImage(String imgText) {
 		return par_Imgae.findElements(By.xpath("//*[text()=\'"+ imgText +"']"));

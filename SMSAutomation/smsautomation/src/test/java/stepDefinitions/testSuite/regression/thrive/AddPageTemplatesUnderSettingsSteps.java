@@ -14,6 +14,7 @@ import pageObjects.thrive.PagesConfigurationPage;
 import pageObjects.thrive.modal.ActivatePageModal;
 import pageObjects.thrive.modal.DeactivatePageModal;
 import pageObjects.thrive.modal.DeletePageModal;
+import pageObjects.thrive.modal.PageSettingsModal;
 import utils.DriverFactory;
 
 public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
@@ -24,6 +25,7 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 			CreatePageTemplatePage.class);
 	public DeactivatePageModal deactivatePageModal = PageFactory.initElements(driver, DeactivatePageModal.class);
 	public DeletePageModal deletePageModal = PageFactory.initElements(driver, DeletePageModal.class);
+	public PageSettingsModal pageSettingsModal = PageFactory.initElements(driver, PageSettingsModal.class);
 	public PagesConfigurationPage pagesConfigurationPage = PageFactory.initElements(driver,
 			PagesConfigurationPage.class);
 	public PageTemplatesPage pageTemplatesPage = PageFactory.initElements(driver, PageTemplatesPage.class);
@@ -230,7 +232,7 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("the actions options are displayed")
 	public void the_actions_options_are_displayed() {
-		Assert.assertTrue(pageTemplatesPage.btn_MakeInactive("AutoTest").isDisplayed());
+		Assert.assertTrue(pageTemplatesPage.btn_MakeActive("AutoTest").isDisplayed());
 		Assert.assertTrue(pageTemplatesPage.btn_Delete("AutoTest").isDisplayed());
 	}
 
@@ -249,8 +251,8 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 		activatePageModal.waitAndClickElement(activatePageModal.btn_Activate);
 	}
 
-	@Then("the selected page is Activate")
-	public void the_selected_page_is_Activate() {
+	@Then("the selected page is Activated")
+	public void the_selected_page_is_Activated() {
 		Assert.assertTrue(pageTemplatesPage.CellValue("Active").isDisplayed());
 	}
 
@@ -262,6 +264,12 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
 	}
 
+	@Then("the actions options for the selected page to deactivate is displayed")
+	public void the_actions_options_for_the_selected_page_to_deactivate_is_displayed() {
+		Assert.assertTrue(pageTemplatesPage.btn_MakeInactive("AutoTest").isDisplayed());
+		Assert.assertTrue(pageTemplatesPage.btn_Delete("AutoTest").isDisplayed());
+	}
+	
 	@When("User clicks the Make Inactive Option")
 	public void user_clicks_the_Make_Inactive_Option() throws Exception {
 		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_MakeInactive("AutoTest"));
@@ -281,18 +289,86 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 	public void the_selected_page_is_Deactivated() {
 		Assert.assertTrue(pageTemplatesPage.CellValue("Inactive, Hidden").isDisplayed());
 	}
+	
+//	@Verify-the-Settings-can-be-changed-for-Page-Template-from-its-Contents
+	@When("User clicks the edit button on a page template")
+	public void user_clicks_the_edit_button_on_a_page_template() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Edit("AutoTest"));
+	}
+
+	@Then("the page edit window is opend")
+	public void the_page_edit_window_is_opend() {
+	Assert.assertTrue(commonElementLocator.pag_Title.getText().contains("AutoTest"));
+	}
+
+	@When("User clicks the Settings buttons")
+	public void user_clicks_the_Settings_buttons() throws Exception {
+	 pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Settings);
+	}
+
+	@Then("the Settings modal window is opened")
+	public void the_Settings_modal_window_is_opened() throws InterruptedException {
+	Assert.assertEquals("Settings", pageSettingsModal.getElementText(pageSettingsModal.mod_Title));
+	}
+
+	@When("User attaches a file and click the Save Settings button")
+	public void user_attaches_a_file_and_click_the_Save_Settings_button() throws Exception {
+		pageSettingsModal.sendKeysToWebElement(pageSettingsModal.txtF_ChooseFile, "C:/Development/SMSAutomation/smsautomation/lib/auto_gallery_small.jpeg");
+		pageSettingsModal.waitAndClickElement(pageSettingsModal.btn_SaveSettings);
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Save);
+	}
+
+	@Then("User verifies the attached file is saved successfully.")
+	public void user_verifies_the_attached_file_is_saved_successfully() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Settings);
+		Assert.assertTrue(pageSettingsModal.settings_Image.getAttribute("title").contains("auto_gallery_small.jpeg"));
+	}
+	
+//	@Verify-the-Page-Template-name-can-be-changed-from-its-content-page
+	@When("User clicks on the Page template name")
+	public void user_clicks_on_the_Page_template_name() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.lbl_ageTemplatesTitle);
+	}
+
+	@When("User modifies the page title")
+	public void user_modifies_the_page_title() throws Exception {
+		pagesConfigurationPage.sendKeysToWebElement(pagesConfigurationPage.txtF_PageTemplatesTitle, "AutoTest2");
+	}
+
+	@When("user clicks on the editable button")
+	public void user_clicks_on_the_editable_button() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.btn_Editable);
+	}
+
+	@When("User verifies the changes to the title")
+	public void user_verifies_the_changes_to_the_title() throws Exception {
+		pagesConfigurationPage.waitAndClickElement(pagesConfigurationPage.lnk_Pages);
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest2");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		Assert.assertTrue(pageTemplatesPage.CellValue("AutoTest2").isDisplayed());
+	}
+
+	
 
 //	@Verify-clicking-Cancel-or-'X'-on-"Delete-this-page"-does-not-delete-a-page-template-from-its-content-page
 	@When("User clicks the action drop down for the page to delete")
 	public void user_clicks_the_action_drop_down_for_the_page_to_delete() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest2");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
-		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_EditDDown("AutoTest2"));
+	}
+	
+	@Then("the actions options for the page to be deleted is displayed")
+	public void the_actions_options_for_the_page_to_be_deleted_is_displayed() {
+		Assert.assertTrue(pageTemplatesPage.btn_MakeActive("AutoTest2").isDisplayed());
+		Assert.assertTrue(pageTemplatesPage.btn_Delete("AutoTest2").isDisplayed());
 	}
 
 	@When("User clicks the Delete Option")
 	public void user_clicks_the_Delete_Option() throws Exception {
-		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Delete("AutoTest"));
+		pageTemplatesPage.waitAndClickElement(pageTemplatesPage.btn_Delete("AutoTest2"));
 	}
 
 	@Then("the Delete page window is opened")
@@ -307,7 +383,7 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("the selected page is not deleted and available in the list")
 	public void the_selected_page_is_not_deleted_and_available_in_the_list() {
-		Assert.assertTrue(pageTemplatesPage.CellValue("AutoTest").isDisplayed());
+		Assert.assertTrue(pageTemplatesPage.CellValue("AutoTest2").isDisplayed());
 	}
 
 //	@Verify-admin-can-delete-a-page-template-from-its-content-page
@@ -318,7 +394,7 @@ public class AddPageTemplatesUnderSettingsSteps extends DriverFactory {
 
 	@Then("the selected page is deleted and not available in the list again")
 	public void the_selected_page_is_deleted_and_not_available_in_the_list_again() throws Exception {
-		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest");
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "AutoTest2");
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 		Assert.assertTrue(
 				Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)) == 0);

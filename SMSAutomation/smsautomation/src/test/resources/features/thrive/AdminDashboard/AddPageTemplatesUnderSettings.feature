@@ -18,7 +18,7 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     When User clicks the Page Templates option
     Then the Page Templates screen is displayed
 
-  @[SMSM-172] @Verify-admin-can-add-a-page-template-and-page-is-added-under-Page-Templates-page
+  @[SMSM-172] @Verify-admin-can-add-a-page-template-and-page-is-added-under-Page-Templates-page 
   Scenario: Verify admin can add a page template and page is added under Page Templates page
     When User Clicks on the New button on the Page Templates page
     Then the Create Page Template window is opened
@@ -69,7 +69,7 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     When User clicks on an Image, clicks on the delete snippet and clicks the Save button
     Then the snippet is successfully removed
 
-  @[SMSM-172] @Verify-a-Page-Template-can-be-Activated-from-its-content-page
+  @[SMSM-172] @Verify-a-Page-Template-can-be-Activated-from-its-content-page 
   Scenario: Verify a Page Template can be Activated from its content page [C22416232]
     When User clicks the action drop down for the page to Activate
     Then the actions options are displayed
@@ -77,30 +77,53 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     Then the Activate page window is opened
     When User clicks the Activate button on the modal
     Then the selected page is Activated
-    
-  @[SMSM-172] @Verify-a-Page-Template-can-be-deactivate-from-its-content-page @OnlyMe
+
+  @[SMSM-172] @Verify-a-Page-Template-can-be-deactivate-from-its-content-page 
   Scenario: Verify a Page Template can be deactivate from its content page [C22416229]
     When User clicks the action drop down for the page to Deactivate
-    Then the actions options are displayed
+    Then the actions options for the selected page to deactivate is displayed
     When User clicks the Make Inactive Option
     Then the Deactivate page window is opened
     When User clicks the Deactivate button on the modal
     Then the selected page is Deactivated
 
-  @[SMSM-172] @Verify-clicking-Cancel-or-'X'-on-"Delete-this-page"-does-not-delete-a-page-template-from-its-content-page
+
+@[SMSM-172] @Verify-the-Settings-can-be-changed-for-Page-Template-from-its-Contents 
+  Scenario: Verify the Settings can be changed for Page Template from its Contents
+    When User clicks the edit button on a page template
+    Then the page edit window is opend
+    When User clicks the Settings buttons
+    Then the Settings modal window is opened
+    When User attaches a file and click the Save Settings button
+    Then User verifies the attached file is saved successfully.
+
+  @[SMSM-172] @Verify-the-Page-Template-name-can-be-changed-from-its-content-page 
+  Scenario: Verify the Page Template name can be changed from its content page
+    When User clicks the edit button on a page template
+    Then the page edit window is opend
+    When User clicks on the Page template name
+    And User modifies the page title
+    And user clicks on the editable button
+    And User verifies the changes to the title
+    
+  @[SMSM-172] @Verify-clicking-Cancel-or-'X'-on-"Delete-this-page"-does-not-delete-a-page-template-from-its-content-page 
   Scenario: Verify clicking Cancel or 'X'  on "Delete this page" does not  delete a page template from its content page [C22416228]
     When User clicks the action drop down for the page to delete
-    Then the actions options are displayed
+    Then the actions options for the page to be deleted is displayed
     When User clicks the Delete Option
     Then the Delete page window is opened
     When User clicks the close button on the modal
     Then the selected page is not deleted and available in the list
 
-  @[SMSM-172] @Verify-admin-can-delete-a-page-template-from-its-content-page
+  @[SMSM-172] @Verify-admin-can-delete-a-page-template-from-its-content-page 
   Scenario: Verify admin can delete a page template from its content page
     When User clicks the action drop down for the page to delete
-    Then the actions options are displayed
+     Then the actions options for the page to be deleted is displayed
     When User clicks the Delete Option
     Then the Delete page window is opened
     When User clicks the Delete button on the modal
     Then the selected page is deleted and not available in the list again
+
+  
+    
+    
