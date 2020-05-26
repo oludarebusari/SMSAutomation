@@ -31,7 +31,6 @@ public class PageTemplatesPage extends BasePage {
 	public @FindBy(xpath = "//a[@class=\"sorting\" and text()[normalize-space()=\"Updated\"]]") WebElement col_Updated;
 	public @FindBy(xpath = "//th[text()=\"Action\"]") WebElement col_Action;
 	public @FindBy(xpath = "//a[text()=\"Edit\"]") WebElement btn_Edit;
-
 	public @FindBy(xpath = "//tbody") WebElement par_PageElement;
 
 	public WebElement btn_Edit(String name) {

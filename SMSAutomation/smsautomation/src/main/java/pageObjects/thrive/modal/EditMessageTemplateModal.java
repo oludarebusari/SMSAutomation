@@ -46,8 +46,12 @@ public class EditMessageTemplateModal extends BasePage {
 	
 	
 //	Error Messages
+	public @FindBy(xpath = "//div[contains(@class, \"form-group has-error\") and ./label[normalize-space()=\"Subject\"]]") WebElement error_Subject;
 	public @FindBy(xpath = "//div[contains(@class, \"form-group has-error\") and ./label[normalize-space()=\"From\"]]") WebElement error_From;
 	public @FindBy(xpath = "//div[contains(@class, \"form-group has-error\") and ./label[normalize-space()=\"To\"]]") WebElement error_To;
-	
+	public @FindBy(xpath = "//div[contains(@class, \"form-group has-error\") and ./label[normalize-space()=\"Email Body\"]]") WebElement error_EmailBody;
+	public @FindBy(xpath = "(//small[@data-fv-for=\"admin_email_template_type[title]\"])[2]") WebElement error_Title;
+	public @FindBy(xpath = "(//small[@data-fv-for=\"admin_email_template_type[slug]\"])[2]") WebElement error_Slug;
+	public @FindBy(xpath = "(//small[@data-fv-for=\"admin_email_template_type[description]\"])[2]") WebElement error_Description;	
 	
 }

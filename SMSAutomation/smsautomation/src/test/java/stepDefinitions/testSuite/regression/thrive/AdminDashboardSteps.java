@@ -484,7 +484,7 @@ public class AdminDashboardSteps extends DriverFactory {
 		Assert.assertEquals("Dashboard", thrDashboardPage.getElementText(thrDashboardPage.pag_Title));
 	}
 
-//	  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page @RegressionTest
+//	  @SMSM-294 @Verify-Admin-user-can-see-count-of-Social-posts-and-count-Businesses-on-the-dashboard-page
 	@Then("User verifies the social post count is available")
 	public void user_verifies_the_social_post_count_is_available() {
 		Assert.assertTrue(thrDashboardPage.socialPost_Count.isDisplayed());
@@ -492,11 +492,11 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("User verifies the message displayed about the post")
 	public void user_verifies_the_message_displayed_about_the_post() throws Exception {
-		Assert.assertEquals("We stream posts for 481 Business",
+		Assert.assertEquals("We stream posts for 482 Business",
 				thrDashboardPage.getElementText(thrDashboardPage.socialPost_Message));
 	}
 
-//	 @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page @RegressionTest
+//	 @SMSM-294 @Verify-Admin-user-can-see-Resellers-revenue-on-the-dashboard-page 
 	@Then("User verifies revenue amount is available")
 	public void user_verifies_revenue_amount_is_available() {
 		Assert.assertTrue(thrDashboardPage.revenue_Amount.isDisplayed());
@@ -504,10 +504,10 @@ public class AdminDashboardSteps extends DriverFactory {
 
 	@Then("User verifies the message displayed about the revenue")
 	public void user_verifies_the_message_displayed_about_the_revenue() throws Exception {
-		Assert.assertEquals("From 481 Business", thrDashboardPage.getElementText(thrDashboardPage.revenue_Message));
+		Assert.assertEquals("From 482 Business", thrDashboardPage.getElementText(thrDashboardPage.revenue_Message));
 	}
 
-//  @SMSM-294 @Verify-ser-is-able-to-edit-the-business-details @RegressionTest
+//  @SMSM-294 @Verify-user-is-able-to-edit-the-business-details
 	@When("User navigates to Companies menu and clicks the Businesses option")
 	public void user_navigates_to_Companies_menu_and_clicks_the_Businesses_option() throws Exception {
 		thrDashboardPage.waitAndClickElement(commonElementLocator.menu_Companies);
@@ -565,7 +565,6 @@ public class AdminDashboardSteps extends DriverFactory {
 	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
 	  Assert.assertTrue(manageBusinessPage.selectCellValue("555-223-1717").isDisplayed());
 	  Assert.assertTrue(manageBusinessPage.selectCellValue("Bloomington, Minnesota").isDisplayed());
-	  
 	}
 	
 	@Then("User revert the changes made to Business")
@@ -578,4 +577,6 @@ public class AdminDashboardSteps extends DriverFactory {
 		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}
 
+	
+	
 }

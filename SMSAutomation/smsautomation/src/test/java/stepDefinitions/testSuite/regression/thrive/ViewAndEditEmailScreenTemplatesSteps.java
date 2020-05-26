@@ -7,8 +7,11 @@ import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.thrive.MessageTemplatesPage;
+import pageObjects.thrive.ScreenTemplatesPage;
 import pageObjects.thrive.Tab.SettingsDDown;
 import pageObjects.thrive.modal.ActivatePageModal;
+import pageObjects.thrive.modal.ActivateScreenTemplateModal;
+import pageObjects.thrive.modal.DeactivateScreenTemplateModal;
 import pageObjects.thrive.modal.EditMessageTemplateModal;
 import utils.DriverFactory;
 
@@ -16,10 +19,13 @@ public class ViewAndEditEmailScreenTemplatesSteps extends DriverFactory {
 	
 	
 	public ActivatePageModal activatePageModal = PageFactory.initElements(driver, ActivatePageModal.class);
+	public ActivateScreenTemplateModal activateScreenTemplateModal = PageFactory.initElements(driver, ActivateScreenTemplateModal.class);
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
+	public DeactivateScreenTemplateModal deactivateScreenTemplateModal = PageFactory.initElements(driver, DeactivateScreenTemplateModal.class);
 	public EditMessageTemplateModal editMessageTemplateModal = PageFactory.initElements(driver, EditMessageTemplateModal.class);
 	public MessageTemplatesPage messageTemplatesPage = PageFactory.initElements(driver, MessageTemplatesPage.class);
 	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
+	public ScreenTemplatesPage screenTemplatesPage = PageFactory.initElements(driver, ScreenTemplatesPage.class);
 	
 
 //	@Verify-Email-Templates-option-under-Settings-in-admin-dashboard
@@ -132,12 +138,177 @@ public class ViewAndEditEmailScreenTemplatesSteps extends DriverFactory {
 		editMessageTemplateModal.sendKeysToWebElement(editMessageTemplateModal.txtF_FROM, "dgf");
 		Assert.assertTrue(editMessageTemplateModal.error_From.isDisplayed());
 	}
-
 	
 	@When("User verifies that the Save Settings button is disabled")
 	public void user_verifies_that_the_Save_Settings_button_is_disabled() {
-//		editMessageTemplateModal.WaitUntilWebElementIsVisible(editMessageTemplateModal.btn_MSaveSettings);
 		Assert.assertTrue(editMessageTemplateModal.btn_MSaveSettings.getAttribute("class").contains("disabled"));
 	}
+	
+	
+//	@Verify-that-mandatory-fields-are-marked-red-on-clicking-update-settings-without-entering-any-data
+	@When("User clicks the edit button for a message template edit")
+	public void user_clicks_the_edit_button_for_a_message_template_edit() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Invoice Past Due");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.editMessageTemplatesByTitle("Invoice Past Due"));
+	}
+
+	@Then("the Message template window to edit is opened")
+	public void the_Message_template_window_to_edit_is_opened() throws Exception {
+		Assert.assertEquals("Edit Message Template", editMessageTemplateModal.getElementText(editMessageTemplateModal.mod_Title));
+	}
+	
+	@When("User removes all the default values on the fields on the Edit Message tamplate window and clicks Save Settings button")
+	public void user_removes_all_the_default_values_on_the_fields_on_the_Edit_Message_tamplate_window_and_clicks_Save_Settings_button() throws Exception {
+		editMessageTemplateModal.sendKeysToWebElement(editMessageTemplateModal.txtF_MSubject, "");
+		editMessageTemplateModal.sendKeysToWebElement(editMessageTemplateModal.txtA_EmailBody, "");
+		editMessageTemplateModal.sendKeysToWebElement(editMessageTemplateModal.txtF_Title, "");
+		editMessageTemplateModal.sendKeysToWebElement(editMessageTemplateModal.txtF_Slug, "");
+		editMessageTemplateModal.sendKeysToWebElement(editMessageTemplateModal.txtA_Description, "");
+		editMessageTemplateModal.waitAndClickElement(editMessageTemplateModal.btn_MSaveSettings);
+	}
+
+	@Then("vaidation messages are displayed for those fields")
+	public void vaidation_messages_are_displayed_for_those_fields() throws Exception {
+		Assert.assertTrue(editMessageTemplateModal.error_Subject.isDisplayed());
+		Assert.assertTrue(editMessageTemplateModal.error_EmailBody.isDisplayed());
+		Assert.assertTrue(editMessageTemplateModal.error_Title.isDisplayed());
+		Assert.assertTrue(editMessageTemplateModal.error_Slug.isDisplayed());
+		Assert.assertTrue(editMessageTemplateModal.error_Description.isDisplayed());
+	}
+	
+//	Verify-that-user-is-navigated-to-screen-templates-page
+	@When("User clicks the Screen Templates")
+	public void user_clicks_the_Screen_Templates() throws Exception {
+	 settingsDDown.waitAndClickElement(settingsDDown.opt_Screen_Templates); 
+	}
+
+	@Then("User should be navigated to Screen Templates page")
+	public void user_should_be_navigated_to_Screen_Templates_page() throws Exception {
+	  Assert.assertEquals("Screen Templates", commonElementLocator.getElementText(commonElementLocator.pag_Title));  
+	}
+	
+//	@Verify-that-user-is-able-to-Deactivate-a-screen-template
+	@Then("User verifies the columns on the Screen templates page")
+	public void user_verifies_the_columns_on_the_Screen_templates_page() {
+	   Assert.assertTrue(screenTemplatesPage.col_Name.isDisplayed());
+	   Assert.assertTrue(screenTemplatesPage.col_Template.isDisplayed());
+	   Assert.assertTrue(screenTemplatesPage.col_Verticals.isDisplayed());
+	   Assert.assertTrue(screenTemplatesPage.col_Status.isDisplayed());
+	   Assert.assertTrue(screenTemplatesPage.col_Action.isDisplayed());
+	}
+
+	@Then("user verifies that Deactivate button is present for all the rows under the Action column")
+	public void user_verifies_that_Deactivate_button_is_present_for_all_the_rows_under_the_Action_column() throws Exception {
+		Assert.assertEquals(10, screenTemplatesPage.getNumberOfElements(screenTemplatesPage.getDEACTIVATEBTN()));
+	}
+
+	@When("User clicks on deactivate button for a particular record")
+	public void user_clicks_on_deactivate_button_for_a_particular_record() throws Exception {
+		screenTemplatesPage.waitAndClickElement(screenTemplatesPage.btn_DeactivateByName("Offer"));
+	}
+
+	@Then("the Deactivate Screen Template window is opened")
+	public void the_Deactivate_Screen_Template_window_is_opened() throws Exception {
+		Assert.assertEquals("Deactivate Screen Template", deactivateScreenTemplateModal.getElementText(deactivateScreenTemplateModal.mod_Title));
+	}
+
+	@When("User clicks on the deactivate button on the pop-up window")
+	public void user_clicks_on_the_deactivate_button_on_the_pop_up_window() throws Exception {
+		deactivateScreenTemplateModal.waitAndClickElement(deactivateScreenTemplateModal.btn_Deactivate);
+	}
+
+	@Then("User confirms the status of the screen template is updated")
+	public void user_confirms_the_status_of_the_screen_template_is_updated() {
+		Assert.assertTrue(screenTemplatesPage.CellValueByName("Offer", "Inactive, Hidden").isDisplayed());
+	}
+	
+	
+//	@Verify-that-user-is-able-to-Reactivate-a-deactivated-template
+	@When("User clicks on Activate button of the deactivated screen templates")
+	public void user_clicks_on_Activate_button_of_the_deactivated_screen_templates() throws Exception {
+		screenTemplatesPage.waitAndClickElement(screenTemplatesPage.btn_ActivateByName("Offer"));
+	}
+
+	@Then("the Activate Screen Template window is opened")
+	public void the_Activate_Screen_Template_window_is_opened() throws Exception {
+		Assert.assertEquals("Activate Screen Template", activateScreenTemplateModal.getElementText(activateScreenTemplateModal.mod_Title));
+	}
+
+	@When("User clicks on the Activate button on the modal")
+	public void user_clicks_on_the_Activate_button_on_the_modal() throws Exception {
+		activateScreenTemplateModal.waitAndClickElement(activateScreenTemplateModal.btn_Activate);
+	}
+
+	@Then("User confirms the status of the screen template that is activated")
+	public void user_confirms_the_status_of_the_screen_template_that_is_activated() {
+		Assert.assertTrue(screenTemplatesPage.CellValueByName("Offer", "Active").isDisplayed());
+	}
+
+	
+//	@erify-that-user-is-able-to-filter-the-records-on-the-basis-of-verticals
+	@When("User clicks on the Verticals dropdown box")
+	public void user_clicks_on_the_Verticals_dropdown_box() throws Exception {
+	 screenTemplatesPage.waitAndClickElement(screenTemplatesPage.txtF_Verticals);
+	}
+
+	@Then("the drop down option is displayed")
+	public void the_drop_down_option_is_displayed() {
+		Assert.assertTrue(screenTemplatesPage.VerticalOptions.isDisplayed());
+	}
+
+	@When("User selects a vertical option")
+	public void user_selects_a_vertical_option() throws Exception {
+	  screenTemplatesPage.waitAndClickElement(screenTemplatesPage.verticalsOpt("Fast Food"));
+	  commonElementLocator.waitAndClickElement(commonElementLocator.pag_Title);
+	}
+
+	@Then("records are displayed as per vertical selected")
+	public void records_are_displayed_as_per_vertical_selected() throws NumberFormatException, InterruptedException {
+		Assert.assertEquals(8, Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationTotal)));
+	}
+
+	@When("User selects Multiple verticals")
+	public void user_selects_Multiple_verticals() {
+//	 TODO : There is no enough data to complete this.
+	}
+
+	@Then("records are displayed as per verticals selected")
+	public void records_are_displayed_as_per_verticals_selected() {
+//		 TODO : There is no enough data to complete this.
+	}
+	
+	
+//	@Verfiy-that-user-is-able-to-search-the-records
+	@Then("User verifies that the search textbox is displayed on the page")
+	public void user_verifies_that_the_search_textbox_is_displayed_on_the_page() {
+		Assert.assertTrue(commonElementLocator.txtF_Search.isDisplayed());
+	}
+
+	@When("User enters a search keyword in the search textbox and click on Search button")
+	public void user_enters_a_search_keyword_in_the_search_textbox_and_click_on_Search_button() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Upsell");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the search result is displayed as per the search criterion")
+	public void the_search_result_is_displayed_as_per_the_search_criterion() {
+	Assert.assertTrue(screenTemplatesPage.CellValue("Upsell").isDisplayed());
+	}
+
+	@Then("User verifies that the Show n entries works correctly")
+	public void user_verifies_that_the_Show_n_entries_works_correctly() throws Exception {
+	 commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "");
+	 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	 commonElementLocator.waitAndClickElement(commonElementLocator.lov_ShowEntries);
+	 commonElementLocator.waitAndClickElement(commonElementLocator.showEntriesOption("25"));
+	 Assert.assertEquals(25, Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd)));
+	}
+
+	@Then("User verifies that paginator works correctly")
+	public void user_verifies_that_paginator_works_correctly() {
+	  
+	}
+
 	
 }
