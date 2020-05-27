@@ -34,7 +34,7 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 	private final String territoryPageNumberText = "3";
 	private int defaultPageSize = 0;
 
-// Reports dropdown verification
+// Reports drop down verification
 	@When("User clicks on the Report Menu option on the dashboard")
 	public void user_clicks_on_the_Report_Menu_option_on_the_dashboard() throws Exception {
 		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Reports);

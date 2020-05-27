@@ -16,13 +16,13 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     When user clicks the Settings menu
     Then all options under Settings menu are displayed
 
-  @SMSM-193 @Verify-Email-Templates-option-under-Settings-in-admin-dashboard
+  @SMSM-171 @Verify-Email-Templates-option-under-Settings-in-admin-dashboard
   Scenario: Verify Email Templates option under Settings in admin dashboard [C22393878]
     When User clicks the Message Templates
     Then User is redirected to Email Templates page
     And User validates the message templates fields and that records are present
 
-  @SMSM-193 @Verify-user-is-able-to-modify-email-templates-within-templates-list
+  @SMSM-171 @Verify-user-is-able-to-modify-email-templates-within-templates-list
   Scenario: Verify user is able to modify email templates within templates list [C22393896]
     When User clicks the Message Templates
     Then User is redirected to Email Templates page
@@ -36,7 +36,7 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     And User revert changes made to the Message Template
 
   ## Screen Templates
-  @SMSM-193 @Verfiy-that-on-clicking-(X)-button-user-is-navigated-back-to-email-templates-page
+  @SMSM-171 @Verfiy-that-on-clicking-(X)-button-user-is-navigated-back-to-email-templates-page
   Scenario: Verfiy that on clicking (X) button user is navigated back to email templates page [C22468779]
     When User clicks the Message Templates
     Then User is redirected to Email Templates page
@@ -45,7 +45,7 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     When User clicks the X button on the right corner of the edit template window
     Then User is navigated back to email templates window
 
-  @SMSM-193 @Verify-that-user-is-not-able-to-update-settings-on-entering-invalid-data-in-different-fields
+  @SMSM-171 @Verify-that-user-is-not-able-to-update-settings-on-entering-invalid-data-in-different-fields
   Scenario: Verify that user is not able to update settings on entering invalid data in different fields [C22469214]
     When User clicks the Message Templates
     Then User is redirected to Email Templates page
@@ -55,7 +55,7 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     When User enters invalid email address in From field
     And User verifies that the Save Settings button is disabled
 
-  @SMSM-193 @Verify-that-mandatory-fields-are-marked-red-on-clicking-update-settings-without-entering-any-data
+  @SMSM-171 @Verify-that-mandatory-fields-are-marked-red-on-clicking-update-settings-without-entering-any-data
   Scenario: Verify that mandatory fields are marked red on clicking update settings without entering any data [C22469216]
     When User clicks the Message Templates
     Then User is redirected to Email Templates page
@@ -65,12 +65,12 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     Then vaidation messages are displayed for those fields
     And User verifies that the Save Settings button is disabled
 
-  @SMSM-193 @Verify-that-user-is-navigated-to-screen-templates-page
+  @SMSM-171 @Verify-that-user-is-navigated-to-screen-templates-page
   Scenario: Verify that user is navigated to screen templates page [C22468781]
     When User clicks the Screen Templates
     Then User should be navigated to Screen Templates page
 
-  @SMSM-193 @Verify-that-user-is-able-to-Deactivate-a-screen-template
+  @SMSM-171 @Verify-that-user-is-able-to-Deactivate-a-screen-template
   Scenario: Verify that user is able to Deactivate a screen template [C22393916]
     When User clicks the Screen Templates
     Then User should be navigated to Screen Templates page
@@ -81,7 +81,7 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     When User clicks on the deactivate button on the pop-up window
     Then User confirms the status of the screen template is updated
 
-  @SMSM-193 @Verify-that-user-is-able-to-Reactivate-a-deactivated-template
+  @SMSM-171 @Verify-that-user-is-able-to-Reactivate-a-deactivated-template
   Scenario: Verify that user is able to Reactivate a deactivated template [C22393919]
     When User clicks the Screen Templates
     Then User should be navigated to Screen Templates page
@@ -89,8 +89,8 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     Then the Activate Screen Template window is opened
     When User clicks on the Activate button on the modal
     Then User confirms the status of the screen template that is activated
-    
-  @SMSM-193 @erify-that-user-is-able-to-filter-the-records-on-the-basis-of-verticals
+
+  @SMSM-171 @erify-that-user-is-able-to-filter-the-records-on-the-basis-of-verticals
   Scenario: erify that user is able to filter the records on the basis of verticals [C22398152]
     When User clicks the Screen Templates
     Then User should be navigated to Screen Templates page
@@ -100,8 +100,8 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     Then records are displayed as per vertical selected
     When User selects Multiple verticals
     Then records are displayed as per verticals selected
-   
-  @SMSM-193 @Verfiy-that-user-is-able-to-search-the-records @OnlyMe
+
+  @SMSM-171 @Verfiy-that-user-is-able-to-search-the-records
   Scenario: Verfiy that user is able to search the records [C22398197]
     When User clicks the Screen Templates
     Then User should be navigated to Screen Templates page
@@ -110,8 +110,27 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     Then the search result is displayed as per the search criterion
     And User verifies that the Show n entries works correctly
     And User verifies that paginator works correctly
-    
-    
+
+  @SMSM-171 @Verify-the-help-button-functionality-within-email-templates-page
+  Scenario: Verify the help button functionality within email templates page [C22398220]
+    When User clicks the Message Templates
+    Then User is redirected to Message Templates page
+    When User clicks the Help button on the Message Template page
+    Then the Message Templates Management help tour window appears
+    When User clicks the Next button on the Message Templates Management help window
+    Then the Search Message Templates is displayed
+    When User clicks the previous button on the Search Message Templates window
+    Then User is navigated to the Message Templates Management window
+    When User clicks on End Tour button
+    Then Tour ends successfully
+
+  @SMSM-171 @Verifiy-that-user-is-no-records-are-searched-when-keywords-entered-in-search-box-does-not-exist @OnlyMe
+  Scenario: Verifiy that user is no records are searched when keywords entered in search box does not exist [C22469309]
+    When User clicks the Screen Templates
+    Then User should be navigated to Screen Templates page
+    And User verifies that a search text box is displayed
+    When User enters an invalid keyword in the search box
+    Then user verifies that zero result is displayed
     
     
     

@@ -14,12 +14,10 @@ public class MessageTemplatesPage extends BasePage {
 		super();
 	}
 	
-	
 	private final String EDITBTN = "//a[@title=\"Edit\"]";
 	public String getEDITBTN() {
 		return EDITBTN;
 	}
-	
 	
 	public @FindBy(xpath = "//th[@id=\"email-templates-title\"]//a[text()=\"Title\"]") WebElement col_Title;
 	public @FindBy(xpath = "//th[@id=\"email-templates-subject\"]//a[text()=\"Subject\"]") WebElement col_Subject;

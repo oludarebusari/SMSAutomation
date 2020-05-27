@@ -306,9 +306,63 @@ public class ViewAndEditEmailScreenTemplatesSteps extends DriverFactory {
 	}
 
 	@Then("User verifies that paginator works correctly")
-	public void user_verifies_that_paginator_works_correctly() {
-	  
+	public void user_verifies_that_paginator_works_correctly() throws Exception {
+	   commonElementLocator.waitAndClickElement(commonElementLocator.btn_PaginationNext);
+	   Assert.assertEquals(2, Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.paginationActiveBtn).substring(0, 1)));
 	}
 
+//	@Verify-the-help-button-functionality-within-email-templates-page
+	@Then("User is redirected to Message Templates page")
+	public void user_is_redirected_to_Message_Templates_page() throws Exception {
+	Assert.assertEquals("Message Templates", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+	}
+
+	@When("User clicks the Help button on the Message Template page")
+	public void user_clicks_the_Help_button_on_the_Message_Template_page() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("the Message Templates Management help tour window appears")
+	public void the_Message_Templates_Management_help_tour_window_appears() throws Exception {
+		Assert.assertEquals("Message Template Management", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the Next button on the Message Templates Management help window")
+	public void user_clicks_the_Next_button_on_the_Message_Templates_Management_help_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Search Message Templates is displayed")
+	public void the_Search_Message_Templates_is_displayed() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Search Message Templates",  commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the previous button on the Search Message Templates window")
+	public void user_clicks_the_previous_button_on_the_Search_Message_Templates_window() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
 	
+	@Then("User is navigated to the Message Templates Management window")
+	public void user_is_navigated_to_the_Message_Templates_Management_window() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Message Template Management", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+		
+//	@Verifiy-that-user-is-no-records-are-searched-when-keywords-entered-in-search-box-does-not-exist
+	@Then("User verifies that a search text box is displayed")
+	public void user_verifies_that_a_search_text_box_is_displayed() {
+		Assert.assertTrue(commonElementLocator.txtF_Search.isDisplayed());
+	}
+
+	@When("User enters an invalid keyword in the search box")
+	public void user_enters_an_invalid_keyword_in_the_search_box() throws Exception {
+	  commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "vvvv");
+	  commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("user verifies that zero result is displayed")
+	public void user_verifies_that_zero_result_is_displayed() throws Exception {
+		Assert.assertEquals(0, Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd)));
+	}
 }
