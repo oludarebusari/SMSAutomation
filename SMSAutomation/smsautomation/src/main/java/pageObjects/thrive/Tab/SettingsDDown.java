@@ -22,10 +22,5 @@ public class SettingsDDown extends BasePage {
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Alerts\"]]") WebElement opt_Alerts;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Tours\"]]") WebElement opt_Tours;
 
-	// Thrive Setting Menu Options
-	
-//	  public @FindBy(xpath = "//a[text()[normalize-space()=\"Language Strings\"]]")  WebElement opt_LanguageStrings; 
-//	  public @FindBy(xpath = "//a[text()[normalize-space()=\"Message Templates\"]]") WebElement opt_MessageTemplates;
-	 
 	
 }

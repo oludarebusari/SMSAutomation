@@ -25,6 +25,10 @@ public class ManageResellerPage extends BasePage {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + reseller + "']]"));
 	}
 
+	public WebElement btn_SignIn(String reseller) {
+		return parent.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + reseller + "']]//a[@title=\"Sign In\"]"));
+	}
+	
 	public WebElement txt_Status(String reseller) {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + reseller
 				+ "']]//td[@class=\"company-status\"]"));

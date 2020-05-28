@@ -14,6 +14,12 @@ public class SettingsPage extends BasePage {
 		super();
 	}
 
+	private final String EDITBTN = "//a[@title=\"Edit\"]";
+	
+	public String getEDITBTN() {
+		return EDITBTN;
+	}
+	
 	public @FindBy(xpath = "//th[@id=\"settings-title\"]//a[text()=\"Title\"]") WebElement col_Title;
 	public @FindBy(xpath = "//th[@id=\"settings-section\"]//a[text()=\"Group\"]") WebElement col_Group;
 	public @FindBy(xpath = "//th[@id=\"settings-value\"]//a[text()=\"Value\"]") WebElement col_Value;
@@ -32,6 +38,10 @@ public class SettingsPage extends BasePage {
 	
 	public WebElement colValueOption(String option) {
 		return parent_SettingsRecord.findElement(By.xpath("//td[@data-field=\"value\" and text()[normalize-space()=\'" + option + "']]"));
+	}
+	
+	public WebElement firstSortedRecord(String option) {
+		return parent_SettingsRecord.findElement(By.xpath("//tr[1][td[text()=\'" + option + "']]"));
 	}
 	
 }

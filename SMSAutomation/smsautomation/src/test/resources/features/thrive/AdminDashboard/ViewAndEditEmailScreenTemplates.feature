@@ -124,7 +124,7 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @SMSM-171 @Verifiy-that-user-is-no-records-are-searched-when-keywords-entered-in-search-box-does-not-exist @OnlyMe
+  @SMSM-171 @Verifiy-that-user-is-no-records-are-searched-when-keywords-entered-in-search-box-does-not-exist
   Scenario: Verifiy that user is no records are searched when keywords entered in search box does not exist [C22469309]
     When User clicks the Screen Templates
     Then User should be navigated to Screen Templates page
