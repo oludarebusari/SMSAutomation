@@ -14,6 +14,12 @@ public class LanguageStringsPage extends BasePage{
 		super();
 	}
 	
+	private final String EDITBTN = "//a[@title=\"Edit\"]";
+	
+	public String getEDITBTN() {
+		return EDITBTN;
+	}
+	
 	public @FindBy(xpath = "//th[@id=\"string-title\"]//a[text()=\"Title\"]") WebElement col_Title;
 	public @FindBy(xpath = "//th[@id=\"string-section\"]//a[text()=\"Group\"]") WebElement col_Group;
 	public @FindBy(xpath = "//th[@id=\"string-group\"]//a[text()=\"Access Level\"]") WebElement col_AccessLevel;
@@ -36,5 +42,6 @@ public class LanguageStringsPage extends BasePage{
 	public WebElement colValueOption(String option) {
 		return parent_SettingsRecord.findElement(By.xpath("//td[@data-field=\"value\" and text()[normalize-space()=\'" + option + "']]"));
 	}
+	
 
 }

@@ -185,7 +185,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Updated column name on Language String page
     Then the Language Strings records are sorted by Updated column
 
-  @SMSM-136 @Apply-Sort-in-Email-Template-page 
+  @SMSM-136 @Apply-Sort-in-Email-Template-page
   Scenario: Apply sort in Email Template page [C22288652]
     When User clicks on Message Templates from the dropdown
     Then the Message Templates page is opened

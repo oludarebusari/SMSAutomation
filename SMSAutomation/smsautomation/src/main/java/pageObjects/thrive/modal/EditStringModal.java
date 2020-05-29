@@ -13,8 +13,9 @@ public class EditStringModal extends BasePage {
 		super();
 	}
 	
-	public @FindBy(xpath = "//h4[contains(text(), \"Edit String\")]") WebElement mod_Title;
-	public @FindBy(xpath = "//input[@id=\"company_language_strings_type_value\"]") WebElement txt_EditString;
+	public @FindBy(xpath = "//div[@class=\"modal-header\" and .//h4[normalize-space()=\"Edit String\"]]") WebElement mod_Title;
+	public @FindBy(xpath = "//div[@class=\"modal-header\" and .//h4[normalize-space()=\"Edit String\"]]//button[@class=\"close\"]") WebElement btn_Close;;
+	public @FindBy(xpath = "//input[@id=\"company_language_strings_type_value\"]") WebElement txtF_EditString;
 	public @FindBy(xpath = "//button[contains(@class, \"ladda-button\")]") WebElement btn_SaveString;
 
 }

@@ -13,6 +13,7 @@ public class ResellerDashboardPage extends BasePage {
 	}
 
 	public @FindBy(xpath = "//h4[text()=\"New Businesses\"]") WebElement page_Title;
+	public @FindBy(xpath = "//*[@id=\"main-nav\"]/ul[1]/li[6]/a") WebElement menu_Settings;
 	public @FindBy(xpath = "//tbody") WebElement parent;
 	public WebElement btn_Edit(String business) {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"new-merchant\") and ./td[text()=\'" + business + "']]//a[text()=\"Edit\"]"));

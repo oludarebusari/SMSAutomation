@@ -28,8 +28,8 @@ Feature: [SMSM-172] Add Page Templates under settings in admin dashboard for Thr
     And User clicks the Page link
     And User confirms that the Page Template is created successfully
 
-  @[SMSM-172] @Verify-Admin-is-able-to-Add-Content-on-template-page
-  Scenario: Verify Admin is able to Add Content on template page
+  #@[SMSM-172] @Verify-Admin-is-able-to-Add-Content-on-template-page
+  #Scenario: Verify Admin is able to Add Content on template page
 
   #	When User verifies the options on the left menu bar of the newly created page
   #	When user clicks on an option to add content

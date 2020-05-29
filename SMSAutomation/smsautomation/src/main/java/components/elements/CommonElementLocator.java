@@ -20,7 +20,6 @@ public class CommonElementLocator extends BasePage {
 	public String downloadpath = System.getProperty("user.home") + "//Downloads//";
 	public String fileName = "Engage Admin Dashboard.csv";
 	
-		
 	//menu options
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Dashboard\"]]") WebElement menu_Dashboard;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Experience\"]]") WebElement menu_Experience;

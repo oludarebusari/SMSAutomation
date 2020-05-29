@@ -26,7 +26,7 @@ public class SettingsPage extends BasePage {
 	public @FindBy(xpath = "//th[@id=\"settings-description\"]//a[text()=\"Description\"]") WebElement col_Description;
 	public @FindBy(xpath = "//th[@id=\"settings-updated\"]//a[text()=\"Updated\"]") WebElement col_Updated;
 	public @FindBy(xpath = "//th[@id=\"settings-action\"]//a[text()=\"Action\"]") WebElement col_Action;
-	
+	public @FindBy(xpath = "//*[@id=\"main-nav\"]/ul[1]/li[6]/a") WebElement menu_Settings;
 	
 	public @FindBy(xpath = "//tbody") WebElement parent_SettingsRecord;
 	public WebElement searchRecord(String recordTitle) {

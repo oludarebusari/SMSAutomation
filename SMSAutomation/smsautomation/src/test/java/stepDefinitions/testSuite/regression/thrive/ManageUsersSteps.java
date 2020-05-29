@@ -196,7 +196,7 @@ public class ManageUsersSteps extends BasePage {
 	public void the_user_records_should_be_sorted_in_descending_order_by_updated_column() throws Exception {
 		Assert.assertTrue(userManagementPage.col_Updated.getAttribute("class").contains("desc"));
 		Assert.assertTrue(
-				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals(commonElementLocator.getGMTDate()));
+				commonElementLocator.getElementText(commonElementLocator.sort_Updated).contentEquals(commonElementLocator.getCURRENTDate()));
 	}
 
 //	@SMSM-134 @Edit-a-user-from-user-management

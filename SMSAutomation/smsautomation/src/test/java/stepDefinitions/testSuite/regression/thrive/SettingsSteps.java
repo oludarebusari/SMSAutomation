@@ -181,7 +181,7 @@ public class SettingsSteps extends DriverFactory {
 
 	@Then("User enters the required information into the text field")
 	public void user_enters_the_required_information_into_the_text_field() throws Exception {
-		editStringModal.sendKeysToWebElement(editStringModal.txt_EditString, "Select account1");
+		editStringModal.sendKeysToWebElement(editStringModal.txtF_EditString, "Select account1");
 	}
 
 	@Then("User clicks the Update Setting button")
@@ -203,7 +203,7 @@ public class SettingsSteps extends DriverFactory {
 	@When("User changed the Language String to it's original value and clicks the Update Setting button")
 	public void user_changed_the_Language_String_to_it_s_original_value_and_clicks_the_Update_Setting_button()
 			throws Exception {
-		editStringModal.sendKeysToWebElement(editStringModal.txt_EditString, "Select account");
+		editStringModal.sendKeysToWebElement(editStringModal.txtF_EditString, "Select account");
 		editStringModal.waitAndClickElement(editStringModal.btn_SaveString);
 	}
 
@@ -693,8 +693,8 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Language Strings records are sorted by Updated column")
 	public void the_Language_Strings_records_are_sorted_by_Updated_column() throws Exception {
 		//Verify the current value of the Updated cell after sorting
-//		Thread.sleep(30000);
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("01/16/2018"));
+		Thread.sleep(30000);
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("05/28/2020"));
 	}
 
 //	@SMSM-136 @Apply-Sort-in-Email-Template-page

@@ -54,4 +54,11 @@ public class EditMessageTemplateModal extends BasePage {
 	public @FindBy(xpath = "(//small[@data-fv-for=\"admin_email_template_type[slug]\"])[2]") WebElement error_Slug;
 	public @FindBy(xpath = "(//small[@data-fv-for=\"admin_email_template_type[description]\"])[2]") WebElement error_Description;	
 	
+
+//	License modal elements
+	public @FindBy(xpath = "//input[@id=\"licensee_email_template_type_subject\"]") WebElement txtF_RSubject;
+	public @FindBy(xpath = "//div[@class=\"modal-header\" and .//h4[text()=\"Edit Message Template \"]]//button") WebElement btn_RClose;
+	
 }
+
+

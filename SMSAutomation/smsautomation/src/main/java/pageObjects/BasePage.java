@@ -600,6 +600,21 @@ public class BasePage extends DriverFactory {
 	}
 	
 	/**********************************************************************************
+	 ** GET CURRENT DATE
+	 *********************************************************************************/	
+	
+	public String getCURRENTDate() {
+		//capturing today's date
+        Date today = new Date();
+    
+        //dispalying date on CDT timezone
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+//        df.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen"));
+        String currentDate = df.format(today);
+        return currentDate;	
+	}
+	
+	/**********************************************************************************
 	 ** GET ElEMENT LOCATOR FROM WEBELEMENT
 	 *********************************************************************************/	
 	
