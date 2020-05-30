@@ -2,6 +2,7 @@ package pageObjects.thrive;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -40,9 +41,16 @@ public class BusinessReportsPage extends BasePage {
 	public @FindBy(xpath = "//a[text()=\"New Business\"]") WebElement col_NewBusiness;
 	public @FindBy(xpath = "//a[text()=\"Canceled Businesses\"]") WebElement col_CanceledBusiness;
 	public @FindBy(xpath = "//a[text()=\"Period Net Businesses\"]") WebElement col_PeriodNetBusinesses;
+	public @FindBy(xpath = "//tbody") WebElement parent_Record;
 	
 	public @FindBy(xpath = "//div[contains(@class, \"popover\") and .//h3[text()=\"Active Businesses\"]]//div[@class=\"popover-content\"]") WebElement activeBusinessDescription;
 	public @FindBy(xpath = "//div[contains(@class, \"popover\") and .//h3[text()=\"New Business\"]]//div[@class=\"popover-content\"]") WebElement newBusinessDescription;
 	public @FindBy(xpath = "//div[contains(@class, \"popover\") and .//h3[text()=\"Canceled Businesses\"]]//div[@class=\"popover-content\"]") WebElement canceledBusinessesDescription;
 	public @FindBy(xpath = "//div[contains(@class, \"popover\") and .//h3[text()=\"Period Net Businesses\"]]//div[@class=\"popover-content\"]") WebElement periodNetBusinessesDescription;
+	
+	public WebElement firstSortedRecord(String option) {
+		return parent_Record.findElement(By.xpath("//tr[1][td[text()=\'" + option + "']]"));
+	}
+	
+	
 }

@@ -28,24 +28,24 @@ public class MessageTemplatesPage extends BasePage {
 	public @FindBy(xpath = "//a[@title=\"Edit\"]") WebElement btn_Edit;
 	
 	
-	public @FindBy(xpath = "//tbody") WebElement parent_SettingsRecord;
+	public @FindBy(xpath = "//tbody") WebElement parent_Record;
 	public WebElement searchRecord(String recordTitle) {
-		return parent_SettingsRecord.findElement(By.xpath("//tr[@data-id and ./td[text()=\'" + recordTitle + "']]"));
+		return parent_Record.findElement(By.xpath("//tr[@data-id and ./td[text()=\'" + recordTitle + "']]"));
 	}
 	public WebElement editMessageTemplatesByTitle(String recordTitle) {
 		return searchRecord(recordTitle).findElement(By.xpath("//div[contains(@class, \"btn-group-sm\") and ./a[text()=\"Edit\"]]"));
 	}
 	
 	public WebElement colValueOption(String option) { 
-		  return  parent_SettingsRecord.findElement(By.xpath("//td[@data-field=\"subject\" and text()[normalize-space()=\'" + option + "']]")); 
+		  return  parent_Record.findElement(By.xpath("//td[@data-field=\"subject\" and text()[normalize-space()=\'" + option + "']]")); 
 	}
 	 
 
 	public WebElement cellValue(String option) {
-		return parent_SettingsRecord.findElement(By.xpath("//tr//td[normalize-space()=" + option + "]"));
+		return parent_Record.findElement(By.xpath("//tr//td[normalize-space()=" + option + "]"));
 	}
 	
 	public WebElement firstSortedRecord(String option) {
-		return parent_SettingsRecord.findElement(By.xpath("//tr[1][td[text()=\'" + option + "']]"));
+		return parent_Record.findElement(By.xpath("//tr[1][td[text()=\'" + option + "']]"));
 	}
 }
