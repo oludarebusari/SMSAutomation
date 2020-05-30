@@ -10,7 +10,7 @@ import pageObjects.BasePage;
 public class BusinessPage extends BasePage {
 
 	public BusinessPage() throws IOException {
-		super();
+	    super();
 	}
 
 	public @FindBy(xpath = "//h4[contains(@class, \"no-padding\")]") WebElement pag_Title;

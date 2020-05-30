@@ -1,3 +1,4 @@
+
 package stepDefinitions.testSuite.regression;
 
 import java.awt.Robot;
@@ -15,7 +16,7 @@ import utils.Constant;
 import utils.DriverFactory;
 
 public class ViewAndEditAccountAndPlanDetailsUnderMyAccountSteps extends DriverFactory {
-	
+
 	Actions action = new Actions(driver);
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
 	MerchantMenu merchantMenu = PageFactory.initElements(driver, MerchantMenu.class);
@@ -277,5 +278,5 @@ public class ViewAndEditAccountAndPlanDetailsUnderMyAccountSteps extends DriverF
 	public void the_details_is_saved_successfully_and_a_successful_message_is_displayed() throws Exception {
 		Assert.assertEquals("CC processing is not configured in the site table!", myAccountPage.getElementText(myAccountPage.txt_Credit_Card_Update_Msg));
 	}
-
+	
 }

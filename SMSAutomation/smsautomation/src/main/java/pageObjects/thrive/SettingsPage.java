@@ -19,7 +19,7 @@ public class SettingsPage extends BasePage {
 	public String getEDITBTN() {
 		return EDITBTN;
 	}
-	
+
 	public @FindBy(xpath = "//th[@id=\"settings-title\"]//a[text()=\"Title\"]") WebElement col_Title;
 	public @FindBy(xpath = "//th[@id=\"settings-section\"]//a[text()=\"Group\"]") WebElement col_Group;
 	public @FindBy(xpath = "//th[@id=\"settings-value\"]//a[text()=\"Value\"]") WebElement col_Value;

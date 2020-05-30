@@ -98,7 +98,7 @@ public class AddNewCampaignGroupAndManageGroupInMerchantsPortal extends DriverFa
 
 	@And("User clicks the New button on the campaign groups page")
 	public void user_clicks_the_New_button_on_the_campaign_groups_page() throws Exception {
-		campaignGroupsPage.waitAndClickElement(campaignGroupsPage.btn_CampaignGroupsNewBtn);
+	    campaignGroupsPage.waitAndClickElement(campaignGroupsPage.btn_CampaignGroupsNewBtn);
 	}
 
 	@And("User validates empty fields")

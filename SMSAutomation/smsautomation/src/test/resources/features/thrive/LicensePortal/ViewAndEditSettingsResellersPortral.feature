@@ -1,6 +1,7 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-#Step Definition File - AddPageTemplatesUnderSettingsSteps.java
+
+#Step Definition File - ViewAndEditSettingsResellersPortal.java
 @thrive @RegressionTest
 Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive system
 
@@ -19,7 +20,7 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then the Resellers dashboard is opened
 
   @[SMSM-207] @Verify-the-Help-on-"Manage-Settings"-page-by-clicking-the-Help-button
-  Scenario: Verify the Help on "Manage Settings" page by clicking the Help button
+  Scenario: Verify the Help on "Manage Settings" page by clicking the Help button [C22398374]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
     When User clicks the Help button on the Settings page
@@ -31,8 +32,8 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @[SMSM-207] @Verify-the-Help-on-"Manage-Settings"-page-by-clicking-the-Help-button
-  Scenario: Verify the Help on "Manage Settings" page by clicking the Help button
+  @[SMSM-207] @Verify-admin-is-able-to-search-Specific-settings-by-entering-a-search-criteria-in-Search-box-and-clicking-Search-tab
+  Scenario: Verify admin is able to search Specific settings by entering a search criteria in Search box and clicking Search tab [C22398379]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
     And User verifies that the Search text box is displayed
@@ -41,7 +42,7 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then the Settings records are displayed
 
   @[SMSM-207] @Verify-the-functionality-of-sorting-and-Show-entries-dropdown-and-pagination-on-Manage-Settings-page
-  Scenario: Verify the functionality of sorting and Show entries dropdown and pagination on Manage Settings page
+  Scenario: Verify the functionality of sorting and Show entries dropdown and pagination on Manage Settings page [C22398422]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
     And User verifies the arrows icon on the Column heading
@@ -56,7 +57,7 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then User verfies that all the records are displayed on one page
 
   @[SMSM-207] @Verify-Admin-can-edit-settings-from-the-available-list-from-Companies-menu-for-Licensees
-  Scenario: Verify Admin can edit settings from the available list from Companies menu for Licensees
+  Scenario: Verify Admin can edit settings from the available list from Companies menu for Licensees  [C22403500]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
     And User verifies the arrows icon on the Column heading
@@ -73,7 +74,7 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     And User revert the changes to the Setting record
 
   @[SMSM-207] @Verify-Admin-can-edit-Email-Templates-from-the-available-list-from-Companies-menu-for-Licensees
-  Scenario: Verify Admin can edit Email Templates from the available list from Companies menu for Licensees
+  Scenario: Verify Admin can edit Email Templates from the available list from Companies menu for Licensees [C22403534]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
     When User clicks the settings Menu and clicks the Message Templates
@@ -89,8 +90,8 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then all updated fields were updated successfully
     #Revert Changes
     And User revert the changes to the Message Templates record
-    
-   @[SMSM-207] @Verify-the-Help-on-"Email-Templates"-page-by-clicking-the-Help-button @OnlyMe
+
+  @[SMSM-207] @Verify-the-Help-on-"Email-Templates"-page-by-clicking-the-Help-button
   Scenario: Verify the Help on "Email Templates" page by clicking the Help button [C22403688]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
@@ -104,10 +105,9 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then User is navigated to the Message Template Management window
     When User clicks on End Tour button
     Then Tour ends successfully
-    
 
   @[SMSM-207] @Verify-admin-is-able-to-search-Specific-Template-by-entering-a-search-criteria-in-Search-box-and-clicking-Search-tab
-  Scenario: Verify admin is able to search Specific Template by entering a search criteria in Search box and clicking Search tab
+  Scenario: Verify admin is able to search Specific Template by entering a search criteria in Search box and clicking Search tab [C22403658]
     When User clicks on the settings Menu and clicks the Setting option
     Then User is redirected to the Settings page
     When User clicks the settings Menu and clicks the Message Templates
@@ -117,14 +117,14 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then records are displayed per the search criterion
 
   @[SMSM-207] @Verify-the-navigation-to-"Language-Strings"-page-under-Settings-menu-from-Companies-menu-for-Licensees
-  Scenario: Verify the navigation to "Language Strings" page under Settings menu from Companies menu for Licensees
+  Scenario: Verify the navigation to "Language Strings" page under Settings menu from Companies menu for Licensees [C22403686]
     When User clicks on the settings Menu
     Then User verifies the options displayed
     When User clicks the Language Strings
     Then User is redirected to the Language Strings page
 
   @[SMSM-207] @Verify-Admin-can-edit-Language-Strings-from-the-available-list-from-Companies-menu-for-Licensees
-  Scenario: Verify Admin can edit Language Strings from the available list from Companies menu for Licensees
+  Scenario: Verify Admin can edit Language Strings from the available list from Companies menu for Licensees [C22403687]
     When User clicks on the settings Menu
     Then User verifies the options displayed
     When User clicks the Language Strings
@@ -140,8 +140,8 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     #Revert Changes
     And User revert the changes to the Language Strings record
 
-  @[SMSM-207] @Verify-the-Help-on-"Language-Strings"-page-by-clicking-the-Help-button 
-  Scenario: Verify the Help on "Language Strings" page by clicking the Help button
+  @[SMSM-207] @Verify-the-Help-on-"Language-Strings"-page-by-clicking-the-Help-button
+  Scenario: Verify the Help on "Language Strings" page by clicking the Help button [C22403689]
     When User clicks on the settings Menu
     Then User verifies the options displayed
     When User clicks the Language Strings
@@ -154,3 +154,43 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     Then User is navigated to the Language Strings Management window
     When User clicks on End Tour button
     Then Tour ends successfully
+
+  @[SMSM-207] @Verify-admin-is-able-to-search-Specific-String-by-entering-a-search-criteria-in-Search-box-and-clicking-Search-tab
+  Scenario: Verify admin is able to search Specific String by entering a search criteria in Search box and clicking Search tab [C22403690]
+    When User clicks on the settings Menu
+    Then User verifies the options displayed
+    When User clicks the Language Strings
+    Then User is redirected to the Language Strings page
+    And User verifies the Search textbox and Search button
+    When User enters a title name into the search textbox and click Search button
+    Then the records are displayed based on the entered criteria
+    
+  @[SMSM-207] @Verify-the-functionality-of-sorting-and-Show-entries-dropdown-and-pagination-on-"Email-Templates"-page 
+  Scenario: Verify the functionality of sorting and Show entries dropdown and pagination on "Message Templates" page [C22409883]
+    When User clicks on the settings Menu and clicks the Message Templates
+    Then User is redirected to the Message Templates page
+    And User verifies the arrows icon on the Column heading on Message Templates page
+    When User clicks the Title column header on the Message Templates
+    Then the Message Templates data is sorted in ascending order
+    When User clicks on the Title column header again on the Message Templates page
+    Then the Message Templates data is sorted in descending order
+    And User verifies the Show Entries section is displayed on the Message Templates page
+    When User clicks on the Next button on the Message Templates page
+    Then User verifies that button two is selected
+    When User selects All from Show entries drop down
+    Then User verfies that all the records are displayed on one page
+
+    
+ 
+    
+    
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   

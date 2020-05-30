@@ -23,7 +23,7 @@ import pageObjects.thrive.modal.EditStringModal;
 public class ViewAndEditSettingsResellersPortal extends BasePage {
 
 	public ViewAndEditSettingsResellersPortal() throws IOException {
-		super();
+	    super();
 	}
 
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
@@ -318,18 +318,20 @@ public class ViewAndEditSettingsResellersPortal extends BasePage {
 
 	@Then("the Email Templates help tour is opened")
 	public void the_Email_Templates_help_tour_is_opened() throws Exception {
-		Assert.assertEquals("Message Template Management", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals("Message Template Management",
+				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
 	}
 
 	@When("User clicks the Next button on the Message Template Management window")
 	public void user_clicks_the_Next_button_on_the_Message_Template_Management_window() throws InterruptedException {
-		 commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
-          
+
 	@Then("the Search Templates window is displayed")
 	public void the_Search_Templates_window_is_displayed() throws Exception {
 		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
-		Assert.assertEquals("Search Templates", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+		Assert.assertEquals("Search Templates",
+				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
 	}
 
 	@When("User clicks the previous button on the Search Templates window")
@@ -340,8 +342,9 @@ public class ViewAndEditSettingsResellersPortal extends BasePage {
 	@Then("User is navigated to the Message Template Management window")
 	public void user_is_navigated_to_the_Message_Template_Management_window() throws Exception {
 		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
-		
-		Assert.assertEquals("Message Template Management", commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+
+		Assert.assertEquals("Message Template Management",
+				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
 	}
 
 //	@Verify-admin-is-able-to-search-Specific-Template-by-entering-a-search-criteria-in-Search-box-and-clicking-Search-tab
@@ -485,4 +488,75 @@ public class ViewAndEditSettingsResellersPortal extends BasePage {
 		Assert.assertEquals("Language Strings Management",
 				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
 	}
+
+//	@Verify-admin-is-able-to-search-Specific-String-by-entering-a-search-criteria-in-Search-box-and-clicking-Search-tab
+	@Then("User verifies the Search textbox and Search button")
+	public void user_verifies_the_Search_textbox_and_Search_button() {
+		Assert.assertTrue(commonElementLocator.txtF_Search.isDisplayed());
+		Assert.assertTrue(commonElementLocator.btn_Search.isDisplayed());
+	}
+
+	@When("User enters a title name into the search textbox and click Search button")
+	public void user_enters_a_title_name_into_the_search_textbox_and_click_Search_button() throws Exception {
+		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "Complete Status");
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+	}
+
+	@Then("the records are displayed based on the entered criteria")
+	public void the_records_are_displayed_based_on_the_entered_criteria() throws NumberFormatException, InterruptedException {
+		Assert.assertTrue(
+				Integer.parseInt(commonElementLocator.getElementText(commonElementLocator.lbl_PaginationEnd)) > 0);
+	}
+
+//	@Verify-the-functionality-of-sorting-and-Show-entries-dropdown-and-pagination-on-"Email-Templates"-page
+	@When("User clicks on the settings Menu and clicks the Message Templates")
+	public void user_clicks_on_the_settings_Menu_and_clicks_the_Message_Templates() throws InterruptedException {
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.menu_Settings);
+		settingsDDown.waitAndClickElement(settingsDDown.opt_Message_Templates);
+	}
+
+	@Then("User is redirected to the Message Templates page")
+	public void user_is_redirected_to_the_Message_Templates_page() throws InterruptedException {
+		Assert.assertEquals("Message Templates", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+	}
+
+	@Then("User verifies the arrows icon on the Column heading on Message Templates page")
+	public void user_verifies_the_arrows_icon_on_the_Column_heading_on_Message_Templates_page() {
+	Assert.assertTrue(messageTemplatesPage.col_Title.isDisplayed());
+	Assert.assertTrue(messageTemplatesPage.col_Subject.isDisplayed());
+	Assert.assertTrue(messageTemplatesPage.col_Description.isDisplayed());
+	Assert.assertTrue(messageTemplatesPage.col_Action.isDisplayed());
+	}
+
+	@When("User clicks the Title column header on the Message Templates")
+	public void user_clicks_the_Title_column_header_on_the_Message_Templates() throws InterruptedException {
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Title);
+	}
+
+	@Then("the Message Templates data is sorted in ascending order")
+	public void the_Message_Templates_data_is_sorted_in_ascending_order() throws Exception {
+		Assert.assertTrue(messageTemplatesPage.firstSortedRecord("Contact form Submission").isDisplayed());
+		
+	}
+
+	@When("User clicks on the Title column header again on the Message Templates page")
+	public void user_clicks_on_the_Title_column_header_again_on_the_Message_Templates_page() throws Exception {
+		messageTemplatesPage.waitAndClickElement(messageTemplatesPage.col_Title);
+	}
+
+	@Then("the Message Templates data is sorted in descending order")
+	public void the_Message_Templates_data_is_sorted_in_descending_order() throws InterruptedException {
+	Assert.assertTrue(messageTemplatesPage.firstSortedRecord("Thrive Reply email").isDisplayed());
+	}
+
+	@Then("User verifies the Show Entries section is displayed on the Message Templates page")
+	public void user_verifies_the_Show_Entries_section_is_displayed_on_the_Message_Templates_page() {
+		Assert.assertTrue(commonElementLocator.lbl_ShowEntries.isDisplayed());
+	}
+
+	@When("User clicks on the Next button on the Message Templates page")
+	public void user_clicks_on_the_Next_button_on_the_Message_Templates_page() throws Throwable {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_PaginationNext);
+	}
+
 }

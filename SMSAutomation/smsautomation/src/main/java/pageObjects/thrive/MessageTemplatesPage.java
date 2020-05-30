@@ -24,6 +24,7 @@ public class MessageTemplatesPage extends BasePage {
 	public @FindBy(xpath = "//th[@id=\"email-templates-description\"]//a[text()=\"Description\"]") WebElement col_Description;
 	public @FindBy(xpath = "//th[@id=\"email-templates-updated\"]//a[text()=\"Updated\"]") WebElement col_Updated;
 	public @FindBy(xpath = "//th[@id=\"email-templates-action\" and text()=\"Action\"]") WebElement col_Action;
+	public @FindBy(xpath = "//*[@id=\"main-nav\"]/ul[1]/li[6]/a") WebElement menu_Settings;
 	public @FindBy(xpath = "//a[@title=\"Edit\"]") WebElement btn_Edit;
 	
 	
@@ -42,5 +43,9 @@ public class MessageTemplatesPage extends BasePage {
 
 	public WebElement cellValue(String option) {
 		return parent_SettingsRecord.findElement(By.xpath("//tr//td[normalize-space()=" + option + "]"));
+	}
+	
+	public WebElement firstSortedRecord(String option) {
+		return parent_SettingsRecord.findElement(By.xpath("//tr[1][td[text()=\'" + option + "']]"));
 	}
 }
