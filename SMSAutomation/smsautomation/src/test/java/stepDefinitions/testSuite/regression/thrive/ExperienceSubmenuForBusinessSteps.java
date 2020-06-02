@@ -25,7 +25,6 @@ public class ExperienceSubmenuForBusinessSteps extends DriverFactory  {
 	public ManageBusinessPage manageBusinessPage = PageFactory.initElements(driver, ManageBusinessPage.class);
 
 	
-	
 //	@Verify-Business-user-is-able-to-navigate-to-Experience->Pages
 	@When("User Clicks Company menu and clicks the Business option")
 	public void user_Clicks_Company_menu_and_clicks_the_Business_option() throws Exception {

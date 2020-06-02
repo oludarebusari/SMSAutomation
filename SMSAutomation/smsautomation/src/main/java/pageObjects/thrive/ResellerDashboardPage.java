@@ -12,6 +12,11 @@ public class ResellerDashboardPage extends BasePage {
 		super();
 	}
 
+	private final String EDITBTN = "//a[text()=\"Edit\"]";
+	public String getEDITBTN() {
+		return EDITBTN;
+	}
+	
 	public @FindBy(xpath = "//h4[text()=\"New Businesses\"]") WebElement page_Title;
 	public @FindBy(xpath = "//*[@id=\"main-nav\"]/ul[1]/li[6]/a") WebElement menu_Settings;
 	public @FindBy(xpath = "//tbody") WebElement parent;
@@ -22,6 +27,8 @@ public class ResellerDashboardPage extends BasePage {
 	public WebElement btn_Edit_Dropdown(String business) {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"new-merchant\") and ./td[text()=\'" + business + "']]//button[@data-toggle=\"dropdown\"]"));
 	}
-	
+	public WebElement cellValue(String option) {
+		return parent.findElement(By.xpath("//tr//td[normalize-space()=\'" + option + "']"));
+	}
 	
 }

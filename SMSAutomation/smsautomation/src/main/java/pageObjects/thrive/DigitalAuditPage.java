@@ -25,5 +25,26 @@ public class DigitalAuditPage extends BasePage {
 		return parent_Record.findElement(By.xpath("//tr//td[normalize-space()=\'" + option + "']"));
 	}
 	
+	public WebElement btn_Delete(String option) {
+		return parent_Record.findElement(By.xpath("//tr[td[normalize-space()=\'" + option + "']]//a[@data-action=\"delete\"]"));
+	}
 	
+	
+	public WebElement btn_Download(String option) {
+		return parent_Record.findElement(By.xpath("//tr[td[normalize-space()=\'" + option + "']]//a[@title=\"Download\"]"));
+	}
+	
+	public WebElement btn_downloadDDown(String option) {
+		return parent_Record.findElement(By.xpath("//tr[td[normalize-space()=\'" + option + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	
+	public WebElement btn_ViewDDownAction(String option) {
+		return parent_Record.findElement(By.xpath("//tr[td[normalize-space()=\'" + option + "']]//ul[@class=\"dropdown-menu\"]//a[normalize-space()=\"View\"]"));
+	}
+	
+	public WebElement btn_DeleteDDownAction(String option) {
+		return parent_Record.findElement(By.xpath("//tr[td[normalize-space()=\'" + option + "']]//ul[@class=\"dropdown-menu\"]//a[normalize-space()=\"Delete\"]"));
+	}
+	
+		
 }
