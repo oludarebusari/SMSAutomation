@@ -18,4 +18,3 @@ public class EditStringModal extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"company_language_strings_type_value\"]") WebElement txtF_EditString;
 	public @FindBy(xpath = "//button[contains(@class, \"ladda-button\")]") WebElement btn_SaveString;
 }
-

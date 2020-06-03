@@ -120,7 +120,7 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     When User types in the keyword to search for into the Search textbox and click Search button
     Then the Digital Audit record is displayed
 
-  @SMSM-171 @Verify-the-help-button-functionality-within-digital-audit-page
+  @SMSM-171 @Verify-the-help-button-functionaliomty-within-digital-audit-page
   Scenario: Verify the help button functionality within digital audit page [C22331060]
     When User clicks on the Reports tab on the top menu bar
     Then User confirms the options under the Report menu
@@ -135,7 +135,7 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     When User clicks on End Tour button
     Then Tour ends successfully
    
- @SMSM-171 @Verify-admin-can-edit-a-company's-details-under-a-particular-Reseller @OnlyMe
+ @SMSM-171 @Verify-admin-can-edit-a-company's-details-under-a-particular-Reseller 
   Scenario: Verify admin can edit a company's details under a particular Reseller [C22331060]
   	And User verifies that the edit drop down button is available for each Ressler
   	When User clicks the Edit option for a Reseller
@@ -146,11 +146,4 @@ Feature: [SMSM-207] View and edit settings in Licensees's portal for Thrive syst
     #Revert Changes
     And User revert the changes made to Reseller Business
 
-    
-    
-    
-    
-  
-  
  
-  

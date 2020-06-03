@@ -1,12 +1,9 @@
 package stepDefinitions.testSuite.regression.license;
 
 import java.io.IOException;
-
-import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,7 +11,6 @@ import pageObjects.BasePage;
 import pageObjects.thrive.BusinessReportsPage;
 import pageObjects.thrive.DigitalAuditPage;
 import pageObjects.thrive.EditBusinessPage;
-import pageObjects.thrive.EditUserPage;
 import pageObjects.thrive.ResellerDashboardPage;
 import pageObjects.thrive.Tab.CompaniesDDown;
 import pageObjects.thrive.Tab.ReportsDDown;
@@ -222,11 +218,11 @@ public class ViewAndEditReportsInResellersPortal extends BasePage {
 
 	@When("User clicks the View button")
 	public void user_clicks_the_View_button() throws Exception {
-		digitalAuditPage.waitAndClickElement(digitalAuditPage.btn_ViewDDownAction("https://www.trishnorman.com/"));
-	}
+		 digitalAuditPage.waitAndClickElement(digitalAuditPage.btn_ViewDDownAction("https://www.trishnorman.com/"));
+	} 
 
 	@Then("user is redirected to the view page of the digital audit")
-	public void user_is_redirected_to_the_view_page_of_the_digital_audit() {
+	public void user_is_redirected_to_the_view_page_of_the_digital_audit() { 
 		digitalAuditPage.switchWindow();
 		Assert.assertEquals(digitAuditViewURL, driver.getCurrentUrl());
 	}
@@ -251,7 +247,7 @@ public class ViewAndEditReportsInResellersPortal extends BasePage {
 	public void user_clicks_the_Delete_button_on_the_Delete_Audit_modal() throws InterruptedException {
 		deleteAuditModal.waitAndClickElement(deleteAuditModal.btn_Delete);
 	}
-
+	
 	@Then("User confirms that the Digital Audit URL is deleted")
 	public void user_confirms_that_the_Digital_Audit_URL_is_deleted() throws Exception {
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, "https://www.autotest.com");
@@ -289,7 +285,7 @@ public class ViewAndEditReportsInResellersPortal extends BasePage {
 	public void user_clicks_the_Next_button_on_the_Create_New_Audit_help_window() throws InterruptedException {
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
 	}
-
+   
 	@Then("the URL window is displayed")
 	public void the_URL_window_is_displayed() throws Exception {
 		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);

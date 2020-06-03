@@ -19,28 +19,27 @@ public class BillingDDown extends BasePage {
 	public @FindBy(xpath = "//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Add Plan\"]]") WebElement opt_Add_Plan;
 	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Modules\"]]") WebElement opt_Modules;
 	public @FindBy(xpath = "//li[@class=\"open\"]//ul[contains(@class, \"dropdown-menu\")]//a[text()[normalize-space()=\"Add Module\"]]") WebElement opt_Add_Module;
+    
+	
+	public @FindBy(xpath ="//a[normalize-space()=\"Manage Billing\"]") WebElement opt_ManageBilling;
+	public @FindBy(xpath ="//a[normalize-space()=\"Invoices\"]") WebElement opt_Invoices;
+	
 
 
-    // Page methods
-	public BillingDDown clicPlansOpt() throws Exception {
-		waitAndClickElement(opt_Plans);
-		return new BillingDDown();
-	}
 	
-	public BillingDDown clickAddPlanOpt() throws Exception {
-		waitAndClickElement(opt_Add_Plan);
-		return new BillingDDown();
-	}
-	
-	public BillingDDown clickModulesOpt() throws Exception {
-		waitAndClickElement(opt_Modules);
-		return new BillingDDown();
-	}
-	
-	public BillingDDown clickAddModuleOpt() throws Exception {
-		waitAndClickElement(opt_Add_Module);
-		return new BillingDDown();
-	}
+	/*
+	 * // Page methods public BillingDDown clicPlansOpt() throws Exception {
+	 * waitAndClickElement(opt_Plans); return new BillingDDown(); }
+	 * 
+	 * public BillingDDown clickAddPlanOpt() throws Exception {
+	 * waitAndClickElement(opt_Add_Plan); return new BillingDDown(); }
+	 * 
+	 * public BillingDDown clickModulesOpt() throws Exception {
+	 * waitAndClickElement(opt_Modules); return new BillingDDown(); }
+	 * 
+	 * public BillingDDown clickAddModuleOpt() throws Exception {
+	 * waitAndClickElement(opt_Add_Module); return new BillingDDown(); }
+	 */
 	
 		
 }
