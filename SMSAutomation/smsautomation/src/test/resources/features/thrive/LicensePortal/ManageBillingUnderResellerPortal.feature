@@ -1,5 +1,6 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
+
 #Step Definition File - ManageBillingUnderResellerPortal.java
 @thrive @RegressionTest
 Feature: [SMSM-220] Manage Billing under billing section in Licensees portal for Thrive system
@@ -47,7 +48,7 @@ Feature: [SMSM-220] Manage Billing under billing section in Licensees portal for
     When User clicks the Late filter
     Then all the records with Late status are displayed
 
-  @[SMSM-220] @verify-results-are-displayed-based-on-the-filter-selected-in-Manage-Billing-page-:-Pending @OnlyMe
+  @[SMSM-220] @verify-results-are-displayed-based-on-the-filter-selected-in-Manage-Billing-page-:-Pending
   Scenario: Verify results are displayed based on the filter selected in manage billing page : Pending [C22393408]
     When User clicks on the Billing menu option
     Then the Billing drop down options are displayed
@@ -56,3 +57,62 @@ Feature: [SMSM-220] Manage Billing under billing section in Licensees portal for
     And User verifies the default filter selected
     When User clicks the Pending filter
     Then all the records with Pending status are displayed
+
+  @[SMSM-220] @Add-a-feature-from-Edit-Merchant-Plan 
+  Scenario: Add a feature from Edit Merchant plan [C22378137]
+    When User clicks on the Billing menu option
+    Then the Billing drop down options are displayed
+    When User clicks on Manage Billing from the options
+    Then User is redirected to the Manage Billing page
+    When User clicks the Edit Recurring Plan from drop down
+    Then User is redirected to the Edit Merchant plan page
+    When User navigate to Feature clicks on add icon
+    Then the new field is added
+    When User enters the values for a field record and clicks on the Save Plan button
+    Then User verifies that the feature is added
+ 
+ @[SMSM-220] @Verify-Edit-Recurring-Plan-option
+ Scenario: Verify Edit Recurring plan option [C22393466]
+ 		When User clicks on the Billing menu option
+ 		Then the Billing drop down options are displayed
+ 		When User clicks on Manage Billing from the options
+ 		Then User is redirected to the Manage Billing page
+ 		When User clicks the Edit Recurring Plan from drop down
+ 		Then User is redirected to the Edit Merchant plan page
+ 		And User verifies that the plan name is present 
+ 		And User verifies that the Plan Description is present
+ 		And User verifies that the Status drop down is present
+ 		 
+ @[SMSM-220] @Edit-a-feature-in-Edit-Merchant-Plan 
+ Scenario: Edit a feature in Edit Merchant Plan [C22378674]
+ 		When User clicks on the Billing menu option
+ 		Then the Billing drop down options are displayed
+ 		When User clicks on Manage Billing from the options
+ 		Then User is redirected to the Manage Billing page
+ 		When User clicks the Edit Recurring Plan from drop down
+ 		Then User is redirected to the Edit Merchant plan page
+ 		When User navigate to feature and edits some values and clicks the Save Plan button
+ 		Then User verifies that the feature is updated
+
+  @[SMSM-220] @Remove-a-feature-from-Edit-Merchant-plan
+  Scenario: Remove a feature from Edit Merchant plan [C22378181]
+    When User clicks on the Billing menu option
+    Then the Billing drop down options are displayed
+    When User clicks on Manage Billing from the options
+    Then User is redirected to the Manage Billing page
+    When User clicks the Edit Recurring Plan from drop down
+    Then User is redirected to the Edit Merchant plan page
+    When User clicks the remove button of a feature and clicks the Save plan button
+    Then User verifies that the feature is removed
+   
+ @[SMSM-220] @Verify-merchant-info-details-in-manage-billing-page @OnlyMe
+ Scenario: Verify merchant info details in manage billing page
+ 		When User clicks on the Billing menu option
+ 		Then the Billing drop down options are displayed
+ 		When User clicks on Manage Billing from the options
+ 		Then User is redirected to the Manage Billing page
+ 		When User clicks the Merchant Info option
+ 		Then User is redirected to the Edit Merchant page
+ 		And User verifies that the Business Information section is displayed
+ 		And User verifies that the Billing Information section is displayed
+

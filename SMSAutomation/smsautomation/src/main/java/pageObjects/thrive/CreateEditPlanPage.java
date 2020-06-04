@@ -35,7 +35,6 @@ public class CreateEditPlanPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"plan_type_planModules_0_startDate\"]") WebElement txtF_Date;
 	public @FindBy(xpath = "(//td[contains(@class, \"available active\")])[1]") WebElement btn_Day;
 	public @FindBy(xpath = "//button[text()=\"Save Plan\"]") WebElement btn_SavePlan;
-	public @FindBy(xpath = "//div[@role=\"alert\"]//p") WebElement NotificationAlert;
-	
+	public @FindBy(xpath = "//div[@role=\"alert\"]//p") WebElement NotificationAlert;	
 	
 }

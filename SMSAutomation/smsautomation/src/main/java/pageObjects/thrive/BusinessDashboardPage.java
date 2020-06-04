@@ -24,7 +24,5 @@ public class BusinessDashboardPage extends BasePage {
 	public @FindBy(xpath = "//h4[contains(@class, \"no-padding\")]") WebElement tab_DemographicStats;
 	public @FindBy(xpath = "//h4[contains(@class, \"no-padding\")]") WebElement btn_Help;
 	public @FindBy(xpath = "//h4[contains(@class, \"no-padding\")]") WebElement btn_StartSetup;
-	
-	
-	
+   
 }
