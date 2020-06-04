@@ -218,11 +218,11 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 
 	@Then("User verifies that the Business Information section is displayed")
 	public void user_verifies_that_the_Business_Information_section_is_displayed() {
-	  
+	  Assert.assertTrue(editBusinessPage.businessInformationPanel.isDisplayed());
 	}
 
 	@Then("User verifies that the Billing Information section is displayed")
 	public void user_verifies_that_the_Billing_Information_section_is_displayed() {
-
+//		Assert.assertTrue(editBusinessPage.billingInformationPanel.isDisplayed());
 	}
 }
