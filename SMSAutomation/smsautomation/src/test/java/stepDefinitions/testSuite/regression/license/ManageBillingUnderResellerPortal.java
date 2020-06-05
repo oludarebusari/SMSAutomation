@@ -8,6 +8,8 @@ import io.cucumber.java.en.When;
 import pageObjects.thrive.BusinessesPage;
 import pageObjects.thrive.EditBusinessPage;
 import pageObjects.thrive.EditBusinessPlanPage;
+import pageObjects.thrive.EditInvoicePage;
+import pageObjects.thrive.InvoicesPage;
 import pageObjects.thrive.ManageBillingPage;
 import pageObjects.thrive.Tab.BillingDDown;
 import utils.DriverFactory;
@@ -19,8 +21,10 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
 	EditBusinessPlanPage editBusinessPlanPage = PageFactory.initElements(driver, EditBusinessPlanPage.class);
 	EditBusinessPage editBusinessPage = PageFactory.initElements(driver, EditBusinessPage.class);
+	EditInvoicePage editInvoicePage = PageFactory.initElements(driver, EditInvoicePage.class);
 	ManageBillingPage manageBillingPage = PageFactory.initElements(driver, ManageBillingPage.class);
-
+	InvoicesPage invoicesPage = PageFactory.initElements(driver, InvoicesPage.class);
+	
 //	@verify-the-details-displayed-within-manage-billing-page
 	@When("User clicks on the Billing menu option")
 	public void user_clicks_on_the_Billing_menu_option() throws Exception {
@@ -223,6 +227,71 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 
 	@Then("User verifies that the Billing Information section is displayed")
 	public void user_verifies_that_the_Billing_Information_section_is_displayed() {
-//		Assert.assertTrue(editBusinessPage.billingInformationPanel.isDisplayed());
+	Assert.assertTrue(editBusinessPage.billingInformationPanel.isDisplayed());
 	}
+	
+//	 @Verify-Invoice-details-are-displayed-on-clicking-view-button-on-Manage-billing-page
+	@When("User clicks the view button under actions to view selected merchant invoice details")
+	public void user_clicks_the_view_button_under_actions_to_view_selected_merchant_invoice_details() throws Exception {
+	  manageBillingPage.waitAndClickElement(manageBillingPage.btn_View("The Broad Street Giant Grinder"));
+	}
+
+	@Then("User is redirected to the invoice page for the selected merchant")
+	public void user_is_redirected_to_the_invoice_page_for_the_selected_merchant() throws Exception {
+	  Assert.assertEquals("Edit Invoice", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+	}
+
+	@Then("User verifies the sub sections under the Invoice section")
+	public void user_verifies_the_sub_sections_under_the_Invoice_section() {
+	   Assert.assertTrue(editInvoicePage.panel_Invoices.isDisplayed());
+	   Assert.assertTrue(editInvoicePage.col_Feature.isDisplayed());
+	   Assert.assertTrue(editInvoicePage.col_OneTimePrice.isDisplayed());
+	   Assert.assertTrue(editInvoicePage.col_RecurringPrice.isDisplayed());
+	}
+
+	@Then("User verifies the links on the page")
+	public void user_verifies_the_links_on_the_page() {
+	   Assert.assertTrue(editInvoicePage.lnk_EditRecurringPlan.isDisplayed());
+	   Assert.assertTrue(editInvoicePage.lnk_EditBillingInformation.isDisplayed());
+	}
+
+	@Then("User verifies Company Information section is available")
+	public void user_verifies_Company_Information_section_is_available() {
+		Assert.assertTrue(editInvoicePage.panel_CompanyInformation.isDisplayed());
+	}
+
+	@Then("User verifies Users Section is available on the page")
+	public void user_verifies_Users_Section_is_available_on_the_page() {
+		Assert.assertTrue(editInvoicePage.panel_Users.isDisplayed());
+	}
+
+	@Then("User verifies that Transaction History section is available on the page")
+	public void user_verifies_that_Transaction_History_section_is_available_on_the_page() {
+	 Assert.assertTrue(editInvoicePage.panel_TransactionHistory.isDisplayed());
+	}
+   
+//	@Verify-all-merchant-invoices-page-is-displayed
+	@When("User clicks on All Merchant Invoices from the drop down")
+	public void user_clicks_on_All_Merchant_Invoices_from_the_drop_down() throws Exception {
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown("The Broad Street Giant Grinder"));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption("The Broad Street Giant Grinder", "All Merchant Invoices"));
+	}
+
+	@Then("User is redirected to Merchant Invoice page")
+	public void user_is_redirected_to_Merchant_Invoice_page() throws Exception {
+	 Assert.assertEquals("Invoices", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+	}
+
+	@Then("User verifies the columns on the invoice page")
+	public void user_verifies_the_columns_on_the_invoice_page() {
+		Assert.assertTrue(invoicesPage.col_Invoice.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_Business.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_PaymentMethod.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_Amount.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_Updated.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_Due.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_Status.isDisplayed());
+		Assert.assertTrue(invoicesPage.col_Action.isDisplayed());
+	}
+
 }

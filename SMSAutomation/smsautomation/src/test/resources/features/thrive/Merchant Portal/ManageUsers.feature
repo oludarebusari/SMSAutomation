@@ -53,7 +53,7 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     When User clicks the status column again
     Then the user records should be sorted in descending order by status column
 
-  @SMSM-134 @verify-the-user-record-by-sorting-updated-column
+  @SMSM-134 @verify-the-user-record-by-sorting-updated-column 
   Scenario: View the user record by sorting "Updated" column
     When User clicks the updated column
     Then the user records should be sorted in ascending order by updated column
@@ -136,4 +136,4 @@ Feature: [SMSM-134] Manage (view, edit, delete) Users in Merchant's portal for T
     Then the Help Tour guide is displayed
     When User clicks on End Tour button
     Then the tour guide closes successfully
-    
+      

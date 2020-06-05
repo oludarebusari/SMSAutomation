@@ -146,8 +146,8 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
 		And User verifies that all leads are displayed by default
 		When User clicks on the view all leads toggle
 		Then tthe toggle tooltip text changes and only leads with previous appts or Offers accepted are displayed
-		
-@SMSM-179 @Verify-that-Admin-can-export-the-data-to-CSV-for-"Appointments-Set"-page  
+	
+@SMSM-179 @Verify-that-Admin-can-export-the-data-to-CSV-for-"Appointments-Set"-page
   Scenario: Verify that Admin can export the data to CSV for "Appointments Set" page [C22412424]
     When User clicks the SSMBG Status Report option
     Then the SSMBG Status Report page is displayed
@@ -158,5 +158,5 @@ Feature: [SMSM-179] View Stream Status Report & SSMBG status report in admin das
 		Then a CSV file is downloaded and user verifies the filename
 		
 		
-		
+
 		

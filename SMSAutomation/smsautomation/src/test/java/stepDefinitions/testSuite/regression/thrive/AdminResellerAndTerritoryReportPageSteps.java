@@ -370,6 +370,7 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 	public void user_clicks_the_Allow_button_under_the_Action_column_for_Reseller() throws Exception {
 		commonElementLocator.sendKeysToWebElement(commonElementLocator.txtF_Search, RESELLER);
 		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Search);
+		Thread.sleep(3000);
 		adminTerritoryReportsPage
 				.waitAndClickElement(adminTerritoryReportsPage.clickAllowOrDisallowResellerBtn(RESELLER));
 	}
@@ -494,3 +495,4 @@ public class AdminResellerAndTerritoryReportPageSteps extends DriverFactory {
 		editResellerPage.waitAndClickElement(editResellerPage.btn_Save_Reseller);
 	}
 }
+

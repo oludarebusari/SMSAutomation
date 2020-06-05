@@ -54,7 +54,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the dropdown textbox on the Edit Setting modal
     When User changes Settings option to it's original value and clicks the Update Setting button
 
-  @SMSM-136 @Search-and-Edit-any-Language-String-option
+  @SMSM-136 @Search-and-Edit-any-Language-String-option 
   Scenario: Search and Edit any Language String option [C22283129]
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened
@@ -168,7 +168,7 @@ Feature: [SMSM-136] View and edit settings in Merchant's portal for Thrive syste
     When User clicks the Updated column name
     Then the Settings records are sorted by Updated colum
 
-  @SMSM-136 @Apply-Sort-in-Language-String-page
+  @SMSM-136 @Apply-Sort-in-Language-String-page 
   Scenario: Apply Sort in Language Strings page [C22288650]
     When User clicks on Language Strings option from the dropdown
     Then the Language Strings page is opened

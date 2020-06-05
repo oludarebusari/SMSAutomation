@@ -134,5 +134,4 @@ Feature: [SMSM-171] View & edit Email & Screen Templates in admin dashboard for 
     
     
     
-    
-    
+   

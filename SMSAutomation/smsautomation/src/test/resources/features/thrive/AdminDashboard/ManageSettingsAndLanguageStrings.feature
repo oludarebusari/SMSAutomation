@@ -1,6 +1,5 @@
 #Author: your.email@your.domain.com
 #Keywords Summary :
-
 #User is assumed to have Admin access unless stated Otherwise
 @thrive @RegressionTest
 Feature: View & edit manage settings & Language strings in admin dashboard for Thrive system
@@ -15,13 +14,13 @@ Feature: View & edit manage settings & Language strings in admin dashboard for T
     When User clicks on settings on top menu bar
     Then the settings options are displayed
 
-  @SMSM-170-Verify-manage-settings-page-options-through-settings-drop-down-in-Admin-dashboard 
+  @[SMSM-170] @Verify-manage-settings-page-options-through-settings-drop-down-in-Admin-dashboard
   Scenario: Verify Manage Settings page options through Settings drop down in Admin dashboard [C22393564]
     When User clicks on Settings under Settings drop down
     Then User is redirected to Settings page
     And User verifies the columns on the Settings page
 
-  @SMSM-170-Verify-user-is-able-to-edit-settings-details-within-the-settings-tabs 
+  @[SMSM-170] @Verify-user-is-able-to-edit-settings-details-within-the-settings-tabs
   Scenario: Verify user is able to edit settings details within the settings tab [C22393572]
     When User clicks on Settings under Settings drop down
     Then User is redirected to Settings page
@@ -35,7 +34,7 @@ Feature: View & edit manage settings & Language strings in admin dashboard for T
     #Revert Changes to the Settings
     And User revert changes made to the setting
 
-  @SMSM-170-Verify-the-help-button-functionality-within-settings 
+  @[SMSM-170] @Verify-the-help-button-functionality-within-settings
   Scenario: Validate the help button functionality within settings page [C22393597]
     When User clicks on Settings under Settings drop down
     Then User is redirected to Settings page
@@ -49,13 +48,13 @@ Feature: View & edit manage settings & Language strings in admin dashboard for T
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @SMSM-170-Verify-language-strings-page-through-settings-drop-down-in-Admin-dashboard
+  @[SMSM-170] @Verify-language-strings-page-through-settings-drop-down-in-Admin-dashboard
   Scenario: Verify Language Strings page through Settings drop down in Admin dashboard [C22393580]
     When User clicks on Language Strings under Settings drop down
     Then User is redirected to Language String page
     And User verifies the columns on the Language String page
 
-  @SMSM-170-Cancel-edit-language-strings-process 
+  @[SMSM-170]-Cancel-edit-language-strings-process
   Scenario: Cancel edit Language String process [C22444036]
     When User clicks on Language Strings under Settings drop down
     Then User is redirected to Language String page
@@ -67,7 +66,7 @@ Feature: View & edit manage settings & Language strings in admin dashboard for T
     When User closes the Edit Language Strings windows without saving
     Then user confirms that the record is not changed
 
-  @SMSM-170-Verify-user-is-able-to-edit-details-within-the-language-strings-tab 
+  @[SMSM-170] @Verify-user-is-able-to-edit-details-within-the-language-strings-tab
   Scenario: Verify user is able to edit details within the Language strings tab [C22393583]
     When User clicks on Language Strings under Settings drop down
     Then User is redirected to Language String page
@@ -81,7 +80,7 @@ Feature: View & edit manage settings & Language strings in admin dashboard for T
     #Revert Changes to the Settings
     And User revert changes made to the language strings
 
-  @SMSM-170-Verify-the-help-functionality-for-Language-Strings-page 
+  @[SMSM-170] @Verify-the-help-functionality-for-Language-Strings-page
   Scenario: Verify the Help functionality for Language Strings page [C22444035]
     When User clicks on Language Strings under Settings drop down
     Then User is redirected to Language String page

@@ -176,7 +176,7 @@ public class SettingsSteps extends DriverFactory {
 
 	@Then("the Edit String popup is displayed")
 	public void the_Edit_String_popup_is_displayed() throws Exception {
-		Assert.assertEquals("Edit String", editStringModal.getElementText(editStringModal.mod_Title));
+		Assert.assertEquals("Edit String", editStringModal.getElementText(editStringModal.mod_Title).replace("×\nClose\n", ""));
 	}
 
 	@Then("User enters the required information into the text field")
@@ -693,8 +693,7 @@ public class SettingsSteps extends DriverFactory {
 	@Then("the Language Strings records are sorted by Updated column")
 	public void the_Language_Strings_records_are_sorted_by_Updated_column() throws Exception {
 		//Verify the current value of the Updated cell after sorting
-		Thread.sleep(30000);
-		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("05/28/2020"));
+		Assert.assertTrue(commonElementLocator.getElementText(commonElementLocator.recordCellValue("1", "6")).contentEquals("06/04/2020"));
 	}
 
 //	@SMSM-136 @Apply-Sort-in-Email-Template-page

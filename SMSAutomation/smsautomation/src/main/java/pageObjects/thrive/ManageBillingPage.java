@@ -37,6 +37,10 @@ public class ManageBillingPage extends BasePage {
 		return parent.findElement(By.xpath("//tr[td[text()=\'" + business + "']]//button[@data-toggle=\"dropdown\"]"));
 	}
 	
+	public WebElement btn_View(String business) {
+		return parent.findElement(By.xpath("//tr[td[text()=\'" + business + "']]//a[normalize-space()=\"View\"]"));
+	}
+	
 	public WebElement ActionDDownOption(String business, String option) {
 		return parent.findElement(By.xpath("//tr[td[text()=\'" + business + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
 	}

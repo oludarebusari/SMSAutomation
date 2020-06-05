@@ -29,10 +29,11 @@ public class EditBusinessPage extends BasePage {
 	public @FindBy(xpath = "//select[@id=\"company_admin_merchant_type_singleCompanyAddress_country\"]") WebElement countryDDown;
 	public @FindBy(xpath = "//select[@id=\"company_admin_merchant_type_singleCompanyAddress_state\"]") WebElement stateDDown;
 	public @FindBy(xpath = "//input[@id=\"company_admin_merchant_type_singleCompanyAddress_zipCode\"]") WebElement txtF_ZipCode;
-	public @FindBy(xpath = "//button[@type=\"submit\" and text()[normalize-space()=\"Save\"]]") WebElement btn_SaveBusiness;
+	public @FindBy(xpath = "//button[@type=\"submit\" and text()[normalize-space()=\"Save Business\"]]") WebElement btn_SaveBusiness;
+	public @FindBy(xpath = "//div[@id=\"create-business-panel\"]") WebElement businessInformationPanel;
+	public @FindBy(xpath = "//div[@id=\"create-billing-panel\"]") WebElement billingInformationPanel;
 	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[text()[normalize-space()=\"Business Category\"]]]") WebElement par_BusinessCategory;
 	public WebElement businessCategoryOpt(String option) {
 		return par_BusinessCategory.findElement(By.xpath("//div[contains(@class, \"selectize-control\")]//div[text()=" + option + "]"));
-	}
-	
+	}	
 }

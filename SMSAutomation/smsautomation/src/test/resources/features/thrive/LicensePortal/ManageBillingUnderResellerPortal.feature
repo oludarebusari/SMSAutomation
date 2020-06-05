@@ -75,6 +75,7 @@ Feature: [SMSM-220] Manage Billing under billing section in Licensees portal for
  Scenario: Verify Edit Recurring plan option [C22393466]
  		When User clicks on the Billing menu option
  		Then the Billing drop down options are displayed
+ 		Then the Billing drop down options are displayed
  		When User clicks on Manage Billing from the options
  		Then User is redirected to the Manage Billing page
  		When User clicks the Edit Recurring Plan from drop down
@@ -105,7 +106,7 @@ Feature: [SMSM-220] Manage Billing under billing section in Licensees portal for
     When User clicks the remove button of a feature and clicks the Save plan button
     Then User verifies that the feature is removed
    
- @[SMSM-220] @Verify-merchant-info-details-in-manage-billing-page @OnlyMe
+ @[SMSM-220] @Verify-merchant-info-details-in-manage-billing-page 
  Scenario: Verify merchant info details in manage billing page
  		When User clicks on the Billing menu option
  		Then the Billing drop down options are displayed
@@ -116,3 +117,29 @@ Feature: [SMSM-220] Manage Billing under billing section in Licensees portal for
  		And User verifies that the Business Information section is displayed
  		And User verifies that the Billing Information section is displayed
 
+@[SMSM-220] @Verify-Invoice-details-are-displayed-on-clicking-view-button-on-Manage-billing-page 
+Scenario: Verify Invoice details are displayed on clicking view button on Manage billing page
+		When User clicks on the Billing menu option
+		Then the Billing drop down options are displayed
+		When User clicks on Manage Billing from the options
+		Then User is redirected to the Manage Billing page
+		When User clicks the view button under actions to view selected merchant invoice details
+		Then User is redirected to the invoice page for the selected merchant
+		And User verifies the sub sections under the Invoice section
+		And User verifies the links on the page
+		And User verifies Company Information section is available
+		And User verifies Users Section is available on the page
+		And User verifies that Transaction History section is available on the page
+
+@[SMSM-220] @Verify-all-merchant-invoices-page-is-displayed @OnlyMe
+Scenario: Vewrify all merchant invoices page is displayed
+		When User clicks on the Billing menu option
+		Then the Billing drop down options are displayed
+		When User clicks on Manage Billing from the options
+		Then User is redirected to the Manage Billing page
+		When User clicks on All Merchant Invoices from the drop down 
+    Then User is redirected to Merchant Invoice page
+    And User verifies the columns on the invoice page  
+		 
+		
+ 
