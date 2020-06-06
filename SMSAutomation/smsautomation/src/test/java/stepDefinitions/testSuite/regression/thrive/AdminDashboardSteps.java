@@ -546,7 +546,7 @@ public class AdminDashboardSteps extends DriverFactory {
 	@When("User update some details and Click Save Business button")
 	public void user_update_some_details_and_Click_Save_Business_button() throws Exception {
 		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_BusinessPhone, "555-223-1717");
-		editBusinessPage.sendKeysToWebElement(editBusinessPage.txt_City, "Bloomington");
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_City, "Bloomington");
 		editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "Minnesota");
 		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}
@@ -572,7 +572,7 @@ public class AdminDashboardSteps extends DriverFactory {
 		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_ActionDDown("AclateQA"));
 		manageBusinessPage.waitAndClickElement(manageBusinessPage.btn_Edit("AclateQA"));
 		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_BusinessPhone, "555-305-4455");
-		editBusinessPage.sendKeysToWebElement(editBusinessPage.txt_City, "Ames");
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_City, "Ames");
 		editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "Iowa");
 		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}

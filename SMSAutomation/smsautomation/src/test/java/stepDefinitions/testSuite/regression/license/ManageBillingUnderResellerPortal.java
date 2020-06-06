@@ -1,5 +1,11 @@
 package stepDefinitions.testSuite.regression.license;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import org.joda.time.format.DateTimeFormat;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import components.elements.CommonElementLocator;
@@ -12,6 +18,8 @@ import pageObjects.thrive.EditInvoicePage;
 import pageObjects.thrive.InvoicesPage;
 import pageObjects.thrive.ManageBillingPage;
 import pageObjects.thrive.Tab.BillingDDown;
+import pageObjects.thrive.modal.ConfirmInvoiceCancelationModal;
+import pageObjects.thrive.modal.RestoreInvoiceModal;
 import utils.DriverFactory;
 
 public class ManageBillingUnderResellerPortal extends DriverFactory {
@@ -19,12 +27,18 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 	BillingDDown billingDDown = PageFactory.initElements(driver, BillingDDown.class);
 	BusinessesPage businessesPage = PageFactory.initElements(driver, BusinessesPage.class);
 	CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
+	ConfirmInvoiceCancelationModal confirmInvoiceCancelationModal = PageFactory.initElements(driver,
+			ConfirmInvoiceCancelationModal.class);
 	EditBusinessPlanPage editBusinessPlanPage = PageFactory.initElements(driver, EditBusinessPlanPage.class);
 	EditBusinessPage editBusinessPage = PageFactory.initElements(driver, EditBusinessPage.class);
 	EditInvoicePage editInvoicePage = PageFactory.initElements(driver, EditInvoicePage.class);
 	ManageBillingPage manageBillingPage = PageFactory.initElements(driver, ManageBillingPage.class);
+	RestoreInvoiceModal restoreInvoiceModal = PageFactory.initElements(driver, RestoreInvoiceModal.class);
 	InvoicesPage invoicesPage = PageFactory.initElements(driver, InvoicesPage.class);
-	
+
+	DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+	String businessName = "The Broad Street Giant Grinder";
+
 //	@verify-the-details-displayed-within-manage-billing-page
 	@When("User clicks on the Billing menu option")
 	public void user_clicks_on_the_Billing_menu_option() throws Exception {
@@ -114,9 +128,8 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 //	@Add-a-feature-from-Edit-Merchant-Plan
 	@When("User clicks the Edit Recurring Plan from drop down")
 	public void user_clicks_the_Edit_Recurring_Plan_from_drop_down() throws Exception {
-		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown("The Broad Street Giant Grinder"));
-		manageBillingPage.waitAndClickElement(
-				manageBillingPage.ActionDDownOption("The Broad Street Giant Grinder", "Edit Recurring Plan"));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Edit Recurring Plan"));
 	}
 
 	@Then("User is redirected to the Edit Merchant plan page")
@@ -201,9 +214,8 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 				businessesPage.getElementText(businessesPage.NotificationAlert));
 		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Billing);
 		billingDDown.waitAndClickElement(billingDDown.opt_ManageBilling);
-		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown("The Broad Street Giant Grinder"));
-		manageBillingPage.waitAndClickElement(
-				manageBillingPage.ActionDDownOption("The Broad Street Giant Grinder", "Edit Recurring Plan"));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Edit Recurring Plan"));
 		Assert.assertFalse(
 				editBusinessPlanPage.isElementVisible(editBusinessPlanPage.featureLocator("Web Essentials Ongoing")));
 	}
@@ -211,8 +223,8 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 //	@Verify-merchant-info-details-in-manage-billing-page
 	@When("User clicks the Merchant Info option")
 	public void user_clicks_the_Merchant_Info_option() throws Exception {
-		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown("The Broad Street Giant Grinder"));
-		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption("The Broad Street Giant Grinder", "Merchant Info"));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Merchant Info"));
 	}
 
 	@Then("User is redirected to the Edit Merchant page")
@@ -222,37 +234,37 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 
 	@Then("User verifies that the Business Information section is displayed")
 	public void user_verifies_that_the_Business_Information_section_is_displayed() {
-	  Assert.assertTrue(editBusinessPage.businessInformationPanel.isDisplayed());
+		Assert.assertTrue(editBusinessPage.businessInformationPanel.isDisplayed());
 	}
 
 	@Then("User verifies that the Billing Information section is displayed")
 	public void user_verifies_that_the_Billing_Information_section_is_displayed() {
-	Assert.assertTrue(editBusinessPage.billingInformationPanel.isDisplayed());
+		Assert.assertTrue(editBusinessPage.billingInformationPanel.isDisplayed());
 	}
-	
+
 //	 @Verify-Invoice-details-are-displayed-on-clicking-view-button-on-Manage-billing-page
 	@When("User clicks the view button under actions to view selected merchant invoice details")
 	public void user_clicks_the_view_button_under_actions_to_view_selected_merchant_invoice_details() throws Exception {
-	  manageBillingPage.waitAndClickElement(manageBillingPage.btn_View("The Broad Street Giant Grinder"));
+		manageBillingPage.waitAndClickElement(manageBillingPage.btn_View(businessName));
 	}
 
 	@Then("User is redirected to the invoice page for the selected merchant")
 	public void user_is_redirected_to_the_invoice_page_for_the_selected_merchant() throws Exception {
-	  Assert.assertEquals("Edit Invoice", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+		Assert.assertEquals("Edit Invoice", commonElementLocator.getElementText(commonElementLocator.pag_Title));
 	}
 
 	@Then("User verifies the sub sections under the Invoice section")
 	public void user_verifies_the_sub_sections_under_the_Invoice_section() {
-	   Assert.assertTrue(editInvoicePage.panel_Invoices.isDisplayed());
-	   Assert.assertTrue(editInvoicePage.col_Feature.isDisplayed());
-	   Assert.assertTrue(editInvoicePage.col_OneTimePrice.isDisplayed());
-	   Assert.assertTrue(editInvoicePage.col_RecurringPrice.isDisplayed());
+		Assert.assertTrue(editInvoicePage.panel_Invoices.isDisplayed());
+		Assert.assertTrue(editInvoicePage.col_Feature.isDisplayed());
+		Assert.assertTrue(editInvoicePage.col_OneTimePrice.isDisplayed());
+		Assert.assertTrue(editInvoicePage.col_RecurringPrice.isDisplayed());
 	}
 
 	@Then("User verifies the links on the page")
 	public void user_verifies_the_links_on_the_page() {
-	   Assert.assertTrue(editInvoicePage.lnk_EditRecurringPlan.isDisplayed());
-	   Assert.assertTrue(editInvoicePage.lnk_EditBillingInformation.isDisplayed());
+		Assert.assertTrue(editInvoicePage.lnk_EditRecurringPlan.isDisplayed());
+		Assert.assertTrue(editInvoicePage.lnk_EditBillingInformation.isDisplayed());
 	}
 
 	@Then("User verifies Company Information section is available")
@@ -267,19 +279,20 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 
 	@Then("User verifies that Transaction History section is available on the page")
 	public void user_verifies_that_Transaction_History_section_is_available_on_the_page() {
-	 Assert.assertTrue(editInvoicePage.panel_TransactionHistory.isDisplayed());
+		Assert.assertTrue(editInvoicePage.panel_TransactionHistory.isDisplayed());
 	}
-   
+
 //	@Verify-all-merchant-invoices-page-is-displayed
 	@When("User clicks on All Merchant Invoices from the drop down")
 	public void user_clicks_on_All_Merchant_Invoices_from_the_drop_down() throws Exception {
-		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown("The Broad Street Giant Grinder"));
-		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption("The Broad Street Giant Grinder", "All Merchant Invoices"));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage
+				.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "All Merchant Invoices"));
 	}
 
 	@Then("User is redirected to Merchant Invoice page")
 	public void user_is_redirected_to_Merchant_Invoice_page() throws Exception {
-	 Assert.assertEquals("Invoices", commonElementLocator.getElementText(commonElementLocator.pag_Title));
+		Assert.assertEquals("Invoices", commonElementLocator.getElementText(commonElementLocator.pag_Title));
 	}
 
 	@Then("User verifies the columns on the invoice page")
@@ -294,4 +307,157 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 		Assert.assertTrue(invoicesPage.col_Action.isDisplayed());
 	}
 
+//	@Restore-invoice-option-in-manage-billing-page
+	@When("User clicks on Restore this Invoice from action drop down options")
+	public void user_clicks_on_Restore_this_Invoice_from_action_drop_down_options() throws Exception {
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage
+				.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Restore this invoice"));
+	}
+
+	@Then("the Restore Invoice modal is displayed")
+	public void the_Restore_Invoice_modal_is_displayed() throws Exception {
+		Assert.assertEquals("Restore Invoice", restoreInvoiceModal.getElementText(restoreInvoiceModal.mod_Title));
+	}
+
+	@Then("User sets a new date to invoice")
+	public void user_sets_a_new_date_to_invoice() throws Exception {
+		restoreInvoiceModal.sendKeysToWebElement(restoreInvoiceModal.txtF_dueDate,
+				LocalDate.now().plusDays(4).format(df).toString());
+	}
+
+	@Then("User clicks on the checkbox to Send an Invoice restore alert email to the Merchant")
+	public void user_clicks_on_the_checkbox_to_Send_an_Invoice_restore_alert_email_to_the_Merchant()
+			throws InterruptedException {
+		restoreInvoiceModal.waitAndClickElement(restoreInvoiceModal.chkBok_SendEmail);
+	}
+
+	@When("User clicks on the Restore Invoice button")
+	public void user_clicks_on_the_Restore_Invoice_button() throws Exception {
+		restoreInvoiceModal.waitAndClickElement(restoreInvoiceModal.btn_RestoreInvoice);
+	}
+
+	@Then("the Invoice is restored and status is changed due")
+	public void the_Invoice_is_restored_and_status_is_changed_due() throws Exception {
+		Assert.assertTrue(
+				invoicesPage.getElementText(invoicesPage.CellValue(businessName, "Pending")).contains("Pending"));
+	}
+
+//	@Cancel-invoice-option-in-manage-billing-page
+	@When("User clicks on Cancel this invoice from action drop down options")
+	public void user_clicks_on_Cancel_this_invoice_from_action_drop_down_options() throws Exception {
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Cancel this invoice"));
+	}
+
+	@Then("the Confirm Invoice Cancelation modal is displayed")
+	public void the_Confirm_Invoice_Cancelation_modal_is_displayed() throws Exception {
+		Assert.assertEquals("Confirm Invoice Cancelation",
+				confirmInvoiceCancelationModal.getElementText(confirmInvoiceCancelationModal.mod_Title));
+	}
+
+	@Then("User clicks on the checkbox to Send an invoice cancelation alert emailto the merchant")
+	public void user_clicks_on_the_checkbox_to_Send_an_invoice_cancelation_alert_emailto_the_merchant()
+			throws Exception {
+		confirmInvoiceCancelationModal.waitAndClickElement(confirmInvoiceCancelationModal.chkBox_SendEmail);
+	}
+
+	@When("User clicks on the Cancel Invoice button")
+	public void user_clicks_on_the_Cancel_Invoice_button() throws Exception {
+		confirmInvoiceCancelationModal.waitAndClickElement(confirmInvoiceCancelationModal.btn_CancelInvoice);
+	}
+
+	@Then("the Invoice is cancelled and status of the Invoice changed to Cancelled")
+	public void the_Invoice_is_cancelled_and_status_of_the_Invoice_changed_to_Cancelled() throws Exception {
+		Assert.assertTrue(invoicesPage.getElementText(invoicesPage.CellValue(businessName, "Cancelled"))
+				.contentEquals("Cancelled"));
+	}
+
+//	@Validate-the-help-button-functionality-on-Manage-Billing-page
+	@When("User clicks the help button on the Manage Billing page")
+	public void user_clicks_the_help_button_on_the_Manage_Billing_page() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help);
+	}
+
+	@Then("Actionable Tiles modal is displayed")
+	public void actionable_Tiles_modal_is_displayed() throws Exception {
+		Assert.assertEquals("Actionable Tiles",
+				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks the Next button on the Actionable Tiles modal")
+	public void user_clicks_the_Next_button_on_the_Actionable_Tiles_modal() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Next);
+	}
+
+	@Then("the Late Payments Tile modal is displayed")
+	public void the_Late_Payments_Tile_modal_is_displayed() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Late Payments Tile",
+				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+	@When("User clicks on the previous button on the Late Payments Tile modal")
+	public void user_clicks_on_the_previous_button_on_the_Late_Payments_Tile_modal() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.btn_Help_Prev);
+	}
+
+	@Then("User is navigated to the Actionable Tiles modal Modal")
+	public void user_is_navigated_to_the_Actionable_Tiles_modal_Modal() throws Exception {
+		commonElementLocator.WaitUntilWebElementIsVisible(commonElementLocator.mod_Help_Title);
+		Assert.assertEquals("Actionable Tiles",
+				commonElementLocator.getElementText(commonElementLocator.mod_Help_Title));
+	}
+
+//	@Change-the-billing-type-to-Credit-Card-in-Edit-Merchant-Page
+	@When("User clicks on Merchant Info from action drop down options")
+	public void user_clicks_on_Merchant_Info_from_action_drop_down_options() throws Exception {
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Merchant Info"));
+	}
+
+	@When("User clicks the Invoice toggle under Billing Information")
+	public void user_clicks_the_Invoice_toggle_under_Billing_Information() throws Exception {
+		editBusinessPage.waitAndClickElement(editBusinessPage.tog_Invoice);
+	}
+
+	@Then("the toggle changes to Credit Card and Credit card detail elemets displayed")
+	public void the_toggle_changes_to_Credit_Card_and_Credit_card_detail_elemets_displayed() throws Exception {
+		Assert.assertEquals("Credit Card", editBusinessPage.getElementText(editBusinessPage.tog_CreditCard));
+		Assert.assertTrue(editBusinessPage.panel_CreditCard.isDisplayed());
+	}
+
+//	@Edit-the-address-in-Billing-information-in-Edit-Merchant-page
+	@Then("User clicks on Merchant Info from drop down options")
+	public void user_clicks_on_Merchant_Info_from_drop_down_options() throws Exception {
+	   manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+	   manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Merchant Info"));
+	}
+	
+	@Then("User edits the Address field under Billing information")
+	public void user_edits_the_Address_field_under_Billing_information() throws Exception {
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_Address, "234 Automation Street");
+	}
+
+	@Then("User edits the City field under Billing information")
+	public void user_edits_the_City_field_under_Billing_information() throws Exception {
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_City, "GeorgeTown");
+	}
+
+	@Then("User select a country from the Country drop down")
+	public void user_select_a_country_from_the_Country_drop_down() throws Exception {
+	   editBusinessPage.waitAndClickElement(editBusinessPage.countryDDown);
+	   editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.countryDDown, "Canada");
+	}
+
+	@Then("User selects a state from the State drop down")
+	public void user_selects_a_state_from_the_State_drop_down() throws Exception {
+	  editBusinessPage.waitAndClickElement(editBusinessPage.stateDDown);
+	  editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "Alberta");
+	}
+
+	@Then("User enters a zipcode")
+	public void user_enters_a_zipcode() throws Exception {
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_ZipCode, "T1S1D8");
+	}
 }
