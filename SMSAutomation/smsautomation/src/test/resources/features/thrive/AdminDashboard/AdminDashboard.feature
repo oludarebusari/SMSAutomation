@@ -170,7 +170,7 @@ Feature: Verify all the components on the Admin Dashboard
      And User verifies revenue amount is available
      And User verifies the message displayed about the revenue
      
-  @SMSM-294 @Verify-user-is-able-to-edit-the-business-details @OnlyMe
+  @SMSM-294 @Verify-user-is-able-to-edit-the-business-details
   Scenario: Verify user is able to edit the Business's Details
 		When User navigates to Companies menu and clicks the Businesses option
 		Then the user is redirected to the Manage Businesses page

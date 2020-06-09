@@ -14,7 +14,6 @@ public class ManagePlansPage extends BasePage {
 		super();
 	}
 
-	
 	private final String PLANLOCATOR = "//tr[td[text()=\"Automation Plan - Edited\"]]";
 	
 	public @FindBy(xpath = "//a[normalize-space()=\"Plan\"]") WebElement col_Plan;
@@ -22,6 +21,7 @@ public class ManagePlansPage extends BasePage {
 	public @FindBy(xpath = "//th[@id=\"plans-fees\"]") WebElement col_Fees;
 	public @FindBy(xpath = "//a[normalize-space()=\"Status\"]") WebElement col_Status;
 	public @FindBy(xpath = "//th[normalize-space()=\"Action\"]") WebElement col_Action;
+	public @FindBy(xpath = "//div[contains(@class, \"alert-success\")]") WebElement txt_NotificationAlert;
 	public @FindBy(xpath = "//tbody") WebElement parentElement;
 	public WebElement getCellValue(String value) {
 		return parentElement.findElement(By.xpath("//tr//td[text()=\'" + value + "']"));

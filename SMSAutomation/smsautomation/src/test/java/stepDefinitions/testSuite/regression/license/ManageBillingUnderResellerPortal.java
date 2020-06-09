@@ -1,11 +1,7 @@
 package stepDefinitions.testSuite.regression.license;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import org.joda.time.format.DateTimeFormat;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import components.elements.CommonElementLocator;
@@ -427,13 +423,49 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 		Assert.assertTrue(editBusinessPage.panel_CreditCard.isDisplayed());
 	}
 
-//	@Edit-the-address-in-Billing-information-in-Edit-Merchant-page
+//	@Edit-merchant-info-details-select-the-previously-purchased-domain
 	@Then("User clicks on Merchant Info from drop down options")
 	public void user_clicks_on_Merchant_Info_from_drop_down_options() throws Exception {
 	   manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
 	   manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Merchant Info"));
 	}
 	
+	@When("User selects a different Business Category option")
+	public void user_selects_a_different_Business_Category_option() throws Exception {
+		editBusinessPage.waitAndClickElement(editBusinessPage.lov_BusinessCategory);
+		editBusinessPage.waitAndClickElement(editBusinessPage.businessCategoryOpt("\"Arcades\""));
+	}
+
+	@When("User clicks on the Site toggle")
+	public void user_clicks_on_the_Site_toggle() throws Exception {
+		editBusinessPage.waitAndClickElement(editBusinessPage.tog_previouslyPurchasedDomain);
+	}
+
+	@When("User clicks on the Save button")
+	public void user_clicks_on_the_Save_button() throws InterruptedException {
+		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
+	}
+	
+	@When("User verifies the changes made to the merchant info details")
+	public void user_verifies_the_changes_made_to_the_merchant_info_details() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Billing);
+		billingDDown.waitAndClickElement(billingDDown.opt_ManageBilling);
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Merchant Info"));
+		Assert.assertEquals("Arcades", editBusinessPage.getElementText(editBusinessPage.businessCategoryOpt("\"Arcades\"")));
+		Assert.assertEquals("A Subdomain", editBusinessPage.getElementText(editBusinessPage.tog_subDomain));
+	}
+	
+//	#Revert Changes made to merchant info details
+	@When("User reverted changes made to merchant info details")
+	public void user_reverted_changes_made_to_merchant_info_details() throws Exception {
+		editBusinessPage.waitAndClickElement(editBusinessPage.lov_BusinessCategory);
+		editBusinessPage.waitAndClickElement(editBusinessPage.businessCategoryOpt("\"Korean\""));
+	    editBusinessPage.waitAndClickElement(editBusinessPage.tog_subDomain);
+	    editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
+	}
+	
+//	@Edit-the-address-in-Billing-information-in-Edit-Merchant-page
 	@Then("User edits the Address field under Billing information")
 	public void user_edits_the_Address_field_under_Billing_information() throws Exception {
 		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_Address, "234 Automation Street");
@@ -458,6 +490,38 @@ public class ManageBillingUnderResellerPortal extends DriverFactory {
 
 	@Then("User enters a zipcode")
 	public void user_enters_a_zipcode() throws Exception {
-		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_ZipCode, "T1S1D8");
+		editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_ZipCode, "T3H 4C7");
 	}
+
+	@Then("User clicks the Save button and verifies the nottification alert")
+	public void user_clicks_the_Save_button_and_verifies_the_nottification_alert() throws Exception {
+	   editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
+	   Assert.assertEquals("×\nClose\nItem has been successfully updated.", editBusinessPage.getElementText(editBusinessPage.txt_SentNotification));
+	}
+	
+	@Then("User verifies the changes made to the Billing information")
+	public void user_verifies_the_changes_made_to_the_Billing_information() throws Exception {
+		commonElementLocator.waitAndClickElement(commonElementLocator.menu_Billing);
+		billingDDown.waitAndClickElement(billingDDown.opt_ManageBilling);
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDown(businessName));
+		manageBillingPage.waitAndClickElement(manageBillingPage.ActionDDownOption(businessName, "Merchant Info"));
+		Assert.assertTrue(editBusinessPage.txtF_Address.getAttribute("value").contentEquals("234 Automation Street"));
+		Assert.assertTrue(editBusinessPage.txtF_City.getAttribute("value").contentEquals("GeorgeTown"));
+		Assert.assertTrue(editBusinessPage.countryStateDDownOption("Canada").getText().contentEquals("Canada"));
+		Assert.assertTrue(editBusinessPage.countryStateDDownOption("Alberta").getText().contentEquals("Alberta"));		
+		Assert.assertTrue(editBusinessPage.txtF_ZipCode.getAttribute("value").contentEquals("T3H 4C7"));
+	}
+
+	@Then("User Revert the changes made to the Billing Information")
+	public void user_Revert_the_changes_made_to_the_Billing_Information() throws Exception {
+	   editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_Address, "990 Industrial Way");
+	   editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_City, "Georgia");
+	   editBusinessPage.waitAndClickElement(editBusinessPage.countryDDown);
+	   editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.countryDDown, "USA");
+	   editBusinessPage.waitAndClickElement(editBusinessPage.stateDDown);
+	   editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "California");
+	   editBusinessPage.sendKeysToWebElement(editBusinessPage.txtF_ZipCode, "93401");
+	   editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
+	}
+
 }
