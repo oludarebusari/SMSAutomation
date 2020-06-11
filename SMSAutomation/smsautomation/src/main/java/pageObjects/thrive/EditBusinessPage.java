@@ -40,6 +40,7 @@ public class EditBusinessPage extends BasePage {
 	 * xpath("//div[contains(@class, \"selectize-control\")]//div[text()=" + option
 	 * + "]")); }
 	 */
+
 	
 	public WebElement businessCategoryOpt(String option) {
 		return par_BusinessCategory.findElement(By.xpath("//div[(@class=\"option\" or @class=\"item\") and text()=" + option + "]"));

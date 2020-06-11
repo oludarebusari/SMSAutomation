@@ -29,4 +29,11 @@ public class InvoicesPage extends BasePage {
 		return parent.findElement(By.xpath("//tr[1][td[text()=\'" + invoice + "']]//td[span[contains(text(), \'" + status + "')]]"));
 	}
 	
+	public WebElement actionDDown (String business) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + business + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	
+	public WebElement actionDDownOption(String business, String option) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + business + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
+	}
 }

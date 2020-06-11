@@ -27,6 +27,10 @@ public class ManagePlansPage extends BasePage {
 		return parentElement.findElement(By.xpath("//tr//td[text()=\'" + value + "']"));
 	}
 	
+	public String getCellValueLocator(String value) {
+		return "//tr//td[text()=\'" + value + "']";
+	}
+	
 	public WebElement getPriceByPlanName(String planName, String price) {
 		return parentElement.findElement(By.xpath("//tr[td[text()=\'" + planName + "']]//span[contains(text(), \'" + price + "')]"));
 	}
@@ -42,7 +46,11 @@ public class ManagePlansPage extends BasePage {
 	public WebElement ActionDDownOption(String planName, String option) {
 		return parentElement.findElement(By.xpath("//tr[td[text()=\'" + planName + "']]//ul[@class=\"dropdown-menu\"]//a[@title=\'" + option + "']"));
 	}
-
+	
+	public WebElement firstRowCellValue(String value) {
+		return parentElement.findElement(By.xpath("//tr[1]//td[text()=\'" + value + "']"));
+	}
+	
 	public String getPLANLOCATOR() {
 		return PLANLOCATOR;
 	}
