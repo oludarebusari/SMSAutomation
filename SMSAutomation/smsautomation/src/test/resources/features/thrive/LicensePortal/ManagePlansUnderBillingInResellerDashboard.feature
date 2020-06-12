@@ -149,4 +149,3 @@ Feature: [SMSM-210] Manage plans (Edit, delete, deactivate & activate) under bil
  	 Then an error403 page is displayed instead of the Manage Plans page
  	 
 
-

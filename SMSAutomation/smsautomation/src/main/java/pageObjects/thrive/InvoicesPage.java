@@ -36,4 +36,8 @@ public class InvoicesPage extends BasePage {
 	public WebElement actionDDownOption(String business, String option) {
 		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + business + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
 	}
+	
+	public String CellValues(String businessName) {
+		return "//td[text()=\'" + businessName + "']" ;
+	}
 }
