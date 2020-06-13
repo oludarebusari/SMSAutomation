@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
-public class GallleryPage extends BasePage {
+public class GalleryPage extends BasePage {
 
-	public GallleryPage() throws IOException {
+	public GalleryPage() throws IOException {
 		super();
 	}
 

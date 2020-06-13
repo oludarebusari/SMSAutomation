@@ -1,4 +1,4 @@
-package pageObjects.thrive.modal;
+package pageObjects.thrive;
 
 import java.io.IOException;
 

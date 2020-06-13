@@ -25,16 +25,21 @@ public class InvoicesPage extends BasePage {
 	
 	public @FindBy(xpath = "//tbody") WebElement parent;  
 	
-	public WebElement CellValue (String invoice, String status) {
-		return parent.findElement(By.xpath("//tr[1][td[text()=\'" + invoice + "']]//td[span[contains(text(), \'" + status + "')]]"));
+	
+	public WebElement selectFirstRowCellValue (String invoiceCellValue) {
+		return parent.findElement(By.xpath("//tr[1]//td[text()=\'" + invoiceCellValue + "']"));
 	}
 	
-	public WebElement actionDDown (String business) {
-		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + business + "']]//button[@data-toggle=\"dropdown\"]"));
+	public WebElement CellValue (String invoiceCellValue, String status) {
+		return parent.findElement(By.xpath("//tr[1][td[text()=\'" + invoiceCellValue + "']]//td[span[contains(text(), \'" + status + "')]]"));
 	}
 	
-	public WebElement actionDDownOption(String business, String option) {
-		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[text()=\'" + business + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
+	public WebElement actionDDown (String cellValue) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[normalize-space()=\'" + cellValue + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	
+	public WebElement actionDDownOption(String cellValue, String option) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[normalize-space()=\'" + cellValue + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
 	}
 	
 	public String CellValues(String businessName) {
