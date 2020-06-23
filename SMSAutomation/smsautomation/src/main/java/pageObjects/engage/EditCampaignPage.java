@@ -31,4 +31,10 @@ public class EditCampaignPage extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"panel-body\" and .//h4[text()=\"Upsell Screen\"]]//label[contains(@class, \"toggle-off\")]") WebElement tog_Disabled;
 	public @FindBy(xpath = "//div[@class=\"panel-body\" and .//h4[text()=\"Upsell Screen\"]]//label[contains(@class, \"toggle-on\")]") WebElement tog_Enabled;
 	public @FindBy(xpath = "//div[contains(@class, \"option-settings__upsell\")]") WebElement set_UpsellScreen;
+	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[text()=\"Upsell Item\"]]//span[@class=\"count\"]") WebElement upsellItemCount;
+	public @FindBy(xpath = "//input[@name=\"settings__upsell_item\"]") WebElement txtF_UpsellItem;
+	public @FindBy(xpath = "//div[@class=\"form-group\" and ./label[text()=\"Upsell Item Description\"]]//span[@class=\"count\"]") WebElement upsellItemDescriptionCount;
+	public @FindBy(xpath = "//input[@name=\"settings__upsell_message\"]") WebElement txtF_UpsellDescription;
+	public @FindBy(xpath = "//input[@id=\"thumb_2\"]") WebElement img_UpsellImage;
+	
 }

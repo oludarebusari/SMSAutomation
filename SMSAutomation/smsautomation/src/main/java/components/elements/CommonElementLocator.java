@@ -1,7 +1,7 @@
 package components.elements;
 
 import java.io.IOException;
-
+ 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,13 +33,10 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//li[contains(@class, \"open\")]//ul[@class=\"dropdown-menu menu_level_1\"]") WebElement menu_dropdown;
 	public @FindBy(xpath = "//a[@id=\"start-tour\"]") WebElement btn_Help;
 	public @FindBy(xpath = "//a[@id=\"create-entity\" and text()[normalize-space()=\"New\"]]") WebElement btn_New;
-	
 	public @FindBy(xpath = "//h1[contains(@class, \"pull-left\")]") WebElement pag_Title;
 	public @FindBy(xpath = "//input[@id=\"simple_search_searchText\"]") WebElement txtF_Search;
 	public @FindBy(xpath = "//button[@id=\"search-text-submit\"]") WebElement btn_Search;
-	
 	public @FindBy(xpath = "//h3[@class=\"logo\" and ./a[@title=\"Dashboard\"]]") WebElement BackToDashboard;
-	
 	
 	//Pagination elements
 	public @FindBy(xpath = "//a[contains(@class, \"buttons-copy\")]") WebElement btn_Copy;
@@ -62,10 +59,9 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]") WebElement paginationBlock;
 	public @FindBy(xpath = "//ul[@class=\"pagination\"]//li[contains(@class, \"active\")]") WebElement paginationActiveBtn;
 	
-	
-	  public WebElement pageButtonNumber(String pageNumber) { 
+	public WebElement pageButtonNumber(String pageNumber) { 
 		return  paginationBlock.findElement(By.xpath("//a[text()=\'" + pageNumber + "']")); 
-	  }
+	}
 	
     /*
 	 * public WebElement pageButtonNumber(String pageNumber) { return
@@ -76,7 +72,6 @@ public class CommonElementLocator extends BasePage {
 	 * }
 	 */
 	 
-	
 	public WebElement tableLengthOpt(String option) {
 		return lov_PaginationTableLength.findElement(By.xpath("//option[text()=\'" + option + "']"));
 	}
@@ -87,6 +82,7 @@ public class CommonElementLocator extends BasePage {
 	public WebElement firstName(String index) {
 		return parent_Element.findElement(By.xpath("(//tr/td[text()])['" + index + "']"));
 	}
+	
 	public @FindBy(xpath = "(//tr/td[text()])[1]") WebElement sort_FirstName;
 	public @FindBy(xpath = "(//tr/td[text()])[2]") WebElement sort_LastName;
 	public @FindBy(xpath = "(//tr/td[text()])[3]") WebElement sort_Status;
@@ -105,8 +101,7 @@ public class CommonElementLocator extends BasePage {
 	public @FindBy(xpath = "//div[@class=\"popover-content\"]") WebElement mod_Help_Content;
 	public @FindBy(xpath = "//div[contains(@class, \"tour-mmd-tour\")]") WebElement mod_Tours;
 	
-	
-    // Experience Menu Options
+	// Experience Menu Options
 	public @FindBy(xpath = "//li[@class=\"first\"]//a[text()[normalize-space()=\\\"Pages\"]]") WebElement opt_Pages;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"SmartCode\"]]") WebElement opt_SmartCode;
 	public @FindBy(xpath = "//a[text()[normalize-space()=\"Captivate\"]]") WebElement opt_Captivate;
