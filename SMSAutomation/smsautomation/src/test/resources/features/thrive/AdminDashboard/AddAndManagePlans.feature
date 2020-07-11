@@ -14,8 +14,8 @@ Feature: [SMSM-146] Add & manage plans under billing in admin dashboard for Thri
     When User clicks on the Billing Menu option on the dashboard
     Then the Billing options are displayed
 
-  @SMSM-146 @Verify-the-navigation-to-"Manage-Plans"-page-under-Billing-menu 
-  Scenario: Verify the navigation to "Manage Plans" page under Billing menu  [C22397797]
+  @SMSM-146 @Verify-the-navigation-to-"Manage-Plans"-page-under-Billing-menu
+  Scenario: Verify the navigation to "Manage Plans" page under Billing menu [C22397797]
     When User clicks on Plan option
     Then user is redirected to the Manage Plans page
     And User verifies the columns on the Manage Plans page

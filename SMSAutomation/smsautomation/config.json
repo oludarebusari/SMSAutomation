@@ -1,5 +1,5 @@
 {
-	"GeneralSettings": {
+   "GeneralSettings": {
 		"engBaseURL": "https://stage2-aut.smsmmadmin.com/",
 		"licBaseURL": "https://www.smsmmtest.com/admin/",
 		"thrBaseURL": "https://thrive.stage2-aut.mastermindsdigital.com/login"
@@ -16,6 +16,22 @@
 		"username": "admin@mmd.com",
 		"password": "12345678"
 	},
+	"LT-CreateUpdateOrders": {
+		"username": "autocu@auto.com",
+		"password": "QA@vnet1"
+	},
+	"LT-ManageLeads": {
+		"username": "automl@auto.com",
+		"password": "QA@vnet1"
+	}, 
+	"LT-ViewPerformance": {
+		"username": "autovp@auto.com",
+		"password": "QA@vnet1"
+	}, 
+	"LT-CreateUpdate-ManageLeads": {
+		"username": "autocuml@auto.com",
+		"password": "QA@vnet1"
+	}, 
 	"DriverConfig": {
 	   "_comment":	"//To run the test locally, set environment to localHub and to run on Docker, set environment to remoteHub",
 	   "browser": "chrome",

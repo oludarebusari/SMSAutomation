@@ -96,7 +96,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     When User clicks on End Tour button
     Then Tour ends successfully
 
-  @SMSM-185-Edit-the-existing-tour-in-the-list-add-a-step  
+  @SMSM-185-Edit-the-existing-tour-in-the-list-add-a-step 
   Scenario: Edit the existing tour in the list - add a step [C22336741]
     When User types a tour name to search in the search textfield
     And User clicks the Search button
@@ -117,13 +117,13 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User click on the Remove Step button
     And Click the Save Tour button
 
-  @SMSM-185-Create-a-Tour @RegressionTest
-  Scenario: Create a Tour
+  @[SMSM-185] @Create-a-Tour
+  Scenario: Create a Tour 
     When User clicks on the New button
     And User enters the details of a new Tour
     And User clicks the Save Tour button
 
-  @SMSM-185-Edit-an-existing-tour-in-the-list-by-removing-the-role-assigned-to-the-tour  
+  @[SMSM-185] @Edit-an-existing-tour-in-the-list-by-removing-the-role-assigned-to-the-tour 
   Scenario: Edit an existing tour in the list by removing the role assigned to the tour [C22336747]
     When User types the tour name to edit into the Search textField
     And User clicks the Search button
@@ -134,7 +134,7 @@ Feature: Manage tours under settings in admin dashboard for Thrive system
     And User clicks the Save Tour button
     Then user confirms the role is removed from the tour
 
-  @SMSM-185-Verify-the-Help-Option-for-Edit-Tour-page 
+  @[SMSM-185] @Verify-the-Help-Option-for-Edit-Tour-page 
   Scenario: Verify the Help option for Edit Tour page  [C22336770]
     When User types the tour name to edit into the Search textField
     And User clicks the Search button
