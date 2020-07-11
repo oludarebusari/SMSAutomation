@@ -576,7 +576,5 @@ public class AdminDashboardSteps extends DriverFactory {
 		editBusinessPage.clickOnTextFromDropdownList(editBusinessPage.stateDDown, "Iowa");
 		editBusinessPage.waitAndClickElement(editBusinessPage.btn_SaveBusiness);
 	}
-
-	
 	
 }

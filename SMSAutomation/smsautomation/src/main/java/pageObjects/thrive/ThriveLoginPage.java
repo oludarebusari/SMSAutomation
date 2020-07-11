@@ -15,6 +15,6 @@ public class ThriveLoginPage extends BasePage {
 	// Page elements
 	public @FindBy(xpath = "//input[@id=\"username\"]") WebElement txtF_UserName;
 	public @FindBy(xpath = "//input[@id=\"password\"]") WebElement txtF_PassWord;
-	public @FindBy(xpath = "//button[@id=\"_submit\"]") WebElement button_signIn;
+	public @FindBy(xpath = "//button[@id=\"_submit\"]") WebElement btn_SignIn;
 	
 }

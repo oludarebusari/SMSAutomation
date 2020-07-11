@@ -40,7 +40,7 @@ public class EditBusinessPage extends BasePage {
 	 * xpath("//div[contains(@class, \"selectize-control\")]//div[text()=" + option
 	 * + "]")); }
 	 */
-	
+  
 	public WebElement businessCategoryOpt(String option) {
 		return par_BusinessCategory.findElement(By.xpath("//div[(@class=\"option\" or @class=\"item\") and text()=" + option + "]"));
 	}	
@@ -55,6 +55,5 @@ public class EditBusinessPage extends BasePage {
 	public @FindBy(xpath = "//input[@id=\"company_licensee_merchant_type_paymentMethod_creditCardExpirationDate\"]") WebElement txtF_CCExpiryDate;
 	public @FindBy(xpath = "//input[@id=\"company_licensee_merchant_type_paymentMethod_creditCardCVV\"]") WebElement txtF_CVV;
 	public @FindBy(xpath = "//div[@class=\"well\"]") WebElement panel_CreditCard;
-	
-	
+ 
 }

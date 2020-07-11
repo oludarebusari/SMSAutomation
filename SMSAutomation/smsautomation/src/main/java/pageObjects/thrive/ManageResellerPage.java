@@ -48,5 +48,5 @@ public class ManageResellerPage extends BasePage {
 	public WebElement btn_Enable_Services(String reseller) {
 		return parent.findElement(By.xpath("//tr[contains(@id, \"company\") and ./td[text()=\'" + reseller + "']]//ul[@class=\"dropdown-menu\"]//a[@title=\"Enable Services\"]"));
 	}
-
+	
 }

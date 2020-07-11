@@ -333,7 +333,6 @@ public class ManageAlertsSteps extends DriverFactory {
 	@When("User clicks the new button on the Manage Alert poage")
 	public void user_clicks_the_new_button_on_the_Manage_Alert_poage() throws InterruptedException {
 		manageAlertsPage.waitAndClickElement(manageAlertsPage.btn_New);
-		;
 	}
 
 	@Then("the create Alert window is opened")

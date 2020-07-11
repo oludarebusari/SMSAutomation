@@ -660,6 +660,18 @@ public class BasePage extends DriverFactory {
 		
 	}
 
-       
+	/**********************************************************************************
+	 ** GET COLOR
+	 *********************************************************************************/	
+	public String getColor(String colorRGBA) {
+		String[] hexValue = colorRGBA.replace("rgba(", "").replace(")", "").split(",");
+		int hexValue1 = Integer.parseInt(hexValue[0]);
+		hexValue[1] = hexValue[1].trim();
+		int hexValue2 = Integer.parseInt(hexValue[1]);
+		hexValue[2] = hexValue[2].trim();
+		int hexValue3 = Integer.parseInt(hexValue[2]);
+		String actualColor = String.format("#%02x%02x%02x", hexValue1, hexValue2, hexValue3);
+		return actualColor;
+	}
 	
 }

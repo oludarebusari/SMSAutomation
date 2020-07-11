@@ -127,9 +127,11 @@ public class OptionsUnderSubscribersInMerchantsPortal extends DriverFactory {
 	public void the_Subscribers_page_is_opened() throws Exception {
 		Assert.assertTrue(subscribersPage.getElementText(subscribersPage.pag_Title).contentEquals("Subscribers"));
 	}
-
+	//div[contains(@class, "option") and text()="Test 3 (Enabled) (Test03)"]
 	@Then("User verifies the list of Subscribers")
 	public void user_verifies_the_list_of_Subscribers() throws NumberFormatException, Exception {
+		subscribersPage.waitAndClickElement(subscribersPage.campaignDDown);
+		subscribersPage.waitAndClickElement(subscribersPage.campaignOpt("Test 3 (Enabled) (Test03)"));
 		Assert.assertTrue(
 				Integer.parseInt(subscribersPage.getElementText(subscribersPage.num_Subscribers).substring(7, 9).trim()) > 0);
 	}

@@ -44,7 +44,7 @@ public class DriverFactory {
 					System.setProperty("webdriver.chrome.driver", Constant.CHROME_DRIVER_DIRECTORY);
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("start-maximized");
-					options.addArguments("window-size=1280x1024");
+//					options.addArguments("window-size=1280x1024");
 					driver = new ChromeDriver(options);
 				}
 				break;

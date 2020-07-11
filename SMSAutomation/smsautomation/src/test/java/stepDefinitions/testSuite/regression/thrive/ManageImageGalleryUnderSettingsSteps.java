@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import components.elements.CommonElementLocator;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.thrive.GallleryPage;
+import pageObjects.thrive.GalleryPage;
 import pageObjects.thrive.ManageImageGalleryPage;
 import pageObjects.thrive.ThriveLoginPage;
 import pageObjects.thrive.Tab.SettingsDDown;
@@ -17,7 +17,7 @@ import utils.DriverFactory;
 public class ManageImageGalleryUnderSettingsSteps extends DriverFactory {
 
 	public CommonElementLocator commonElementLocator = PageFactory.initElements(driver, CommonElementLocator.class);
-	public GallleryPage gallleryPage = PageFactory.initElements(driver, GallleryPage.class);
+	public GalleryPage gallleryPage = PageFactory.initElements(driver, GalleryPage.class);
 	public ManageImageGalleryPage manageImageGalleryPage = PageFactory.initElements(driver,
 			ManageImageGalleryPage.class);
 	public SettingsDDown settingsDDown = PageFactory.initElements(driver, SettingsDDown.class);
@@ -320,7 +320,7 @@ public class ManageImageGalleryUnderSettingsSteps extends DriverFactory {
 	public void user_signs_in_with_a_user_that_has_Business_role() throws Exception {
 		thriveLoginPage.sendKeysToWebElement(thriveLoginPage.txtF_UserName, "test@automation.com");
 		thriveLoginPage.sendKeysToWebElement(thriveLoginPage.txtF_PassWord, "QA@vnet1");
-		thriveLoginPage.waitAndClickElement(thriveLoginPage.button_signIn);
+		thriveLoginPage.waitAndClickElement(thriveLoginPage.btn_SignIn);
 	}
 
 	@Then("User is redirected to the Dashboard for the sign In user")

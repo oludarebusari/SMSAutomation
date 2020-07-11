@@ -20,6 +20,7 @@ public class SubscribersPage extends BasePage {
 	public @FindBy(xpath = "//input[contains(@class, \"table-search\")]") WebElement txtF_Search;
 	public @FindBy(xpath = "//div[@id=\"subscribers_wrapper\"]") WebElement table_Subscribers;
 	public @FindBy(xpath = "//div[@id=\"subscribers_info\"]") WebElement num_Subscribers;
+	public @FindBy (xpath = "(//div[contains(@class, \"selectize-input\")])[1]") WebElement campaignDDown;
 	public @FindBy(xpath = "//input[@id=\"optin-dates\"]") WebElement txtF_OptIn_Date_Range;
 	public @FindBy(xpath = "//input[@id=\"checkin-dates\"]") WebElement txtF_CheckIn_Count;
 	public @FindBy(xpath = "//button[@id=\"importTrigger\"]") WebElement btn_Import;
@@ -50,5 +51,9 @@ public class SubscribersPage extends BasePage {
 		return par_Subscribers.findElement(By.xpath("//div[@id=\"bulk-edit-menu\"]//a[text()=\'" + option + "']"));
 	}
    
+	public @FindBy(xpath = "//div[@class=\"selectize-dropdown-content\"]") WebElement par_Campaign;
+	public WebElement campaignOpt (String option) {
+		return par_Campaign.findElement(By.xpath("//div[contains(@class, \"option\") and text()=\'" + option + "']"));
+	}
 	
 }

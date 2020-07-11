@@ -41,7 +41,7 @@ public class ThriveLoginSteps  extends DriverFactory {
 	
 	@When("User clicks the sign in button for thrve")
 	public void user_clicks_the_sign_in_button_for_thrve() throws Exception {
-		thrLoginPage.waitAndClickElement(thrLoginPage.button_signIn);
+		thrLoginPage.waitAndClickElement(thrLoginPage.btn_SignIn);
 	}
 
 	@Then("Thrive Dashboard page is displayed")

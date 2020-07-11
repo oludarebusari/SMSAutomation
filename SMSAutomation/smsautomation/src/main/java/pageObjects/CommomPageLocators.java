@@ -12,8 +12,8 @@ public class CommomPageLocators extends BasePage {
 	
 	// Login Page elements
 	
-	public @FindBy(xpath = "//input[@id=\"id_username\"]") WebElement txtF_UserName;
-	public @FindBy(xpath = "//input[@id=\"id_password\"]") WebElement txtF_PassWord;
-	public @FindBy(xpath = "//button[@id=\"_submit\"]") WebElement btn_signIn;
+	public @FindBy (xpath = "//input[@id=\"id_username\"]") WebElement txtF_UserName;
+	public @FindBy (xpath = "//input[@id=\"id_password\"]") WebElement txtF_PassWord;
+	public @FindBy (xpath = "//button[@id=\"_submit\"]") WebElement btn_signIn;
 	
 }

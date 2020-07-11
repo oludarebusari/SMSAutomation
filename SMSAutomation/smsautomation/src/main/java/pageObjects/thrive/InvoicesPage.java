@@ -25,8 +25,24 @@ public class InvoicesPage extends BasePage {
 	
 	public @FindBy(xpath = "//tbody") WebElement parent;  
 	
-	public WebElement CellValue (String invoice, String status) {
-		return parent.findElement(By.xpath("//tr[1][td[text()=\'" + invoice + "']]//td[span[contains(text(), \'" + status + "')]]"));
+	
+	public WebElement selectFirstRowCellValue (String invoiceCellValue) {
+		return parent.findElement(By.xpath("//tr[1]//td[text()=\'" + invoiceCellValue + "']"));
 	}
 	
+	public WebElement CellValue (String invoiceCellValue, String status) {
+		return parent.findElement(By.xpath("//tr[1][td[text()=\'" + invoiceCellValue + "']]//td[span[contains(text(), \'" + status + "')]]"));
+	}
+	
+	public WebElement actionDDown (String cellValue) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[normalize-space()=\'" + cellValue + "']]//button[@data-toggle=\"dropdown\"]"));
+	}
+	
+	public WebElement actionDDownOption(String cellValue, String option) {
+		return parent.findElement(By.xpath("//tr[@role=\"row\" and .//td[normalize-space()=\'" + cellValue + "']]//ul[@class=\"dropdown-menu\"]//a[text()=\'" + option + "']"));
+	}
+	
+	public String CellValues(String businessName) {
+		return "//td[text()=\'" + businessName + "']" ;
+	}
 }
